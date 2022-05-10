@@ -7,6 +7,6 @@
 <title>테스트페이지</title>
 </head>
 <body>
-	<h1>세미 테스트페이지 입니다</h1>
+	<h1>세미 테스트페이지 입ddd니다</h1>
 </body>
 </html>
