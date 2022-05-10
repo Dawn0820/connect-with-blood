@@ -13,7 +13,7 @@
 	----일단 commit 테스트-----
 	
 	기세영 :　ｓｄｆａｓｄ
-	이나영 : dffdfdfdfd
+	이나영 : dffdfdfdfdfddfd
 	임규민 : 
 	심현진 : 
 	
