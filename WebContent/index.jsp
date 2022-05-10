@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>세미 테스트 index 페이지 입니다</H1>
+	<h1>세미 테스트 index 페이지 입니다ㅇㅇㅇㅇ</H1>
 	
 	<pre>
 	----일단 commit 테스트-----
