@@ -7,12 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>세미 테스트 index 페이지 입니다ㅇㅇ</H1>
+	<h1>세미 테스트 index 페이지 입니다</H1>
 	
 	<pre>
-	----일단 commit 테스트-----
-	
-	본인 이름 옆에 아무거나 쓰고 commit 테스트 해봅시다
+		테 스 트 
 	</pre>
 	
 	<a href="views/main.jsp">메인페이지로 가봅시다</a>
