@@ -42,7 +42,7 @@ public class JDBCTemplate {
 		try {
 			//Class.forName("oracle.jdbc.driver.OracleDriver");
 			Class.forName(prop.getProperty("driver"));
-			//conn = DriverManager.getConnection("jdbc:oracle:thin:@172.16.219.128:1521:xe","SERVER","SERVER");
+			//conn = DriverManager.getConnection("개인 url","SEMI","SEMI");
 			conn = DriverManager.getConnection(prop.getProperty("url"),
 											   prop.getProperty("username"),
 											   prop.getProperty("password"));

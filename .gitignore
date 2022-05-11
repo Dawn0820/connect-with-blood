@@ -9,7 +9,7 @@ tmp/
 *.bak
 *.swp
 *~.nib
-*.properties
+driver.properties
 .settings/
 .loadpath
 .recommenders
