@@ -9,8 +9,6 @@
 <body>
 	<h1>세미 테스트 index 페이지 입니다</H1>
 	
-	<h2>pull 후  개인 브랜치에서 push 테스트</h2>
-	
 	<a href="views/main.jsp">메인페이지로 가봅시다</a>
 	<br><br>
 	<a href="views/admin/dashboard.jsp">관리자페이지 테스트</a>
