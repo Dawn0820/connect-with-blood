@@ -7,7 +7,7 @@ Description
 
 #### Tech Stack
 
-+ FE(Front End)
++ FE(Front-End)
 
    - JSP
    - CSS
