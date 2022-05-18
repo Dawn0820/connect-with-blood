@@ -25,7 +25,6 @@
 	<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
 	<meta name="theme-color" content="#7952b3">
 
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -84,7 +83,6 @@
 	      </div>
 	      <div class="carousel-item">
 	        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-	
 	        <div class="container">
 	          <div class="carousel-caption text-end">
 	            <h1>One more for good measure.</h1>
