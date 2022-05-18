@@ -58,7 +58,7 @@
   <body>
   
 	<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-	  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Connect With Blood</a>
+	  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">ConnectWithBlood</a>
 	  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -83,17 +83,27 @@
               Dashboard 
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%=contextPath%>/memManagement.ad">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
               <span data-feather="users"></span>
               회원관리
             </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="<%=contextPath%>/memManagement.ad">회원상태</a></li>
+              <li><a class="dropdown-item" href="#">문의내역</a></li>
+              <li><a class="dropdown-item" href="#">회원분석</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%=contextPath%>/boardManagement.ad">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
               <span data-feather="file-text"></span>
               게시판관리
             </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="<%=contextPath%>/boardManagement.ad">메뉴관리</a></li>
+              <li><a class="dropdown-item" href="#">게시판관리</a></li>
+              <li><a class="dropdown-item" href="#">이벤트관리</a></li>
+            </ul>
           </li>
           
           <li class="nav-item">
