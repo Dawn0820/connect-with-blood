@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BoardManagementController
  */
-@WebServlet("/boardManagement.ad")
-public class BoardManagementController extends HttpServlet {
+@WebServlet("/noticeManagement.ad")
+public class NoticeManagementController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardManagementController() {
+    public NoticeManagementController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class BoardManagementController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/boardManagement.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/noticeManagement.jsp").forward(request, response);
 	}
 
 	/**

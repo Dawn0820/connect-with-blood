@@ -100,9 +100,9 @@
               게시판관리
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="<%=contextPath%>/boardManagement.ad">메뉴관리</a></li>
-              <li><a class="dropdown-item" href="#">게시판관리</a></li>
-              <li><a class="dropdown-item" href="#">이벤트관리</a></li>
+              <li><a class="dropdown-item" href="<%=contextPath%>/noticeManagement.ad">공지사항</a></li>
+              <li><a class="dropdown-item" href="#">QnA</a></li>
+              <li><a class="dropdown-item" href="#">FAQ</a></li>
             </ul>
           </li>
           
