@@ -13,6 +13,7 @@
 	<br><br>
 	<a href="views/admin/dashboard.jsp">관리자페이지 테스트</a>
 	<br><br>
+	<a href="views/board/communityListView.jsp">커뮤니티 테스트</a>
 
 </body>
 </html> 
