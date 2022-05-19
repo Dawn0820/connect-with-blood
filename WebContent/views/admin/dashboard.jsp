@@ -101,8 +101,8 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="<%=contextPath%>/noticeManagement.ad">공지사항</a></li>
-              <li><a class="dropdown-item" href="#">QnA</a></li>
-              <li><a class="dropdown-item" href="#">FAQ</a></li>
+              <li><a class="dropdown-item" href="<%=contextPath%>/qnaManagement.ad">QnA</a></li>
+              <li><a class="dropdown-item" href="<%=contextPath%>/faqManagement.ad">FAQ</a></li>
             </ul>
           </li>
           

@@ -19,12 +19,11 @@
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
 
-
-	<!-- 현재 공지사항 목록 출력 -> 모달로 관리 -->
+	<!-- FAQ관리 -> 모달? -->
 	<table class="table table-hover">
 	  <thead>
 	    <tr>
-	      <th scope="col">공지사항 관리</th>
+	      <th scope="col">FAQ 관리</th>
 	      <th scope="col">First</th>
 	      <th scope="col">Last</th>
 	      <th scope="col">Handle</th>
