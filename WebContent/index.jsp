@@ -13,6 +13,6 @@
 	<br><br>
 	<a href="views/admin/dashboard.jsp">관리자페이지 테스트</a>
 	<br><br>
-	
+
 </body>
 </html> 
