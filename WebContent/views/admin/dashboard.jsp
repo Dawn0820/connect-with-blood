@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+	String contextPath = request.getContextPath();
+%>   
     
 <!DOCTYPE html>
 <html>
@@ -24,13 +28,13 @@
     
 
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
+	<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+	<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+	<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+	<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+	<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+	<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+	<meta name="theme-color" content="#7952b3">
 
 
     <style>
@@ -50,22 +54,23 @@
     </style>
 
     
-    
   </head>
   <body>
-    
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Connect With Blood</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
-    </div>
-  </div>
-</header>
+  
+	<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+	  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">ConnectWithBlood</a>
+	  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+	  <div class="navbar-nav">
+	    <div class="nav-item text-nowrap">
+	      <a class="nav-link px-3" href="#">Sign out</a>
+	    </div>
+	  </div>
+	</header>
+	
+	
 
 <div class="container-fluid">
   <div class="row">
@@ -78,17 +83,27 @@
               Dashboard 
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
               <span data-feather="users"></span>
               회원관리
             </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="<%=contextPath%>/memManagement.ad">회원상태</a></li>
+              <li><a class="dropdown-item" href="#">문의내역</a></li>
+              <li><a class="dropdown-item" href="#">회원분석</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
               <span data-feather="file-text"></span>
               게시판관리
             </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="<%=contextPath%>/noticeManagement.ad">공지사항</a></li>
+              <li><a class="dropdown-item" href="<%=contextPath%>/qnaManagement.ad">QnA</a></li>
+              <li><a class="dropdown-item" href="<%=contextPath%>/faqManagement.ad">FAQ</a></li>
+            </ul>
           </li>
           
           <li class="nav-item">
@@ -155,11 +170,11 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
+              <th scope="col">글번호</th>
+              <th scope="col">제목</th>
+              <th scope="col">내용</th>
+              <th scope="col">작성자</th>
+              <th scope="col">조회수</th>
             </tr>
           </thead>
           <tbody>
