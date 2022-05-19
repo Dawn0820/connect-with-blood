@@ -14,6 +14,7 @@
 	<a href="views/admin/dashboard.jsp">관리자페이지 테스트</a>
 	<br><br>
 	<a href="views/admin/memberManagement.jsp">회원관리 페이지 테스트</a>
-	
+	<br><br>
+	<a href="views/board/communityEnrollForm.jsp">게시판테스트</a>
 </body>
 </html> 
