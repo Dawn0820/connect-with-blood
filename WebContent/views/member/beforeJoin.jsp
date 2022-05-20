@@ -9,6 +9,20 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    
+
+
+
+    <!--모달창 bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
 
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -30,9 +44,8 @@
         .h{text-align: center;}
         #smallH{color: darkred;}
         fieldset>textarea, input, label{text-align: center; width: auto;}
-        .btn{
+        #b{
             margin: auto; 
-            width: 50%; 
             float: left;
         }
         fieldset{border: dashed gray; padding: 20px; }
@@ -49,27 +62,41 @@
         }
         textarea{width: auto;}
 
+        
+        #userId{
+            float: left;
+            
+        }
+
+
+        
     </style>
 </head>
-<!-- 왜 왼쪽아래에 붙냐 ㅡㅡ -->
+
 
 <body>
-    <div class="inner">
+
+
+	<h1>testtsettesttesttest</h1>
+
+	<!-- header.jsp include -->
+    <%@ include file="../common/header.jsp" %>
+
+
+    <div class="position-relative ">
     <h1 class="h">Connect-with-blood 회원가입을 환영합니다!</h1>
     <h3 class="h" id="smallH">"Connect with LIFE, Connect with LOVE"</h3>
 
     <br><br>
 
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width:37%">1단계</div>
-    </div>
+
 
     <br><br>
 
-    <form action="test.do">
+    <form action="test.do" class="position-absolute top-50 start-50 translate-middle">
         <fieldset>
             <legend align="center"><b>회원가입을 위한 개인정보 수집 및 이용 안내(필수)</b></legend>
-            <div id="box">
+            <div id="box" >
             <input type="text" value="이용약관 동의(필수)" id="bTop"> <br>
             
             <textarea id="content" name="content" cols="38" readonly rows="8" style="resize: none;">            
@@ -126,19 +153,202 @@
                 본인은 개인정보보호법 제15조에 따라 개인정보 수집 및 이용에 대한 안내사항을 고지 받고 개인정보 처리에 동의합니다.
             </textarea> <br>
 
-            <input type="radio" name="agree" id="agree1">
-            <label for="agree1">동의합니다.</label>
-            <input type="radio" name="agree" id="agree2">
-            <label for="agree2">동의하지않습니다.</label>
+
         </div>
 
             <br><br>
-            <button type="reset" class="btn btn-outline-secondary">취소</button>
-            <button type="submit" class="btn btn-outline-danger">확인</button>
+            
+            <!--모달창 bootstrap-->
+            <div class="container">
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-outline-danger" id="b" data-toggle="modal" data-target="#myModal" style="width: 60%;">
+                  동의합니다
+                </button>
+              
+            <button type="reset" class="btn btn-outline-secondary" id="b" style="width: 40%;">취소</button>
 
         </fieldset>
     </form>
 </div>
+
+
+
+
+
+
+
+
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog ">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h1 class="modal-title">개인정보 기입사항</h1>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="<%=contextPath%>/join.mem">
+                <fieldset>
+            <form name="registerform" method="post" enctype="multipart/form-data" action="./register">
+                <div class="fieldlabel"><label for="userId">* 아이디</label></div>
+                <div class="formfield"><input type="text" id="userId" name="userId" maxlength="20" value=""></div>
+                &nbsp; &nbsp;
+                <button type="button" class="btn btn-outline-danger" id="idCheck">아이디 중복 체크</button>
+        
+                <br><br>
+                <div class="fieldlabel"><label for="userPw" id="userPw">* 패스워드</label></div>
+                <div class="formfield">
+        <input type="password" id="userPw" name="userpPw" maxlength="20" autocomplete="off">
+        </div><br>
+                <div class="fieldlabel"><label for="userPwCheck" style="color: gray;">* 패스워드확인</label></div>
+                <div class="formfield">
+        <input type="password" id="userPwCheck" name="userPwCheck" maxlength="20" autocomplete="off">
+        </div> <br>
+                <div class="fieldlabel"><label for="userName">* 이름</label></div>
+                <div class="formfield"><input type="text" id="userName" name="userName" maxlength="20" value=""></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                <br>
+                <div class="fieldlabel"><label for="address">* 주소</label></div>
+                <div class="formfield"><input type="text" id="address" name="address" maxlength="40" value=""></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                <br>
+                <div class="fieldlabel"><label for="email01">- 이메일</label></div>
+                <div class="formfield"><input type="text" id="email01" name="email01" size="20" maxlength="20" 
+                     value="" autocomplete="off"><span>@</span>
+                    <input id="email02" name="email02" list="domains" placeholder="도메인 입력/선택">
+                    <datalist id="domains">
+                        <option value="naver.com">
+                        <option value="daum.net">
+                        <option value="gmail.com">
+                        <option value="yahoo.co.kr">
+                    </datalist>
+                </div><br>
+                
+                <div class="fieldlabel"><label for="mPhone1">- 연락처</label></div>
+                <div class="formfield">
+                    <select id="mPhone1" name="mPhone1">
+                        <option value="011">010</option>
+                        <option value="011">011</option>
+                        <option value="016">017</option>
+                        <option value="018">018</option>
+                        <option value="019">019</option>
+                    </select>-
+                    <input id="mPhone2" name="mPhone2" type="number" value="" size="4" maxlength="4" autocomplete="off" style="width: 100px">-
+                    <input id="mPhone3" name="mPhone3" type="number" value="" size="4" maxlength="4" autocomplete="off" style="width: 100px">
+                </div> <br>
+                <div class="fieldlabel"><label>- 이메일수신</label></div>
+                <div class="formfield">
+                    <input type="radio" name="emailYn" value="Y" checked>수신
+                    <input type="radio" name="emailYn" value="N">미수신
+                </div><br>
+        
+                
+                <div class="blood_abo"><label>* 혈액형 타입</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <select name="blood" id="blood">
+                        <option value="A형">A형</option>
+                        <option value="B형">B형</option>
+                        <option value="AB형">AB형</option>
+                        <option value="O형">O형</option>
+                    </select>
+        
+                <br>
+                </div>
+                <div class="blood_rh"> <label>* RH형 타입</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="rh" value="RH+" alt="blood" checked>RH+
+                    <input type="radio" name="rh" value="RH-" alt="blood">RH-
+                </div>
+        
+                <br>
+                <div class="blood_special"> <label>* 특수 혈액형 유무</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="spc" value="spc" alt="blood" >해당 &nbsp;
+                    <input type="radio" name="spc" value="spc" alt="blood" checked>해당사항 없음
+                </div>
+        
+                <br>
+                <div class="fieldlabel"><label>- 성별</label></div>
+                <div class="formfield">
+                    <input type="radio" name="sex" value="no" alt="no" checked >선택안함 &nbsp;
+                    <input type="radio" name="sex" value="남" alt="남자" checked >남자 &nbsp;
+                    <input type="radio" name="sex" value="여" alt="여자" >여자
+                </div> <br>
+                <div class="fieldlabel"><label for="profile">- 프로필사진</label></div>
+                <div class="formfield" >
+                    <input type="file" id="profile" name="profile" required class="btn btn-outline-secondary"> 
+                </div> 
+                
+            </fieldset>
+                
+                <br><br>
+        
+        
+                <div class="btn1">
+                    <!-- <input type="reset" value="초기화" class="btn btn-secondary"> -->
+                    <input type="submit" value="회원가입" class="btn btn-danger btn-block" id="joinBtn" onclick="joinAlert();">
+                </div>
+        
+                <script>
+                    function joinAlert(){
+                        alert("회원가입을 축하합니다!");
+                    }
+                </script>
+            </form>
+        </form>
+        </div>
+            </div>
+          
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+
+
+
+
+
+
+	<!-- footer.jsp include -->
+	<%@ include file="../common/footer.jsp" %>
+	
+	
 
 
 </body>
