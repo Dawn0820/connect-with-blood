@@ -36,6 +36,13 @@
 <title>마이페이지</title>
 </head>
 <body>
+
+
+	<!-- header.jsp include -->
+    <%@ include file="../common/header.jsp" %>
+    
+    
+    
 	<div class="w3-content w3-container w3-margin-top">
 		<div class="w3-container w3-card-4">
 			<div class="w3-center w3-large w3-margin-top">
@@ -77,5 +84,14 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+		<!-- footer.jsp include -->
+	<%@ include file="../common/footer.jsp" %>
+	
+	
+	
+	
 </body>
 </html>
