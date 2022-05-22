@@ -1,23 +1,28 @@
-package admin.controller;
+package faq.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import faq.model.service.FaqService;
+import faq.model.vo.Faq;
+
 /**
- * Servlet implementation class FaqManagementController
+ * Servlet implementation class FaqListController
  */
-@WebServlet("/faqManagement.ad")
-public class FaqManagementController extends HttpServlet {
+@WebServlet("/list.faq")
+public class FaqListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqManagementController() {
+    public FaqListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +32,11 @@ public class FaqManagementController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("/views/admin/faqManagement.jsp").forward(request, response);
+		ArrayList<Faq> list = new FaqService().selectFaqList();
+		
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/faq/faqListView.jsp").forward(request, response);
+		
 	}
 
 	/**
