@@ -105,6 +105,12 @@ fieldset, img {
 </head>
 <body>
 
+	<!-- header.jsp include -->
+    <%@ include file="../common/header.jsp" %>
+    
+    
+    
+
 <div class="inner_findPw">
     <div class="findPw">
         
@@ -140,6 +146,14 @@ fieldset, img {
         
     </div>
 </div>
+
+
+
+	<!-- footer.jsp include -->
+	<%@ include file="../common/footer.jsp" %>
+	
+	
+	
 
 
 

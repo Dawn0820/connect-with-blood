@@ -61,6 +61,14 @@
     
 </head>
 <body>
+
+
+
+	<!-- header.jsp include -->
+    <%@ include file="../common/header.jsp" %>
+    
+    
+    
     <div class="inner">
     <h1 class="h">Connect-with-blood 회원가입을 환영합니다!</h1>
     <h3 class="h" id="smallH">"Connect with LIFE, Connect with LOVE"</h3>
@@ -68,7 +76,7 @@
     <br><br>
 
     <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width:100%">3단계</div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width:100%">2단계</div>
     </div>
 
     <br><br>
@@ -178,14 +186,28 @@
 
         <div class="btn1">
             <!-- <input type="reset" value="초기화" class="btn btn-secondary"> -->
-            <input type="submit" value="회원가입" class="btn btn-danger btn-block" id="joinBtn">
+            <input type="submit" value="회원가입" class="btn btn-danger btn-block" id="joinBtn" onclick="joinAlert();">
         </div>
+
+        <script>
+            function joinAlert(){
+                alert("회원가입을 축하합니다!");
+            }
+        </script>
     </form>
 
 
 
 </form>
 </div>
+
+
+
+	<!-- footer.jsp include -->
+	<%@ include file="../common/footer.jsp" %>
+	
+	
+	
 
 </body>
 </html>

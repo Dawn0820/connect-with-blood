@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	<entry key="selectQnaList">
+		SELECT QUESTION_NO
+      		  ,QUESTION_TAG
+     		  ,QUESTION_TITLE
+ 		      ,QUESTION_CONTENT
+    		  ,QUESTION_DATE
+     		  ,USER_NAME
+		FROM QUESTION
+		JOIN MEMBER ON (QUESTION_WRITER=USER_NO)
+		WHERE QUESTION_STATUS = 'Y'
+		ORDER BY QUESTION_DATE DESC
+	</entry>
+	
+</properties>

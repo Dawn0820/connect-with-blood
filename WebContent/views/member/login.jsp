@@ -6,6 +6,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>로그인</title>
+    
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
@@ -162,24 +163,29 @@ fieldset, img {
 </head>
 <body>
 
+
+	<!-- header.jsp include -->
+    <%@ include file="../common/header.jsp" %>
+
+
 <div class="inner_login">
     <div class="login_tistory">
         
-        <form method="post" id="authForm" action="https://www.tistory.com/auth/login">
+        <form method="post" id="authForm" action="<%=contextPath%>/login.mem">
             <input type="hidden" name="redirectUrl" value="https://blogpack.tistory.com/manage">
             <fieldset>
                 <legend class="screen_out">로그인</legend>
                 <div class="box_login">
                     <div class="inp_text">
                         <label for="loginId" class="screen_out">아이디</label>
-                        <input type="email" id="loginId" name="loginId" placeholder="ID" >
+                        <input type="text" id="userId" name="userId" placeholder="ID" >
                     </div>
                     <div class="inp_text">
                         <label for="loginPw" class="screen_out">비밀번호</label>
-                        <input type="password" id="loginPw" name="password" placeholder="Password" >
+                        <input type="password" id="userPw" name="userPw" placeholder="Password" >
                     </div>
                 </div>
-                <button type="submit" class="btn_login"  disabled>로그인</button>
+                <button type="submit" class="btn_login" >로그인</button>
                 <div class="login_append">
                 <div class="inp_chk"> <!-- 체크시 checked 추가 -->
                     <input type="checkbox" id="keepLogin" class="inp_radio"  name="keepLogin">
@@ -189,14 +195,14 @@ fieldset, img {
                 </label>
                 </div>
                 <span class="txt_find">
-                    <a href="/member/find/loginId" class="link_find">아이디</a>
+                    <a href="<%=contextPath %>/" class="link_find">아이디</a>
                     / 
-                    <a href="/member/find/password" class="link_find">비밀번호 찾기</a>
+                    <a href="<%=contextPath %>/" class="link_find">비밀번호 찾기</a>
                 </span>
 
                 <br>
                 <div class="join">
-                    <a href="" >회원가입</a>
+                    <a href="<%=contextPath %>/beforeJoin.jsp" >회원가입</a>
                 </div>
 
             </div>
@@ -205,6 +211,14 @@ fieldset, img {
         
     </div>
 </div>
+
+
+
+	<!-- footer.jsp include -->
+	<%@ include file="../common/footer.jsp" %>
+	
+	
+	
 
 
 
