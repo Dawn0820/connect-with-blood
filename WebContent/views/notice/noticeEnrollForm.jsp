@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,23 +33,14 @@
 	 <%@ include file="../common/header.jsp" %>
 	
      
-        <form action="<%=contextPath %>/insert.co" method="post" id="form22" enctype="multipart/form-data" >
+        <form action="<%=contextPath %>/insert.no" method="post" id="form22" enctype="multipart/form-data" >
         
         <div class="outer position-relative" >
         <br>
-        <h2 align="center">게시판 글 작성</h2>
+        <h2 align="center">공지사항 글 작성</h2>
         <br>
 
             <div class="position-absolute top-50 start-50 translate-middle">
-
-                <!--카테고리-->
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <br>
 
                 <!--제목-->
                 <div class="input-group mb-3">

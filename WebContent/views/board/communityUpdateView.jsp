@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,11 +33,11 @@
 	 <%@ include file="../common/header.jsp" %>
 	
      
-        <form action="<%=contextPath %>/insert.co" method="post" id="form22" enctype="multipart/form-data" >
+        <form action="<%=contextPath %>/update.co" method="post" id="form22" enctype="multipart/form-data" >
         
         <div class="outer position-relative" >
         <br>
-        <h2 align="center">게시판 글 작성</h2>
+        <h2 align="center">게시판 글 수정하기</h2>
         <br>
 
             <div class="position-absolute top-50 start-50 translate-middle">
@@ -69,7 +68,7 @@
                 
                 
                 <div align="center">
-                    <button type="submit"  class="btn btn-outline-secondary">등록하기</button>
+                    <button type="submit"  class="btn btn-outline-secondary">수정하기</button>
                     <button type="reset"  class="btn btn-outline-secondary">취소</button>
                 </div> 
             
@@ -78,19 +77,19 @@
         </div>
 </form>
 
-        
+	<br><br>
 	
-	
-   
-   
-   
-   
-   	<!-- footer.jsp include -->
+
+
+
+
+
+	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>
 
 
 	<!-- Bootstrap.bundle.min.js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-   
+
 </body>
 </html>
