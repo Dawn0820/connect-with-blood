@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CommunityEnrollController
+ * Servlet implementation class CommunityEnrollFormController
  */
-@WebServlet("/insert.co")
-public class CommunityEnrollController extends HttpServlet {
+@WebServlet("/enrollForm.co")
+public class CommunityEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityEnrollController() {
+    public CommunityEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,13 +27,10 @@ public class CommunityEnrollController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+		//CommunityEnrollFormController는 주소 / 카테고리 db에서 가져오려고 있음
+		//가져와서 등록페이지(=communityEnrollForm.jsp)로 감
 		
 		request.getRequestDispatcher("views/board/communityEnrollForm.jsp").forward(request, response);
-		
-		
-	
-	
 	
 	}
 
