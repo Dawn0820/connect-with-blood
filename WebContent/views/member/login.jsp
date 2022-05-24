@@ -103,7 +103,9 @@ fieldset, img {
     font-size: 16px;
     color: #fff;
     background-color: brown;
+    border: none;
 }
+.btn_login:hover{background-color: rgb(222, 102, 102);}
 .login_append {
     overflow: hidden;
     padding: 15px 0 0;
@@ -210,12 +212,18 @@ fieldset, img {
         </form>
         
     </div>
+
+
+    <br><br><br><br><br>
+    <!-- footer.jsp include -->
+    <%@ include file="../common/footer.jsp" %>
+
+
+
 </div>
 
 
 
-	<!-- footer.jsp include -->
-	<%@ include file="../common/footer.jsp" %>
 	
 	
 	

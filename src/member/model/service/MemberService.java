@@ -3,6 +3,9 @@ import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 
+import javax.servlet.RequestDispatcher;
+
+import common.JDBCTemplate;
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
 
@@ -17,8 +20,28 @@ public class MemberService {
 		
 		close(conn);
 		
-		
 		return m;
+	
+	}
+		
+		
+		
+
+	
+	//회원가입
+	public int enrollMember(Member m) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().enrollMember(conn,m);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
 	}
 
 }

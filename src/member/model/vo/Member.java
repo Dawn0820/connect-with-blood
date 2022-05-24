@@ -4,47 +4,37 @@ import java.sql.Date;
 
 public class Member {
 
-			private int userNo;					//	USER_NO	NUMBER
-			private String userId;				//	USER_ID	VARCHAR2(20 BYTE)
-			private String userPw;				//USER_PW	VARCHAR2(20 BYTE)
-			private String userName;			//	USER_NAME	VARCHAR2(20 BYTE)
-			private String userBirth;			//	USER_BIRTH	VARCHAR2(20 BYTE)
-			private String userEmail;			//	USER_EMAIL	VARCHAR2(50 BYTE)
-			private String userPhone;			//	USER_PHONE	VARCHAR2(20 BYTE)
-			private String userAdderess;		//	USER_ADDRESS	VARCHAR2(500 BYTE)
-			private Date userEnrollDate;		//	USER_ENROLLDATE	DATE
-			private int userStatus;				//	USER_STATUS	NUMBER
-			private String userBan;				//	USER_BAN	VARCHAR2(1 BYTE)
-			private String userGrade;			//	USER_GRADE	VARCHAR2(20 BYTE)
-			private Date userLogin;				//	USER_LOGIN	DATE
-	
-	
-			
-			
-			public Member() {
+
+				private int userNo;							//	USER_NO	NUMBER
+				private String userId;						//	USER_ID	VARCHAR2(20 BYTE)
+				private String userPw;						//	USER_PW	VARCHAR2(50 BYTE)
+				private String userName;					//	USER_NAME	VARCHAR2(20 BYTE)
+				private String userBirth;					//	USER_BIRTH	VARCHAR2(20 BYTE)
+				private String userEmail;					//	USER_EMAIL	VARCHAR2(50 BYTE)
+				private String userPhone;					//	USER_PHONE	VARCHAR2(20 BYTE)
+				private String userAddress;					//	USER_ADDRESS	VARCHAR2(500 BYTE)
+				private Date userEnrolldate;				//	USER_ENROLLDATE	DATE
+				private String userGrade;					//	USER_GRADE	VARCHAR2(20 BYTE)
+				private String userBloodtype;				//	USER_BLOODTYPE	VARCHAR2(10 BYTE)
+				private Date userLogindate;					//	USER_LOGINDATE	DATE
+				private Date userWithdate;					//	USER_WITHDATE	DATE
+				private Date userSusdate;					//	USER_SUSDATE	DATE
+				private String userStatus;					//	USER_STATUS	VARCHAR2(20 BYTE)
+
+
+
+
+			public Member(String userId2, String userPw2, String userName2, String userBirth2, String userEmail2,
+					String userPhone2, String userAddress, String userEnrollDate2, int userStatus2, String userBan2,
+					String userGrade2, String userLogin2) {
 				// TODO Auto-generated constructor stub
 			}
-
-
-
-
-			public Member(int userNo, String userId, String userPw, String userName, String userBirth, String userEmail,
-					String userPhone, String userAdderess, Date userEnrollDate, int userStatus, String userBan,
-					String userGrade, Date userLogin) {
-				super();
-				this.userNo = userNo;
-				this.userId = userId;
-				this.userPw = userPw;
-				this.userName = userName;
-				this.userBirth = userBirth;
-				this.userEmail = userEmail;
-				this.userPhone = userPhone;
-				this.userAdderess = userAdderess;
-				this.userEnrollDate = userEnrollDate;
-				this.userStatus = userStatus;
-				this.userBan = userBan;
-				this.userGrade = userGrade;
-				this.userLogin = userLogin;
+			
+			
+			
+			
+			public Member(int i, String string, String string2, String string3, String string4, String string5, String string6, String string7, Date date, String string8, String string9, Date date2, Date date3, Date date4, String string10) {
+				// TODO Auto-generated constructor stub
 			}
 
 
@@ -148,57 +138,29 @@ public class Member {
 
 
 
-			public String getUserAdderess() {
-				return userAdderess;
+			public String getUserAddress() {
+				return userAddress;
 			}
 
 
 
 
-			public void setUserAdderess(String userAdderess) {
-				this.userAdderess = userAdderess;
+			public void setUserAddress(String userAddress) {
+				this.userAddress = userAddress;
 			}
 
 
 
 
-			public Date getUserEnrollDate() {
-				return userEnrollDate;
+			public Date getUserEnrolldate() {
+				return userEnrolldate;
 			}
 
 
 
 
-			public void setUserEnrollDate(Date userEnrollDate) {
-				this.userEnrollDate = userEnrollDate;
-			}
-
-
-
-
-			public int getUserStatus() {
-				return userStatus;
-			}
-
-
-
-
-			public void setUserStatus(int userStatus) {
-				this.userStatus = userStatus;
-			}
-
-
-
-
-			public String getUserBan() {
-				return userBan;
-			}
-
-
-
-
-			public void setUserBan(String userBan) {
-				this.userBan = userBan;
+			public void setUserEnrolldate(Date userEnrolldate) {
+				this.userEnrolldate = userEnrolldate;
 			}
 
 
@@ -218,15 +180,71 @@ public class Member {
 
 
 
-			public Date getUserLogin() {
-				return userLogin;
+			public String getUserBloodtype() {
+				return userBloodtype;
 			}
 
 
 
 
-			public void setUserLogin(Date userLogin) {
-				this.userLogin = userLogin;
+			public void setUserBloodtype(String userBloodtype) {
+				this.userBloodtype = userBloodtype;
+			}
+
+
+
+
+			public Date getUserLogindate() {
+				return userLogindate;
+			}
+
+
+
+
+			public void setUserLogindate(Date userLogindate) {
+				this.userLogindate = userLogindate;
+			}
+
+
+
+
+			public Date getUserWithdate() {
+				return userWithdate;
+			}
+
+
+
+
+			public void setUserWithdate(Date userWithdate) {
+				this.userWithdate = userWithdate;
+			}
+
+
+
+
+			public Date getUserSusdate() {
+				return userSusdate;
+			}
+
+
+
+
+			public void setUserSusdate(Date userSusdate) {
+				this.userSusdate = userSusdate;
+			}
+
+
+
+
+			public String getUserStatus() {
+				return userStatus;
+			}
+
+
+
+
+			public void setUserStatus(String userStatus) {
+				this.userStatus = userStatus;
 			}
 
 
@@ -236,10 +254,16 @@ public class Member {
 			public String toString() {
 				return "Member [userNo=" + userNo + ", userId=" + userId + ", userPw=" + userPw + ", userName="
 						+ userName + ", userBirth=" + userBirth + ", userEmail=" + userEmail + ", userPhone="
-						+ userPhone + ", userAdderess=" + userAdderess + ", userEnrollDate=" + userEnrollDate
-						+ ", userStatus=" + userStatus + ", userBan=" + userBan + ", userGrade=" + userGrade
-						+ ", userLogin=" + userLogin + "]";
+						+ userPhone + ", userAddress=" + userAddress + ", userEnrolldate=" + userEnrolldate
+						+ ", userGrade=" + userGrade + ", userBloodtype=" + userBloodtype + ", userLogindate="
+						+ userLogindate + ", userWithdate=" + userWithdate + ", userSusdate=" + userSusdate
+						+ ", userStatus=" + userStatus + "]";
 			}
+			
+			
+
+
+
 
 
 
