@@ -4,6 +4,7 @@ import static common.JDBCTemplate.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,14 +53,14 @@ private Properties prop = new Properties();
 							  ,rset.getString("USER_PHONE")
 							  ,rset.getString("USER_ADDRESS")
 							  ,rset.getDate("USER_ENROLLDATE")
-							  ,rset.getInt("USER_STATUS")
-							  ,rset.getString("USER_BAN")
 							  ,rset.getString("USER_GRADE")
-							  ,rset.getDate("USER_LOGIN")
+							  ,rset.getString("USER_BLOODTYPE")
+							  ,rset.getDate("USER_LOGINDATE")
+							  ,rset.getDate("USER_WITHDATE")
+							  ,rset.getDate("USER_SUSDATE")
+							  ,rset.getString("USER_STATUS")
 							  );
 			}
-			
-	
 			
 			
 		} catch (SQLException e) {
@@ -71,6 +72,39 @@ private Properties prop = new Properties();
 		}
 		return m;
 		
+	}
+
+
+	
+	//회원가입
+	public int enrollMember(Connection conn, Member m) {
+		
+		int result=0;
+		PreparedStatement pstmt=null;
+		String sql = prop.getProperty("enrollMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserPw());
+			pstmt.setString(3, m.getUserName());
+			pstmt.setString(4, m.getUserBirth());
+			pstmt.setString(5, m.getUserEmail());
+			pstmt.setString(6, m.getUserPhone());
+			pstmt.setString(7, m.getUserAddress());
+			pstmt.setString(8, m.getUserBloodtype());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
 	}
 	}
 	

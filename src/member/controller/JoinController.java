@@ -2,12 +2,18 @@ package member.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class Join
@@ -31,6 +37,8 @@ public class JoinController extends HttpServlet {
 	
 	request.setCharacterEncoding("UTF-8");
 	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd"); //String 으로 뺴주려고 전처리
+	
 	String userId = request.getParameter("userId");
 	String userPw = request.getParameter("userPw");
 	String userName = request.getParameter("userName");
@@ -38,28 +46,34 @@ public class JoinController extends HttpServlet {
 	String userEmail = request.getParameter("userEmail");
 	String userPhone = request.getParameter("userPhone");
 	String userAddress = request.getParameter("userAddress");
-	Date userEnrollDate = request.getParameter("userEnrollDate");
+	String userEnrollDate = request.getParameter("userEnrollDate");
+	String userBloodtype = request.getParameter("userBloodtype");
+	Date userLogindate = request.getParameter("userLogindate");
+	Date userWithdate = request.getParameter("userWithdate");
+	Date userSusdate = request.getParameter("userSusdate");
+	String userStatus = request.getParameter("userStatus");
 	
 	
+	Member m = new Member(userId,userPw,userName,userBirth,userEmail,userPhone,userAddress,userEnrollDate,userStatus,userBan,userGrade,userLogin);
+	int result = new MemberService().enrollMember(m);
+	//Date로 변환시 (later)
+//	userEnrollDate = transFormat.parse(userEnrollDate);
+//	userLogin = transFormat.parse(userLogin);
 	
+	if(result>0) {
+		HttpSession session = request.getSession();
+		session.setAttribute("alertMsg", "회원가입에 성공했습니다."); 
+		
+	}else {
+		
+		request.setAttribute("errorMsg", "회원가입에 실패하였습니다.");
+		
+		RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+		view.forward(request,response);
 	
-	
-	
-	
-//	private String userId;				//	USER_ID	VARCHAR2(20 BYTE)
-//	private String userPw;				//USER_PW	VARCHAR2(20 BYTE)
-//	private String userName;			//	USER_NAME	VARCHAR2(20 BYTE)
-//	private String userBirth;			//	USER_BIRTH	VARCHAR2(20 BYTE)
-//	private String userEmail;			//	USER_EMAIL	VARCHAR2(50 BYTE)
-//	private String userPhone;			//	USER_PHONE	VARCHAR2(20 BYTE)
-//	private String userAdderess;		//	USER_ADDRESS	VARCHAR2(500 BYTE)
-//	private Date userEnrollDate;		//	USER_ENROLLDATE	DATE
-//	private int userStatus;				//	USER_STATUS	NUMBER
-//	private String userBan;				//	USER_BAN	VARCHAR2(1 BYTE)
-//	private String userGrade;			//	USER_GRADE	VARCHAR2(20 BYTE)
-//	private Date userLogin;	
 	}
 	
+	}
 	
 
 	/**
