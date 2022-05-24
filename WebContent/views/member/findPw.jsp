@@ -96,10 +96,19 @@ fieldset, img {
     background-color: brown;
     border-radius: 50px;
 }
+.btn_find:hover{background-color: rgb(222, 102, 102);}
 
 
  fieldset{border: 0.5px dashed lightgray; padding: 20px; }
 
+
+ #domains{
+     width: 100%;
+     height: 30px;
+    text-align: center;
+    border-color: lightgray;
+}
+#domains:hover{background-color: rgb(255, 215, 221);}
 
 </style>
 </head>
@@ -135,6 +144,14 @@ fieldset, img {
                     <div class="inp_text">
                         <input type="email" id="findPw_input" name="findPw_input" placeholder="이메일을 입력해주세요" >
                     </div>
+                    <div id="domainsBox" >
+                        <select id="domains" >
+                            <option value="@naver.com">@naver.com
+                            <option value="@daum.net">@daum.net
+                            <option value="@gmail.com">@gmail.com
+                            <option value="@yahoo.co.kr">@yahoo.co.kr
+                        </select>
+                    </div>
                 </div>
                 
                 <button type="submit" class="btn_find"  disabled>비밀번호 찾기</button>
@@ -144,13 +161,18 @@ fieldset, img {
         </fieldset>
         </form>
         
+
+        <br><br><br><br><br>
+        <!-- footer.jsp include -->
+        <%@ include file="../common/footer.jsp" %>
+
+
+
     </div>
 </div>
 
 
 
-	<!-- footer.jsp include -->
-	<%@ include file="../common/footer.jsp" %>
 	
 	
 	

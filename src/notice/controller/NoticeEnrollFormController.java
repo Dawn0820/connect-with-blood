@@ -1,4 +1,4 @@
-package board.controller;
+package notice.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EventDetailViewController
+ * Servlet implementation class NoticeEnrollFormController
  */
-@WebServlet("/detail.ev")
-public class EventDetailViewController extends HttpServlet {
+@WebServlet("/enrollForm.no")
+public class NoticeEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventDetailViewController() {
+    public NoticeEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,11 +27,10 @@ public class EventDetailViewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/board/eventDetailView.jsp").forward(request, response);
-	
-	
-	
-	
+		request.getRequestDispatcher("views/notice/noticeEnrollForm.jsp").forward(request, response);
+		
+		
+		
 	}
 
 	/**

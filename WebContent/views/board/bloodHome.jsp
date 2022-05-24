@@ -8,7 +8,7 @@
     <link href="../../resources/css/bloodHome.css" rel="stylesheet">
 	
     <meta charset="utf-8">
-    <title>키워드로 장소검색하고 목록으로 표출하기</title>
+    <title>헌혈의 집 검색</title>
     <style>
 		body{
 			margin-top: 20px;
@@ -19,14 +19,16 @@
 
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
+    
+    
 <div class="map_wrap">
-    <div id="map" style="width:50%;height:50%;position:relative;overflow:hidden;"></div>
+    <div id="map" style="width:700px;height:500px;position:relative;overflow:hidden;"></div>
 
     <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+                    키워드 : <input type="text" value="헌혈의 집" id="keyword" size="15"> 
                     <button type="submit">검색하기</button> 
                 </form>
             </div>
@@ -128,11 +130,11 @@ function displayPlaces(places) {
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function(marker, title) {
-            kakao.maps.event.addListener(marker, 'mouseover', function() {
+            kakao.maps.event.addListener(marker, 'click', function() {
                 displayInfowindow(marker, title);
             });
 
-            kakao.maps.event.addListener(marker, 'mouseout', function() {
+            kakao.maps.event.addListener(marker, 'click', function() {
                 infowindow.close();
             });
 
@@ -255,6 +257,31 @@ function removeAllChildNods(el) {
         el.removeChild (el.lastChild);
     }
 }
+ 
+//지도 확대 축소를 제어할 수 있는 줌 컨트롤을 생성합니다
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+//지도에 클릭 이벤트를 등록합니다
+//지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+ 
+//  // 클릭한 위도, 경도 정보를 가져옵니다 
+//  var latlng = mouseEvent.latLng;
+ 
+//  var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+//  message += '경도는 ' + latlng.getLng() + ' 입니다';
+// 	console.log(message);
+ 
+//  var resultDiv = document.getElementById('result'); 
+//  resultDiv.innerHTML = message;
+ 
+ 
+ 
+ 
+ 
+});
+
 </script>
 <!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>

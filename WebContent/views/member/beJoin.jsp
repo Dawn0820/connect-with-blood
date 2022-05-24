@@ -48,13 +48,25 @@
             margin: auto; 
             float: left;
         }
-        fieldset{border: dashed gray; padding: 20px; }
+        #outform{
+            margin-left: 35%
+        }
+        #agreeBox{
+            border: dashed gray; padding: 20px;
+            text-align: center;
+        }
+        #innerBox{
+            border: dashed gray; padding: 20px;
+            text-align: left; 
+        }
         #bTop{
             text-align: left;
             float: left;
             border: none;
         }
-        #content{clear: both;}
+        #content{
+            clear: both;
+        }
         #box{
             width: auto;
             display: inline-block;
@@ -67,22 +79,41 @@
             float: left;
             
         }
+        
 
 
         
     </style>
+    <script>
+        function idCheck(){
+            var $userId=$("#inputFrom input[name=userId]");
+            $.ajax({
+                url:"idCheck.mem",
+                data : {checkId:$userId.val()},
+                success:function(result){
+                    if(result=="NNNNN"){
+                        alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.")
+                        $userId.focus();
+                    }else{
+                        if(contirm("사용가능한 아이디입니다. 사용하시겠습니까?")){
+                            $("inputFrom:submit").removeAttr("disabled");
+                            $userId.attr("readonly",true);
+                        }else{
+                            $userId.focus();
+                        }
+                    }
+                }
+            })
+        }
+    </script>
 </head>
 
-
 <body>
-
-
-	<h1>testtsettesttesttest</h1>
 
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
 
-
+<br><br><br><br>
     <div class="position-relative ">
     <h1 class="h">Connect-with-blood 회원가입을 환영합니다!</h1>
     <h3 class="h" id="smallH">"Connect with LIFE, Connect with LOVE"</h3>
@@ -93,8 +124,8 @@
 
     <br><br>
 
-    <form action="test.do" class="position-absolute top-50 start-50 translate-middle">
-        <fieldset>
+    <form class="position-absolute top-50 start-50 translate-middle" action="test.do" id="outform">
+        <fieldset id="agreeBox">
             <legend align="center"><b>회원가입을 위한 개인정보 수집 및 이용 안내(필수)</b></legend>
             <div id="box" >
             <input type="text" value="이용약관 동의(필수)" id="bTop"> <br>
@@ -158,20 +189,30 @@
 
             <br><br>
             
-            <!--모달창 bootstrap-->
+           
             <div class="container">
                 <!-- Button to Open the Modal -->
                 <button type="button" class="btn btn-outline-danger" id="b" data-toggle="modal" data-target="#myModal" style="width: 60%;">
                   동의합니다
                 </button>
               
-            <button type="reset" class="btn btn-outline-secondary" id="b" style="width: 40%;">취소</button>
+            <a type="button" class="btn btn-outline-secondary" id="b" style="width: 40%;" href="<%=contextPath%>">메인으로 돌아가기</a>
 
         </fieldset>
+
+
+        
+        <br><br><br><br><br>
+        <!-- footer.jsp include -->
+        <%@ include file="../common/footer.jsp" %>
+
+
+        
     </form>
-</div>
+</div> <!--.position-relative-->
 
 
+	
 
 
 
@@ -192,13 +233,13 @@
           
           <!-- Modal body -->
           <div class="modal-body">
-            <form action="<%=contextPath%>/join.mem">
-                <fieldset>
+            <form action="<%=contextPath%>/join.mem" id="inputFrom">
+                <fieldset id="innerBox">
             <form name="registerform" method="post" enctype="multipart/form-data" action="./register">
                 <div class="fieldlabel"><label for="userId">* 아이디</label></div>
                 <div class="formfield"><input type="text" id="userId" name="userId" maxlength="20" value=""></div>
                 &nbsp; &nbsp;
-                <button type="button" class="btn btn-outline-danger" id="idCheck">아이디 중복 체크</button>
+                <button type="button" class="btn btn-outline-danger" id="idCheck" onclick="idCheck();">아이디 중복 체크</button>
         
                 <br><br>
                 <div class="fieldlabel"><label for="userPw" id="userPw">* 패스워드</label></div>
@@ -212,41 +253,17 @@
                 <div class="fieldlabel"><label for="userName">* 이름</label></div>
                 <div class="formfield"><input type="text" id="userName" name="userName" maxlength="20" value=""></div>
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
                 <br>
                 <div class="fieldlabel"><label for="address">* 주소</label></div>
-                <div class="formfield"><input type="text" id="address" name="address" maxlength="40" value=""></div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+                <div class="formfield"><input type="text" id="address" name="userAddress" maxlength="40" value=""></div>
         
                 <br>
                 <div class="fieldlabel"><label for="email01">- 이메일</label></div>
-                <div class="formfield"><input type="text" id="email01" name="email01" size="20" maxlength="20" 
+                <div class="formfield"><input type="text" id="email01" name="userEmail1" size="20" maxlength="20" 
                      value="" autocomplete="off"><span>@</span>
-                    <input id="email02" name="email02" list="domains" placeholder="도메인 입력/선택">
+                    <input id="email02" name="userEmail2" list="domains" placeholder="도메인 입력/선택">
+                    <!-- userEmail1+2 = userEmail -->
+                    
                     <datalist id="domains">
                         <option value="naver.com">
                         <option value="daum.net">
@@ -289,11 +306,6 @@
                     <input type="radio" name="rh" value="RH-" alt="blood">RH-
                 </div>
         
-                <br>
-                <div class="blood_special"> <label>* 특수 혈액형 유무</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="spc" value="spc" alt="blood" >해당 &nbsp;
-                    <input type="radio" name="spc" value="spc" alt="blood" checked>해당사항 없음
-                </div>
         
                 <br>
                 <div class="fieldlabel"><label>- 성별</label></div>
@@ -337,7 +349,7 @@
       </div>
     </div>
     
-  </div>
+ 
 
 
 
@@ -345,10 +357,7 @@
 
 
 
-	<!-- footer.jsp include -->
-	<%@ include file="../common/footer.jsp" %>
-	
-	
+
 
 
 </body>

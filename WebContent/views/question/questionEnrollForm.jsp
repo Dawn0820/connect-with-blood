@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,11 +33,11 @@
 	 <%@ include file="../common/header.jsp" %>
 	
      
-        <form action="<%=contextPath %>/insert.co" method="post" id="form22" enctype="multipart/form-data" >
+        <form action="<%=contextPath %>/insert.qu" method="post" id="form22" enctype="multipart/form-data" >
         
         <div class="outer position-relative" >
         <br>
-        <h2 align="center">게시판 글 작성</h2>
+        <h2 align="center">QnA 작성</h2>
         <br>
 
             <div class="position-absolute top-50 start-50 translate-middle">

@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "board.model.vo.Community"%>
+
+<%
+	Community comm = (Community)request.getAttribute("comm");
+	
+// 	int commNo = comm.getCommNo();
+// 	String commTitle = comm.getCommTitle();
+	
+	
+	
+	
+ %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,17 +25,38 @@
 	body{
 		margin-top: 20px;
 	}
+  .outer{
+  	
+    border: 1px solid red;
+
+  }
+  .inner{
+    border: 1px solid blue;
+  }
+  .table{
+    width: 1000px;
+
+  }
 </style>
 </head>
 <body>
 
+	<h1><%=comm.getCommNo() %></h1>
+	<h1><%=comm.getCommTitle() %></h1>
+
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
     
-    <h2>커뮤니티 목록</h2>
+    <div class="outer">
+    <h2>게시판 목록</h2>
     
-    <div>
-      <table class="table table-hover">
+    <br><br>
+	<a href="<%=contextPath %>/views/notice/noticeListView.jsp">공지사항 테스트</a>
+	<a href="<%=contextPath %>/views/event/eventListView.jsp">이벤트 테스트</a>
+	<a href="<%=contextPath %>/views/question/questionListView.jsp">QnA 테스트</a>
+    
+    <div class="inner">
+      <table align="center" class="table table-hover">
         <thead>
             <tr>
               <th>No</th>
@@ -36,16 +69,17 @@
         </thead>
         <tbody>
             <tr>
-              <td>1</td>
+              <td><%=comm.getCommNo()%></td>
               <td>헌혈증</td>
-              <td>게시판 작성</td>
+              <td><%=comm.getCommTitle() %></td>
               <td>user1</td>
-              <td>2022-05-12</td>
-              <td>23</td>
+              <td>2022-05-30</td>
+              <td>31</td>
             </tr>
         </tbody>
       </table>
-    </div>  
+    </div>
+
 
       <script>
         $(function(){
@@ -59,8 +93,10 @@
 
       <br><br>
 
-      <a href="<%=contextPath%>/insert.co" class="btn btn-info">글작성</a>
-	
+      <div align="center"> 
+        <a href="<%=contextPath%>/enrollForm.co" class="btn btn-info">글작성</a>
+      </div>  
+      </div>
 
       <!--페이징-->
 	
