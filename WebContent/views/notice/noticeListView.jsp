@@ -26,7 +26,7 @@
     <%@ include file="../common/header.jsp" %>
 
 	<!-- 현재 공지사항 목록 출력 -->
-	<table class="table table-hover">
+	<table class="table table-hover" style="width:1200px ; "align="center">
 	  <thead>
 	    <tr>
 	      <th scope="col">글번호</th>

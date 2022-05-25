@@ -22,9 +22,9 @@
     
     
 <div class="map_wrap">
-    <div id="map" style="width:700px;height:500px;position:relative;overflow:hidden;"></div>
+    <div id="map" style="width:700px;height:500px;position:relative;overflow:hidden;" ></div>
 
-    <div id="menu_wrap" class="bg_white">
+    <div id="menu_wrap" class="bg_white" >
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
@@ -130,11 +130,11 @@ function displayPlaces(places) {
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function(marker, title) {
-            kakao.maps.event.addListener(marker, 'click', function() {
+            kakao.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
 
-            kakao.maps.event.addListener(marker, 'click', function() {
+            kakao.maps.event.addListener(marker, 'mouseover', function() {
                 infowindow.close();
             });
 

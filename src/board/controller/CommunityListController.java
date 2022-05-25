@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.CommunityService;
 import board.model.vo.Community;
+import common.PageInfo;
+
 
 /**
  * Servlet implementation class CommunityListController
@@ -33,19 +35,44 @@ public class CommunityListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
+		int listCount; 
+		int currentPage; 
+		int pageLimit;
+		int boardLimit;
 		
-		Community comm = new CommunityService().selectCommunityList();
+		int maxPage;
+		int startPage; 
+		int endPage; 
 		
-		request.setAttribute("comm", comm);
+		listCount = new CommunityService().selectListCount();
+	
+		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		
+		pageLimit = 10;
+		boardLimit = 10;
 		
+		maxPage = (int)(Math.ceil((double)listCount/boardLimit));
 		
-		if(comm==null) {
-			System.out.println("안됨");
-		}else {
-			request.getRequestDispatcher("views/board/communityListView.jsp").forward(request, response);
-			
+		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
+		
+		endPage = startPage+pageLimit -1;
+		
+		if(endPage>maxPage) {
+			endPage = maxPage;
 		}
+		
+		PageInfo pi = new PageInfo(listCount,currentPage,pageLimit,boardLimit
+				,maxPage,startPage,endPage);
+		
+		ArrayList<Community> list = new CommunityService().selectList(pi);
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("views/board/communityListView.jsp").forward(request, response);
+		
+		
+		
 		
 	
 	}

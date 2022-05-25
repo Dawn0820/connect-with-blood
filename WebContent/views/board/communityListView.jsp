@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import = "board.model.vo.Community"%>
+    pageEncoding="UTF-8" import = "board.model.vo.Community, java.util.ArrayList, common.PageInfo"%>
 
 <%
-	Community comm = (Community)request.getAttribute("comm");
-	
-// 	int commNo = comm.getCommNo();
-// 	String commTitle = comm.getCommTitle();
-	
-	
-	
+
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Community> list = (ArrayList<Community>)request.getAttribute("list");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 	
  %>
 
@@ -25,14 +26,7 @@
 	body{
 		margin-top: 20px;
 	}
-  .outer{
-  	
-    border: 1px solid red;
 
-  }
-  .inner{
-    border: 1px solid blue;
-  }
   .table{
     width: 1000px;
 
@@ -41,20 +35,13 @@
 </head>
 <body>
 
-	<h1><%=comm.getCommNo() %></h1>
-	<h1><%=comm.getCommTitle() %></h1>
-
+	
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
     
     <div class="outer">
-    <h2>게시판 목록</h2>
     
-    <br><br>
-	<a href="<%=contextPath %>/views/notice/noticeListView.jsp">공지사항 테스트</a>
-	<a href="<%=contextPath %>/views/event/eventListView.jsp">이벤트 테스트</a>
-	<a href="<%=contextPath %>/views/question/questionListView.jsp">QnA 테스트</a>
-    
+   
     <div class="inner">
       <table align="center" class="table table-hover">
         <thead>
@@ -68,14 +55,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-              <td><%=comm.getCommNo()%></td>
-              <td>헌혈증</td>
-              <td><%=comm.getCommTitle() %></td>
-              <td>user1</td>
-              <td>2022-05-30</td>
-              <td>31</td>
-            </tr>
+        
+        	<%if(list.isEmpty()){ %>
+        	<tr>
+        		<td colspan="6">작성된 게시글이 없습니다</td>
+        	</tr>
+        
+       		<%}else{ %>
+            		<%for(Community c : list) {%>
+		            <tr>
+		              <td><%=c.getCommNo() %></td>
+		              <td><%=c.getCategoryNo() %></td>
+		              <td><%=c.getCommTitle() %></td>
+		              <td><%=c.getCommWriter() %></td>
+		              <td><%=c.getCommDate() %></td>
+		              <td><%=c.getCommCount() %></td>
+		            </tr>
+		            <%} %>
+            	<%} %>
         </tbody>
       </table>
     </div>
@@ -84,7 +81,7 @@
       <script>
         $(function(){
           $(".table>tbody>tr").click(function(){
-            location.href = "<%=contextPath%>/detail.co"
+            location.href = "<%=contextPath%>/detail.co?cno="+$(this).children().eq(0).text();
           })
         })
 
@@ -97,8 +94,28 @@
         <a href="<%=contextPath%>/enrollForm.co" class="btn btn-info">글작성</a>
       </div>  
       </div>
-
+		
+		<br><br>
       <!--페이징-->
+       <div class="paging-area" align="center">
+        	<%if(currentPage!=1) {%>
+            <button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=currentPage-1 %>'">&lt;</button>
+			<%} %>
+			
+			<%for(int i=startPage;i<endPage+1;i++) {%>
+			<%if(i!=currentPage){ %>
+			<button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=i %>'"><%=i %></button>
+			<%}else{ %> <!-- 현재 내가 있는 페이지는 클릭이 안되도록 -->
+			<button disabled><%=i %></button> 
+			<%} %>
+			<%} %>
+			
+			<%if(currentPage!=maxPage){ %>          
+        	<button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=currentPage+1 %>'">&gt;</button>
+        	<%} %>
+        
+        
+        </div>
 	
 	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>
