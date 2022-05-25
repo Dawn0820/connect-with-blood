@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8" import="board.model.vo.*,java.util.ArrayList"%>
+<%
+	ArrayList<Category> list = (ArrayList<Category>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,26 +43,28 @@
         <h2 align="center">게시판 글 작성</h2>
         <br>
 
+<%-- 			<input type="hidden" name="userNo" value="<%=//로그인한 회원번호 세션에서 가져온다%>"> --%>
+			
+
             <div class="position-absolute top-50 start-50 translate-middle">
 
                 <!--카테고리-->
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+ 					 <%for(Category c : list){ %>
+                            	<option value="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></option>
+                        <%} %>
                 </select>
                 <br>
 
                 <!--제목-->
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="title" aria-label="Text input with dropdown button" placeholder="제목">
+                    <input type="text"  name="title" class="form-control" id="title" aria-label="Text input with dropdown button" placeholder="제목">
                 </div>
 
                 <!--내용-->
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label" id="content" >내용</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" style="resize:none" placeholder="내용"></textarea>
+                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="10" style="resize:none" placeholder="내용"></textarea>
                 </div>
 
                 <!--첨부파일-->
