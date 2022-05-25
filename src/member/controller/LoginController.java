@@ -41,7 +41,7 @@ public class LoginController extends HttpServlet {
 		
 		
 		if(loginUser==null) {
-			request.setAttribute("errorMsg", "·Î±×ÀÎ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+			request.setAttribute("errorMsg", "ë¡œê·¸ì¸ ì‹¤íŒ¨.");
 		}else {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
