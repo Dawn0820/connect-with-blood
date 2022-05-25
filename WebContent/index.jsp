@@ -18,7 +18,7 @@
 	<br><br>
 	<a href="views/admin/dashboard.jsp">관리자페이지 테스트</a>
 	<br><br>
-
+	<a href="views/board/bloodHome.jsp">헌혈의 집 테스트</a>
   
   
 

@@ -2,7 +2,8 @@
     pageEncoding="UTF-8" import="jsoup.JsoupTest"%>
     
 <%
-	
+	JsoupTest j = new JsoupTest(); 
+	String[] c = j.a();
 %>    
     
 <!DOCTYPE html>
@@ -12,6 +13,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%=JsoupTest.main(args) %>
+
+<%-- <%@import file="" %> --%>
+
+<%-- 	<%=JsoupTest.main(args) %> --%>
+
+	<%=c[2] %>
+
 </body>
 </html>

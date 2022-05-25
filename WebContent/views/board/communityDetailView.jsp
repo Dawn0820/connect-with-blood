@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, board.model.vo.*"%>
+
+<%
+	Community comm =  (Community)request.getAttribute("comm");
+	Attachment at = (Attachment)request.getAttribute("at");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,30 +40,32 @@
 
 	<table class="table table-bordered" style="width:700px;" align="center">
 		<tr>
-			<th colspan="4">제목삽입</th>
+			<th colspan="4"><%=comm.getCommTitle() %></th>
 		</tr>
 		<tr>
 			<td width="15%">작성자</td>
-			<td width="35%">ㄱㄱ</td>
+			<td width="35%"><%=comm.getCommWriter() %></td>
 			<td width="15%">조회수</td>
-			<td width="35%">23</td>
+			<td width="35%">???</td>
 		</tr>
 		<tr>
-			<td colspan="2">카테고리</td>
-			<th colspan="2">날짜삽입</th>
+			<td colspan="2"><%=comm.getCategoryNo() %></td>
+			<th colspan="2"><%=comm.getCommDate() %></th>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<p style="height:200px;">내용</p>
+				<p style="height:200px;"><%=comm.getCommContent() %></p>
 			</td>
 		</tr>
 		<tr>
 			<td>첨부파일</td>
-			<td>
-				<div>
-					<img src="" width="300px" height="200px">
-				</div>
-			</td>
+			<td colspan="3">
+                	<%if(at==null) {%>
+                		첨부파일이 없습니다.
+                	<%}else{ %>
+                		<a download="<%=at.getOriginName() %>" href="<%=contextPath%>/<%=at.getFilePath()+at.getChangeName()%>"><%=at.getOriginName() %></a>
+                	<%} %>
+            	</td>
 		</tr>
 	
 
@@ -72,8 +80,8 @@
 		<br>
 
 		<!--수정/삭제 : 로그인&작성자만 가능-->
-		<a href="<%=contextPath%>/delete.co">삭제하기</a>
-		<a href="<%=contextPath%>/updateForm.co">수정하기</a>
+		<a href="<%=contextPath%>/delete.co?cno=<%=comm.getCommNo()%>">삭제하기</a>
+		<a href="<%=contextPath%>/updateForm.co?cno=<%=comm.getCommNo()%>">수정하기</a>
 		<br>
 		
 	</div>
