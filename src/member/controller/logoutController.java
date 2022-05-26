@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class findId
+ * Servlet implementation class logoutController
  */
-@WebServlet("/findId.mem")
-public class findId extends HttpServlet {
+@WebServlet("/logout.mem")
+public class logoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public findId() {
+    public logoutController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,9 @@ public class findId extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
+		request.getSession().invalidate();
+		
+		response.sendRedirect(request.getContextPath());
 	}
 
 	/**
