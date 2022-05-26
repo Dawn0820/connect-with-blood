@@ -16,6 +16,12 @@
  String userEmail = request.getParameter("userEmail");
  String userPhone = request.getParameter("userPhone");
  String userBloodtype = request.getParameter("userBloodtype");
+ 
+ int bloodCount = Integer.parseInt(request.getParameter("bloodCount"));
+ int bloodWh = Integer.parseInt(request.getParameter("bloodWh"));
+ int bloodIn = Integer.parseInt(request.getParameter("bloodIn"));
+ 
+ String bloodCount = loginMember.getUserBloodtype(); userBloodtype = loginMember.getUserBloodtype();
  %>
  
  
@@ -185,6 +191,36 @@
 </div>
 
 
+<br><br>
+
+
+
+ <div >
+		<form method="post" action="<%=contextPath%>/mody.mem">
+		<fieldset class="inner">
+
+
+				<h4>헌혈증 관리</h4>
+				<p>홈페이지에서 등록한 헌혈증 조회</p>
+				<br>
+				<div class="table-responsive">
+				<table class="table table-bordered">
+			<tr>
+				<td>헌혈증 개수</td>
+				<td><input type="text" value="<%=bloodCount%>"></td>
+			</tr>
+			<tr>
+				<td>전혈헌혈증 개수</td>
+				<td><input type="text" value="<%=bloodWh%>"></td>
+			</tr>
+			<tr>
+				<td>성분헌혈증 개수</td>
+				<td><input type="text" value="<%=bloodIn%>"></td>
+			</tr>
+		</table>
+
+
+	</div>
 
 
 
@@ -192,14 +228,6 @@
 
 
 
-
-	<br><br>
-
-
-
-
-
- 
 
 
 
@@ -211,23 +239,20 @@
 
 		<a href="<%=contextPath%>/logout.mem" type="button" class="btn btn-light" id="outBtn">로그아웃</a>
 	
-	<!-- </fieldset> -->
+	</fieldset>
 
 
 	<br><br>
 	<a type="button" id="delMemBtn" class="btn btn-dark" href="<%=contextPath%>/delete.mem">회원탈퇴</a>
 
 
-<!-- </form>
-	</div> -->
+</form>
+	</div>
 
 
 	
    
-
-<!-- </fieldset> -->
-
-    
+ 
     
     
     

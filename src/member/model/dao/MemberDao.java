@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import org.apache.jasper.compiler.Node.GetProperty;
 
 import member.model.vo.Member;
 
@@ -81,7 +80,6 @@ private Properties prop = new Properties();
     
 	}	
 	
-	//회원정보
 	public ArrayList<Member> selectList(Connection conn) {
 		
 		ArrayList<Member> list = new ArrayList<>();
@@ -323,24 +321,24 @@ private Properties prop = new Properties();
 	
 
 	
-	//금일 신규회원 COUNT
+	//湲덉씪 �떊洹쒗쉶�썝 COUNT
 	public int selectTodayNewMemberCnt(Connection conn) {
 		
 		int Count = 0; // 
 		
-		PreparedStatement pstmt = null; // SQL구문을 실행시키는 기능을 갖는 객체
+		PreparedStatement pstmt = null; // SQL援щЦ�쓣 �떎�뻾�떆�궎�뒗 湲곕뒫�쓣 媛뽯뒗 媛앹껜
 		
-		ResultSet rset = null; // query 실행 후 그 값을 rset에 저장
+		ResultSet rset = null; // query �떎�뻾 �썑 洹� 媛믪쓣 rset�뿉 ���옣
 		
 		String sql = prop.getProperty("selectTodayNewMemberCnt"); 
 		
 		try {
 			pstmt = conn.prepareStatement(sql); 
-			rset = pstmt.executeQuery();		// executeQuery select DB 동작 바뀌지 않고 보여주는 용도
+			rset = pstmt.executeQuery();		// executeQuery select DB �룞�옉 諛붾�뚯� �븡怨� 蹂댁뿬二쇰뒗 �슜�룄
 			
-			//쿼리에서 AS로 이름변경해서 밑에도 동일하게 변경해준거에용
-			if(rset.next()) { // 결과값의 다음 행의 정보가있으면?
-				//이건 int로 잘받아왔군 잘해쏘
+			//荑쇰━�뿉�꽌 AS濡� �씠由꾨�寃쏀빐�꽌 諛묒뿉�룄 �룞�씪�븯寃� 蹂�寃쏀빐以�嫄곗뿉�슜
+			if(rset.next()) { // 寃곌낵媛믪쓽 �떎�쓬 �뻾�쓽 �젙蹂닿��엳�쑝硫�?
+				//�씠嫄� int濡� �옒諛쏆븘�솕援� �옒�빐�룜
 				Count = rset.getInt("TODAY_MEMBER_COUNT");
 			}
 		
@@ -349,11 +347,11 @@ private Properties prop = new Properties();
 			e.printStackTrace();
 		}
 		
-		//db에서 검색된 count를 리턴해준다!
+		//db�뿉�꽌 寃��깋�맂 count瑜� 由ы꽩�빐以��떎!
 		return Count;
 	}
 
-	//이번달 신규회원현황 COUNT
+	//�씠踰덈떖 �떊洹쒗쉶�썝�쁽�솴 COUNT
 	public int selectMonthNewMemberCnt(Connection conn) {
 			
 			int Count = 0;
@@ -368,9 +366,9 @@ private Properties prop = new Properties();
 				pstmt = conn.prepareStatement(sql);
 				rset = pstmt.executeQuery();
 				
-				//쿼리에서 AS로 이름변경해서 밑에도 동일하게 변경해준거에용
+				//荑쇰━�뿉�꽌 AS濡� �씠由꾨�寃쏀빐�꽌 諛묒뿉�룄 �룞�씪�븯寃� 蹂�寃쏀빐以�嫄곗뿉�슜
 				if(rset.next()) {
-					//이건 int로 잘받아왔군 잘해쏘
+					//�씠嫄� int濡� �옒諛쏆븘�솕援� �옒�빐�룜
 					Count = rset.getInt("MONTH_NEWMEMBER_COUNT");
 				}
 			
@@ -379,12 +377,12 @@ private Properties prop = new Properties();
 				e.printStackTrace();
 			}
 			
-			//db에서 검색된 count를 리턴해준다!
+			//db�뿉�꽌 寃��깋�맂 count瑜� 由ы꽩�빐以��떎!
 			return Count;
 		}
 
 	
-	//금일 회원탈퇴현황 COUNT
+	//湲덉씪 �쉶�썝�깉�눜�쁽�솴 COUNT
 	public int selectTodayDelMemberCnt(Connection conn) {
 		
 		int Count = 0;
@@ -399,9 +397,9 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			
-			//쿼리에서 AS로 이름변경해서 밑에도 동일하게 변경해준거에용
+			//荑쇰━�뿉�꽌 AS濡� �씠由꾨�寃쏀빐�꽌 諛묒뿉�룄 �룞�씪�븯寃� 蹂�寃쏀빐以�嫄곗뿉�슜
 			if(rset.next()) {
-				//이건 int로 잘받아왔군 잘해쏘
+				//�씠嫄� int濡� �옒諛쏆븘�솕援� �옒�빐�룜
 				Count = rset.getInt("TODAY_DELMEMBER_COUNT");
 			}
 		
@@ -410,11 +408,11 @@ private Properties prop = new Properties();
 			e.printStackTrace();
 		}
 		
-		//db에서 검색된 count를 리턴해준다!
+		//db�뿉�꽌 寃��깋�맂 count瑜� 由ы꽩�빐以��떎!
 		return Count;
 	}
 	
-	//이번달 회원탈퇴현황 COUNT
+	//�씠踰덈떖 �쉶�썝�깉�눜�쁽�솴 COUNT
 	public int selectMonthDelMemberCnt(Connection conn) {
 		int Count = 0;
 		
@@ -428,9 +426,9 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			
-			//쿼리에서 AS로 이름변경해서 밑에도 동일하게 변경해준거에용
+			//荑쇰━�뿉�꽌 AS濡� �씠由꾨�寃쏀빐�꽌 諛묒뿉�룄 �룞�씪�븯寃� 蹂�寃쏀빐以�嫄곗뿉�슜
 			if(rset.next()) {
-				//이건 int로 잘받아왔군 잘해쏘
+				//�씠嫄� int濡� �옒諛쏆븘�솕援� �옒�빐�룜
 				Count = rset.getInt("MONTH_DELMEMBER_COUNT");
 			}
 		
@@ -439,11 +437,11 @@ private Properties prop = new Properties();
 			e.printStackTrace();
 		}
 		
-		//db에서 검색된 count를 리턴해준다!
+		//db�뿉�꽌 寃��깋�맂 count瑜� 由ы꽩�빐以��떎!
 		return Count;
 	}
 
-	//금일 정지회원현황 COUNT
+	//湲덉씪 �젙吏��쉶�썝�쁽�솴 COUNT
 	public int selectTodayStopMemberCnt(Connection conn) {
 
 		int Count = 0;
@@ -458,9 +456,9 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			
-			//쿼리에서 AS로 이름변경해서 밑에도 동일하게 변경해준거에용
+			//荑쇰━�뿉�꽌 AS濡� �씠由꾨�寃쏀빐�꽌 諛묒뿉�룄 �룞�씪�븯寃� 蹂�寃쏀빐以�嫄곗뿉�슜
 			if(rset.next()) {
-				//이건 int로 잘받아왔군 잘해쏘
+				//�씠嫄� int濡� �옒諛쏆븘�솕援� �옒�빐�룜
 				Count = rset.getInt("TODAY_STOPMEMBER_COUNT");
 			}
 		
@@ -469,12 +467,12 @@ private Properties prop = new Properties();
 			e.printStackTrace();
 		}
 		
-		//db에서 검색된 count를 리턴해준다!
+		//db�뿉�꽌 寃��깋�맂 count瑜� 由ы꽩�빐以��떎!
 		return Count;
 	}
 	
 	
-	//이번달 정지현황 
+	//�씠踰덈떖 �젙吏��쁽�솴 
 	public int selectMonthStopMemberCnt(Connection conn) {
 		int Count = 0;
 		
@@ -488,9 +486,9 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			
-			//쿼리에서 AS로 이름변경해서 밑에도 동일하게 변경해준거에용
+			//荑쇰━�뿉�꽌 AS濡� �씠由꾨�寃쏀빐�꽌 諛묒뿉�룄 �룞�씪�븯寃� 蹂�寃쏀빐以�嫄곗뿉�슜
 			if(rset.next()) {
-				//이건 int로 잘받아왔군 잘해쏘
+				//�씠嫄� int濡� �옒諛쏆븘�솕援� �옒�빐�룜
 				Count = rset.getInt("MONTH_STOPMEMBER_COUNT");
 			}
 		
@@ -499,7 +497,7 @@ private Properties prop = new Properties();
 			e.printStackTrace();
 		}
 		
-		//db에서 검색된 count를 리턴해준다!
+		//db�뿉�꽌 寃��깋�맂 count瑜� 由ы꽩�빐以��떎!
 		return Count;
 	}
 

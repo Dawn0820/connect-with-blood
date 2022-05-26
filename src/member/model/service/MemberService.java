@@ -1,6 +1,5 @@
 package member.model.service;
-import static common.JDBCTemplate.close;
-import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -10,11 +9,11 @@ import javax.servlet.RequestDispatcher;
 import common.JDBCTemplate;
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
-//규민파트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-
-
-	public Member loginMember(String userId, String userPw) {
+	public class MemberService { 
+	
+		
+		public Member loginMember(String userId, String userPw) {
 
     		Connection conn =  getConnection();
 		
@@ -25,9 +24,6 @@ import member.model.vo.Member;
 		return m;
 	
 	}
-
-//회원정보
-	public class MemberService { 
 
 	public ArrayList<Member> selectMemberList() {
 		Connection conn = getConnection();
@@ -40,11 +36,9 @@ import member.model.vo.Member;
 		return list;
 	}
 	
-	// 금일 신규 현황
 	public int selectTodayNewMemberCnt() {
 		Connection conn = getConnection();
 		
-		//db에 접근하기 위한 dao 호출(쿼리가 작성되어있는 xml 로 접근하는 소스가 있기때문에)
 		int todayNewMemberCnt = new MemberDao().selectTodayNewMemberCnt(conn); 
 		
 		close(conn);
@@ -52,11 +46,9 @@ import member.model.vo.Member;
 		return todayNewMemberCnt;
 	}
 	
-	// 이번달 신규 현황
 	public int selectMonthNewMemberCnt() {
 		Connection conn = getConnection();
 		
-		//db에 접근하기 위한 dao 호출(쿼리가 작성되어있는 xml 로 접근하는 소스가 있기때문에)
 		int monthNewMemberCnt = new MemberDao().selectMonthNewMemberCnt(conn); 
 		
 		close(conn);
@@ -64,7 +56,6 @@ import member.model.vo.Member;
 		return monthNewMemberCnt;
 	}
 	
-	//금일 탈퇴현황
 	public int selectTodayDelMemberCnt() {
 		Connection conn = getConnection();
 		
@@ -74,11 +65,10 @@ import member.model.vo.Member;
 		
 		return todayDelMemberCnt;
 	}
-	//이번달 탈퇴현황
+	
 	public int selectMonthDelMemberCnt() {
 		Connection conn = getConnection();
 		
-		//db에 접근하기 위한 dao 호출(쿼리가 작성되어있는 xml 로 접근하는 소스가 있기때문에)
 		int monthDelMemberCnt = new MemberDao().selectMonthDelMemberCnt(conn); 
 		
 		close(conn);
@@ -86,7 +76,7 @@ import member.model.vo.Member;
 		return monthDelMemberCnt;
 	}
 	
-	//금일 회원 정지현황
+	
 	public int selectTodayStopMemberCnt() {
 		Connection conn = getConnection();
 		
@@ -98,7 +88,8 @@ import member.model.vo.Member;
 
 	
 	}
-	//이번달 회원 정지현황
+	
+	
 	public int selectMonthStopMemberCnt() {
 		Connection conn = getConnection();
 		
