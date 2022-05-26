@@ -1,16 +1,20 @@
 package question.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import question.model.service.QuestionService;
+import question.model.vo.Question;
+
 /**
  * Servlet implementation class QuestionDetailViewController
  */
-@WebServlet("/detail.qu")
+@WebServlet("/detail.que")
 public class QuestionDetailViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,12 +31,33 @@ public class QuestionDetailViewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/question/questionDetailView.jsp").forward(request, response);
-	
-	
-	
-	}
 
+		int queNo = Integer.parseInt(request.getParameter("qno"));
+		
+		
+		//조회수 증가
+//		int result = new QuestionService().increaseCount(queNo);
+	
+			//상세보기
+			//사진없는 QnA
+			
+			Question que = new QuestionService().selectQue(queNo);
+			
+			
+			//사진있는 QnA
+			
+			
+			
+			request.setAttribute("que", que);
+			if(que!=null) {
+				request.getRequestDispatcher("views/question/questionDetailView.jsp").forward(request, response);
+			}else {
+			
+				request.setAttribute("errorMsg", "질문 상세조회 실패");
+				request.getRequestDispatcher("views/common/errorPage.jsp");
+
+			}
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

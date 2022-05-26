@@ -60,7 +60,7 @@
 						,?
 						,?
 						,?
-						,?)
+						,1)
 	</entry>
 	
 	<entry key="insertAttachment">
@@ -112,6 +112,12 @@
 							,FILE_PATH)
 	VALUES (SEQ_FILENO.NEXTVAL,?,?,?,?)
 	
+	</entry>
+
+	<entry key="deleteCommunity">
+	UPDATE COMMUNITY
+	SET COMM_STATUS = 'N'
+	WHERE COMM_NO = ?
 	</entry>
 
 </properties>

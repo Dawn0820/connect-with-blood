@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, board.model.vo.*"%>
 <%
-	ArrayList<Category> list = (ArrayList<Category>)request.getAttribute("clist");
+	ArrayList<Category> clist = (ArrayList<Category>)request.getAttribute("clist");
 	Community comm = (Community)request.getAttribute("comm");
 	Attachment at = (Attachment)request.getAttribute("at");
 %>
@@ -37,8 +37,14 @@
   	 <!-- header.jsp include -->
 	 <%@ include file="../common/header.jsp" %>
 	
+	
+	
      
-        <form action="<%=contextPath %>/update.co" method="post" id="form22" enctype="multipart/form-data" >
+        <form action="<%=contextPath %>/update.co" method="post" id="update" enctype="multipart/form-data" >
+
+
+        <input type="hidden" name="cno" value="<%=comm.getCommNo()%>">
+        
         
         <div class="outer position-relative" >
         <br>
@@ -47,46 +53,43 @@
 
             <div class="position-absolute top-50 start-50 translate-middle">
 
-                <!--카테고리-->
+                카테고리
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category">
-                    <%for(Category c : list){ %>
+                    <%for(Category c : clist){ %>
                             	<option value="<%=c.getCategoryNo()%>"><%=c.getCategoryName()%></option>
                     <%} %>
                 </select>
                         <script>
-                            $(function(){
-                                $("#update-form option").each(function(){
+                             $(function(){
+                                 $("#update option").each(function(){
                                     if($(this).text()=="<%=comm.getCategoryNo()%>"){
-                                        $(this).attr("selected",true); 
-                                    }
-                                })
+                                         $(this).attr("selected",true); 
+                                     }
+                                 })
 
-                            })
+                             })
                         </script>
                 <br>
 
-                <!--제목-->
+                제목
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="title" aria-label="Text input with dropdown button" value="<%=comm.getCommTitle() %>" placeholder="제목">
+                    <input type="text" class="form-control" id="title" aria-label="Text input with dropdown button" value="<%=comm.getCommTitle() %>" name="title" placeholder="제목">
                 </div>
 
-                <!--내용-->
+                
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label" value="<%=comm.getCommContent() %>" id="content" >내용</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" style="resize:none" placeholder="내용"></textarea>
+                    <label for="exampleFormControlTextarea1" class="form-label"  id="content" >내용</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" style="resize:none" name="content" placeholder="내용"><%=comm.getCommContent() %></textarea>
                 </div>
 
-                <!--첨부파일-->
-<!--                 <input type="file" id="file1" name="file1"> -->
+                첨부파일
                 <%if(at!=null) {%>
                     		<%=at.getOriginName() %>
-                    		<!-- 첨부파일 수정하기 -->
-                    		<!-- 첨부파일이 있는 경우에만 (at!=null인 경우)원본파일의 파일번호, 수정명을 hidden으로 요청보내기 -->
                     		<input type="hidden" name="originFileNo" value="<%=at.getFileNo()%>">
                     		<input type="hidden" name="originFileName" value="<%=at.getChangeName()%>">
              
-                    	<%} %>
-                    	<input type="file" name="file1">
+               	<%} %>
+				<input type="file" name="reupfile">
                 <br><br>
                 
                 

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.*"%>
+<%
+	Notice n  = (Notice)request.getAttribute("n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,20 +36,20 @@
 
 	<table class="table table-bordered" style="width:500px;" align="center">
 		<tr>
-			<th colspan="4">제목삽입</th>
+			<th colspan="4"><%=n.getNoticeTitle() %></th>
 		</tr>
 		<tr>
 			<td width="15%">작성자</td>
-			<td width="35%">ㄱㄱ</td>
+			<td width="35%"><%=n.getNoticeWriter() %></td>
 			<td width="15%">조회수</td>
-			<td width="35%">23</td>
+			<td width="35%">???</td>
 		</tr>
 		<tr>
-			<th colspan="4">날짜삽입</th>
+			<th colspan="4"><%=n.getNoticeDate() %></th>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<p style="height:200px;">내용</p>
+				<p style="height:200px;"><%=n.getNoticeContent() %></p>
 			</td>
 		</tr>
 
@@ -58,7 +61,7 @@
 
 
 	<div align="center">
-		<a href="<%=contextPath%>/list.no" class="btn btn-success">목록가기</a>
+		<a href="<%=contextPath%>/list.no?npage=1" class="btn btn-success">목록가기</a>
 
 
 		<!--수정/삭제 : 로그인&작성자만 가능-->

@@ -44,11 +44,11 @@ public class CommunityUpdateController extends HttpServlet {
 			
 			int maxSize = 10*1024*1024;
 		
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/board_upfiles/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/comm_upfiles/");
 
 			MultipartRequest multiRequest = new MultipartRequest(request,savePath,maxSize,"UTF-8",new MyFileRenamePolicy());
 
-			int commNo = Integer.parseInt(multiRequest.getParameter("cno"));//boardUpdateForm에서 hidden으로 보냈다. 
+			int commNo = Integer.parseInt(multiRequest.getParameter("cno"));
 			String commCategory = multiRequest.getParameter("category");
 			String commTitle = multiRequest.getParameter("title");
 			String commContent = multiRequest.getParameter("content");
@@ -60,14 +60,15 @@ public class CommunityUpdateController extends HttpServlet {
 			comm.setCommTitle(commTitle);
 			comm.setCommContent(commContent);
 			
+			
 			Attachment newAttachment = null;
 			
-			if(multiRequest.getOriginalFileName("file1")!=null) { 
+			if(multiRequest.getOriginalFileName("reupfile")!=null) { 
 
 				newAttachment = new Attachment();
 				newAttachment.setOriginName(multiRequest.getOriginalFileName("reupfile"));
 				newAttachment.setChangeName(multiRequest.getFilesystemName("reupfile"));
-				newAttachment.setFilePath("resources/board_upfiles/");
+				newAttachment.setFilePath("resources/comm_upfiles/");
 				
 				if(multiRequest.getParameter("originFileNo")!=null) {
 					
@@ -83,11 +84,17 @@ public class CommunityUpdateController extends HttpServlet {
 
 				}
 				
-				int result = new CommunityService().updateCommunity(comm,newAttachment);
-
-
-				
 			}
+			
+			int result = new CommunityService().updateCommunity(comm,newAttachment);
+			
+			if(result>0) {
+				response.sendRedirect(request.getContextPath()+"/detail.co?cno="+commNo);
+			}else {
+				request.setAttribute("errorMsg", "게시글 수정 실패");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			}
+			
 		}
 
 	}

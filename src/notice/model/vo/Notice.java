@@ -28,6 +28,7 @@ public class Notice {
 		this.noticeStatus = noticeStatus;
 	}
 
+
 	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeDate, int noticeCount,
 			String noticeWriter) {
 		super();
@@ -36,6 +37,16 @@ public class Notice {
 		this.noticeContent = noticeContent;
 		this.noticeDate = noticeDate;
 		this.noticeCount = noticeCount;
+		this.noticeWriter = noticeWriter;
+	}
+
+	
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeDate, String noticeWriter) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeDate = noticeDate;
 		this.noticeWriter = noticeWriter;
 	}
 

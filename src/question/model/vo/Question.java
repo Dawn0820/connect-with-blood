@@ -13,13 +13,16 @@ public class Question {
 	private Date questionAnswerDate;	//	QUESTION_ANSDATE	DATE
 	private String questionWriter;		//	QUESTION_WRITER	NUMBER
 	private String questionStatus;		//	QUESTION_STATUS	VARCHAR2(1 BYTE)
+	private String categoryNo;
 	
 	public Question() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Question(int questionNo, String questionTitle, String questionContent, Date questionDate, String questionTag,
-			String questionAnswer, Date questionAnswerDate, String questionWriter, String questionStatus) {
+			String questionAnswer, Date questionAnswerDate, String questionWriter, String questionStatus,
+			String categoryNo) {
 		super();
 		this.questionNo = questionNo;
 		this.questionTitle = questionTitle;
@@ -30,17 +33,20 @@ public class Question {
 		this.questionAnswerDate = questionAnswerDate;
 		this.questionWriter = questionWriter;
 		this.questionStatus = questionStatus;
+		this.categoryNo = categoryNo;
 	}
+	
+	
 
-	public Question(int questionNo, String questionTag, String questionTitle, String questionContent, Date questionDate, 
-			String questionWriter) {
+	public Question(int questionNo, String questionTitle, String questionContent, Date questionDate,
+			String questionWriter, String categoryNo) {
 		super();
 		this.questionNo = questionNo;
-		this.questionTag = questionTag;
 		this.questionTitle = questionTitle;
 		this.questionContent = questionContent;
 		this.questionDate = questionDate;
 		this.questionWriter = questionWriter;
+		this.categoryNo = categoryNo;
 	}
 
 	public int getQuestionNo() {
@@ -115,13 +121,23 @@ public class Question {
 		this.questionStatus = questionStatus;
 	}
 
+	public String getCategoryNo() {
+		return categoryNo;
+	}
+
+	public void setCategoryNo(String categoryNo) {
+		this.categoryNo = categoryNo;
+	}
+
 	@Override
 	public String toString() {
 		return "Question [questionNo=" + questionNo + ", questionTitle=" + questionTitle + ", questionContent="
 				+ questionContent + ", questionDate=" + questionDate + ", questionTag=" + questionTag
 				+ ", questionAnswer=" + questionAnswer + ", questionAnswerDate=" + questionAnswerDate
-				+ ", questionWriter=" + questionWriter + ", questionStatus=" + questionStatus + "]";
+				+ ", questionWriter=" + questionWriter + ", questionStatus=" + questionStatus + ", categoryNo="
+				+ categoryNo + "]";
 	}
+	
 	
 }
 

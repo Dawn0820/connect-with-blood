@@ -21,7 +21,7 @@ public class CommunityService {
 		
 		close(conn);
 		
-		return listCount;
+		return listCount;   
 		
 	}
 
