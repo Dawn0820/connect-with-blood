@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	<entry key="loginMember">
+		SELECT * 
+		FROM MEMBER 
+		WHERE USER_ID=? 
+		AND   USER_PW=?
+		AND   USER_STATUS='0'
+	</entry>
+	
+	<entry key="selectMemberList">
+		SELECT USER_NO
+			, USER_ID
+			, USER_PW
+			, USER_NAME
+			, USER_BIRTH
+			, USER_PHONE
+			, USER_EMAIL
+			, USER_ADDRESS
+			, USER_ENROLLDATE
+			, USER_STATUS
+			, USER_GRADE
+			, USER_BLOODTYPE
+			, USER_LOGINDATE <!-- 회원로그인 날짜 -->
+			, USER_WITHDATE <!-- 회원탈퇴 날짜 -->
+			, USER_SUSDATE  <!-- 회원정지/블랙리스트 날짜  -->
+	  	FROM MEMBER 
+	</entry>
+	
+	<entry key="enrollMember">
+		INSERT INTO MEMBER(USER_NO,
+						USER_ID,
+						USER_PW,
+						USER_NAME,
+						USER_BIRTH,
+						USER_EMAIL,
+						USER_PHONE,
+						USER_ADDRESS,
+						USER_ENROLLDATE,
+						USER_GRADE,
+						USER_BLOODTYPE,
+						USER_LOGINDATE,
+						USER_WITHDATE,
+						USER_SUSDATE,
+						USER_STATUS) 
+						VALUES 
+						(SEQ_UNO.NEXTVAL,
+                   		?,
+                    	?,
+                    	?,
+                    	?,
+                    	?,
+                    	?,
+                    	?,
+                    	SYSDATE,
+                    	'동장',
+                    	?,
+                    	NOW,
+                    	SYSDATE,
+                    	SYSDATE,
+                    	'Y')
+	</entry>
+	
+<<<<<<< HEAD
+	<!-- 금일 신규회원현황의 COUNT를 조회한다. -->
+	<entry key="selectTodayNewMemberCnt">
+	SELECT COUNT(*) AS TODAY_MEMBER_COUNT
+	  FROM MEMBER
+	 WHERE TO_CHAR(USER_ENROLLDATE,'yyyy-mm-dd') = To_char(SYSDATE, 'yyyy-mm-dd') <!-- 회원가입일자가 오늘인지 여부 CHECK -->
+	   AND USER_STATUS = 'NORMAL'   <!-- 회원상태가 정상인지 여부 CHECK -->
+	</entry>
+	
+	<!-- 이번달 신규회원현황의 COUNT를 조회한다. -->
+	<entry key="selectMonthNewMemberCnt">
+	SELECT  
+	 COUNT(*) AS MONTH_NEWMEMBER_COUNT
+	 FROM MEMBER                                                 
+	WHERE TO_CHAR(USER_ENROLLDATE,'YYYYMMDD') 
+			  BETWEEN (TO_CHAR(TRUNC(SYSDATE,'MM'),'YYYYMMDD'))    
+	          AND TO_CHAR(LAST_DAY(SYSDATE),'YYYYMMDD')
+	  AND USER_STATUS = 'NORMAL' <!-- 회원상태가 정상인지 여부 CHECK -->
+	</entry>
+	
+	<!-- 금일 탈퇴회원현황의 COUNT를 조회한다. -->
+	<entry key="selectTodayDelMemberCnt">
+	SELECT COUNT(*) AS TODAY_DELMEMBER_COUNT
+	  FROM MEMBER
+	 WHERE TO_CHAR(USER_WITHDATE,'yyyy-mm-dd') = To_char(SYSDATE, 'yyyy-mm-dd') <!-- 회원탈퇴일자가 오늘인지 여부 CHECK -->
+	   AND USER_STATUS = 'WITHDRAWAL'   <!-- 회원상태가 탈퇴인지 여부 CHECK -->
+	</entry>
+	
+	<!-- 이번달 탈퇴회원현황의 COUNT를 조회한다. -->
+	<entry key="selectMonthDelMemberCnt">
+	SELECT  
+	 COUNT(*) AS MONTH_DELMEMBER_COUNT
+	 FROM MEMBER                                                 
+	WHERE TO_CHAR(USER_ENROLLDATE,'YYYYMMDD') 
+			  BETWEEN (TO_CHAR(TRUNC(SYSDATE,'MM'),'YYYYMMDD'))    
+	          AND TO_CHAR(LAST_DAY(SYSDATE),'YYYYMMDD')
+	  AND USER_STATUS = 'WITHDRAWAL' <!-- 회원상태가 정상인지 여부 CHECK -->
+	</entry>
+	
+		<!-- 금일 정지회원현황의 COUNT를 조회한다. -->
+	<entry key="selectTodayStopMemberCnt">
+	SELECT COUNT(*) AS TODAY_STOPMEMBER_COUNT
+	  FROM MEMBER
+	 WHERE TO_CHAR(USER_SUSDATE,'yyyy-mm-dd') = To_char(SYSDATE, 'yyyy-mm-dd') <!-- 회원탈퇴일자가 오늘인지 여부 CHECK -->
+	   AND USER_STATUS = 'SUSPENSION'   <!-- 회원상태가 탈퇴인지 여부 CHECK -->
+	</entry>
+	
+		<!-- 이번달 정지회원현황의 COUNT를 조회한다. -->
+	<entry key="selectMonthStopMemberCnt">
+	SELECT  
+	 COUNT(*) AS MONTH_STOPMEMBER_COUNT
+	 FROM MEMBER                                                 
+	WHERE TO_CHAR(USER_SUSDATE,'YYYYMMDD') 
+			  BETWEEN (TO_CHAR(TRUNC(SYSDATE,'MM'),'YYYYMMDD'))    
+	          AND TO_CHAR(LAST_DAY(SYSDATE),'YYYYMMDD')
+	  AND USER_STATUS = 'SUSPENSION' <!-- 회원상태가 정상인지 여부 CHECK -->
+	</entry>
+		
+	
+=======
+	<entry key="loginMember">
+		SELECT * 
+		FROM MEMBER 
+		WHERE USER_ID=? 
+			AND USER_PW=? 
+			<!-- status 추가해야함 -->
+	</entry>
+
+>>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
+</properties>
