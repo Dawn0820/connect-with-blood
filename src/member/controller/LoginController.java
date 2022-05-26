@@ -2,6 +2,7 @@ package member.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,9 +38,10 @@ public class LoginController extends HttpServlet {
 		String userId = request.getParameter("userId"); 
 		String userPw = request.getParameter("userPw");
 		
-		Member loginUser = new MemberService().loginMember(userId,userPw);
+		Member loginMember = new MemberService().loginMember(userId,userPw);
 		
 		
+<<<<<<< HEAD
 		if(loginUser==null) {
 			request.setAttribute("errorMsg", "ë¡œê·¸ì¸ ì‹¤íŒ¨.");
 		}else {
@@ -47,9 +49,23 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);
 
 			request.getRequestDispatcher("views/main.jsp").forward(request, response);
-			
+=======
 		
-		}
+		if(loginMember==null) { 
+			request.setAttribute("errorMsg", "·Î±×ÀÎ¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
+>>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
+			
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			
+			view.forward(request, response);
+		
+		}else { 
+			HttpSession session = request.getSession();
+			session.setAttribute("loginMember", loginMember);
+			response.sendRedirect(request.getContextPath());
+			
+//			System.out.println(userId);
+	}
 		
 		
 	}

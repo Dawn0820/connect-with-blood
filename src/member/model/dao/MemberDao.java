@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import org.apache.jasper.compiler.Node.GetProperty;
+
 import member.model.vo.Member;
 
 public class MemberDao {
@@ -43,6 +45,7 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			
+
 			while(rset.next()) {
 				list.add(new Member(rset.getInt("USER_NO")
 						  ,rset.getString("USER_ID")
@@ -59,7 +62,30 @@ private Properties prop = new Properties();
 						  ,rset.getDate("USER_WITHDATE")
 						  ,rset.getDate("USER_SUSDATE")
 						  ,rset.getString("USER_STATUS")));
-			}
+
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPw);
+			
+			rset = pstmt.executeQuery(); 
+			
+			if(rset.next()) { 
+				m = new Member(rset.getInt("USER_NO")
+							  ,rset.getString("USER_ID")
+							  ,rset.getString("USER_PW")
+							  ,rset.getString("USER_NAME")
+							  ,rset.getString("USER_BIRTH")
+							  ,rset.getString("USER_EMAIL")
+							  ,rset.getString("USER_PHONE")
+							  ,rset.getString("USER_ADDRESS")
+							  ,rset.getDate("USER_ENROLLDATE")
+							  ,rset.getString("USER_GRADE")
+							  ,rset.getString("USER_BLOODTYPE")
+							  ,rset.getDate("USER_LOGINDATE")
+							  ,rset.getDate("USER_WITHDATE")
+							  ,rset.getDate("USER_SUSDATE")
+							  ,rset.getString("USER_STATUS")
+							  );
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,32 +96,44 @@ private Properties prop = new Properties();
 		
 		return list;
 	}
+<<<<<<< HEAD
+=======
 
-//	public int shipStatus(Connection conn) {
-//		
-//		int Count = 0;
-//		
-//		PreparedStatement pstmt = null;
-//		
-//		ResultSet rset = null;
-//		
-//		String sql = prop.getProperty("shipStatus");
-//		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			rset = pstmt.executeQuery();
-//			
-//			if(rset.next()) {
-//				Count = rset.getInt("COUNT");
-//			}
-//		
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		return Count;
-//	}
+
+	
+	//ȸ������
+	public int enrollMember(Connection conn, Member m) {
+		
+		int result=0;
+		PreparedStatement pstmt=null;
+		String sql = prop.getProperty("enrollMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserPw());
+			pstmt.setString(3, m.getUserName());
+			pstmt.setString(4, m.getUserBirth());
+			pstmt.setString(5, m.getUserEmail());
+			pstmt.setString(6, m.getUserPhone());
+			pstmt.setString(7, m.getUserAddress());
+			pstmt.setString(8, m.getUserBloodtype());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+	
+	
+
 	
 	//금일 신규회원 COUNT
 	public int selectTodayNewMemberCnt(Connection conn) {
@@ -113,7 +151,7 @@ private Properties prop = new Properties();
 			rset = pstmt.executeQuery();		// executeQuery select DB 동작 바뀌지 않고 보여주는 용도
 			
 			//쿼리에서 AS로 이름변경해서 밑에도 동일하게 변경해준거에용
-			if(rset.next()) {
+			if(rset.next()) { // 결과값의 다음 행의 정보가있으면?
 				//이건 int로 잘받아왔군 잘해쏘
 				Count = rset.getInt("TODAY_MEMBER_COUNT");
 			}
@@ -245,7 +283,9 @@ private Properties prop = new Properties();
 		//db에서 검색된 count를 리턴해준다!
 		return Count;
 	}
-
+	
+	
+	//이번달 정지현황 
 	public int selectMonthStopMemberCnt(Connection conn) {
 		int Count = 0;
 		

@@ -5,6 +5,9 @@ import static common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
+
+import common.JDBCTemplate;
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
 //규민파트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -78,8 +81,10 @@ import member.model.vo.Member;
 		close(conn);
 		
 		return todayStopMemberCnt;
-	}
 
+	
+	}
+	//이번달 회원 정지현황
 	public int selectMonthStopMemberCnt() {
 		Connection conn = getConnection();
 		
@@ -89,6 +94,27 @@ import member.model.vo.Member;
 		
 		return monthStopMemberCnt;
 	}
+		
+		
+
+	
+	//ȸ������
+	public int enrollMember(Member m) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().enrollMember(conn,m);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+
+	}
+
 
 
 	

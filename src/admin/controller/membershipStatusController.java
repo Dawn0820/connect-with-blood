@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.model.service.MemberService;
 import member.model.vo.Member;
-
+//규민 회원현황 파트 //규민 회원현황 파트 //규민 회원현황 파트 //규민 회원현황 파트 //규민 회원현황 파트 //규민 회원현황 파트
 /**
  * Servlet implementation class MemSituationController
  */

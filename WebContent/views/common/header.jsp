@@ -10,6 +10,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 </head>
 <body class="pt-5">
 	<!-- HEADER -->
@@ -30,6 +35,9 @@
 	          </li>
 	          <li class="nav-item">
 	            <a class="nav-link disabled">Disabled</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/list.co?cpage=1">게시판(나영)</a>
 	          </li>
 	        </ul>
 	        <form class="d-flex">
