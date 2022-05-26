@@ -7,7 +7,6 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>회원가입 약관</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
     
 
@@ -24,7 +23,8 @@
 
 
 
-    <!-- Latest compiled and minified CSS -->
+
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -84,28 +84,6 @@
 
         
     </style>
-    <script>
-        function idCheck(){
-            var $userId=$("#inputFrom input[name=userId]");
-            $.ajax({
-                url:"idCheck.mem",
-                data : {checkId:$userId.val()},
-                success:function(result){
-                    if(result=="NNNNN"){
-                        alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.")
-                        $userId.focus();
-                    }else{
-                        if(contirm("사용가능한 아이디입니다. 사용하시겠습니까?")){
-                            $("inputFrom:submit").removeAttr("disabled");
-                            $userId.attr("readonly",true);
-                        }else{
-                            $userId.focus();
-                        }
-                    }
-                }
-            })
-        }
-    </script>
 </head>
 
 <body>
@@ -233,66 +211,118 @@
           
           <!-- Modal body -->
           <div class="modal-body">
-            <form action="<%=contextPath%>/join.mem" id="inputFrom">
+            <form action="<%=contextPath%>/join.mem" id="inputFrom" method="post">
                 <fieldset id="innerBox">
-            <form name="registerform" method="post" enctype="multipart/form-data" action="./register">
                 <div class="fieldlabel"><label for="userId">* 아이디</label></div>
-                <div class="formfield"><input type="text" id="userId" name="userId" maxlength="20" value=""></div>
-                &nbsp; &nbsp;
-                <button type="button" class="btn btn-outline-danger" id="idCheck" onclick="idCheck();">아이디 중복 체크</button>
+                <input type="text" id="userId" name="userId" maxlength="20"></input>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-outline-danger" name="idCheck" id="idCheck" onclick="idCheck22();">아이디 중복 체크</button>
+        
+        <script>
+        function idCheck22(){
+            var $userId = $("#inputFrom input[name=userId]");
+            //var userId=$('#userId').val();
+
+            $.ajax({
+                url : "<%=contextPath%>/idCheck.mem",
+                type:"post",
+                data : {idCheck :  $userId.val()},
+                success : function(result){
+                	if(result=="NNNNN"){ 
+                		alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.")
+                		$userId.focus(); 
+                	}else{ 
+                        if(confirm("멋진 아이디네요. 사용하시겠습니까?")){
+                            $userId.attr("readonly",true); 
+                		}else{
+                            $userId.focus();
+                        }
+                	}
+                },
+                error : function(){
+                    alert("서버요청 실패");
+                }
+            })
+        };
+        </script>
+        
+        
         
                 <br><br>
                 <div class="fieldlabel"><label for="userPw" id="userPw">* 패스워드</label></div>
                 <div class="formfield">
-        <input type="password" id="userPw" name="userpPw" maxlength="20" autocomplete="off">
-        </div><br>
-                <div class="fieldlabel"><label for="userPwCheck" style="color: gray;">* 패스워드확인</label></div>
-                <div class="formfield">
-        <input type="password" id="userPwCheck" name="userPwCheck" maxlength="20" autocomplete="off">
-        </div> <br>
+        <input type="password" id="userPw" name="userPw" maxlength="20" autocomplete="off">
+        </div>
+                
+                 <br>
                 <div class="fieldlabel"><label for="userName">* 이름</label></div>
                 <div class="formfield"><input type="text" id="userName" name="userName" maxlength="20" value=""></div>
         
+                <br>
+
+                <div class="fieldlabel"><label for="userBirth">* 주민등록번호(-포함하여 작성)</label></div>
+                <div class="formfield"><input type="text" id="userBirth" name="userBirth" maxlength="20" value=""></div>
+        
+                
                 <br>
                 <div class="fieldlabel"><label for="address">* 주소</label></div>
                 <div class="formfield"><input type="text" id="address" name="userAddress" maxlength="40" value=""></div>
         
                 <br>
-                <div class="fieldlabel"><label for="email01">- 이메일</label></div>
-                <div class="formfield"><input type="text" id="email01" name="userEmail1" size="20" maxlength="20" 
-                     value="" autocomplete="off"><span>@</span>
-                    <input id="email02" name="userEmail2" list="domains" placeholder="도메인 입력/선택">
-                    <!-- userEmail1+2 = userEmail -->
+                <div class="fieldlabel"><label for="email01">* 이메일</label></div>
+                <div class="formfield">
+                <input type="text" id="email" name="email" size="20" maxlength="20" value="" autocomplete="off">
+                     <span>@</span>
                     
-                    <datalist id="domains">
-                        <option value="naver.com">
-                        <option value="daum.net">
-                        <option value="gmail.com">
-                        <option value="yahoo.co.kr">
-                    </datalist>
+                    <select id="Edomains" name="Edomains">
+                        <option value="naver.com" name="Edomains">naver.com</option>
+                        <option value="daum.net" name="Edomains">daum.net</option>
+                        <option value="gmail.com" name="Edomains">gmail.com</option>
+                        <option value="yahoo.co.kr" name="Edomains">yahoo.co.kr</option>
+                    </select>
+
+                    <script>
+                        $('input[name="email"]').on('click',function(){
+                            var email = $(this).val();
+                            });
+                        
+                        $('input[name="Edomains"]').on('click',function(){
+                            var Edomains = $(this).val();
+                            });
+                       </script>
+
                 </div><br>
                 
-                <div class="fieldlabel"><label for="mPhone1">- 연락처</label></div>
+                <div class="fieldlabel"><label for="mPhone1">* 연락처</label></div>
                 <div class="formfield">
                     <select id="mPhone1" name="mPhone1">
-                        <option value="011">010</option>
-                        <option value="011">011</option>
-                        <option value="016">017</option>
-                        <option value="018">018</option>
-                        <option value="019">019</option>
+                        <option value="010" name="mPhone1">010</option>
+                        <option value="011" name="mPhone1">011</option>
+                        <option value="016" name="mPhone1">017</option>
                     </select>-
                     <input id="mPhone2" name="mPhone2" type="number" value="" size="4" maxlength="4" autocomplete="off" style="width: 100px">-
                     <input id="mPhone3" name="mPhone3" type="number" value="" size="4" maxlength="4" autocomplete="off" style="width: 100px">
                 </div> <br>
-                <div class="fieldlabel"><label>- 이메일수신</label></div>
-                <div class="formfield">
-                    <input type="radio" name="emailYn" value="Y" checked>수신
-                    <input type="radio" name="emailYn" value="N">미수신
-                </div><br>
+
+                <script>
+                    $('input[name="mPhone1"]').on('click',function(){
+                        var mPhone1 = $(this).val();
+                        });
+                    
+                    $('input[name="mPhone2"]').on('click',function(){
+                        var mPhone2 =$(this).val() ;
+                        });
+                    $('input[name="mPhone3"]').on('click',function(){
+                        var mPhone3 =$(this).val() ;
+                        });
+                   </script>
+
+
+
         
-                
+                <br>
                 <div class="blood_abo"><label>* 혈액형 타입</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <select name="blood" id="blood">
+                    <select name="blood2" id="blood2">
                         <option value="A형">A형</option>
                         <option value="B형">B형</option>
                         <option value="AB형">AB형</option>
@@ -302,24 +332,44 @@
                 <br>
                 </div>
                 <div class="blood_rh"> <label>* RH형 타입</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="rh" value="RH+" alt="blood" checked>RH+
-                    <input type="radio" name="rh" value="RH-" alt="blood">RH-
+                    <input type="radio" name="blood1" value="RH+" alt="blood1" checked >RH+
+                    <input type="radio" name="blood1" value="RH-" alt="blood1">RH-
                 </div>
         
-        
                 <br>
-                <div class="fieldlabel"><label>- 성별</label></div>
+        
+                <!-- <div class="fieldlabel"><label>- 성별</label></div>
                 <div class="formfield">
                     <input type="radio" name="sex" value="no" alt="no" checked >선택안함 &nbsp;
                     <input type="radio" name="sex" value="남" alt="남자" checked >남자 &nbsp;
                     <input type="radio" name="sex" value="여" alt="여자" >여자
-                </div> <br>
-                <div class="fieldlabel"><label for="profile">- 프로필사진</label></div>
-                <div class="formfield" >
-                    <input type="file" id="profile" name="profile" required class="btn btn-outline-secondary"> 
-                </div> 
+                </div> -->
                 
+                
+                
+                
+                
+                
+     <script>
+     $('input[name="blood1"]').on('click',function(){
+    	 var blood1 = $(this).val();
+    	 });
+     
+     $('input[name="blood2"]').on('click',function(){
+    	 var blood2 =$(this).val() ;
+    	 // 예시 : var userId = $("#userId").val()
+    	 });
+    </script>
+    
+    
+    
+    
             </fieldset>
+            
+            
+            
+            
+            
                 
                 <br><br>
         
@@ -342,7 +392,7 @@
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
           </div>
           
         </div>

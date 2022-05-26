@@ -16,6 +16,7 @@ public class MemberDao {
 
 private Properties prop = new Properties();
 	
+	//기본설정
 	public MemberDao() {
 		String fileName = MemberDao.class.getResource("/db/member/member-mapper.xml").getPath();
 		
@@ -26,7 +27,10 @@ private Properties prop = new Properties();
 			e.printStackTrace();
 		}
 	}
+	
+	
 
+	//로그인
 	public Member loginMember(Connection conn, String userId, String userPw) {
 		
 		Member m = null;
@@ -106,7 +110,121 @@ private Properties prop = new Properties();
 		
 		return result;
 	}
+
+	
+	
+	//아이디 찾기
+	public String findId(Connection conn, String userName, String userEmail) {
+		
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String userId = null;
+		String sql = prop.getProperty("findId");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userEmail);
+			
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				userId=rset.getString("USER_ID");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return userId;
 	}
+
+	
+	
+	//비밀번호 찾기
+	public String findPw(Connection conn, String userId, String userName, String userEmail) {
+		
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String userPw = null;
+		String sql = prop.getProperty("findPw");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userName);
+			pstmt.setString(3, userEmail);
+			
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				userPw=rset.getString("USER_PW");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return userPw;
+		
+		
+	}
+
+
+
+	//ajax 아이디 중복체크
+	public int idCheck(Connection conn, String idCheck) {
+
+				int count = 0;
+				
+				PreparedStatement pstmt = null;
+				
+				ResultSet rset = null;
+				
+				String sql = prop.getProperty("idCheck");
+				
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, idCheck);
+					
+					rset = pstmt.executeQuery();
+					
+					
+					if(rset.next()) {
+						count = rset.getInt("COUNT");
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					close(rset);
+					close(pstmt);
+				}
+				return count;
+	}
+
+
+
+	//마이페이지
+
+
+
+
+
+
+
+
+
+}
 	
 	
 	

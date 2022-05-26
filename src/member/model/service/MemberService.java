@@ -11,6 +11,7 @@ import member.model.vo.Member;
 
 public class MemberService {
 
+	//로그인
 	public Member loginMember(String userId, String userPw) {
 		
 		
@@ -44,4 +45,64 @@ public class MemberService {
 		return result;
 	}
 
+
+
+
+
+	//아이디 찾기
+	public String findId(String userName,String userEmail) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		String userId = new MemberDao().findId(conn,userName,userEmail);
+		
+		close(conn);
+		
+		return userId;
+		
+	}
+
+
+
+
+
+	//비밀번호 찾기
+	public String findPw(String userId, String userName, String userEmail) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		String userPw = new MemberDao().findPw(conn,userId,userName,userEmail);
+		
+		close(conn);
+		
+		return userPw;
+	}
+
+
+
+
+
+	//ajax 아이디 중복체크
+	public int idCheck(String idCheck) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int count = new MemberDao().idCheck(conn,idCheck);
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+
+
+	
+	//마이페이지
+
+
+
+
+
+	
+	
 }

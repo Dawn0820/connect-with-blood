@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="member.model.vo.Member"%>
+    
+    
+   <%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+
+	String alertMsg = (String)session.getAttribute("alertMsg"); 
+	
+%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +32,12 @@
             -webkit-writing-mode: horizontal-tb !important;
             text-rendering: auto;
             color: initial;
+            
+            
+            
+            
+            
+            
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -172,6 +189,7 @@ fieldset, img {
 
 <div class="inner_login">
     <div class="login_tistory">
+     <%if(loginUser==null){ %>
         
         <form method="post" id="authForm" action="<%=contextPath%>/login.mem">
             <input type="hidden" name="redirectUrl" value="https://blogpack.tistory.com/manage">
@@ -180,11 +198,11 @@ fieldset, img {
                 <div class="box_login">
                     <div class="inp_text">
                         <label for="loginId" class="screen_out">아이디</label>
-                        <input type="text" id="userId" name="userId" placeholder="ID" >
+                        <input type="text" id="userId" name="userId" placeholder="ID" required>
                     </div>
                     <div class="inp_text">
                         <label for="loginPw" class="screen_out">비밀번호</label>
-                        <input type="password" id="userPw" name="userPw" placeholder="Password" >
+                        <input type="password" id="userPw" name="userPw" placeholder="Password" required>
                     </div>
                 </div>
                 <button type="submit" class="btn_login" >로그인</button>
@@ -197,14 +215,14 @@ fieldset, img {
                 </label>
                 </div>
                 <span class="txt_find">
-                    <a href="<%=contextPath %>/" class="link_find">아이디</a>
+                    <a href="<%=contextPath %>/views/member/findId.jsp" class="link_find">아이디</a>
                     / 
-                    <a href="<%=contextPath %>/" class="link_find">비밀번호 찾기</a>
+                    <a href="<%=contextPath %>/views/member/findPw.jsp" class="link_find">비밀번호 찾기</a>
                 </span>
 
                 <br>
                 <div class="join">
-                    <a href="<%=contextPath %>/beforeJoin.jsp" >회원가입</a>
+                    <a href="<%=contextPath %>/views/member/beJoin.jsp" >회원가입</a>
                 </div>
 
             </div>
@@ -212,6 +230,16 @@ fieldset, img {
         </form>
         
     </div>
+            <% }else{ %>
+        <!-- 로그인 성공 후 보여질 영역 (아직 구현 안됨)-->
+        	<div id="user-info">
+        		<b><%=loginUser.getUserName() %></b>님 환영합니다! <br><br>
+        		<a href="<%=contextPath%>/mypage.mem">마이페이지</a>
+        		<a href="<%=contextPath %>/logout.mem">로그아웃</a>
+        	
+        	</div>
+        
+        <%} %>
 
 
     <br><br><br><br><br>

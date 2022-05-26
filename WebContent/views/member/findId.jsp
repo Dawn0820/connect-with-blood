@@ -7,8 +7,6 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>아이디 찾기</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
 
 
 
@@ -94,14 +92,16 @@ fieldset, img {
     background-color: transparent;
 }
 .btn_find {
-    margin: 20px 0 0;
     width: 100%;
     height: 48px;
     border-radius: 3px;
-    font-size: 16px;
+    font-size: 15px;
     color: #fff;
     background-color: brown;
     border-radius: 50px;
+    padding: 8px;
+    padding-left: 70px;
+    padding-right: 70px;
     border: none;
 }
 .btn_find:hover{background-color: rgb(222, 102, 102);}
@@ -121,68 +121,7 @@ fieldset, img {
 
 </style>
 
-<script>
- function id_search() {
 
-  var frm = document.idfindscreen;
-
-  if (frm.userName.value.length < 1) {
-   alert("이름을 입력해주세요");
-   return;
-  }
-  if (frm.userEmail.value.length < 1 || frm.e_domain.value.length < 1) {
-   alert("이메일을 입력해주세요");
-   return;
-  }
-  
-  if(userName==useName){
-	  frm.method = "post";
-	  frm.action = "/views/member/findId_after.jsp"; 
-	  frm.submit();  
-	  
-  }else{
-	  alert("해당하는 정보가 없습니다.");
-  }
- }
-
-
-
- //이메일 부분
-
- function checkid() {
-
-  var frm = document.idfindscreen;
-
-  var regExp = '/^([/\w/g\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/';
-
-  if (!regExp.test(frm.email.value)) {
-
-   alert('올바른 email을 입력해주세요.');
-
-   frm.email.focus();
-
-  }
-
- }
-
- function domainCheck() {
-
-  var frm = document.idfindscreen;
-
-  if (frm.domain.value == 0) {
-   frm.e_domain.value = "";
-   frm.e_domain.disabled = false;
-
-  } else {
-   frm.e_domain.value = frm.domain.value;
-   frm.e_domain.disabled = true;
-
-  }
-
- }
-
-    
-</script>
 </head>
 <body>
 
@@ -197,14 +136,14 @@ fieldset, img {
 <div class="inner_findId">
     <div class="findId">
         
-        <form method="post" id="authForm">
+        <form method="post" id="authForm" action="<%=contextPath %>/findId.mem">
             <input type="hidden" name="redirectUrl">
             <fieldset>
                 <legend align="center"><b>아이디 찾기</b> <br></legend>
                 
                 <div class="box">
                     <div class="inp_text">
-                        <input type="email" id="findId_name" name="userName" placeholder="이름을 입력해주세요" >
+                        <input type="text" id="findId_name" name="userName" placeholder="이름을 입력해주세요" >
                     </div>
                 </div>
             <div >
@@ -213,26 +152,28 @@ fieldset, img {
                         <input type="email" id="findId_eamil" name="userEmail" placeholder="이메일을 입력해주세요" >
                     </div>
                 </div>
-                    <div id="domainsBox" >
+                    <!-- <div id="domainsBox" >
                         <select id="domains" >
                             <option value="@naver.com">@naver.com
                             <option value="@daum.net">@daum.net
                             <option value="@gmail.com">@gmail.com
                             <option value="@yahoo.co.kr">@yahoo.co.kr
                         </select>
-                    </div>
+                    </div> -->
             </div>                        
                 
 
-                
-        <button type="button" class="btn btn_find" onclick="id_search();">아이디 찾기</button>
-  
+        <br>
+        <button type="submit" class="btn btn_find">아이디 찾기</button>
 
+	
 
         </div>
         </fieldset>
         </form>
         
+        
+
         
 
         <br><br><br><br><br>

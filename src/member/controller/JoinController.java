@@ -43,26 +43,31 @@ public class JoinController extends HttpServlet {
 	String userPw = request.getParameter("userPw");
 	String userName = request.getParameter("userName");
 	String userBirth = request.getParameter("userBirth");
-	String userEmail = request.getParameter("userEmail");
-	String userPhone = request.getParameter("userPhone");
+	String userEmail = request.getParameter("email")+"@"+request.getParameter("Edomains");
+	String userPhone = request.getParameter("mPhone1")+request.getParameter("mPhone2")+request.getParameter("mPhone3");
 	String userAddress = request.getParameter("userAddress");
-	String userEnrollDate = request.getParameter("userEnrollDate");
-	String userBloodtype = request.getParameter("userBloodtype");
-	Date userLogindate = request.getParameter("userLogindate");
-	Date userWithdate = request.getParameter("userWithdate");
-	Date userSusdate = request.getParameter("userSusdate");
-	String userStatus = request.getParameter("userStatus");
+	String userBloodtype = request.getParameter("blood1")+request.getParameter("blood2");
 	
+//	System.out.println(userId);
+//	System.out.println(userPw);
+//	System.out.println(userName);
+//	System.out.println(userBirth);
+//	System.out.println(userEmail);
+//	System.out.println(userPhone);
+//	System.out.println(userAddress);
+//	System.out.println(userBloodtype); 	
 	
-	Member m = new Member(userId,userPw,userName,userBirth,userEmail,userPhone,userAddress,userEnrollDate,userStatus,userBan,userGrade,userLogin);
+	Member m = new Member(userId,userPw,userName,userBirth,userEmail,userPhone,userAddress,userBloodtype);
 	int result = new MemberService().enrollMember(m);
-	//Date로 변환시 (later)
-//	userEnrollDate = transFormat.parse(userEnrollDate);
-//	userLogin = transFormat.parse(userLogin);
+
 	
 	if(result>0) {
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("alertMsg", "회원가입에 성공했습니다."); 
+		
+		RequestDispatcher view = request.getRequestDispatcher("views/main.jsp");
+		view.forward(request,response);
 		
 	}else {
 		

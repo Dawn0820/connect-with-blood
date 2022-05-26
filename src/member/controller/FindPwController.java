@@ -1,23 +1,27 @@
 package member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+
 /**
  * Servlet implementation class findPw
  */
 @WebServlet("/findPw.mem")
-public class findPw extends HttpServlet {
+public class FindPwController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public findPw() {
+    public FindPwController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +30,32 @@ public class findPw extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String userId = request.getParameter("userId");
+		String userName = request.getParameter("userName");
+		String userEmail = request.getParameter("userEmail");
+		
+		
+		String userPw = new MemberService().findPw(userId,userName,userEmail);
+		
+		
+        if(userPw != null) {
+        	//순서 중요! getSession과 forward 순서가 바뀌면 session이 늦게 들어옴!
+           request.getSession().setAttribute("userPw", userPw);
+           request.getRequestDispatcher("views/member/findPw_after.jsp").forward(request, response);
+          
+        }
+        else {
+        	request.setAttribute("errorMsg", "비밀번호 찾기를 실패하였습니다.");
+        	RequestDispatcher view =  request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request,response);
+        }
+        
 	}
+	
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
