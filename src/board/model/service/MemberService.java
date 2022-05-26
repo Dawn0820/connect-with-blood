@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package board.model.service;
+=======
+package board.model.Service;
+>>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
 import static common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;

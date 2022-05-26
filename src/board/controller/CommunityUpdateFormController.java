@@ -34,6 +34,7 @@ public class CommunityUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
 		int commNo = Integer.parseInt(request.getParameter("cno"));
 		
 		ArrayList<Category> clist = new CommunityService().selectCategoryList();
@@ -46,8 +47,7 @@ public class CommunityUpdateFormController extends HttpServlet {
 		request.setAttribute("comm", comm);
 		request.setAttribute("at", at);
 		
-		request.getRequestDispatcher("views/board/communityUpdateForm.jsp");
-		
+		request.getRequestDispatcher("views/board/communityUpdateView.jsp").forward(request, response);
 		
 	}
 

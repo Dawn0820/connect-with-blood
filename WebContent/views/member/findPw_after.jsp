@@ -3,16 +3,18 @@
 
 
 <%
+ String userId = request.getParameter("userId");
  String userName = request.getParameter("userName");
  String userEmail = request.getParameter("userEmail");
- String userId = (String)session.getAttribute("userId");
+ String userPw = (String)session.getAttribute("userPw");
+ 
 %>
 	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 찾기</title>
 
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
@@ -133,8 +135,7 @@ fieldset{border: 0.5px dashed lightgray; padding: 20px; }
 
 <!-- header.jsp include -->
 <%@ include file="../common/header.jsp" %>
-
-
+	
 
 <div class="inner_findId">
 <div class="findId">
@@ -142,10 +143,10 @@ fieldset{border: 0.5px dashed lightgray; padding: 20px; }
     <form method="post" id="authForm">
         <input type="hidden" name="redirectUrl">
         <fieldset>
-            <legend align="center"><b>아이디 찾기</b> <br></legend>
+            <legend align="center"><b>비밀번호 찾기</b> <br></legend>
             <p style="text-align: center;"> 
-            회원가입시 사용한 아이디는 
-            <input type="text" id="idBox" value="<%=userId%>"> 입니다.
+            회원가입시 사용한 비밀번호는 
+            <input type="text" id="idBox" value="<%=userPw%>"> 입니다.
             </p>
             
 

@@ -68,7 +68,7 @@
                 </div>
 
                 <!--첨부파일-->
-                <input type="file" id="file1" name="file1">
+                <input type="file" id="upfile" name="upfile">
                 <br><br>
                 
                 

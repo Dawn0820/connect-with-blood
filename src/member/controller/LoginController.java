@@ -40,6 +40,7 @@ public class LoginController extends HttpServlet {
 		
 		Member loginMember = new MemberService().loginMember(userId,userPw);
 		
+<<<<<<< HEAD
 		
 
 		if(loginUser==null) {
@@ -47,14 +48,26 @@ public class LoginController extends HttpServlet {
 		}else {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
+=======
+>>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
 
+<<<<<<< HEAD
 			request.getRequestDispatcher("views/main.jsp").forward(request, response);
+=======
+//		System.out.println(loginMember);
+>>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
 
 		
+<<<<<<< HEAD
 		if(loginMember==null) { 
 			request.setAttribute("errorMsg", "�α��ο� �����Ͽ����ϴ�.");
 
 			
+=======
+		if(loginUser==null) {
+			request.setAttribute("errorMsg", "로그인에 실패하였습니다.");
+
+>>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			
 			view.forward(request, response);

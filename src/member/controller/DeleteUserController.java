@@ -1,26 +1,27 @@
 package member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
- * Servlet implementation class AjaxIdCheckController
+ * Servlet implementation class DeleteUserController
  */
-@WebServlet("/idCheck.mem")
-public class AjaxIdCheckController extends HttpServlet {
+@WebServlet("/delete.mem")
+public class DeleteUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxIdCheckController() {
+    public DeleteUserController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +31,31 @@ public class AjaxIdCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
 		
-		String idCheck = request.getParameter("idCheck");
+		String userPwd = request.getParameter("userPwd");
+
 		
-		int count = new MemberService().idCheck(idCheck);
+		//방법 2) session에 담겨있는 loginUser(로그인 회원정보) 객체에 있는 아이디 꺼내오기
+		HttpSession session = request.getSession();
+		String userId = ((Member)session.getAttribute("loginMember")).getUserId();
+		
+		int result = new MemberService().deleteMember(userId, userPwd);
 		
 		
-		if(count>0) { 
-			response.getWriter().print("NNNNN");
+		if(result>0) { 
+			
+			session.setAttribute("alertMsg", "정상적으로 탈퇴되었습니다.");
+			session.removeAttribute("loginMember");
+			response.sendRedirect(request.getContextPath());
+
 		}else { 
-			response.getWriter().print("NNNNY");
+			
+			request.setAttribute("errorMsg", "회원 탈퇴를 실패하였습니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
 		}
-	
+		
 	}
 
 	/**

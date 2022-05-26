@@ -1,26 +1,24 @@
 package member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import member.model.service.MemberService;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class AjaxIdCheckController
+ * Servlet implementation class myPage
  */
-@WebServlet("/idCheck.mem")
-public class AjaxIdCheckController extends HttpServlet {
+@WebServlet("/mypage.mem")
+public class mypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxIdCheckController() {
+    public mypageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +28,20 @@ public class AjaxIdCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		
-		String idCheck = request.getParameter("idCheck");
-		
-		int count = new MemberService().idCheck(idCheck);
-		
-		
-		if(count>0) { 
-			response.getWriter().print("NNNNN");
-		}else { 
-			response.getWriter().print("NNNNY");
+		if(session.getAttribute("loginMember")==null){
+			
+			session.setAttribute("alertMsg", "로그인 후 이용해주세요.");
+			response.sendRedirect(request.getContextPath());
+		}else {
+			request.getRequestDispatcher("views/member/mypage.jsp").forward(request, response);
 		}
-	
+		
+		
+		
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
