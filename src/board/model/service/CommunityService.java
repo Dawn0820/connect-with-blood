@@ -113,7 +113,7 @@ public class CommunityService {
 
 		int result1 = new CommunityDao().updateCommunity(conn,comm,newAttachment);
 
-		int result2 = 0;
+		int result2 = 1;
 		
 		if(newAttachment != null) {
 			
@@ -125,7 +125,32 @@ public class CommunityService {
 			}
 		}
 		
-		return 0;
+		
+		if(result1>0 && result2>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1*result2;
+	}
+
+	public int deleteCommunity(int commNo) {
+
+		Connection conn = getConnection();
+		
+		int result = new CommunityDao().deleteCommunity(conn,commNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
 	}
 
 	

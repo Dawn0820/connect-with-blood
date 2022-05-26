@@ -129,7 +129,7 @@ public class CommunityDao {
 
 	public Community selectComm(Connection conn, int commNo) {
 
-		Community c = null;
+		Community comm = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -143,7 +143,7 @@ public class CommunityDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				c = new Community(rset.getInt("COMM_NO")
+				comm = new Community(rset.getInt("COMM_NO")
 									,rset.getString("COMM_TITLE")
 									,rset.getString("COMM_CONTENT")
 									,rset.getDate("COMM_DATE")		
@@ -158,8 +158,9 @@ public class CommunityDao {
 			close(pstmt);
 		}
 		
+
 		
-		return c;
+		return comm;
 	}
 
 	public ArrayList<Category> selectCategoryList(Connection conn) {
@@ -208,7 +209,7 @@ public class CommunityDao {
 			pstmt.setString(1, comm.getCommTitle());
 			pstmt.setInt(2, Integer.parseInt(comm.getCategoryNo()));
 			pstmt.setString(3, comm.getCommContent());
-			pstmt.setString(4, comm.getCommWriter());
+//			pstmt.setString(4, comm.getCommWriter());
 		
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -344,17 +345,46 @@ public class CommunityDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.set
+			pstmt.setInt(1, newAttachment.getRefCno());
+			pstmt.setString(2, newAttachment.getOriginName());
+			pstmt.setString(3, newAttachment.getChangeName());
+			pstmt.setString(4, newAttachment.getFilePath());
+			
+			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(pstmt);
 		}
 		
+		return result;
 		
+	}
+
+	public int deleteCommunity(Connection conn, int commNo) {
+
+		int result = 0;
 		
+		PreparedStatement pstmt = null;
 		
-		return 0;
+		String sql = prop.getProperty("deleteCommunity");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, commNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 		
 		

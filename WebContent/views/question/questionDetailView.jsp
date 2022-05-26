@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, question.model.vo.*"%>
+
+<%
+	Question que = (Question)request.getAttribute("que");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,22 +36,22 @@
 	
 
 
-	<table class="table table-bordered" style="width:500px;" align="center">
+	<table class="table table-bordered" style="width:500px ;" align="center">
 		<tr>
-			<th colspan="4">제목삽입</th>
+			<th colspan="4"><%=que.getQuestionTitle() %></th>
 		</tr>
 		<tr>
 			<td width="15%">작성자</td>
-			<td width="35%">ㄱㄱ</td>
-			<td width="15%">조회수</td>
-			<td width="35%">23</td>
+			<td width="35%"><%=que.getQuestionWriter() %></td>
+			<td width="15%">카테고리</td>
+			<td width="35%"><%=que.getCategoryNo() %></td>
 		</tr>
 		<tr>
-			<th colspan="4">날짜삽입</th>
+			<th colspan="4"><%=que.getQuestionDate() %></th>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<p style="height:200px;">내용</p>
+				<p style="height:200px;"><%=que.getQuestionContent() %></p>
 			</td>
 		</tr>
 
@@ -58,12 +63,12 @@
 
 
 	<div align="center">
-		<a href="<%=contextPath%>/list.qu" class="btn btn-success">목록가기</a>
+		<a href="<%=contextPath%>/list.que?qpage=1" class="btn btn-success">목록가기</a>
 
 
 		<!--수정/삭제 : 로그인&작성자만 가능-->
-		<a href="<%=contextPath%>/delete.qu">삭제하기</a>
-		<a href="<%=contextPath%>/updateForm.qu">수정하기</a>
+		<a href="<%=contextPath%>/delete.que">삭제하기</a>
+		<a href="<%=contextPath%>/updateForm.que">수정하기</a>
 		
 	</div>
 	<!-- footer.jsp include -->

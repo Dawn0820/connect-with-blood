@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.model.service.CommunityService;
+import board.model.vo.Community;
+import common.PageInfo;
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
 
@@ -32,10 +35,41 @@ public class NoticeListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int listCount; 
+		int currentPage; 
+		int pageLimit;
+		int boardLimit;
+		
+		int maxPage;
+		int startPage; 
+		int endPage; 
+		
+		listCount = new NoticeService().selectListCount();
+	
+		currentPage = Integer.parseInt(request.getParameter("npage"));
+		
+		pageLimit = 10;
+		boardLimit = 10;
+		
+		maxPage = (int)(Math.ceil((double)listCount/boardLimit));
+		
+		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
+		
+		endPage = startPage+pageLimit -1;
+		
+		if(endPage>maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount,currentPage,pageLimit,boardLimit
+				,maxPage,startPage,endPage);
+		
+
 		//공지사항 조회 메소드 
-		ArrayList<Notice> list = new NoticeService().selectNoticeList();
+		ArrayList<Notice> list = new NoticeService().selectNoticeList(pi);
 		
 		//공지사항 리스트 출력 페이지
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/notice/noticeListView.jsp").forward(request, response);
 	}

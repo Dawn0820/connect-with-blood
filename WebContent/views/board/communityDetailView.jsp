@@ -76,7 +76,7 @@
 
 
 	<div align="center">
-		<a href="<%=contextPath%>/list.co" class="btn btn-success">목록가기</a>
+		<a href="<%=contextPath%>/list.co?cpage=1" class="btn btn-success">목록가기</a>
 		<br>
 
 		<!--수정/삭제 : 로그인&작성자만 가능-->

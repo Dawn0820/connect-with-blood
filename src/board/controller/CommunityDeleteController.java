@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.model.service.CommunityService;
+
 /**
  * Servlet implementation class CommunityDeleteController
  */
@@ -28,9 +30,17 @@ public class CommunityDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		request.getRequestDispatcher("views/board/communityListView.jsp").forward(request, response);
-		response.sendRedirect(request.getContextPath()+"/list.co");
-	
+		int commNo = Integer.parseInt(request.getParameter("cno"));
+		
+		int result = new CommunityService().deleteCommunity(commNo);
+
+		if(result>0) {
+			response.sendRedirect(request.getContextPath()+"/list.co?cpage=1");
+		}else {
+			request.setAttribute("errorMsg", "게시글 삭제 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+		
 	
 	}
 

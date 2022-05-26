@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, question.model.vo.Question"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, question.model.vo.*, common.PageInfo"%>
     
 <%
-ArrayList<Question> list = (ArrayList<Question>)request.getAttribute("list");
+	ArrayList<Question> list = (ArrayList<Question>)request.getAttribute("list");
+
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+
 %>    
 
 <!DOCTYPE html>
@@ -24,8 +32,8 @@ ArrayList<Question> list = (ArrayList<Question>)request.getAttribute("list");
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
 
-	<!-- 현재 공지사항 목록 출력 -->
-	<table class="table table-hover">
+	<!-- 현재 QnA 목록 출력 -->
+	<table class="table table-hover" style="width:1200px ;" align="center">
 	  <thead>
 	    <tr>
 	      <th scope="col">질문번호</th>
@@ -47,7 +55,7 @@ ArrayList<Question> list = (ArrayList<Question>)request.getAttribute("list");
 	  	<%for(Question q : list) {%>
 	    <tr>
 	      <th scope="row"><%=q.getQuestionNo() %></th>
-	      <td><%=q.getQuestionTag() %></td>
+	      <td><%=q.getCategoryNo() %></td>
 	      <td><%=q.getQuestionTitle() %></td>
 	      <td><%=q.getQuestionContent() %></td>
 	      <td><%=q.getQuestionDate() %></td>
@@ -59,7 +67,38 @@ ArrayList<Question> list = (ArrayList<Question>)request.getAttribute("list");
 	  </tbody>
 	</table>
 	
+	<script>
+        $(function(){
+          $(".table>tbody>tr").click(function(){
+            location.href = "<%=contextPath%>/detail.que?qno="+$(this).children().eq(0).text();
+          })
+        })
+
+      </script>
+	
 	<br>
+	
+	<!--페이징-->
+       <div class="paging-area" align="center">
+        	<%if(currentPage!=1) {%>
+            <button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=currentPage-1 %>'">&lt;</button>
+			<%} %>
+			
+			<%for(int i=startPage;i<endPage+1;i++) {%>
+			<%if(i!=currentPage){ %>
+			<button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=i %>'"><%=i %></button>
+			<%}else{ %> <!-- 현재 내가 있는 페이지는 클릭이 안되도록 -->
+			<button disabled><%=i %></button> 
+			<%} %>
+			<%} %>
+			
+			<%if(currentPage!=maxPage){ %>          
+        	<button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=currentPage+1 %>'">&gt;</button>
+        	<%} %>
+        
+        
+        </div>
+	
 	
 
 	<!-- footer.jsp include -->

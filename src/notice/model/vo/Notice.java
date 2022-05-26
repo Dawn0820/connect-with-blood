@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Notice {
 	
-	private int NoticeNo;				//	NOTICE_NO	NUMBER
+	private int noticeNo;				//	NOTICE_NO	NUMBER
 	private String noticeTitle;			//	NOTICE_TITLE	VARCHAR2(100 BYTE)
 	private String noticeContent;		//	NOTICE_CONTENT	VARCHAR2(4000 BYTE)
 	private Date noticeDate;			//	NOTICE_DATE	DATE
@@ -19,7 +19,7 @@ public class Notice {
 	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeDate, int noticeCount,
 			String noticeWriter, String noticeStatus) {
 		super();
-		NoticeNo = noticeNo;
+		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
 		this.noticeDate = noticeDate;
@@ -28,10 +28,11 @@ public class Notice {
 		this.noticeStatus = noticeStatus;
 	}
 
+
 	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeDate, int noticeCount,
 			String noticeWriter) {
 		super();
-		NoticeNo = noticeNo;
+		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
 		this.noticeDate = noticeDate;
@@ -39,12 +40,22 @@ public class Notice {
 		this.noticeWriter = noticeWriter;
 	}
 
+	
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeDate, String noticeWriter) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeDate = noticeDate;
+		this.noticeWriter = noticeWriter;
+	}
+
 	public int getNoticeNo() {
-		return NoticeNo;
+		return noticeNo;
 	}
 
 	public void setNoticeNo(int noticeNo) {
-		NoticeNo = noticeNo;
+		this.noticeNo = noticeNo;
 	}
 
 	public String getNoticeTitle() {
@@ -97,7 +108,7 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [NoticeNo=" + NoticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
+		return "Notice [NoticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
 				+ ", noticeDate=" + noticeDate + ", noticeCount=" + noticeCount + ", noticeWriter=" + noticeWriter
 				+ ", noticeStatus=" + noticeStatus + "]";
 	}

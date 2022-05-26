@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.PageInfo;
+import notice.model.service.NoticeService;
 import question.model.service.QuestionService;
 import question.model.vo.Question;
 
@@ -32,10 +34,41 @@ public class QuestionListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int listCount; 
+		int currentPage; 
+		int pageLimit;
+		int boardLimit;
+		
+		int maxPage;
+		int startPage; 
+		int endPage; 
+		
+		listCount = new QuestionService().selectQuestionCount();
+	
+		currentPage = Integer.parseInt(request.getParameter("qpage"));
+		
+		pageLimit = 10;
+		boardLimit = 10;
+		
+		maxPage = (int)(Math.ceil((double)listCount/boardLimit));
+		
+		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
+		
+		endPage = startPage+pageLimit -1;
+		
+		if(endPage>maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount,currentPage,pageLimit,boardLimit
+				,maxPage,startPage,endPage);
+		
+		
 		//질문 조회 메소드
-		ArrayList<Question> list = new QuestionService().selectQuestionList();
+		ArrayList<Question> list = new QuestionService().selectQuestionList(pi);
 		
 		//응답
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/question/questionListView.jsp").forward(request, response);
 		

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -39,13 +40,16 @@ public class CommunityInsertController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-		
+	
 		if(ServletFileUpload.isMultipartContent(request)) {
 
 			int maxSize = 10 * 1024 * 1024;
 
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/comm_upfiles/");
 
+			System.out.println(savePath);
+			
+			
 			MultipartRequest multiRequest = new MultipartRequest(request,savePath,maxSize,"UTF-8",new MyFileRenamePolicy()); 
 
 			
@@ -62,14 +66,13 @@ public class CommunityInsertController extends HttpServlet {
 //			comm.setCommWriter(commWriter);
 			
 			
-			
 			Attachment at = null;
 			
-			if(multiRequest.getOriginalFileName("file1")!=null) {
+			if(multiRequest.getOriginalFileName("upfile")!=null) {
 				
 				at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("file1"));
-				at.setChangeName(multiRequest.getFilesystemName("file1"));
+				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+				at.setChangeName(multiRequest.getFilesystemName("upfile"));
 			
 				at.setFilePath("resources/comm_upfiles/");
 

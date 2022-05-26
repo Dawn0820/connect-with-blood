@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice,common.PageInfo"%>
     
 <% 
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+
 %>
     
     
@@ -26,7 +33,7 @@
     <%@ include file="../common/header.jsp" %>
 
 	<!-- 현재 공지사항 목록 출력 -->
-	<table class="table table-hover" style="width:1200px ; "align="center">
+	<table class="table table-hover" style="width:1200px ;" align="center">
 	  <thead>
 	    <tr>
 	      <th scope="col">글번호</th>
@@ -52,7 +59,7 @@
 	      <td><%=n.getNoticeTitle() %></td>
 	      <td><%=n.getNoticeContent() %></td>
 	      <td><%=n.getNoticeDate() %></td>
-	      <td><%=n.getNoticeStatus() %></td>
+	      <td><%=n.getNoticeCount() %></td>
 	    </tr>
 	    <%} %>
 	  <%} %>
@@ -60,7 +67,39 @@
 	  </tbody>
 	</table>
 	
+	
+      <script>
+        $(function(){
+          $(".table>tbody>tr").click(function(){
+            location.href = "<%=contextPath%>/detail.no?nno="+$(this).children().eq(0).text();
+          })
+        })
+
+      </script>
+	
 	<br>
+	
+	 <!--페이징-->
+       <div class="paging-area" align="center">
+        	<%if(currentPage!=1) {%>
+            <button onclick="location.href='<%=contextPath %>/list.no?npage=<%=currentPage-1 %>'">&lt;</button>
+			<%} %>
+			
+			<%for(int i=startPage;i<endPage+1;i++) {%>
+			<%if(i!=currentPage){ %>
+			<button onclick="location.href='<%=contextPath %>/list.no?npage=<%=i %>'"><%=i %></button>
+			<%}else{ %> <!-- 현재 내가 있는 페이지는 클릭이 안되도록 -->
+			<button disabled><%=i %></button> 
+			<%} %>
+			<%} %>
+			
+			<%if(currentPage!=maxPage){ %>          
+        	<button onclick="location.href='<%=contextPath %>/list.no?npage=<%=currentPage+1 %>'">&gt;</button>
+        	<%} %>
+        
+        
+        </div>
+	
 	
 
 	<!-- footer.jsp include -->
