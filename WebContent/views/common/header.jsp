@@ -39,6 +39,9 @@
 	          <li class="nav-item">
 	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/list.co?cpage=1">게시판(나영)</a>
 	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/dashboard.ad">관리자페이지(새벽)</a>
+	          </li>
 	        </ul>
 	        <form class="d-flex">
 	          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

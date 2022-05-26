@@ -52,7 +52,7 @@
 	      <td><%=n.getNoticeTitle() %></td>
 	      <td><%=n.getNoticeContent() %></td>
 	      <td><%=n.getNoticeDate() %></td>
-	      <td><%=n.getNoticeStatus() %></td>
+	      <td><%=n.getNoticeCount() %></td>
 	    </tr>
 	    <%} %>
 	  <%} %>

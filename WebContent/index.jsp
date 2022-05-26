@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	 
 	<h1>세미 테스트 index 페이지 입니다</H1>
 	
 	<a href="views/main.jsp">메인페이지 테스트</a>

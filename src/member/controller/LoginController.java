@@ -41,7 +41,7 @@ public class LoginController extends HttpServlet {
 		Member loginMember = new MemberService().loginMember(userId,userPw);
 		
 		
-<<<<<<< HEAD
+
 		if(loginUser==null) {
 			request.setAttribute("errorMsg", "ë¡œê·¸ì¸ ì‹¤íŒ¨.");
 		}else {
@@ -49,11 +49,11 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);
 
 			request.getRequestDispatcher("views/main.jsp").forward(request, response);
-=======
+
 		
 		if(loginMember==null) { 
-			request.setAttribute("errorMsg", "·Î±×ÀÎ¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
->>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
+			request.setAttribute("errorMsg", "ï¿½Î±ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			

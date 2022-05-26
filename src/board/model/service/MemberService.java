@@ -1,4 +1,4 @@
-package board.model.Service;
+package board.model.service;
 import static common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
