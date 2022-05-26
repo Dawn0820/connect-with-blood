@@ -4,10 +4,7 @@
     
    <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
-
-	String alertMsg = (String)session.getAttribute("alertMsg"); 
-	
-%>
+	%>
 
 
 
