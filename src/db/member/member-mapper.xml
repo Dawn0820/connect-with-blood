@@ -31,7 +31,7 @@
                     	?,
                     	?,
                     	?)
-	</entry>
+	</entry> <!-- 디폴트 들어가있는건 빼~ -->
 	
 	<entry key="loginMember">
 		SELECT * 
@@ -76,7 +76,7 @@
 	
 	
 	<entry key="deleteMember">
-		UPDATE MEMBER SET STATUS='N', MODIFY_DATE=SYSDATE WHERE USER_ID=? AND USER_PWD=?
+		UPDATE MEMBER SET STATUS='WITHDRAWAL', MODIFY_DATE=SYSDATE WHERE USER_ID=? AND USER_PWD=?
 	</entry>
 	
 	

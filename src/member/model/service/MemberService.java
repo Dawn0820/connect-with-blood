@@ -96,8 +96,31 @@ public class MemberService {
 
 
 
+
+
+	//회원 탈퇴
+	public int deleteMember(String userId, String userPwd) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, userId, userPwd);
+		//탈퇴한 회원 처리이기떄문에 로그아웃까지 진행 (회원정보 걍산 필요없음)
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+			
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+
+
 	
-	//마이페이지
 
 
 

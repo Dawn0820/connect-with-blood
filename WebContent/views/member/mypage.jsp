@@ -7,6 +7,7 @@
 <title>마이페이지</title>
 
 
+
 <%
  String userId = request.getParameter("userId");
  String userName = request.getParameter("userName");
@@ -15,12 +16,7 @@
  String userEmail = request.getParameter("userEmail");
  String userPhone = request.getParameter("userPhone");
  String userBloodtype = request.getParameter("userBloodtype");
-
- int bloodCount = Integer.parseInt(request.getParameter("bloodCount"));
- int bloodWh = Integer.parseInt(request.getParameter("bloodWh"));
- int bloodIn = Integer.parseInt(request.getParameter("bloodIn"));
  %>
-
  
  
 
@@ -94,6 +90,10 @@
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
     
+    
+    
+ 
+ 
 	<br><br><br>
     <div >
 		
@@ -103,7 +103,7 @@
 			
 		<form method="post" action="<%=contextPath%>/mypage.mem">
 			<fieldset class="inner">
-			<div class="container">
+			<!-- <div class="container"> -->
 				<h4>개인정보 관리</h4>
 				<p>정보 변경을 원하시면 변경할 정보를 입력한 후 하단의 개인정보 수정 버튼을 누르세요</p>
 				
@@ -113,35 +113,36 @@
 
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" value="<%=userId%>" readonly></td>
+				<td><input type="text" name="userId" value="<%=userId%>" readonly></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" value="<%=userName%>"></td>
+				<td><input type="text" name="userName" value="<%=userName%>" readonly></td>
 			</tr>
 			<tr>
 				<td>주민등록번호</td>
-				<td><input type="text" value="<%=userBirth%>"></td>
+				<td><input type="text" name="userBirth" value="<%=userBirth%>" readonly></td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" value="<%=userAddress%>"></td>
+				<td><input type="text" name="userAddress" value="<%=userAddress%>" readonly></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="text" value="<%=userEmail%>"></td>
+				<td><input type="email" name="userEmail" value="<%=userEmail%>" readonly></td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td><input type="text" value="<%=userPhone%>"></td>
+				<td><input type="text" name="userPhone" value="<%=userPhone%>" readonly></td>
 			</tr>
 			<tr>
 				<td>혈액형</td>
-				<td><input type="text" value="<%=userBloodtype%>"></td>
+				<td><input type="text" name="userBloodtype" value="<%=userBloodtype%>" readonly></td>
 			</tr>
 		</table>
 
 	</div>
+	
 
 		<br>
 
@@ -192,55 +193,39 @@
 
 
 
-
 	<br><br>
-    <div >
-		<form method="post" action="<%=contextPath%>/mody.mem">
-		<fieldset class="inner">
 
 
-			<div class="container">
-				<h4>헌혈증 관리</h4>
-				<p>홈페이지에서 등록한 헌혈증 조회</p>
-				<br>
-				<div class="table-responsive">
-				<table class="table table-bordered">
-			<tr>
-				<td>헌혈증 개수</td>
-				<td><input type="text" value="<%=bloodCount%>"></td>
-			</tr>
-			<tr>
-				<td>전혈헌혈증 개수</td>
-				<td><input type="text" value="<%=bloodWh%>"></td>
-			</tr>
-			<tr>
-				<td>성분헌혈증 개수</td>
-				<td><input type="text" value="<%=bloodIn%>"></td>
-			</tr>
-		</table>
 
-	</div>
+
+
+ 
+
+
+
+
+
 
 		<br>
 		<a type="button" href="<%=contextPath%>" class="goMain btn btn-secondary" id="goMain">메인으로 돌아가기</a>
 
 		<a href="<%=contextPath%>/logout.mem" type="button" class="btn btn-light" id="outBtn">로그아웃</a>
 	
-	</fieldset>
+	<!-- </fieldset> -->
 
 
 	<br><br>
 	<a type="button" id="delMemBtn" class="btn btn-dark" href="<%=contextPath%>/delete.mem">회원탈퇴</a>
 
 
-</form>
-	</div>
+<!-- </form>
+	</div> -->
 
 
 	
    
 
-</fieldset>
+<!-- </fieldset> -->
 
     
     
