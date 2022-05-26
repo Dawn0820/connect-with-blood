@@ -40,11 +40,13 @@ public class LoginController extends HttpServlet {
 		
 		Member loginMember = new MemberService().loginMember(userId,userPw);
 		
+
 //		System.out.println(loginMember);
+
 		
-		if(loginMember==null) { 
-			request.setAttribute("errorMsg", "·Î±×ÀÎ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
-			
+		if(loginUser==null) {
+			request.setAttribute("errorMsg", "ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
+
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			
 			view.forward(request, response);

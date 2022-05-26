@@ -3,7 +3,7 @@ package member.model.vo;
 import java.sql.Date;
 
 public class Member {
-
+  
 				//Member Å×ÀÌºí
 				private int userNo;							//	USER_NO	NUMBER
 				private String userId;						//	USER_ID	VARCHAR2(20 BYTE)
@@ -687,7 +687,7 @@ public class Member {
 
 
 				
-				  
+				
 
 
 

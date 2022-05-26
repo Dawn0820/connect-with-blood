@@ -1,82 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="board.model.vo.*,java.util.ArrayList"%>
 <%
-	String contextPath = request.getContextPath();
+	ArrayList<Category> list = (ArrayList<Category>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Bootstrap core CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <style>
+    body{
+		margin-top: 20px;
+	}
     .outer{
-        background-color: cornsilk;
-	    color: rgb(12, 5, 100);
-	    width: 1000px;
-	    margin: auto;
-	    margin-top: 50px;
-        height: 600px;
+        /*  border: 1px solid blue; */
+        width:1000px;
+        height: 800px;
+        margin: auto;
     }
-    #enroll-form>table{
-        border:1px solid darkblue;
+
+    .mb-3{
+        width: 800px;
     }
-    #enroll-form input,#enroll-form textarea{
-        width: 100%;
-        box-sizing: border-box;
+    #form22{
+        border: 1px solid red;
     }
+
 </style>
 </head>
 <body>
-    <div class="outer">
+   
+  	 <!-- header.jsp include -->
+	 <%@ include file="../common/header.jsp" %>
+	
+     
+        <form action="<%=contextPath %>/insert.co" method="post" id="form22" enctype="multipart/form-data" >
+        
+        <div class="outer position-relative" >
         <br>
-        <h2 align="center">일반 게시글 작성</h2>
+        <h2 align="center">게시판 글 작성</h2>
+        <br>
 
-        <form action="<%=contextPath%>/insert.co" method="post" id="enroll-form" enctype="multipart/form-data" >
-            <!--enctype에서 multi~ 타입으로 지정해야 파일전송까지 할 수 있다!!(첨부파일..)-->
+<%-- 			<input type="hidden" name="userNo" value="<%=//로그인한 회원번호 세션에서 가져온다%>"> --%>
+			
 
-<%--             <input type="hidden" name="userNo" value="<%=loginUser.getUserNo()%>"> --%>
+            <div class="position-absolute top-50 start-50 translate-middle">
 
-            <table align="center">
-                <tr>
-                    <th>카테고리</th>
-                    <td>
-                        <select name="category">
-                            <!-- 동적인 방법 : 카테고리 테이블 수정하면 별도의 수정 없이 자동 반영이 된다 -->
-<%--                             <%for(Category c : list){ %> --%>
-<%--                             	<option value="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></option> --%>
-<%--                             <%} %> --%>
-                            
-                            
+                <!--카테고리-->
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category">
+ 					 <%for(Category c : list){ %>
+                            	<option value="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></option>
+                        <%} %>
+                </select>
+                <br>
 
-                            
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>제목</th>
-                    <td><input type="text" name="title" required></td>
-                </tr>
-                <tr>
-                    <th>내용</th>
-                    <td><textarea name="content" cols="30" rows="10" required></textarea></td>
-                </tr>
-                <tr>
-                    <th>첨부파일</th>
-                    <td><input type="file" name="upfile"></td>
-                </tr>
+                <!--제목-->
+                <div class="input-group mb-3">
+                    <input type="text"  name="title" class="form-control" id="title" aria-label="Text input with dropdown button" placeholder="제목">
+                </div>
 
-            </table>
+                <!--내용-->
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label" id="content" >내용</label>
+                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="10" style="resize:none" placeholder="내용"></textarea>
+                </div>
 
-            <br>
-            <div align="center">
-                <button type="submit">작성하기</button>
-                <button type="reset">취소</button>
+                <!--첨부파일-->
+                <input type="file" id="upfile" name="upfile">
+                <br><br>
+                
+                
+                <div align="center">
+                    <button type="submit"  class="btn btn-outline-secondary">등록하기</button>
+                    <button type="reset"  class="btn btn-outline-secondary">취소</button>
+                </div> 
+            
+        
             </div>
+        </div>
+</form>
+
+        
+	
+	
+   
+   
+   
+   
+   	<!-- footer.jsp include -->
+	<%@ include file="../common/footer.jsp" %>
 
 
-        </form>
-
-
-    </div>
+	<!-- Bootstrap.bundle.min.js -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   
 </body>
 </html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectQnaCount">
+		SELECT COUNT(*) COUNT
+		FROM QUESTION
+		WHERE QUESTION_STATUS='Y'
+	</entry>
+
+
+	<entry key="selectQnaList">
+		SELECT * 
+    	FROM (
+        		SELECT ROWNUM RNUM,A.*
+        FROM 
+      	     (
+			      SELECT QUESTION_NO
+	      		  ,CATEGORY_NAME
+	     		  ,QUESTION_TITLE
+	 		      ,QUESTION_CONTENT
+	    		  ,QUESTION_DATE
+	     		  ,USER_NAME
+			FROM QUESTION Q
+			JOIN MEMBER ON (QUESTION_WRITER=USER_NO)
+			JOIN CATEGORY USING(CATEGORY_NO)
+			WHERE QUESTION_STATUS = 'Y'
+			ORDER BY QUESTION_NO DESC
+		
+            )   A
+            )
+			   WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+<!-- 	<entry key="increaseCount"> -->
+<!-- 		UPDATE QUESTION -->
+<!-- 		SET QUESTION_COUNT = QUESTION_COUNT+1 -->
+<!-- 		WHERE QUESTION_NO = ? -->
+<!-- 		AND QUESTION_STATUS='Y' -->
+<!-- 	</entry> -->
+	
+	<entry key="selectQue">
+		SELECT QUESTION_NO,QUESTION_TITLE,QUESTION_CONTENT,QUESTION_DATE,USER_NAME,CATEGORY_NAME
+		FROM QUESTION Q
+		JOIN MEMBER ON (QUESTION_WRITER=USER_NO)
+		JOIN CATEGORY USING (CATEGORY_NO)
+		WHERE QUESTION_NO = ?
+		AND QUESTION_STATUS = 'Y'
+	</entry>
+	
+</properties>
