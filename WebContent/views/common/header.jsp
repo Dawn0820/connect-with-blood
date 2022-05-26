@@ -15,6 +15,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style>
+	/*메뉴바 드롭다운*/
+
 	/*메뉴바 밑줄*/
 		.collapse li {
 			display: inline-block;
