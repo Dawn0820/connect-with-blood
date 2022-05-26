@@ -13,7 +13,7 @@ import member.model.service.MemberService;
 /**
  * Servlet implementation class AjaxIdCheckController
  */
-@WebServlet("/AjaxIdCheckController")
+@WebServlet("/idCheck.mem")
 public class AjaxIdCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,6 +30,8 @@ public class AjaxIdCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		String idCheck = request.getParameter("idCheck");
 		
 		int count = new MemberService().idCheck(idCheck);

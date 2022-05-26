@@ -1,8 +1,6 @@
 package member.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import member.model.service.MemberService;
-import member.model.vo.Member;
-
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class myPage
  */
-@WebServlet("/login.mem")
-public class LoginController extends HttpServlet {
+@WebServlet("/mypage.mem")
+public class mypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public mypageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,36 +27,21 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		
-		String userId = request.getParameter("userId"); 
-		String userPw = request.getParameter("userPw");
-		
-		Member loginMember = new MemberService().loginMember(userId,userPw);
-		
 
-//		System.out.println(loginMember);
-
+		HttpSession session = request.getSession();
 		
-		if(loginUser==null) {
-			request.setAttribute("errorMsg", "Î°úÍ∑∏Ïù∏Ïóê Ïã§Ìå®ÌïòÏòÄÏäµÎãàÎã§.");
-
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+		if(session.getAttribute("loginMember")==null){
 			
-			view.forward(request, response);
-		
-		}else { 
-			HttpSession session = request.getSession();
-			session.setAttribute("loginMember", loginMember);
+			session.setAttribute("alertMsg", "∑Œ±◊¿Œ »ƒ ¿ÃøÎ«ÿ¡÷ººø‰.");
 			response.sendRedirect(request.getContextPath());
-			
-//			System.out.println(userId);
-	}
+		}else {
+			request.getRequestDispatcher("views/member/mypage.jsp").forward(request, response);
+		}
 		
 		
+		
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

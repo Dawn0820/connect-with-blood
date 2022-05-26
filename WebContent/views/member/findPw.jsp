@@ -87,14 +87,17 @@ fieldset, img {
     background-color: transparent;
 }
 .btn_find {
-    margin: 20px 0 0;
     width: 100%;
     height: 48px;
     border-radius: 3px;
-    font-size: 16px;
+    font-size: 15px;
     color: #fff;
     background-color: brown;
     border-radius: 50px;
+    padding: 8px;
+    padding-left: 70px;
+    padding-right: 70px;
+    border: none;
 }
 .btn_find:hover{background-color: rgb(222, 102, 102);}
 
@@ -123,38 +126,38 @@ fieldset, img {
 <div class="inner_findPw">
     <div class="findPw">
         
-        <form method="post" id="authForm">
+        <form method="post" id="authForm" action="<%=contextPath %>/findPw.mem">
             <input type="hidden" name="redirectUrl">
             <fieldset>
                 <legend align="center"><b>비밀번호 찾기</b> <br></legend>
 
                 <div class="box">
                     <div class="inp_text">
-                        <input type="email" id="findPw_input" name="findPw_input" placeholder="아이디를 입력해주세요" >
+                        <input type="text" id="findPw_input" name="userId" placeholder="아이디를 입력해주세요" >
                     </div>
                 </div>
 
                 <div class="box">
                     <div class="inp_text">
-                        <input type="email" id="findPw_input" name="findPw_input" placeholder="이름을 입력해주세요" >
+                        <input type="text" id="findPw_input" name="userName" placeholder="이름을 입력해주세요" >
                     </div>
                 </div>
 
                 <div class="box">
                     <div class="inp_text">
-                        <input type="email" id="findPw_input" name="findPw_input" placeholder="이메일을 입력해주세요" >
+                        <input type="email" id="findPw_input" name="userEmail" placeholder="이메일을 입력해주세요" >
                     </div>
-                    <div id="domainsBox" >
+                    <!-- <div id="domainsBox" >
                         <select id="domains" >
                             <option value="@naver.com">@naver.com
                             <option value="@daum.net">@daum.net
                             <option value="@gmail.com">@gmail.com
                             <option value="@yahoo.co.kr">@yahoo.co.kr
                         </select>
-                    </div>
+                    </div> -->
                 </div>
-                
-                <button type="submit" class="btn_find"  disabled>비밀번호 찾기</button>
+                <br>
+                <button type="submit" class="btn_find" >비밀번호 찾기</button>
                
 
             </div>

@@ -3,6 +3,7 @@
     
 <%
 	String contextPath = request.getContextPath();
+	String alertMsg = (String)session.getAttribute("alertMsg");
 %>    
     
 <!DOCTYPE html>
@@ -11,8 +12,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 
 </head>

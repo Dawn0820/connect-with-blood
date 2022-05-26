@@ -13,6 +13,19 @@ import member.model.vo.Member;
 //규민파트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 
+
+	public Member loginMember(String userId, String userPw) {
+
+    		Connection conn =  getConnection();
+		
+		Member m = new MemberDao().loginMember(conn,userId,userPw);
+		
+		close(conn);
+		
+		return m;
+	
+	}
+
 //회원정보
 	public class MemberService { 
 
@@ -20,6 +33,7 @@ import member.model.vo.Member;
 		Connection conn = getConnection();
 		
 		ArrayList<Member> list = new MemberDao().selectList(conn);
+
 		
 		close(conn);
 		
@@ -98,7 +112,7 @@ import member.model.vo.Member;
 		
 
 	
-	//ȸ������
+
 	public int enrollMember(Member m) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -116,6 +130,85 @@ import member.model.vo.Member;
 	}
 
 
+
+
+	public String findId(String userName,String userEmail) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		String userId = new MemberDao().findId(conn,userName,userEmail);
+		
+		close(conn);
+		
+		return userId;
+		
+	}
+
+
+
+
+
+
+	public String findPw(String userId, String userName, String userEmail) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		String userPw = new MemberDao().findPw(conn,userId,userName,userEmail);
+		
+		close(conn);
+		
+		return userPw;
+	}
+
+
+
+
+
+
+	public int idCheck(String idCheck) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int count = new MemberDao().idCheck(conn,idCheck);
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+
+
+
+
+
+	public int deleteMember(String userId, String userPwd) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, userId, userPwd);
+
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+			
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+
+
+	
+
+
+
+
+
+	
 
 	
 }

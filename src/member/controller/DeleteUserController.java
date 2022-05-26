@@ -1,8 +1,6 @@
 package member.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +12,16 @@ import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class DeleteUserController
  */
-@WebServlet("/login.mem")
-public class LoginController extends HttpServlet {
+@WebServlet("/delete.mem")
+public class DeleteUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public DeleteUserController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,33 +30,31 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		
-		String userId = request.getParameter("userId"); 
-		String userPw = request.getParameter("userPw");
-		
-		Member loginMember = new MemberService().loginMember(userId,userPw);
-		
 
-//		System.out.println(loginMember);
+request.setCharacterEncoding("UTF-8");
+		
+		String userPwd = request.getParameter("userPwd");
 
 		
-		if(loginUser==null) {
-			request.setAttribute("errorMsg", "ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
-
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+		//¹æ¹ý 2) session¿¡ ´ã°ÜÀÖ´Â loginUser(·Î±×ÀÎ È¸¿øÁ¤º¸) °´Ã¼¿¡ ÀÖ´Â ¾ÆÀÌµð ²¨³»¿À±â
+		HttpSession session = request.getSession();
+		String userId = ((Member)session.getAttribute("loginMember")).getUserId();
+		
+		int result = new MemberService().deleteMember(userId, userPwd);
+		
+		
+		if(result>0) { 
 			
-			view.forward(request, response);
-		
-		}else { 
-			HttpSession session = request.getSession();
-			session.setAttribute("loginMember", loginMember);
+			session.setAttribute("alertMsg", "Á¤»óÀûÀ¸·Î Å»ÅðµÇ¾ú½À´Ï´Ù.");
+			session.removeAttribute("loginMember");
 			response.sendRedirect(request.getContextPath());
+
+		}else { 
 			
-//			System.out.println(userId);
-	}
-		
+			request.setAttribute("errorMsg", "È¸¿ø Å»Åð¸¦ ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
+		}
 		
 	}
 
