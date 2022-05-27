@@ -43,13 +43,13 @@
 			<th colspan="4"><%=comm.getCommTitle() %></th>
 		</tr>
 		<tr>
-			<td width="15%">작성자</td>
-			<td width="35%"><%=comm.getCommWriter() %></td>
-			<td width="15%">조회수</td>
-			<td width="35%">???</td>
+			<td width="30%">작성자</td>
+			<td colspan="3" width="70%"><%=comm.getCommWriter() %></td>
+
 		</tr>
 		<tr>
-			<td colspan="2"><%=comm.getCategoryNo() %></td>
+			<th>카테고리</th>
+			<td><%=comm.getCategoryNo() %></td>
 			<th colspan="2"><%=comm.getCommDate() %></th>
 		</tr>
 		<tr>

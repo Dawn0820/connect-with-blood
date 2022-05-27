@@ -6,10 +6,10 @@ import org.jsoup.select.Elements;
 
 public class BloodMapJsoup {
 
-	public String[] seoul() {
+	public String seoul() {
 		
 		String URL = "https://www.bloodinfo.net/bloodstats_statistics.do";
-		String bloodCellDay = null;
+		String seoul = null;
 		Document doc = null;
 		Elements tmp;
 
@@ -22,13 +22,17 @@ public class BloodMapJsoup {
 		} 
 		
 		
-		Elements elem = doc.select(".1");
+		Elements elem = doc.select("#area_blood_stock_numbers > div > table > tbody > tr:nth-child(1) > td:nth-child(6)");
+//		#area_blood_stock_numbers > div > table > tbody > tr:nth-child(1)
+		//System.out.println(elem);
 		
-		bloodCellDay = elem.text();
+		seoul = elem.text();
+	
 		
-		String[] bloodCellDays = bloodCellDay.split(" ");
+		System.out.println(seoul);
 		
-		return bloodCellDays;
+		
+		return seoul;
 	}
 	
 	

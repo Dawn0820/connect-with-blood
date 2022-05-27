@@ -34,18 +34,14 @@
 	
 
 
-	<table class="table table-bordered" style="width:500px;" align="center">
+	<table class="table table-bordered" style="width:700px;" align="center">
 		<tr>
 			<th colspan="4"><%=n.getNoticeTitle() %></th>
 		</tr>
 		<tr>
-			<td width="15%">작성자</td>
-			<td width="35%"><%=n.getNoticeWriter() %></td>
-			<td width="15%">조회수</td>
-			<td width="35%">???</td>
-		</tr>
-		<tr>
-			<th colspan="4"><%=n.getNoticeDate() %></th>
+			<td width="20%">작성자</td>
+			<td width="30%"><%=n.getNoticeWriter() %></td>
+			<td colspan="2" align="center"><%=n.getNoticeDate() %></td>
 		</tr>
 		<tr>
 			<td colspan="4">

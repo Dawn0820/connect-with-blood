@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+
+<properties>
+
+	<entry key="selectListCount">
+	SELECT COUNT(*) COUNT
+	FROM EVENT
+	WHERE EVENT_STATUS='Y'
+	</entry>
+
+
+	<entry key="SelectEventList">
+	SELECT * 
+    FROM (
+        SELECT ROWNUM RNUM,A.*
+        FROM 
+        (
+            SELECT EVENT_NO,EVENT_TITLE,EVENT_COUNT,FILE_PATH||CHANGE_NAME "TITLEIMG"
+			FROM EVENT E
+			JOIN ATTACHMENT ON(EVENT_NO = REF_ENO)
+			WHERE E.EVENT_STATUS = 'Y'
+			ORDER BY EVENT_NO
+            ) A
+        )
+	WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="increaseCount">
+	UPDATE EVENT
+	SET EVENT_COUNT = EVENT_COUNT+1
+	WHERE EVENT_NO = ?
+	AND EVENT_STATUS = 'Y'
+	
+	
+	</entry>
+	
+	<entry key="selectEvent">
+	SELECT EVENT_NO,EVENT_TITLE,EVENT_CONTENT,EVENT_DATE,EVENT_PROGRESS
+	FROM EVENT
+	WHERE EVENT_NO = ?
+	AND EVENT_STATUS = 'Y'
+	
+	</entry>
+
+</properties>

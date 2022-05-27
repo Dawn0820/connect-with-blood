@@ -39,6 +39,9 @@
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
     
+    <a href="<%=contextPath%>/list.queu?qpage=1">질문 테스트</a>
+    
+    
     <div class="outer">
     
    

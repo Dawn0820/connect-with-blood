@@ -24,8 +24,8 @@ ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
 
-	<!-- 현재 공지사항 목록 출력 -->
-	<table class="table table-hover">
+	<!-- 현재 FAQ 목록 출력 -->
+	<table class="table table-hover" style="width:1200px ;" align="center" >
 	  <thead>
 	    <tr>
 	      <th scope="col">FAQ번호</th>
