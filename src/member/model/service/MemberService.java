@@ -1,6 +1,7 @@
 package member.model.service;
 import static common.JDBCTemplate.close;
 import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -10,21 +11,7 @@ import javax.servlet.RequestDispatcher;
 import common.JDBCTemplate;
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
-//규민파트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-
-
-	public Member loginMember(String userId, String userPw) {
-
-    		Connection conn =  getConnection();
-		
-		Member m = new MemberDao().loginMember(conn,userId,userPw);
-		
-		close(conn);
-		
-		return m;
-	
-	}
 
 //회원정보
 	public class MemberService { 
@@ -39,6 +26,18 @@ import member.model.vo.Member;
 		
 		return list;
 	}
+	
+	public Member loginMember(String userId, String userPw) {
+
+		Connection conn =  getConnection();
+	
+	Member m = new MemberDao().loginMember(conn,userId,userPw);
+	
+	close(conn);
+	
+	return m;
+
+}
 	
 	// 금일 신규 현황
 	public int selectTodayNewMemberCnt() {

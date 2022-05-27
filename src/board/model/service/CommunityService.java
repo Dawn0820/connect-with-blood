@@ -21,11 +21,8 @@ public class CommunityService {
 		
 		close(conn);
 		
-<<<<<<< HEAD
-		return listCount;
-=======
+
 		return listCount;   
->>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
 		
 	}
 

@@ -60,34 +60,34 @@
 	    </div>
 	    <div class="carousel-inner">
 	      <div class="carousel-item active">
-	        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+	        <img src="resources/images/dog1.png" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
 	
 	        <div class="container">
 	          <div class="carousel-caption text-start">
-	            <h1>Example headline.</h1>
-	            <p>Some representative placeholder content for the first slide of the carousel.</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+	            <h1>공지사항</h1>
+	            <p>새로운 공지사항을 확인해보세요</p>
+	            <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
 	          </div>
 	        </div>
 	      </div>
 	      <div class="carousel-item">
-	        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+	        <img src="resources/images/dog2.png" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
 	
 	        <div class="container">
 	          <div class="carousel-caption">
-	            <h1>Another example headline.</h1>
-	            <p>Some representative placeholder content for the second slide of the carousel.</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+	            <h1>이벤트</h1>
+	            <p>현재 진행중인 이벤트를 확인해보세요</p>
+	            <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
 	          </div>
 	        </div>
 	      </div>
 	      <div class="carousel-item">
-	        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+	        <img src="resources/images/dog3.png" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
 	        <div class="container">
 	          <div class="carousel-caption text-end">
-	            <h1>One more for good measure.</h1>
-	            <p>Some representative placeholder content for the third slide of this carousel.</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+	            <h1>FAQ</h1>
+	            <p>자주하는 질문을 확인해보세요</p>
+	            <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
 	          </div>
 	        </div>
 	      </div>
@@ -112,25 +112,24 @@
 	    <!-- Three columns of text below the carousel -->
 	    <div class="row">
 	      <div class="col-lg-4">
-	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-	
-	        <h2>Heading</h2>
-	        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-	        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+	        <img src="resources/images/bloodEnroll.png" alt=""  width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title></title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+	        <h2>헌혈증 등록</h2>
+	        <p>헌혈에 감사드립니다</p>
+	        <p><a class="btn btn-secondary" href="#">등록하기 &raquo;</a></p>
+	      </div><!-- /.col-lg-4 -->
+
+	      <div class="col-lg-4">
+	        <img src="resources/images/blood.png" alt="" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+	        <h2>헌혈예약</h2>
+	        <p>헌혈을 예약해보세요</p>
+	        <p><a class="btn btn-secondary" href="#">예약하기 &raquo;</a></p>
+
 	      </div><!-- /.col-lg-4 -->
 	      <div class="col-lg-4">
-	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-	
-	        <h2>Heading</h2>
-	        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-	        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-	      </div><!-- /.col-lg-4 -->
-	      <div class="col-lg-4">
-	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-	
-	        <h2>Heading</h2>
-	        <p>And lastly this, the third column of representative placeholder content.</p>
-	        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+	        <img src="resources/images/question.png" alt="" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+	        <h2>문의하기</h2>
+	        <p>무엇을 도와드릴까요?</p>
+	        <p><a class="btn btn-secondary" href="#">문의하기 &raquo;</a></p>
 	      </div><!-- /.col-lg-4 -->
 	    </div><!-- /.row -->
 	
@@ -141,11 +140,11 @@
 	
 	    <div class="row featurette">
 	      <div class="col-md-7">
-	        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-	        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+	        <h2 class="featurette-heading">오꼬노미야끼 <span class="text-muted">맛있음</span></h2>
+	        <p class="lead">행당역에 있음</p>
 	      </div>
 	      <div class="col-md-5">
-	        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+	        <img src="resources/images/cat1.png" alt="" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
 	
 	      </div>
 	    </div>
@@ -154,11 +153,11 @@
 	
 	    <div class="row featurette">
 	      <div class="col-md-7 order-md-2">
-	        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-	        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+	        <h2 class="featurette-heading">천새벽<span class="text-muted">임규민</span></h2>
+	        <p class="lead">기세영 심현진 이나영</p>
 	      </div>
 	      <div class="col-md-5 order-md-1">
-	        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+	        <img src="resources/images/cat2.png" alt="" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
 	
 	      </div>
 	    </div>
@@ -167,11 +166,11 @@
 	
 	    <div class="row featurette">
 	      <div class="col-md-7">
-	        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-	        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+	        <h2 class="featurette-heading">라프로익 <span class="text-muted">제임슨</span></h2>
+	        <p class="lead">미도리샤워</p>
 	      </div>
 	      <div class="col-md-5">
-	        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+	        <img src="resources/images/cat3.png" alt="" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
 	
 	      </div>
 	    </div>
