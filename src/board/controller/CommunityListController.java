@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import board.model.service.CommunityService;
 import board.model.vo.Community;
 import common.PageInfo;
-
+ 
 
 /**
  * Servlet implementation class CommunityListController

@@ -284,7 +284,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
 </script>
 <!-- footer.jsp include -->
-	<%@ include file="../common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 	
 	
 <!-- Bootstrap.bundle.min.js -->

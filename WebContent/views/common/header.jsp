@@ -24,29 +24,43 @@
 	<header>
 	  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 	    <div class="container-fluid">
-	      <a class="navbar-brand" href="/ConnectWithBlood/views/main.jsp">ConnectWithBlood</a>
+	      <a class="navbar-brand" href="/ConnectWithBlood/index.jsp">ConnectWithBlood</a>
 	      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
 	      </button>
 	      <div class="collapse navbar-collapse" id="navbarCollapse">
 	        <ul class="navbar-nav me-auto mb-2 mb-md-0">
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="/ConnectWithBlood/views/main.jsp">Home</a>
+	            <a class="nav-link active" aria-current="page" href="">소개</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
+	            <a class="nav-link active" aria-current="page" href="">헌혈의집</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link disabled">Disabled</a>
+	            <a class="nav-link active" aria-current="page" href="">혈액보유량</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/list.co?cpage=1">게시판(나영)</a>
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/list.co?cpage=1">커뮤니티(나영)</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/dashboard.ad">관리자(새벽)</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link active" aria-current="page">멤버페이지(현진)</a>
 	          </li>
 	        </ul>
+	        
+	        
+	        <!-- 검색버튼 나중에 시간나면 구현 -->
 	        <form class="d-flex">
 	          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 	          <button class="btn btn-outline-success" type="submit">Search</button>
 	        </form>
+	        <!-- 로그인 -->
+	        <button type="button" class="btn btn-outline-danger">로그인</button>
+	        <!-- 회원가입 -->
+	        <button type="button" class="btn btn-outline-warning">회원가입</button> 
+	        
 	      </div>
 	    </div>
 	  </nav>

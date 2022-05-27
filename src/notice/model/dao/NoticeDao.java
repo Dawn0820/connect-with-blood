@@ -83,6 +83,8 @@ public class NoticeDao {
 			
 			rset = pstmt.executeQuery();
 			
+			
+			
 			while(rset.next()) {
 				list.add(new Notice(rset.getInt("NOTICE_NO")
 								   ,rset.getString("NOTICE_TITLE")
