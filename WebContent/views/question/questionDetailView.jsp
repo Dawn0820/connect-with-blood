@@ -16,11 +16,7 @@
 	body{
 		margin-top: 20px;
 	}
-	table{
-		border: 1px solid red;
-		width: 40px;
-		al
-	}
+
 	table p{
 		border: 1px solid grey;
 	}
@@ -36,7 +32,7 @@
 	
 
 
-	<table class="table table-bordered" style="width:500px ;" align="center">
+	<table class="table table-bordered" style="width:700px ;" align="center">
 		<tr>
 			<th colspan="4"><%=que.getQuestionTitle() %></th>
 		</tr>

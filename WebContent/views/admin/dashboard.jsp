@@ -122,7 +122,7 @@
           
           
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<%=contextPath%>/list.ev?epage=1">
               <i class="bi bi-gift"></i>
               이벤트관리
             </a>

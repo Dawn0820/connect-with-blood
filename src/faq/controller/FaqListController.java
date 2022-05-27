@@ -34,8 +34,9 @@ public class FaqListController extends HttpServlet {
 		
 		ArrayList<Faq> list = new FaqService().selectFaqList();
 		
+		
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/faq/faqListView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/faq/faqListViewUser.jsp").forward(request, response);
 		
 	}
 

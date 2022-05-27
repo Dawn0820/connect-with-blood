@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "event.model.vo.Event,java.util.ArrayList,common.PageInfo"%>
+
+<%
+	ArrayList<Event> list = (ArrayList<Event>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +35,12 @@
     width: 1000px;
 
   }
+  
+  .list-area{
+        width: 800px;
+        margin: auto;
+
+    }
 </style>
 </head>
 <body>
@@ -37,39 +53,33 @@
     
     <br><br>
 	<a href="views/board/notice/noticeListView.jsp">이벤트 테스트</a>
-    
-    <div class="inner">
-      <table align="center" class="table table-hover">
-        <thead>
-            <tr>
-              <th>No</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-              <th>조회수</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>1</td>
-              <td>이벤트 작성</td>
-              <td>admin</td>
-              <td>2022-04-30</td>
-              <td>61</td>
-            </tr>
-        </tbody>
-      </table>
-    </div>
+
+		<div class="list-area">
+        <%if(!list.isEmpty()) {%>
+	        <%for(Event e : list) {%>
+	            <div class="thumbnail" align="center">
+                    <input type="hidden" value="<%=e.getEventNo()%>">
+	                <img src="<%=contextPath %>/<%=e.getTitleImg() %>" alt="" width="200px" height="150px">
+	                <p>
+	                    No. <%=e.getEventNo() %> <%=e.getEventTitle() %><br>
+	                    조회수 : <%=e.getEventCount() %>
+	                    
+	                </p>
+	            </div>
+			<%} %>
+ 		<%}else{ %>
+ 			 등록된 게시글이 없습니다
+ 		<%} %>
+        </div>
 
 
-      <script>
-        $(function(){
-          $(".table>tbody>tr").click(function(){
-            location.href = "<%=contextPath%>/detail.ev"
-          })
+	<script>
+      $(function(){
+            $(".thumbnail").click(function(){
+                location.href = "<%=contextPath%>/detail.ev?eno="+$(this).children().eq(0).val();
+            })
         })
-
-      </script>
+    </script>
 	
 
       <br><br>

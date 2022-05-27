@@ -126,7 +126,24 @@ public class CommunityService {
 			}
 		}
 		
-		return 0;
+		return result1*result2;
+	}
+
+	public int deleteCommunity(int commNo) {
+
+		Connection conn = getConnection();
+		
+		int result = new CommunityDao().deleteCommunity(conn, commNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 	
