@@ -86,6 +86,7 @@ public class EventDao {
 				list.add(new Event(rset.getInt("EVENT_NO")
 									,rset.getString("EVENT_TITLE")
 									,rset.getInt("EVENT_COUNT")
+									,rset.getString("EVENT_PROGRESS")
 									,rset.getString("TITLEIMG")));
 			}
 			

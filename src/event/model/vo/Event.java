@@ -42,6 +42,15 @@ public class Event {
 
 		
 		
+		public Event(int eventNo, String eventTitle, int eventCount, String eventProgress, String titleImg) {
+			super();
+			this.eventNo = eventNo;
+			this.eventTitle = eventTitle;
+			this.eventCount = eventCount;
+			this.eventProgress = eventProgress;
+			this.titleImg = titleImg;
+		}
+
 		public Event(int eventNo, String eventTitle, String eventContent, Date eventDate, String eventProgress) {
 			super();
 			this.eventNo = eventNo;

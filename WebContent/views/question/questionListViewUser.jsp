@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>QnA</title>
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <style>
@@ -30,15 +30,19 @@
 <!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
 
+	<br><br>
+	<h4 align="center">Q&A</h4>
+	<br><br>
+
 	<!-- 현재 QnA 목록 출력 -->
-	<table class="table table-hover" style="width:1200px ;" align="center">
+	<table class="table table-hover" style="width:1000px ;" align="center">
 	  <thead>
-	    <tr>
-	      <th scope="col">질문번호</th>
-	      <th scope="col">질문종류</th>
+	    <tr align="center">
+	      <th scope="col" style="width:10% ;">질문번호</th>
+	      <th scope="col" style="width:18% ;">질문종류</th>
 	      <th scope="col">질문제목</th>
-	      <th scope="col">질문일자</th>
-	      <th scope="col">질문작성자</th>
+	      <th scope="col" style="width:15% ;">질문일자</th>
+	      <th scope="col" style="width:15% ;">질문작성자</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -50,10 +54,10 @@
 	  <%} else { %>
 	  	<!-- 질문 리스트가 존재 -->
 	  	<%for(Question q : list) {%>
-	    <tr>
-	      <th scope="row"><%=q.getQuestionNo() %></th>
+	    <tr align="center">
+	      <td scope="row"><%=q.getQuestionNo() %></td>
 	      <td><%=q.getCategoryNo() %></td>
-	      <td><%=q.getQuestionTitle() %></td>
+	      <td align="left"><%=q.getQuestionTitle() %></td>
 	      <td><%=q.getQuestionDate() %></td>
 	      <td><%=q.getQuestionWriter() %></td>
 	    </tr>
@@ -74,6 +78,10 @@
 	
 	<br>
 	
+	<div align="center"> 
+        <a href="<%=contextPath%>/enrollForm.que" class="btn btn-outline-secondary">글작성</a>
+      </div>  
+	<br>
 	<!--페이징-->
        <div class="paging-area" align="center">
         	<%if(currentPage!=1) {%>

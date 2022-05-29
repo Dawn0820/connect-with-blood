@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import question.model.vo.Attachment;
 import common.PageInfo;
 import question.model.vo.Category;
 import question.model.vo.Question;
@@ -191,6 +192,202 @@ public class QuestionDao {
 		
 		return list;
 		
+	}
+
+	public int insertQue(Connection conn, Question que) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertQue");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, que.getQuestionTitle());
+			pstmt.setString(2, que.getQuestionContent());
+			pstmt.setInt(3, Integer.parseInt(que.getCategoryNo()));
+//			pstmt.setString(4, que.getQuestionWriter());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int insertAttachment(Connection conn, Attachment at) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public Attachment selectAttachment(Connection conn, int queNo) {
+
+		Attachment at = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, queNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				at = new Attachment(rset.getInt("FILE_NO")
+									,rset.getString("ORIGIN_NAME")
+									,rset.getString("CHANGE_NAME")
+									,rset.getString("FILE_PATH"));		
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return at;
+	}
+
+	public int updateQuestion(Connection conn, Question que, Attachment newAttachment) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateQuestion");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, Integer.parseInt(que.getCategoryNo()));
+			pstmt.setString(2, que.getQuestionTitle());
+			pstmt.setString(3, que.getQuestionContent());
+			pstmt.setInt(4, que.getQuestionNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+
+	public int updateAttachment(Connection conn, Attachment newAttachment) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, newAttachment.getOriginName());
+			pstmt.setString(2, newAttachment.getChangeName());
+			pstmt.setString(3, newAttachment.getFilePath());
+			pstmt.setInt(4, newAttachment.getFileNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int insertNewAttachment(Connection conn, Attachment newAttachment) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, newAttachment.getRefQno());
+			pstmt.setString(2, newAttachment.getOriginName());
+			pstmt.setString(3, newAttachment.getChangeName());
+			pstmt.setString(4, newAttachment.getFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteQuesion(Connection conn, int queNo) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteQuestion");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, queNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 

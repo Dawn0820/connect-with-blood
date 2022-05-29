@@ -20,19 +20,21 @@
             width: 800px;
             height: 35px;
             text-align: center;
-            border: 1px solid black;
+            border: 0px solid black;
+            border-width: 1px 0px 1px 0px;
             cursor: pointer;
         }
 
         .a{
-            border: 1px solid rgb(240, 129, 129);
+            border: 0px solid gray;
+            border-width: 1px 0px 1px 0px;
             width: 800px;
             height: auto;
             display: none; 
             margin-top: 5px;
             padding: 10px;
             box-sizing: border-box;
-            background-color: bisque;
+            background-color: rgb(243, 243, 243);
             text-align: center;
             
         }
@@ -46,8 +48,9 @@
     <%@ include file="../common/header.jsp" %>
 
 	<div align="center">
-	<h3 align="left">FAQ</h3>
-
+		<br><br>
+		<h3 align="center">FAQ</h3>
+		<br><br>
 
 	<%if(list.isEmpty()){ %>
 	<table style="width:1000px ;" align="center">
@@ -62,7 +65,7 @@
 
 		<div class="q">Q. <%=f.getFaqTitle() %></div>
         <p class="a">A. <%=f.getFaqContent() %></p>
-	
+		<br>
 		<%} %>
 	<%} %>
 	</div>
@@ -72,15 +75,23 @@
 	<script>
         $(function(){
             $(".q").click(function(){
+            	
                 
                 var $answer = $(this).next(); 
                 
                 if($answer.css("display")=="none"){
                     $(this).siblings(".a").slideUp();
                     
+                    $(".q").css("font-weight", "normal");
+
+                    $(this).css("font-weight", "bold");
+                    
                     $answer.slideDown();
                 }else{
                     $answer.slideUp();
+
+                    $(".q").css("font-weight", "normal");
+
                 }
             
             });

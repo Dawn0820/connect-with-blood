@@ -3,6 +3,8 @@
 
 <%
 	Question que = (Question)request.getAttribute("que");
+	Attachment at = (Attachment)request.getAttribute("at");
+
 %>
 
 <!DOCTYPE html>
@@ -28,8 +30,10 @@
     <%@ include file="../common/header.jsp" %>
 
 	
-	<h1>QnA 상세보기 테스트</h1>
-	
+	<br><br>
+	<h4 align="center">Q&A</h4>
+	<br><br>
+
 
 
 	<table class="table table-bordered" style="width:700px ;" align="center">
@@ -50,7 +54,16 @@
 				<p style="height:200px;"><%=que.getQuestionContent() %></p>
 			</td>
 		</tr>
-
+		<tr>
+			<td>첨부파일</td>
+			<td colspan="3">
+                	<%if(at==null) {%>
+                		첨부파일이 없습니다.
+                	<%}else{ %>
+                		<a download="<%=at.getOriginName() %>" href="<%=contextPath%>/<%=at.getFilePath()+at.getChangeName()%>"><%=at.getOriginName() %></a>
+                	<%} %>
+            	</td>
+		</tr>
 
 	</table>
 
@@ -59,12 +72,12 @@
 
 
 	<div align="center">
-		<a href="<%=contextPath%>/list.que?qpage=1" class="btn btn-success">목록가기</a>
+		<a href="<%=contextPath%>/list.queu?qpage=1" class="btn btn-outline-secondary">목록가기</a>
 
 
 		<!--수정/삭제 : 로그인&작성자만 가능-->
-		<a href="<%=contextPath%>/delete.que">삭제하기</a>
-		<a href="<%=contextPath%>/updateForm.que">수정하기</a>
+		<a href="<%=contextPath%>/delete.que?qno=<%=que.getQuestionNo()%>" class="btn btn-outline-secondary">삭제하기</a>
+		<a href="<%=contextPath%>/updateForm.que?qno=<%=que.getQuestionNo()%>" class="btn btn-outline-secondary">수정하기</a>
 		
 	</div>
 	<!-- footer.jsp include -->

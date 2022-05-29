@@ -37,10 +37,13 @@ public class CommunityUpdateFormController extends HttpServlet {
 
 		int commNo = Integer.parseInt(request.getParameter("cno"));
 		
+		//게시판 카테고리
 		ArrayList<Category> clist = new CommunityService().selectCategoryList();
 	
+		//게시판작성내용
 		Community comm = new CommunityService().selectComm(commNo);
 		
+		//게시판 사진
 		Attachment at = new CommunityService().selectAttachment(commNo);
 		
 		request.setAttribute("clist", clist);

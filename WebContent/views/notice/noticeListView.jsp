@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항</title>
 
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -32,16 +32,20 @@
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
 
+		<br><br>
+    	<h4 align="center">NOTICE</h4>
+   		<br><br>
+
 	<!-- 현재 공지사항 목록 출력 -->
-	<table class="table table-hover" style="width:1200px ;" align="center">
+	<table class="table table-hover" style="width:1000px ;" align="center">
 	  <thead>
-	    <tr>
-	      <th scope="col">글번호</th>
-	      <th scope="col">작성자</th>
+	    <tr align="center">
+	      <th scope="col" style="width:10% ;">글번호</th>
 	      <th scope="col">제목</th>
-	      <th scope="col">내용</th>
-	      <th scope="col">작성일</th>
-	      <th scope="col">조회수</th>
+	      <th scope="col" style="width:15% ;">작성자</th>
+<!-- 	      <th scope="col">내용</th> -->
+	      <th scope="col" style="width:15% ;">작성일</th>
+	      <th scope="col" style="width:10% ;">조회수</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -53,11 +57,11 @@
 	  <%} else { %>
 	  	<!-- 공지사항 리스트가 존재 -->
 	  	<%for(Notice n : list) {%>
-	    <tr>
+	    <tr align="center">
 	      <th scope="row"><%=n.getNoticeNo() %></th>
+	      <td align="left"><%=n.getNoticeTitle() %></td>
 	      <td><%=n.getNoticeWriter() %></td>
-	      <td><%=n.getNoticeTitle() %></td>
-	      <td><%=n.getNoticeContent() %></td>
+<%-- 	      <td><%=n.getNoticeContent() %></td> --%>
 	      <td><%=n.getNoticeDate() %></td>
 	      <td><%=n.getNoticeCount() %></td>
 	    </tr>
@@ -82,19 +86,19 @@
 	 <!--페이징-->
        <div class="paging-area" align="center">
         	<%if(currentPage!=1) {%>
-            <button onclick="location.href='<%=contextPath %>/list.no?npage=<%=currentPage-1 %>'">&lt;</button>
+            <button onclick="location.href='<%=contextPath %>/list.no?npage=<%=currentPage-1 %>'" class="btn btn-light">&lt;</button>
 			<%} %>
 			
 			<%for(int i=startPage;i<endPage+1;i++) {%>
 			<%if(i!=currentPage){ %>
-			<button onclick="location.href='<%=contextPath %>/list.no?npage=<%=i %>'"><%=i %></button>
-			<%}else{ %> <!-- 현재 내가 있는 페이지는 클릭이 안되도록 -->
-			<button disabled><%=i %></button> 
+			<button onclick="location.href='<%=contextPath %>/list.no?npage=<%=i %>'" class="btn btn-light"><%=i %></button>
+			<%}else{ %> 
+			<button disabled class="btn btn-light"><%=i %></button> 
 			<%} %>
 			<%} %>
 			
 			<%if(currentPage!=maxPage){ %>          
-        	<button onclick="location.href='<%=contextPath %>/list.no?npage=<%=currentPage+1 %>'">&gt;</button>
+        	<button onclick="location.href='<%=contextPath %>/list.no?npage=<%=currentPage+1 %>'" class="btn btn-light">&gt;</button>
         	<%} %>
         
         

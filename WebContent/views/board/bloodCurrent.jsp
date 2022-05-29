@@ -27,7 +27,7 @@
         caption-side: top;
     }
 
-    .btn-info{
+    .btn-outline-secondary{
        
 
         margin-left:68.5% ;
@@ -41,7 +41,7 @@
 <body>
 
 
-	
+	<h3 align="center" style="font-weight:600 ;">오늘의 혈액보유량</h3>
 
 
     <!-- header.jsp include -->
@@ -157,7 +157,7 @@
         </tbody>
     </table>
     
-    <a href="https://www.bloodinfo.net/bloodstats_stocks.do" class="btn btn-info" >자세히보기</a>
+    <a href="https://www.bloodinfo.net/bloodstats_stocks.do" class="btn btn-outline-secondary" >자세히보기</a>
     
     <br><br><br><br><br><br><br>
     	<!-- footer.jsp include -->

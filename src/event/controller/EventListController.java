@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.service.CommunityService;
 import common.PageInfo;
 import event.model.service.EventService;
 import event.model.vo.Event;

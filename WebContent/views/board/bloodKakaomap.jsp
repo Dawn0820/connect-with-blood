@@ -19,6 +19,10 @@
 		#id{
 			margin-right: 200px;
 		}
+		a{
+			text-decoration: none;
+			color: brown;
+		}
 	</style>
 </head>
 <body>
@@ -27,7 +31,7 @@
     <!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
     
-	<div id="map" style="width:1000px;height:800px; margin-top: 200px;margin-left: 34%;"></div>
+	<div id="map" style="width:1000px;height:800px; margin-top: 200px;margin-left: 30%;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f7c7ae6b81c3f02f9751b96805e5538&libraries=services"></script>
 	<script>
 		var container = document.getElementById('map');
@@ -49,60 +53,60 @@
 		        latlng: new kakao.maps.LatLng(37.5484638, 126.8698072)
 		    },
 		    {
-		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100002">서울남부혈액원</div>', 
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100002">서울남부혈액원</a></div>', 
 		        latlng: new kakao.maps.LatLng(37.4824625, 127.0430492)
 		    },
 		    {
-		        content: '<div>서울동부혈액원</div>', 
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100003">서울동부혈액원</a></div>', 
 		        latlng: new kakao.maps.LatLng(37.6530259, 127.0581539)
 		    },
 		    {
-		        content: '<div>부산혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100004">부산혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(35.1518684, 129.0670203)
 		    },
 		    {
-		        content: '<div>경기혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100005">경기혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(37.2287154, 127.0312056)
 		    },
 		    {
-		        content: '<div>인천혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100006">인천혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(37.4196076, 126.6899472)
 		    },
 		    {
-		        content: '<div>울산혈액원</div>',
-		        latlng: new kakao.maps.LatLng(35.5383773, 129.3113596)
-		    },
-		    {
-		        content: '<div>강원혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100007">강원혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(37.8552763, 127.7318914)
 		    },
 		    {
-		        content: '<div>충북혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100008">충북혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(36.6241564, 127.4510086)
 		    },
 		    {
-		        content: '<div>대전세종충남혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100009">대전세종충남혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(36.3656891, 127.4398468)
 		    },
 		    {
-		        content: '<div>전북혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100010">전북혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(35.8560289, 127.0561302)
 		    },
 		    {
-		        content: '<div>광주전남혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100011">광주전남혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(35.1119472, 126.8835505)
 		    },
 		    {
-		        content: '<div>대구경북혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100012">대구경북혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(35.8714354, 128.6014455)
 		    },
 		    {
-		        content: '<div>경남혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100013">경남혈액원</a></div>',
 		        latlng: new kakao.maps.LatLng(35.234773, 128.686453)
 		    },
 		    {
-		        content: '<div>제주특별자치도혈액원</div>',
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=5110014">제주특별자치도혈액원<br></a></div>',
 		        latlng: new kakao.maps.LatLng(33.491844, 126.520514)
+		    },
+		    {
+		        content: '<div><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100007">울산혈액원</a></div>',
+		        latlng: new kakao.maps.LatLng(35.5383773, 129.3113596)
 		    }
 		    
 		];
@@ -139,6 +143,8 @@
 		        infowindow.close();
 		    };
 		}
+		
+		
 	</script>
 	<br><br><br><br>
 
