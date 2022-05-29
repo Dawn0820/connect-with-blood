@@ -115,14 +115,50 @@
 	        <img src="resources/images/bloodEnroll.png" alt=""  width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title></title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
 	        <h2>헌혈증 등록</h2>
 	        <p>헌혈에 감사드립니다</p>
-	        <p><a class="btn btn-secondary" href="#">등록하기 &raquo;</a></p>
+	        <p><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">등록하기 &raquo;</button></p>
 	      </div><!-- /.col-lg-4 -->
+	      
+	      <!-- 모달 시작 -->
+	      
+      		<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div style="text-align: center" class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 strong style="color:red" class="modal-title" id="staticBackdropLabel">헌혈증 등록</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+			<form action="<%=contextPath%>/" method="post">
+				<!-- 시간되면 텍스트 가운데정렬 -->
+				<!-- 세션에서 로그인 정보 받아서 넘기기? / 로그인 안하면 로그인 창 띄워주기 -->
+				
+				<h4>회원이름</h4> 여기에 이름 출력<br><br>
+				
+				<h4>헌혈종류</h4> <select id="blood" name="blood">
+		                    	<option value="wh">전혈</option>
+		                    	<option value="in">성분</option>
+                    		</select> <br><br>
+                    		
+                <h4>헌혈일자</h4> 시간선택,,,    		
+				
+			</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="submit" class="btn btn-primary">등록</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+		  <!-- 모달 끝  -->
 
 	      <div class="col-lg-4">
 	        <img src="resources/images/blood.png" alt="" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
 	        <h2>헌혈예약</h2>
 	        <p>헌혈을 예약해보세요</p>
-	        <p><a class="btn btn-secondary" href="#">예약하기 &raquo;</a></p>
+	        <p><a class="btn btn-secondary" href="views/reservation/reservation.jsp">예약하기 &raquo;</a></p>
 
 	      </div><!-- /.col-lg-4 -->
 	      <div class="col-lg-4">

@@ -28,7 +28,7 @@
 
 	<!-- Custom styles for this template -->
     <link href="../../resources/css/dashboard.css" rel="stylesheet">
-    
+   
     <!-- Icon -->
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   	

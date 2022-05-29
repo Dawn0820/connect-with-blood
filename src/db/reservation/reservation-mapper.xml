@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectBloodHomeList">
+		SELECT BLHOME_ADDRESS, BLHOME_ADDRESS2
+		FROM BLOODHOME
+	</entry>
+	
+</properties>
