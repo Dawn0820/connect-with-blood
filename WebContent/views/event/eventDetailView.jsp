@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "event.model.vo.*,java.util.ArrayList"%>
+<%
+	Event e = (Event)request.getAttribute("event");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,33 +31,34 @@
     <%@ include file="../common/header.jsp" %>
 
 	
-	<h1>이벤트 상세보기 테스트</h1>
-	
+		<br><br>
+		<h4 align="center">EVENT</h4>
+		<br><br>
 
 
-	<table class="table table-bordered" style="width:500px;" align="center">
+	<table class="table table-bordered" style="width:700px;" align="center">
 		<tr>
-			<th colspan="4">제목삽입</th>
+			<th colspan="4"><%=e.getEventTitle() %></th>
 		</tr>
 		<tr>
 			<td width="15%">작성자</td>
-			<td width="35%">ㄱㄱ</td>
-			<td width="15%">조회수</td>
-			<td width="35%">23</td>
+			<td width="35%"></td>
+			<td width="15%">작성일</td>
+			<td width="35%"><%=e.getEventDate()%></td>
 		</tr>
 		<tr>
-			<td colspan="2">카테고리</td>
-			<th colspan="2">날짜삽입</th>
+			<td colspan="2">진행상태</td>
+			<th colspan="2"><%=e.getEventProgress() %></th>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<p style="height:200px;">내용</p>
+				<p style="height:200px;"><%=e.getEventContent() %></p>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="4">
 				<div>
-                    <img src="" width="500" height="300">
+                    <img src="" width="700" height="300">
                 </div>
 			</td>
 		</tr>
@@ -66,12 +71,12 @@
 
 
 	<div align="center">
-		<a href="<%=contextPath%>/list.ev" class="btn btn-success">목록가기</a>
+		<a href="<%=contextPath%>/list.ev?epage=1" class="btn btn-outline-secondary">목록가기</a>
 
 
 		<!--수정/삭제 : 로그인&작성자만 가능-->
-		<a href="<%=contextPath%>/delete.ev">삭제하기</a>
-		<a href="<%=contextPath%>/updateForm.ev">수정하기</a>
+<%-- 		<a href="<%=contextPath%>/delete.ev">삭제하기</a> --%>
+<%-- 		<a href="<%=contextPath%>/updateForm.ev">수정하기</a> --%>
 		
 	</div>
 

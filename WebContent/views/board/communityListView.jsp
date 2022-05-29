@@ -29,7 +29,12 @@
 
   .table{
     width: 1000px;
-
+	
+  }
+  .outer{
+	width:1200px;	
+	margin-left:auto;
+	margin-right:auto;
   }
 </style>
 </head>
@@ -39,19 +44,21 @@
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
     
-    <div class="outer">
     
-   
-    <div class="inner">
+    <div class="outer" align="center">
+    	<br><br>
+    	<h4 align="center">COMMUNITY</h4>
+   		<br><br>
+    <div class="inner" align="center">
       <table align="center" class="table table-hover">
         <thead>
-            <tr>
-              <th>No</th>
-              <th>카테고리</th>
+            <tr align="center">
+              <th style="width:10% ;">No</th>
+              <th style="width:15% ;">카테고리</th>
               <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-              <th>조회수</th>
+              <th style="width:15% ;">작성자</th>
+              <th style="width:15% ;">작성일</th>
+              <th style="width:10% ;">조회수</th>
             </tr>
         </thead>
         <tbody>
@@ -63,10 +70,10 @@
         
        		<%}else{ %>
             		<%for(Community c : list) {%>
-		            <tr>
+		            <tr align="center">
 		              <td><%=c.getCommNo() %></td>
 		              <td><%=c.getCategoryNo() %></td>
-		              <td><%=c.getCommTitle() %></td>
+		              <td align="left"><%=c.getCommTitle() %></td>
 		              <td><%=c.getCommWriter() %></td>
 		              <td><%=c.getCommDate() %></td>
 		              <td><%=c.getCommCount() %></td>
@@ -91,27 +98,41 @@
       <br><br>
 
       <div align="center"> 
-        <a href="<%=contextPath%>/enrollForm.co" class="btn btn-info">글작성</a>
-      </div>  
+        <a href="<%=contextPath%>/enrollForm.co" class="btn btn-outline-secondary">글작성</a>
+      </div>
+	  
+	  <!--검색-->
+	  <form action="">
+		<fieldset>글 검색필드
+			<label for="">검색기준</label>
+			<select name="f" id="">
+				<option value="title">제목</option>
+				<option value="writerId">작성자</option>
+			</select>
+			<label for="">검색어</label>
+			<input type="text" name="q">
+			<input type="submit" value="검색">
+		</fieldset>
+	  </form>
       </div>
 		
 		<br><br>
       <!--페이징-->
        <div class="paging-area" align="center">
         	<%if(currentPage!=1) {%>
-            <button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=currentPage-1 %>'">&lt;</button>
+            <button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=currentPage-1 %>'" class="btn btn-light">&lt;</button>
 			<%} %>
 			
 			<%for(int i=startPage;i<endPage+1;i++) {%>
 			<%if(i!=currentPage){ %>
-			<button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=i %>'"><%=i %></button>
-			<%}else{ %> <!-- 현재 내가 있는 페이지는 클릭이 안되도록 -->
-			<button disabled><%=i %></button> 
+			<button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=i %>'" class="btn btn-light"><%=i %></button>
+			<%}else{ %> 
+			<button disabled class="btn btn-light"><%=i %></button> 
 			<%} %>
 			<%} %>
 			
 			<%if(currentPage!=maxPage){ %>          
-        	<button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=currentPage+1 %>'">&gt;</button>
+        	<button onclick="location.href='<%=contextPath %>/list.co?cpage=<%=currentPage+1 %>'" class="btn btn-light">&gt;</button>
         	<%} %>
         
         

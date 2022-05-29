@@ -7,7 +7,7 @@
 		FROM MEMBER 
 		WHERE USER_ID=? 
 		AND   USER_PW=?
-		AND   USER_STATUS='0'
+		AND   USER_STATUS='NORMAL'
 	</entry>
 	
 	<entry key="selectMemberList">
@@ -51,7 +51,7 @@
                     	?)
 	</entry> <!-- 디폴트 들어가있는건 빼~ -->
 	
-<<<<<<< HEAD
+
 	<!-- 금일 신규회원현황의 COUNT를 조회한다. -->
 	<entry key="selectTodayNewMemberCnt">
 	SELECT COUNT(*) AS TODAY_MEMBER_COUNT
@@ -110,7 +110,7 @@
 	</entry>
 		
 	
-=======
+
 	<entry key="loginMember">
 		SELECT * 
 		FROM MEMBER 
@@ -168,5 +168,5 @@
 	
 	
 
->>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
+
 </properties>

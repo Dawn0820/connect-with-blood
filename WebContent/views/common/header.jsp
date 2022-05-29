@@ -37,10 +37,10 @@
 	            <a class="nav-link active" aria-current="page" href="">소개</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="">헌혈의집</a>
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath%>/views/board/bloodHome.jsp">헌혈의집</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="">혈액보유량</a>
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath%>/views/board/bloodCurrent.jsp">혈액보유량</a>
 	          </li>
 	          <li class="nav-item">
 	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/list.co?cpage=1">커뮤니티(나영)</a>

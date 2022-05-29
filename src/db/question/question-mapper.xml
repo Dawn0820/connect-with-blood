@@ -49,4 +49,84 @@
 		AND QUESTION_STATUS = 'Y'
 	</entry>
 	
+	<entry key="selectCategoryList">
+		SELECT CATEGORY_NO,CATEGORY_NAME 
+		FROM CATEGORY
+		WHERE CATEGORY_NO BETWEEN 4 AND 7
+	
+	</entry>
+	
+	<entry key="insertQue">
+		INSERT INTO QUESTION(QUESTION_NO
+							,QUESTION_TITLE
+							,QUESTION_CONTENT
+							,CATEGORY_NO
+							,QUESTION_WRITER)
+		VALUES(
+							SEQ_QNO.NEXTVAL
+							,?
+							,?
+							,?
+							,3)
+	</entry>
+	
+	<entry key="insertAttachment">
+		INSERT INTO ATTACHMENT(FILE_NO
+								,REF_QNO
+								,ORIGIN_NAME
+								,CHANGE_NAME
+								,FILE_PATH)
+		VALUES(
+								SEQ_FILENO.NEXTVAL
+								,SEQ_QNO.CURRVAL
+								,?
+								,?
+								,?)
+							
+	</entry>
+	
+	<entry key="selectAttachment">
+	SELECT FILE_NO,ORIGIN_NAME,CHANGE_NAME,FILE_PATH
+	FROM ATTACHMENT
+	WHERE REF_QNO = ?
+	</entry>
+	
+	<entry key="updateQuestion">
+	UPDATE QUESTION
+	SET CATEGORY_NO = ?
+		,QUESTION_TITLE = ?
+		,QUESTION_CONTENT = ?
+	WHERE QUESTION_NO = ?
+	AND QUESTION_STATUS = 'Y'
+	
+	</entry>
+	
+	<entry key="updateAttachment">
+		UPDATE ATTACHMENT
+		SET ORIGIN_NAME = ?
+    	,CHANGE_NAME = ?
+    	,FILE_PATH = ?
+    	,UPLOAD_DATE = SYSDATE
+		WHERE FILE_NO = ?
+		AND STATUS='Y'
+	
+	</entry>
+	
+	<entry key="insertNewAttachment">
+	INSERT INTO ATTACHMENT(
+							FILE_NO
+							,REF_QNO
+							,ORIGIN_NAME
+							,CHANGE_NAME
+							,FILE_PATH
+							)
+	VALUES (SEQ_FILENO.NEXTVAL,?,?,?,?)
+	</entry>
+	
+	<entry key="deleteQuestion">
+	UPDATE QUESTION
+	SET QUESTION_STATUS = 'N'
+	WHERE QUESTION_NO = ?
+	
+	</entry>
 </properties>

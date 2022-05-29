@@ -1,4 +1,4 @@
-package event.controller;
+package question.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.PageInfo;
-import event.model.service.EventService;
-import event.model.vo.Event;
+import question.model.service.QuestionService;
+import question.model.vo.Question;
 
 /**
- * Servlet implementation class EventListController
+ * Servlet implementation class QuestionListUserController
  */
-@WebServlet("/list.ev")
-public class EventListController extends HttpServlet {
+@WebServlet("/list.queu")
+public class QuestionListUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventListController() {
+    public QuestionListUserController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,6 @@ public class EventListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
 		int listCount; 
 		int currentPage; 
@@ -43,9 +42,9 @@ public class EventListController extends HttpServlet {
 		int startPage; 
 		int endPage; 
 		
-		listCount = new EventService().selectListCount();
+		listCount = new QuestionService().selectQuestionCount();
 	
-		currentPage = Integer.parseInt(request.getParameter("epage"));
+		currentPage = Integer.parseInt(request.getParameter("qpage"));
 		
 		pageLimit = 10;
 		boardLimit = 10;
@@ -64,16 +63,15 @@ public class EventListController extends HttpServlet {
 				,maxPage,startPage,endPage);
 		
 		
+		//질문 조회 메소드
+		ArrayList<Question> list = new QuestionService().selectQuestionList(pi);
 		
-		ArrayList<Event> list = new EventService().selectEventList(pi);
-		
-		
-		request.setAttribute("list", list);
+		//응답
 		request.setAttribute("pi", pi);
-		
-		request.getRequestDispatcher("views/event/eventListView.jsp").forward(request, response);
-		
-		
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/question/questionListViewUser.jsp").forward(request, response);
+	
+	
 	}
 
 	/**

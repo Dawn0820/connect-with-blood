@@ -46,8 +46,6 @@ public class CommunityInsertController extends HttpServlet {
 			int maxSize = 10 * 1024 * 1024;
 
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/comm_upfiles/");
-
-			System.out.println(savePath);
 			
 			
 			MultipartRequest multiRequest = new MultipartRequest(request,savePath,maxSize,"UTF-8",new MyFileRenamePolicy()); 

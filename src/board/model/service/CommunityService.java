@@ -9,6 +9,7 @@ import board.model.dao.CommunityDao;
 import board.model.vo.Attachment;
 import board.model.vo.Category;
 import board.model.vo.Community;
+import board.model.vo.Reply;
 import common.PageInfo;
 
 public class CommunityService {
@@ -114,7 +115,7 @@ public class CommunityService {
 
 		int result1 = new CommunityDao().updateCommunity(conn,comm,newAttachment);
 
-		int result2 = 0;
+		int result2 = 1;
 		
 		if(newAttachment != null) {
 			
@@ -126,7 +127,53 @@ public class CommunityService {
 			}
 		}
 		
-		return 0;
+		return result1*result2;
+	}
+
+	public int deleteCommunity(int commNo) {
+
+		Connection conn = getConnection();
+		
+		int result = new CommunityDao().deleteCommunity(conn, commNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	//댓글 작성
+	public int insertReply(Reply r) {
+
+		Connection conn = getConnection();
+		
+		int result = new CommunityDao().insertReply(conn,r);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	//작성 댓글 가져오기
+	public ArrayList<Reply> selectReplyList(int commNo) {
+
+		Connection conn = getConnection();
+		
+		ArrayList<Reply> list = new CommunityDao().selectReplyList(conn,commNo);
+		
+		close(conn);
+		
+		return list;
 	}
 
 	

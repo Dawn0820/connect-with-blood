@@ -1,16 +1,19 @@
 package question.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import question.model.service.QuestionService;
+
 /**
  * Servlet implementation class QuestionDeleteController
  */
-@WebServlet("/delete.qu")
+@WebServlet("/delete.que")
 public class QuestionDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,8 +30,19 @@ public class QuestionDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/question/questionListView.jsp").forward(request, response);
-	
+		int queNo = Integer.parseInt(request.getParameter("qno"));
+		
+		int result = new QuestionService().deletQuestion(queNo);
+		
+		if(result>0) {
+			response.sendRedirect(request.getContextPath()+"/list.que?qpage=1");
+		}else {
+			request.setAttribute("errorMsg", "질문 삭제 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+			
+		
+		
 	}
 
 	/**

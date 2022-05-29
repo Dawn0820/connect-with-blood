@@ -66,7 +66,7 @@
 	          <div class="carousel-caption text-start">
 	            <h1>공지사항</h1>
 	            <p>새로운 공지사항을 확인해보세요</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
+	            <p><a class="btn btn-lg btn-primary" href="<%=contextPath%>/list.no?npage=1">더보기</a></p>
 	          </div>
 	        </div>
 	      </div>
@@ -77,7 +77,7 @@
 	          <div class="carousel-caption">
 	            <h1>이벤트</h1>
 	            <p>현재 진행중인 이벤트를 확인해보세요</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
+	            <p><a class="btn btn-lg btn-primary" href="<%=contextPath%>/list.ev?epage=1">더보기</a></p>
 	          </div>
 	        </div>
 	      </div>
@@ -87,7 +87,7 @@
 	          <div class="carousel-caption text-end">
 	            <h1>FAQ</h1>
 	            <p>자주하는 질문을 확인해보세요</p>
-	            <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
+	            <p><a class="btn btn-lg btn-primary" href="<%=contextPath%>/list.faq">더보기</a></p>
 	          </div>
 	        </div>
 	      </div>
@@ -165,7 +165,7 @@
 	        <img src="resources/images/question.png" alt="" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
 	        <h2>문의하기</h2>
 	        <p>무엇을 도와드릴까요?</p>
-	        <p><a class="btn btn-secondary" href="#">문의하기 &raquo;</a></p>
+	        <p><a class="btn btn-secondary" href="<%=contextPath%>/list.queu?qpage=1">문의하기 &raquo;</a></p>
 	      </div><!-- /.col-lg-4 -->
 	    </div><!-- /.row -->
 	

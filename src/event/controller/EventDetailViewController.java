@@ -1,11 +1,17 @@
 package event.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import board.model.vo.Attachment;
+import event.model.service.EventService;
+import event.model.vo.Event;
 
 /**
  * Servlet implementation class EventDetailViewController
@@ -27,8 +33,27 @@ public class EventDetailViewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/event/eventDetailView.jsp").forward(request, response);
-	
+		int eventNo = Integer.parseInt(request.getParameter("eno"));
+		
+		//조회수 증가
+		int result = new EventService().increaseCount(eventNo);
+		
+		if(result>0) {
+			Event event = new EventService().selectEvent(eventNo);
+			
+			request.setAttribute("event", event);
+			
+//			ArrayList<Attachment> list = new EventService().selectAttachment(eventNo);
+			
+			request.getRequestDispatcher("views/event/eventDetailView.jsp").forward(request, response);
+			
+			
+		}else {
+			request.setAttribute("errorMsg", "이벤트 상세보기 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+		
+		
 	
 	}
 
