@@ -3,7 +3,7 @@
     
 <%
 	ArrayList<BloodHome> list = (ArrayList<BloodHome>)request.getAttribute("list");
-%>    
+%>     
 <!DOCTYPE html>
 <html>
 <head>
