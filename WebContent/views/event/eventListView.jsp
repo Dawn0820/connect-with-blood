@@ -23,14 +23,7 @@
 	body{
 		margin-top: 20px;
 	}
-  .outer{
-  	
-    border: 1px solid red;
 
-  }
-  .inner{
-    border: 1px solid blue;
-  }
   .table{
     width: 1000px;
 
@@ -49,10 +42,10 @@
     <%@ include file="../common/header.jsp" %>
     
     <div class="outer">
-    <h2>이벤트 목록</h2>
+   <br><br>
+		<h4 align="center">EVENT</h4>
+		<br><br>
     
-    <br><br>
-	<a href="views/board/notice/noticeListView.jsp">이벤트 테스트</a>
 
 		<div class="list-area">
         <%if(!list.isEmpty()) {%>
@@ -62,7 +55,8 @@
 	                <img src="<%=contextPath %>/<%=e.getTitleImg() %>" alt="" width="200px" height="150px">
 	                <p>
 	                    No. <%=e.getEventNo() %> <%=e.getEventTitle() %><br>
-	                    조회수 : <%=e.getEventCount() %>
+	                    조회수 : <%=e.getEventCount() %><br>
+	                    <%=e.getEventProgress() %>
 	                    
 	                </p>
 	            </div>
@@ -85,7 +79,7 @@
       <br><br>
 
       <div align="center"> 
-        <a href="<%=contextPath%>/enrollForm.ev" class="btn btn-info">글작성</a>
+<%--         <a href="<%=contextPath%>/enrollForm.ev" class="btn btn-outline-secondary">글작성</a> --%>
       </div>  
       </div>
 

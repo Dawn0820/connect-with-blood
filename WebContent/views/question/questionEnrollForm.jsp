@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="question.model.vo.*,java.util.ArrayList"%>
+<%
+	ArrayList<Category> clist = (ArrayList<Category>)request.getAttribute("clist");
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +38,7 @@
 	 <%@ include file="../common/header.jsp" %>
 	
      
-        <form action="<%=contextPath %>/insert.qu" method="post" id="form22" enctype="multipart/form-data" >
+        <form action="<%=contextPath %>/insert.que" method="post" id="queEnrollform" enctype="multipart/form-data" >
         
         <div class="outer position-relative" >
         <br>
@@ -44,26 +49,25 @@
 
                 <!--카테고리-->
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+ 					 <%for(Category c : clist){ %>
+                            	<option value="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></option>
+                        <%} %>
                 </select>
                 <br>
 
                 <!--제목-->
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="title" aria-label="Text input with dropdown button" placeholder="제목">
+                    <input type="text" class="form-control" id="title" aria-label="Text input with dropdown button" name="title" placeholder="제목">
                 </div>
 
                 <!--내용-->
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label" id="content" >내용</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" style="resize:none" placeholder="내용"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" style="resize:none" name="content" placeholder="내용"></textarea>
                 </div>
 
                 <!--첨부파일-->
-                <input type="file" id="file1" name="file1">
+                <input type="file" id="upfileQue" name="upfileQue">
                 <br><br>
                 
                 

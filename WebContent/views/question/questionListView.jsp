@@ -81,19 +81,19 @@
 	<!--페이징-->
        <div class="paging-area" align="center">
         	<%if(currentPage!=1) {%>
-            <button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=currentPage-1 %>'">&lt;</button>
+            <button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=currentPage-1 %>'" class="btn btn-light">&lt;</button>
 			<%} %>
 			
 			<%for(int i=startPage;i<endPage+1;i++) {%>
 			<%if(i!=currentPage){ %>
-			<button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=i %>'"><%=i %></button>
-			<%}else{ %> <!-- 현재 내가 있는 페이지는 클릭이 안되도록 -->
-			<button disabled><%=i %></button> 
+			<button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=i %>'" class="btn btn-light"><%=i %></button>
+			<%}else{ %> 
+			<button disabled class="btn btn-light"><%=i %></button> 
 			<%} %>
 			<%} %>
 			
 			<%if(currentPage!=maxPage){ %>          
-        	<button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=currentPage+1 %>'">&gt;</button>
+        	<button onclick="location.href='<%=contextPath %>/list.que?qpage=<%=currentPage+1 %>'" class="btn btn-light">&gt;</button>
         	<%} %>
         
         

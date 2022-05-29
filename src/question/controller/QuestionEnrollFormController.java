@@ -1,16 +1,21 @@
 package question.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import question.model.service.QuestionService;
+import question.model.vo.Category;
+
 /**
  * Servlet implementation class QuestionEnrollFormController
  */
-@WebServlet("/enrollForm.qu")
+@WebServlet("/enrollForm.que")
 public class QuestionEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,8 +32,16 @@ public class QuestionEnrollFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+		//질문 카테고리 가져오기
+		ArrayList<Category> clist = new QuestionService().selectCategoryList();
+		
+		request.setAttribute("clist", clist);
+		
 		request.getRequestDispatcher("views/question/questionEnrollForm.jsp").forward(request, response);
-	
+		
+		
+		
 	}
 
 	/**

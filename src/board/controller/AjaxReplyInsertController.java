@@ -1,11 +1,15 @@
 package board.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import board.model.service.CommunityService;
+import board.model.vo.Reply;
 
 /**
  * Servlet implementation class AjaxReplyInsertController
@@ -26,8 +30,20 @@ public class AjaxReplyInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		String replyContent = request.getParameter("content");
+		int commNo = Integer.parseInt(request.getParameter("cno"));
+//		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUser();
+		
+		Reply r = new Reply();
+		
+		r.setReplyCommNo(commNo);
+		r.setReplyContent(replyContent);
+//		r.setReplyWriter(String.valueOf(userNo));
+		
+		int result = new CommunityService().insertReply(r);
+		
+		response.getWriter().print(result);
 	}
 
 	/**

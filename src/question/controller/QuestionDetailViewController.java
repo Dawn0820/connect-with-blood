@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import question.model.service.QuestionService;
+import question.model.vo.Attachment;
 import question.model.vo.Question;
 
 /**
@@ -34,6 +35,7 @@ public class QuestionDetailViewController extends HttpServlet {
 
 		int queNo = Integer.parseInt(request.getParameter("qno"));
 		
+
 		
 		//조회수 증가
 //		int result = new QuestionService().increaseCount(queNo);
@@ -45,10 +47,13 @@ public class QuestionDetailViewController extends HttpServlet {
 			
 			
 			//사진있는 QnA
-			
+			Attachment at = new QuestionService().selectAttachment(queNo);
 			
 			
 			request.setAttribute("que", que);
+			request.setAttribute("at", at);
+			
+			
 			if(que!=null) {
 				request.getRequestDispatcher("views/question/questionDetailView.jsp").forward(request, response);
 			}else {

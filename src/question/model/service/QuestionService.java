@@ -7,6 +7,7 @@ import static common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import question.model.vo.Attachment;
 import common.PageInfo;
 import question.model.dao.QuestionDao;
 import question.model.vo.Category;
@@ -73,6 +74,75 @@ public class QuestionService {
 		
 		return list;
 		
+	}
+
+	public int insertQue(Question que, Attachment at) {
+
+		Connection conn = getConnection();
+		
+		int result1 = new QuestionDao().insertQue(conn,que);
+		
+		int result2 = 1;
+		
+		if(at != null) {
+			result2 = new QuestionDao().insertAttachment(conn,at);
+		}
+		
+		if(result1>0&&result2>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result1*result2;
+	}
+
+	public Attachment selectAttachment(int queNo) {
+
+		Connection conn = getConnection();
+		
+		Attachment at = new QuestionDao().selectAttachment(conn,queNo);
+		
+		close(conn);
+		
+		return at;
+		
+	}
+
+	public int updateQuestion(Question que, Attachment newAttachment) {
+
+		Connection conn = getConnection();
+		
+		int result1 = new QuestionDao().updateQuestion(conn,que,newAttachment);
+		
+		int result2 = 1;
+		
+		if(newAttachment != null) {
+			if(newAttachment.getFileNo()!=0) {
+				result2 = new QuestionDao().updateAttachment(conn,newAttachment);
+			}else {
+				result2 = new QuestionDao().insertNewAttachment(conn, newAttachment);
+			}
+		}
+		
+		return result1*result2;
+	}
+
+	public int deletQuestion(int queNo) {
+
+		Connection conn = getConnection();
+		
+		int result = new QuestionDao().deleteQuesion(conn,queNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
 	}
 	
 	

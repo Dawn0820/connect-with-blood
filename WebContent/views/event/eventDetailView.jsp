@@ -31,8 +31,9 @@
     <%@ include file="../common/header.jsp" %>
 
 	
-	<h1>이벤트 상세보기 테스트</h1>
-	
+		<br><br>
+		<h4 align="center">EVENT</h4>
+		<br><br>
 
 
 	<table class="table table-bordered" style="width:700px;" align="center">
@@ -57,7 +58,7 @@
 		<tr>
 			<td colspan="4">
 				<div>
-                    <img src="" width="500" height="300">
+                    <img src="" width="700" height="300">
                 </div>
 			</td>
 		</tr>
@@ -70,12 +71,12 @@
 
 
 	<div align="center">
-		<a href="<%=contextPath%>/list.ev?epage=1" class="btn btn-success">목록가기</a>
+		<a href="<%=contextPath%>/list.ev?epage=1" class="btn btn-outline-secondary">목록가기</a>
 
 
 		<!--수정/삭제 : 로그인&작성자만 가능-->
-		<a href="<%=contextPath%>/delete.ev">삭제하기</a>
-		<a href="<%=contextPath%>/updateForm.ev">수정하기</a>
+<%-- 		<a href="<%=contextPath%>/delete.ev">삭제하기</a> --%>
+<%-- 		<a href="<%=contextPath%>/updateForm.ev">수정하기</a> --%>
 		
 	</div>
 

@@ -28,11 +28,10 @@
 
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
-
+		<br><br>
+		<h4 align="center">NOTICE</h4>
+		<br><br>
 	
-	<h1>공지사항 상세보기 테스트</h1>
-	
-
 
 	<table class="table table-bordered" style="width:700px;" align="center">
 		<tr>
@@ -57,12 +56,12 @@
 
 
 	<div align="center">
-		<a href="<%=contextPath%>/list.no?npage=1" class="btn btn-success">목록가기</a>
+		<a href="<%=contextPath%>/list.no?npage=1" class="btn btn-outline-secondary">목록가기</a>
 
 
 		<!--수정/삭제 : 로그인&작성자만 가능-->
-		<a href="<%=contextPath%>/delete.no">삭제하기</a>
-		<a href="<%=contextPath%>/updateForm.no">수정하기</a>
+		<a href="<%=contextPath%>/delete.no" class="btn btn-outline-secondary">삭제하기</a>
+		<a href="<%=contextPath%>/updateForm.no" class="btn btn-outline-secondary">수정하기</a>
 		
 	</div>
 	<!-- footer.jsp include -->
