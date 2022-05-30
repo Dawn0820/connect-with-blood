@@ -29,7 +29,12 @@ public class ReservationController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String userName
+		String location = request.getParameter("location");
+		String locationDetail = request.getParameter("locationDetail");
+		
+//		System.out.println(location);
+//		System.out.println(locationDetail);
+	
 	}
 
 	/**

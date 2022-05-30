@@ -133,5 +133,54 @@
 	AND REPLY_COMMNO = ?
 	
 	</entry>
+	
+	<entry key="selectSearchTitleListCount">
+	SELECT COUNT(*) SCOUNT 
+	FROM COMMUNITY 
+	WHERE COMM_TITLE LIKE '%'||?||'%'
+	</entry>
 
+	<entry key="selectSearchListIdCount">
+	SELECT COUNT(*) SCOUNT 
+	FROM COMMUNITY 
+	JOIN MEMBER ON(COMM_WRITER = USER_NO)
+	WHERE USER_NAME LIKE '%'||?||'%' 
+	</entry>
+	
+	<entry key="selectSlistTitle">
+	SELECT * 
+    	FROM (
+        		SELECT ROWNUM RNUM,A.*
+        FROM 
+      	     (
+		        SELECT COMM_NO,CATEGORY_NAME,COMM_TITLE,USER_NAME,COMM_COUNT,COMM_DATE
+				FROM COMMUNITY JOIN MEMBER ON (COMM_WRITER=USER_NO)
+	           	JOIN CATEGORY USING(CATEGORY_NO)
+	            WHERE COMM_STATUS='Y'
+				AND COMM_TITLE LIKE '%'||?||'%'
+	            ORDER BY COMM_NO DESC
+            )   A
+            )
+			   WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+	
+	<entry key="selectSlistId">
+	SELECT * 
+    	FROM (
+        		SELECT ROWNUM RNUM,A.*
+        FROM 
+      	     (
+		        SELECT COMM_NO,CATEGORY_NAME,COMM_TITLE,USER_NAME,COMM_COUNT,COMM_DATE
+				FROM COMMUNITY JOIN MEMBER ON (COMM_WRITER=USER_NO)
+	           	JOIN CATEGORY USING(CATEGORY_NO)
+	            WHERE COMM_STATUS='Y'
+				AND USER_NAME LIKE '%'||?||'%'
+	            ORDER BY COMM_NO DESC
+            )   A
+            )
+			   WHERE RNUM BETWEEN ? AND ?
+	
+	
+	</entry>
 </properties>

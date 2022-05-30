@@ -85,8 +85,7 @@ public class CommunityInsertController extends HttpServlet {
 				if(at!=null) {
 					new File(savePath+at.getChangeName()).delete();
 				}
-				request.setAttribute("errorMsg", "커뮤니티 게시글 작성 실패");
-				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				response.sendRedirect("views/common/communityErrorPage.jsp");
 			}
 			
 		}

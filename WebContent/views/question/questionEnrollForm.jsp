@@ -41,7 +41,7 @@
         <form action="<%=contextPath %>/insert.que" method="post" id="queEnrollform" enctype="multipart/form-data" >
         
         <div class="outer position-relative" >
-        <br>
+        <br><br>
         <h2 align="center">QnA 작성</h2>
         <br>
 
@@ -73,7 +73,7 @@
                 
                 <div align="center">
                     <button type="submit"  class="btn btn-outline-secondary">등록하기</button>
-                    <button type="reset"  class="btn btn-outline-secondary">취소</button>
+                    <button type="reset"  class="btn btn-outline-secondary">초기화</button>
                 </div> 
             
         
