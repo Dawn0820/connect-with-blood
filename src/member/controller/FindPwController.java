@@ -42,13 +42,12 @@ public class FindPwController extends HttpServlet {
 		
 		
         if(userPw != null) {
-        	//¼ø¼­ Áß¿ä! getSession°ú forward ¼ø¼­°¡ ¹Ù²î¸é sessionÀÌ ´Ê°Ô µé¾î¿È!
            request.getSession().setAttribute("userPw", userPw);
            request.getRequestDispatcher("views/member/findPw_after.jsp").forward(request, response);
           
         }
         else {
-        	request.setAttribute("errorMsg", "ºñ¹Ğ¹øÈ£ Ã£±â¸¦ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+        	request.setAttribute("errorMsg", "ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
         	RequestDispatcher view =  request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request,response);
         }

@@ -9,13 +9,21 @@
 
 
 <%
- String userId = request.getParameter("userId");
- String userName = request.getParameter("userName");
- String userBirth = request.getParameter("userBirth");
- String userAddress = request.getParameter("userAddress");
- String userEmail = request.getParameter("userEmail");
- String userPhone = request.getParameter("userPhone");
- String userBloodtype = request.getParameter("userBloodtype");
+String alertMsg = (String)session.getAttribute("alertMsg");
+Member loginMember = (Member)session.getAttribute("loginMember");
+
+String userId = loginMember.getUserId();
+
+String userPw = (loginMember.getUserPw()==null)? "":loginMember.getUserPw();
+String userName = (loginMember.getUserName()==null)? "":loginMember.getUserName();
+String userBirth = (loginMember.getUserBirth()==null)? "":loginMember.getUserBirth();
+String userAddress = (loginMember.getUserAddress()==null)? "":loginMember.getUserAddress();
+String userEmail = (loginMember.getUserEmail()==null)? "":loginMember.getUserEmail();
+String userPhone = (loginMember.getUserPhone()==null)? "":loginMember.getUserPhone();
+String userBloodtype = (loginMember.getUserBloodtype()==null)? "":loginMember.getUserBloodtype();
+
+int userBloddCnt = loginMember.getUserBloddCnt();
+
  %>
  
  
@@ -53,19 +61,19 @@
 	.changebBtn{
 		width: 250px;
 		height: 40px;
-		background-color: brown;
-		color: white;
-		border: none;
-		border-radius: 50px;
 		margin-left: 30%;
+		border-radius: 50px;
+		color: white;
+		background-color: brown;
+		border: none;
 	}
 	.goMain{
-		margin-left: 20%;
-		text-decoration: none;
-		color: white;
-		border-radius: 50px;
 		width: 250px;
 		height: 40px;
+		margin-left: 30%;
+		border-radius: 50px;
+		color: white;
+		text-decoration: none;
 	}
 	.changebBtn:hover{background-color: rgb(222, 102, 102);}
 
@@ -82,6 +90,7 @@
 	margin-left: 50%;
 	font-size: smaller;
 }
+
 </style>
 </head>
 <body>
@@ -108,8 +117,8 @@
 				<p>정보 변경을 원하시면 변경할 정보를 입력한 후 하단의 개인정보 수정 버튼을 누르세요</p>
 				
 				<br>
-				<div class="table-responsive">
-				<table class="table table-bordered">
+	<div class="table-responsive">
+		<table class="table table-bordered">
 
 			<tr>
 				<td>아이디</td>
@@ -124,10 +133,6 @@
 				<td><input type="text" name="userBirth" value="<%=userBirth%>" readonly></td>
 			</tr>
 			<tr>
-				<td>주소</td>
-				<td><input type="text" name="userAddress" value="<%=userAddress%>" readonly></td>
-			</tr>
-			<tr>
 				<td>이메일</td>
 				<td><input type="email" name="userEmail" value="<%=userEmail%>" readonly></td>
 			</tr>
@@ -136,11 +141,14 @@
 				<td><input type="text" name="userPhone" value="<%=userPhone%>" readonly></td>
 			</tr>
 			<tr>
+				<td>주소</td>
+				<td><input type="text" name="userAddress" value="<%=userAddress%>" readonly></td>
+			</tr>
+			<tr>
 				<td>혈액형</td>
 				<td><input type="text" name="userBloodtype" value="<%=userBloodtype%>" readonly></td>
 			</tr>
 		</table>
-
 	</div>
 	
 
@@ -163,8 +171,44 @@
 				
 				<!-- Modal body -->
 			  <div class="modal-body">
-				  Modal body..
+				<div class="table-responsive">
+					<table class="table table-bordered">
+			
+						<tr>
+							<td>아이디</td>
+							<td><input type="text" name="MuserId" value="<%=userId%>" readonly></td>
+						</tr>
+						<tr>
+							<td>비밀번호</td>
+							<td><input type="text" name="MuserPw" value="<%=userName%>" readonly></td>
+						</tr>
+						<tr>
+							<td>이름</td>
+							<td><input type="text" name="MuserName" value="<%=userName%>" readonly></td>
+						</tr>
+						<tr>
+							<td>주민등록번호</td>
+							<td><input type="text" name="MuserBirth" value="<%=userBirth%>" readonly></td>
+						</tr>
+						<tr>
+							<td>이메일</td>
+							<td><input type="email" name="MuserEmail" value="<%=userEmail%>" readonly></td>
+						</tr>
+						<tr>
+							<td>연락처</td>
+							<td><input type="text" name="MuserPhone" value="<%=userPhone%>" readonly></td>
+						</tr>
+						<tr>
+							<td>주소</td>
+							<td><input type="text" name="MuserAddress" value="<%=userAddress%>" readonly></td>
+						</tr>
+						<tr>
+							<td>혈액형</td>
+							<td><input type="text" name="MuserBloodtype" value="<%=userBloodtype%>" readonly></td>
+						</tr>
+					</table>
 				</div>
+			</div>
 				
 				<!-- Modal footer -->
 				<div class="modal-footer">
@@ -185,6 +229,30 @@
 </div>
 
 
+<br><br>
+
+
+
+ <div >
+		<form method="post" action="<%=contextPath%>/insertB.mem">
+		<fieldset class="inner">
+
+			
+			<h4>헌혈증 관리</h4>
+			<p>홈페이지에서 등록한 헌혈증 조회</p>
+			<a href="views/member/insertBloodInfo.jsp" class="btn btn-outline-danger" id="bloodBtn">헐혈증 등록</a>
+			<br><br>
+				<br>
+				<div class="table-responsive">
+				<table class="table table-bordered">
+			<tr>
+				<td>헌혈증 개수</td>
+				<td><input type="text" value="<%=userBloddCnt %>"></td>
+			</tr>
+		</table>
+
+
+	</div>
 
 
 
@@ -192,14 +260,6 @@
 
 
 
-
-	<br><br>
-
-
-
-
-
- 
 
 
 
@@ -211,23 +271,20 @@
 
 		<a href="<%=contextPath%>/logout.mem" type="button" class="btn btn-light" id="outBtn">로그아웃</a>
 	
-	<!-- </fieldset> -->
+	</fieldset>
 
 
 	<br><br>
 	<a type="button" id="delMemBtn" class="btn btn-dark" href="<%=contextPath%>/delete.mem">회원탈퇴</a>
 
 
-<!-- </form>
-	</div> -->
+</form>
+	</div>
 
 
 	
    
-
-<!-- </fieldset> -->
-
-    
+ 
     
     
     

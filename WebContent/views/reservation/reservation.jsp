@@ -6,10 +6,6 @@
 <meta charset="UTF-8">
 <title>헌혈예약</title>
 <style>
-	body{
-		margin-top: 100px;
-	}
-
     #text1{
         width : 800px;
         height : 750px;

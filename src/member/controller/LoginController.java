@@ -8,20 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
- * Servlet implementation class findId
+ * Servlet implementation class LoginController
  */
-@WebServlet("/findId.mem")
-public class FindIdController extends HttpServlet {
+@WebServlet("/login.mem")
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindIdController() {
+    public LoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,34 +32,32 @@ public class FindIdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+		
 		request.setCharacterEncoding("UTF-8");
 		
-		String userName = request.getParameter("userName");
-		String userEmail = request.getParameter("userEmail");
+		String userId = request.getParameter("userId"); 
+		String userPw = request.getParameter("userPw");
+		
+		System.out.println(userId);
+		Member m = new MemberService().loginMember(userId,userPw);
 		
 		
-		String userId = new MemberService().findId(userName,userEmail);
+		if(m==null){ 
+			request.setAttribute("errorMsg", "로그인에 실패하였습니다.");
+			
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			
+			view.forward(request, response);
+		
+		}else { 
+			HttpSession session = request.getSession();
+			session.setAttribute("loginMember", m);
+			response.sendRedirect(request.getContextPath());
+			
+	}
 		
 		
-        if(userId != null) {
-           
-           request.getSession().setAttribute("userId", userId);
-           request.getRequestDispatcher("views/member/findId_after.jsp").forward(request, response);
-          
-        }
-        else {
-        	request.setAttribute("errorMsg", "아이디찾기에 실패했습니다.");
-        	RequestDispatcher view =  request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request,response);
-        }
-     }
-
-
-	
-		
-	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

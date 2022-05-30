@@ -32,8 +32,9 @@ public class mypageController extends HttpServlet {
 		
 		if(session.getAttribute("loginMember")==null){
 			
-			session.setAttribute("alertMsg", "·Î±×ÀÎ ÈÄ ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+			session.setAttribute("alertMsg", "ë¡œê·¸ì¸ í›„ ì´ìš©í•´ì£¼ì„¸ìš”.");
 			response.sendRedirect(request.getContextPath());
+			
 		}else {
 			request.getRequestDispatcher("views/member/mypage.jsp").forward(request, response);
 		}

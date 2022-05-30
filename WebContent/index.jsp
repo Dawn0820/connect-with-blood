@@ -118,9 +118,9 @@
 	        <p><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">등록하기 &raquo;</button></p>
 	      </div><!-- /.col-lg-4 -->
 	      
-	      <!-- 모달 시작 -->
+	      <!-- 헌혈증 등록 모달 시작  -->
 	      
-      		<!-- Modal -->
+	      	<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div style="text-align: center" class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
@@ -151,9 +151,10 @@
     </div>
   </div>
 </div>
-
-		  <!-- 모달 끝  -->
-
+	      
+	      <!-- 헌혈증 등록 모달 끝 -->
+	      
+	      
 	      <div class="col-lg-4">
 	        <img src="resources/images/blood.png" alt="" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
 	        <h2>헌혈예약</h2>

@@ -31,27 +31,27 @@ public class DeleteUserController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		
-		String userPwd = request.getParameter("userPwd");
+		String userPw = request.getParameter("userPw");
 
 		
-		//¹æ¹ı 2) session¿¡ ´ã°ÜÀÖ´Â loginUser(·Î±×ÀÎ È¸¿øÁ¤º¸) °´Ã¼¿¡ ÀÖ´Â ¾ÆÀÌµğ ²¨³»¿À±â
 		HttpSession session = request.getSession();
 		String userId = ((Member)session.getAttribute("loginMember")).getUserId();
 		
-		int result = new MemberService().deleteMember(userId, userPwd);
+		int result = new MemberService().deleteMember(userId, userPw);
 		
 		
 		if(result>0) { 
 			
-			session.setAttribute("alertMsg", "Á¤»óÀûÀ¸·Î Å»ÅğµÇ¾ú½À´Ï´Ù.");
+			session.setAttribute("alertMsg", "íšŒì›íƒˆí‡´ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ì•ˆë…•íˆ ê°€ì„¸ìš”.");
 			session.removeAttribute("loginMember");
+			
 			response.sendRedirect(request.getContextPath());
 
 		}else { 
 			
-			request.setAttribute("errorMsg", "È¸¿ø Å»Åğ¸¦ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+			request.setAttribute("errorMsg", "íšŒì›íƒˆí‡´ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			
 		}

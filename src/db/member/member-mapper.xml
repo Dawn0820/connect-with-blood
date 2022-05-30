@@ -2,13 +2,6 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 
 <properties>
-	<entry key="loginMember">
-		SELECT * 
-		FROM MEMBER 
-		WHERE USER_ID=? 
-		AND   USER_PW=?
-		AND   USER_STATUS='NORMAL'
-	</entry>
 	
 	<entry key="selectMemberList">
 		SELECT USER_NO
@@ -29,7 +22,7 @@
 	  	FROM MEMBER 
 	</entry>
 	
-	<entry key="enrollMember">
+		<entry key="enrollMember">
 		INSERT INTO MEMBER(USER_NO,
 						USER_ID,
 						USER_PW,
@@ -49,7 +42,8 @@
                     	?,
                     	?,
                     	?)
-	</entry> <!-- 디폴트 들어가있는건 빼~ -->
+	</entry> 
+	<!-- 디폴트 들어가있는건 빼~ -->
 	
 
 	<!-- 금일 신규회원현황의 COUNT를 조회한다. -->
@@ -112,11 +106,24 @@
 	
 
 	<entry key="loginMember">
-		SELECT * 
-		FROM MEMBER 
-		WHERE USER_ID=? 
-			AND USER_PW=? 
-			<!-- status 추가해야함 -->
+        SELECT *
+        FROM MEMBER
+        JOIN BLOODINFO ON(USER_NO=BLOOD_OWNER)
+		WHERE USER_ID=?
+		AND USER_PW=?
+		AND   USER_STATUS='NORMAL'
+	</entry>
+	
+	<entry key="updateBloodInfo">
+		INSERT INTO "SEMI"."BLOODINFO" 
+		(BLOOD_NO, BLOOD_COUNT, BLOOD_WH, BLOOD_OWNER) 
+		VALUES (?
+				, ?
+				, ?
+				, (SELECT BLOOD_OWNER 
+					FROM BLOODINFO 
+					LEFT JOIN MEMBER ON (BLOOD_OWNER=USER_NO)
+					WHERE USER_ID='?'))
 	</entry>
 	
 	<entry key="findId">
@@ -124,6 +131,7 @@
 		FROM MEMBER
 		WHERE USER_NAME=?
 		AND USER_EMAIL=?
+		AND   USER_STATUS='NORMAL'
 	</entry>
 	
 	<entry key="findPw">
@@ -132,6 +140,7 @@
 		WHERE USER_ID=? 
 		AND USER_NAME=?
 		AND USER_EMAIL=? 
+		AND   USER_STATUS='NORMAL'
 	</entry>
 	
 	<entry key="updateMem">
@@ -143,6 +152,7 @@
                 ,INTEREST = ?
                 ,MODIFY_DATE = SYSDATE
 		WHERE 	USER_ID = ?
+		AND   USER_STATUS='NORMAL'
 	</entry>
 	
 	<entry key="selectMem">
@@ -154,7 +164,10 @@
 	
 	
 	<entry key="deleteMember">
-		UPDATE MEMBER SET STATUS='WITHDRAWAL', MODIFY_DATE=SYSDATE WHERE USER_ID=? AND USER_PWD=?
+		UPDATE MEMBER SET USER_STATUS='WITHDRAWAL'
+						, USER_WITHDATE=SYSDATE 
+		WHERE USER_ID=? 
+		AND USER_PW=?
 	</entry>
 	
 	
@@ -167,6 +180,4 @@
 	</entry>
 	
 	
-
-
 </properties>

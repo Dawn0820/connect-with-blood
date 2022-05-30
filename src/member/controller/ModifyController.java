@@ -33,31 +33,27 @@ public class ModifyController extends HttpServlet {
 
 				request.setCharacterEncoding("UTF-8");
 				
-				 String userName = request.getParameter("userName");
-				 String userEmail = request.getParameter("userEmail");
-				 String userId = request.getParameter("userId");
-				 String userBirth = request.getParameter("userBirth");
-				 String userAddress = request.getParameter("userAddress");
-				 String userPhone = request.getParameter("userPhone");
-				 String userBloodtype = request.getParameter("userBloodtype");
-
-				 String bloodNo = request.getParameter("bloodNo");
-				 int bloodCount = Integer.parseInt(request.getParameter("bloodCount"));
-				 int bloodWh = Integer.parseInt(request.getParameter("bloodWh"));
-				 int bloodIn = Integer.parseInt(request.getParameter("bloodIn"));
+					String userId = request.getParameter("MuserId");
+					String userPw = request.getParameter("MuserPw");
+					String userName = request.getParameter("MuserName");
+					String userBirth = request.getParameter("MuserBirth");
+					String userEmail = request.getParameter("MuserEmail");
+					String userPhone = request.getParameter("MuserPhone");
+					String userAddress = request.getParameter("MuserAddress");
+					String userBloodtype = request.getParameter("MuserBloodtype");
 				 
 				
-				Member m = new Member(userId,userName,userBirth,userAddress,userEmail,userPhone,userBloodtype,  bloodCount,bloodWh,bloodIn);
+				 Member m = new Member(userId,userPw,userName,userBirth,userEmail,userPhone,userAddress,userBloodtype);
 				
 				Member modifyM = new MemberService().modifyMem(m);
 				
 				if(modifyM == null) { 
-					request.setAttribute("errorMsg", "È¸¿øÁ¤º¸ ¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+					request.setAttribute("errorMsg", "íšŒì›ì •ë³´ ìˆ˜ì •ì„ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-				}else { //¼º°ø
+				}else {
 					HttpSession session = request.getSession();
-					session.setAttribute("modifyM", modifyM); 
-					session.setAttribute("alertMsg", "È¸¿øÁ¤º¸ ¼öÁ¤ ¿Ï·á");
+					session.setAttribute("loginMember", modifyM); 
+					session.setAttribute("alertMsg", "íšŒì›ì •ë³´ ìˆ˜ì • ì™„ë£Œ!");
 					
 					response.sendRedirect(request.getContextPath()+"/mypage.mem");
 				}
