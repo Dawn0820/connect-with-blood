@@ -81,8 +81,7 @@ public class QuestionInsertController extends HttpServlet {
 				if(at!=null) {
 					new File(savePath+at.getChangeName()).delete();
 				}
-				request.setAttribute("errorMsg", "질문 작성 실패");
-				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				response.sendRedirect("views/common/communityErrorPage.jsp");
 			}
 			
 			

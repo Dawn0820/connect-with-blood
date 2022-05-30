@@ -18,11 +18,13 @@
 	
         .q{
             width: 800px;
-            height: 35px;
+            height: 60px;
             text-align: center;
             border: 0px solid black;
             border-width: 1px 0px 1px 0px;
             cursor: pointer;
+            font-size:large;
+            line-height:60px;
         }
 
         .a{
@@ -36,6 +38,7 @@
             box-sizing: border-box;
             background-color: rgb(243, 243, 243);
             text-align: center;
+            font-size:large;
             
         }
 
@@ -49,7 +52,7 @@
 
 	<div align="center">
 		<br><br>
-		<h3 align="center">FAQ</h3>
+		<h2 align="center">FAQ</h2>
 		<br><br>
 
 	<%if(list.isEmpty()){ %>
@@ -65,17 +68,17 @@
 
 		<div class="q">Q. <%=f.getFaqTitle() %></div>
         <p class="a">A. <%=f.getFaqContent() %></p>
-		<br>
-		<%} %>
+		
+        
+        <%} %>
 	<%} %>
 	</div>
 
-
-
 	<script>
+	
         $(function(){
             $(".q").click(function(){
-            	
+
                 
                 var $answer = $(this).next(); 
                 
@@ -98,7 +101,7 @@
         });
     </script>
 
-
+	<br><br>
 
 
 

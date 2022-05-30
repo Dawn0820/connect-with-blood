@@ -40,8 +40,8 @@
 	      <th scope="col">질문종류</th>
 	      <th scope="col">질문제목</th>
 	      <th scope="col">질문내용</th>
-	      <th scope="col">질문일자</th>
 	      <th scope="col">질문작성자</th>
+	      <th scope="col">질문일자</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -58,8 +58,8 @@
 	      <td><%=q.getCategoryNo() %></td>
 	      <td><%=q.getQuestionTitle() %></td>
 	      <td><%=q.getQuestionContent() %></td>
-	      <td><%=q.getQuestionDate() %></td>
 	      <td><%=q.getQuestionWriter() %></td>
+	      <td><%=q.getQuestionDate() %></td>
 	    </tr>
 	    <%} %>
 	  <%} %>

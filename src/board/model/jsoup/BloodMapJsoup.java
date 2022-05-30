@@ -29,7 +29,6 @@ public class BloodMapJsoup {
 		seoul = elem.text();
 	
 		
-		System.out.println(seoul);
 		
 		
 		return seoul;

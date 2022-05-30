@@ -24,9 +24,7 @@
     .mb-3{
         width: 800px;
     }
-    #form22{
-        border: 1px solid red;
-    }
+
 
 </style>
 </head>
@@ -36,10 +34,11 @@
 	 <%@ include file="../common/header.jsp" %>
 	
      
+     
         <form action="<%=contextPath %>/insert.co" method="post" id="form22" enctype="multipart/form-data" >
         
         <div class="outer position-relative" >
-        <br>
+        <br><br>
         <h2 align="center">게시판 글 작성</h2>
         <br>
 
@@ -74,7 +73,7 @@
                 
                 <div align="center">
                     <button type="submit"  class="btn btn-outline-secondary">등록하기</button>
-                    <button type="reset"  class="btn btn-outline-secondary">취소</button>
+                    <button type="reset"  class="btn btn-outline-secondary">초기화</button>
                 </div> 
             
         

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import = "board.model.vo.Community, java.util.ArrayList, common.PageInfo"%>
+    pageEncoding="UTF-8" import = "board.model.vo.*, java.util.ArrayList, common.PageInfo"%>
 
 <%
 
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	ArrayList<Community> list = (ArrayList<Community>)request.getAttribute("list");
+	ArrayList<Community> list = (ArrayList<Community>)request.getAttribute("slist");
 
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -100,17 +100,16 @@
       <div align="center"> 
         <a href="<%=contextPath%>/enrollForm.co" class="btn btn-outline-secondary">글작성</a>
       </div>
-      <br><br>
-	  
+	  <br><br>
 	  <!--검색-->
 	  <form action="searchList.co?cspage=1" method="post" id="listSelect">
 		<fieldset>
-			
+			<label for="">검색기준</label>
 			<select name="category" id="">
 				<option value="title" name="title">제목</option>
 				<option value="writerId" name="writerId">작성자</option>
 			</select>
-			
+			<label for="">검색어</label>
 			<input type="text" name="search">
 			<input type="submit" value="검색">
 		</fieldset>

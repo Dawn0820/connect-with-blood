@@ -39,7 +39,8 @@
 
 </head>
 <body>
-
+	
+	<br><br>
 
 	<h3 align="center" style="font-weight:600 ;">오늘의 혈액보유량</h3>
 

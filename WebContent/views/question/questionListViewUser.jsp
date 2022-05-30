@@ -31,18 +31,18 @@
     <%@ include file="../common/header.jsp" %>
 
 	<br><br>
-	<h4 align="center">Q&A</h4>
+	<h2 align="center">Q&A</h2>
 	<br><br>
 
 	<!-- 현재 QnA 목록 출력 -->
 	<table class="table table-hover" style="width:1000px ;" align="center">
 	  <thead>
 	    <tr align="center">
-	      <th scope="col" style="width:10% ;">질문번호</th>
+	      <th scope="col" style="width:10% ;">No</th>
 	      <th scope="col" style="width:18% ;">질문종류</th>
 	      <th scope="col">질문제목</th>
-	      <th scope="col" style="width:15% ;">질문일자</th>
 	      <th scope="col" style="width:15% ;">질문작성자</th>
+	      <th scope="col" style="width:15% ;">질문일자</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -58,8 +58,8 @@
 	      <td scope="row"><%=q.getQuestionNo() %></td>
 	      <td><%=q.getCategoryNo() %></td>
 	      <td align="left"><%=q.getQuestionTitle() %></td>
-	      <td><%=q.getQuestionDate() %></td>
 	      <td><%=q.getQuestionWriter() %></td>
+	      <td><%=q.getQuestionDate() %></td>
 	    </tr>
 	    <%} %>
 	  <%} %>
@@ -85,19 +85,19 @@
 	<!--페이징-->
        <div class="paging-area" align="center">
         	<%if(currentPage!=1) {%>
-            <button onclick="location.href='<%=contextPath %>/list.queu?qpage=<%=currentPage-1 %>'">&lt;</button>
+            <button onclick="location.href='<%=contextPath %>/list.queu?qpage=<%=currentPage-1 %>'" class="btn btn-light">&lt;</button>
 			<%} %>
 			
 			<%for(int i=startPage;i<endPage+1;i++) {%>
 			<%if(i!=currentPage){ %>
-			<button onclick="location.href='<%=contextPath %>/list.queu?qpage=<%=i %>'"><%=i %></button>
+			<button onclick="location.href='<%=contextPath %>/list.queu?qpage=<%=i %>'" class="btn btn-light"><%=i %></button>
 			<%}else{ %> <!-- 현재 내가 있는 페이지는 클릭이 안되도록 -->
-			<button disabled><%=i %></button> 
+			<button disabled class="btn btn-light"><%=i %></button> 
 			<%} %>
 			<%} %>
 			
 			<%if(currentPage!=maxPage){ %>          
-        	<button onclick="location.href='<%=contextPath %>/list.queu?qpage=<%=currentPage+1 %>'">&gt;</button>
+        	<button onclick="location.href='<%=contextPath %>/list.queu?qpage=<%=currentPage+1 %>'" class="btn btn-light">&gt;</button>
         	<%} %>
         
         

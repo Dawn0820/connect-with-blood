@@ -35,7 +35,7 @@
     <%@ include file="../common/header.jsp" %>
 
 	<br><br>
-	<h4 align="center">COMMUNITY</h4>
+	<h2 align="center">COMMUNITY</h2>
 	<br><br>
 
 
@@ -96,17 +96,17 @@
                     <tr>
                         <th>댓글작성</th>
                         <td>
-                            <textarea id="replyContent" cols="50" rows="3" style="resize:none"></textarea>
+                            <textarea id="replyContent" cols="60" rows="3" style="resize:none"></textarea>
                         </td>
-                        <td><button onclick="insertReply();">댓글 등록</button></td>
+                        <td><button onclick="insertReply();" class="btn btn-outline-secondary">등록</button></td>
                     </tr>
 <%-- 					<%}else{ %> <!-- 로그인 안한 경우 --> --%>
 					<tr>
                         <th>댓글작성</th>
                         <td>
-                            <textarea cols="50" rows="3" style="resize:none" readonly>로그인 후 이용가능한 서비스 입니다.</textarea>
+                            <textarea cols="60" rows="3" style="resize:none" readonly>로그인 후 이용가능한 서비스 입니다.</textarea>
                         </td>
-                        <td><button disalbed>댓글 등록</button></td>
+                        <td><button disalbed class="btn btn-outline-secondary">등록</button></td>
                     </tr>
 <%-- 					<%} %> --%>
                 </thead>

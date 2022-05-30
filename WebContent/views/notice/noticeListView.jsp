@@ -33,14 +33,14 @@
     <%@ include file="../common/header.jsp" %>
 
 		<br><br>
-    	<h4 align="center">NOTICE</h4>
+    	<h2 align="center">NOTICE</h2>
    		<br><br>
 
 	<!-- 현재 공지사항 목록 출력 -->
 	<table class="table table-hover" style="width:1000px ;" align="center">
 	  <thead>
 	    <tr align="center">
-	      <th scope="col" style="width:10% ;">글번호</th>
+	      <th scope="col" style="width:10% ;">No</th>
 	      <th scope="col">제목</th>
 	      <th scope="col" style="width:15% ;">작성자</th>
 <!-- 	      <th scope="col">내용</th> -->

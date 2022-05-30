@@ -175,6 +175,31 @@ public class CommunityService {
 		
 		return list;
 	}
+	
+	//검색 글 개수 세기
+	public int selectSearchListCount(String category, String search) {
+
+		Connection conn = getConnection();
+		
+		int slistCount = new CommunityDao().selectSearchListCount(conn,category,search);
+		
+		close(conn);
+		
+		return slistCount;
+	}
+
+	//검색 글 목록
+	public ArrayList<Community> selectSearchList(PageInfo pi, String category, String search) {
+
+		Connection conn = getConnection();
+		
+		ArrayList<Community> slist = new CommunityDao().selectSearchList(conn,pi,category,search);
+		
+		close(conn);
+		
+		return slist;
+	}
+
 
 	
 	

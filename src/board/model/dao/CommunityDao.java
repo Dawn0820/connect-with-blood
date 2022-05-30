@@ -1,5 +1,7 @@
 package board.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,8 +16,6 @@ import board.model.vo.Category;
 import board.model.vo.Community;
 import board.model.vo.Reply;
 import common.PageInfo;
-
-import static common.JDBCTemplate.*;
 
 public class CommunityDao {
 
@@ -439,7 +439,6 @@ public class CommunityDao {
 						           ,rset.getString("REPLY_DATE")
 						           ,rset.getString("USER_NAME")));
 			}
-			System.out.println(list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -450,6 +449,153 @@ public class CommunityDao {
 		
 		return list;
 	}
+
+	public int selectSearchListCount(Connection conn, String category, String search) {
+	
+		int slistCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		
+		//category -> title / id
+		
+		
+		if(category.equals("title")) {
+			String sql = prop.getProperty("selectSearchTitleListCount");
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+
+
+				pstmt.setString(1, search);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					slistCount = rset.getInt("SCOUNT");
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return slistCount;
+			
+		} else {
+			String sql = prop.getProperty("selectSearchListIdCount");
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, search);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					slistCount = rset.getInt("SCOUNT");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			return slistCount;
+			
+		}
+		
+	}
+
+	
+	
+	public ArrayList<Community> selectSearchList(Connection conn, PageInfo pi, String category, String search) {
+
+		ArrayList<Community> slist = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		if(category.equals("title")) {
+			String sql = prop.getProperty("selectSlistTitle");
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() +1;
+				int endRow = pi.getCurrentPage() * pi.getBoardLimit();
+				
+				pstmt.setString(1, search);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					slist.add(new Community(rset.getInt("COMM_NO")
+							,rset.getString("COMM_TITLE")
+							,rset.getInt("COMM_COUNT")
+							,rset.getDate("COMM_DATE")
+							,rset.getString("USER_NAME")
+							,rset.getString("CATEGORY_NAME")));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return slist;
+			
+			
+		}else {
+			String sql = prop.getProperty("selectSlistId");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() +1;
+				int endRow = pi.getCurrentPage() * pi.getBoardLimit();
+				
+				pstmt.setString(1, search);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					slist.add(new Community(rset.getInt("COMM_NO")
+							,rset.getString("COMM_TITLE")
+							,rset.getInt("COMM_COUNT")
+							,rset.getDate("COMM_DATE")
+							,rset.getString("USER_NAME")
+							,rset.getString("CATEGORY_NAME")));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			return slist;
+			
+		}
+		
+		
+		
+	}
+
+
+
 		
 		
 

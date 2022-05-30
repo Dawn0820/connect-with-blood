@@ -42,8 +42,8 @@
     <%@ include file="../common/header.jsp" %>
     
     <div class="outer">
-   <br><br>
-		<h4 align="center">EVENT</h4>
+   		<br><br>
+		<h2 align="center">EVENT</h2>
 		<br><br>
     
 

@@ -32,7 +32,7 @@
 
 	
 		<br><br>
-		<h4 align="center">EVENT</h4>
+		<h2 align="center">EVENT</h2>
 		<br><br>
 
 

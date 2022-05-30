@@ -59,7 +59,7 @@
 			<option value="daegu">대구</option>
 		</select>
 		<br><br>
-		<select id="locationDetail">
+		<select id="locationDetail" name="locationDetail">
 			<option>상세주소</option>
 		</select>
 		<br><br>

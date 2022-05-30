@@ -31,7 +31,7 @@
 
 	
 	<br><br>
-	<h4 align="center">Q&A</h4>
+	<h2 align="center">Q&A</h2>
 	<br><br>
 
 
