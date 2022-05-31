@@ -28,9 +28,7 @@
     .mb-3{
         width: 800px;
     }
-    #form22{
-        border: 1px solid red;
-    }
+
 
 </style>
 </head>
@@ -38,9 +36,9 @@
    
   	 <!-- header.jsp include -->
 	 <%@ include file="../common/header.jsp" %>
-	
+		<br><br>
      
-        <form action="<%=contextPath %>/update.que" method="post" id="form22" enctype="multipart/form-data" >
+        <form action="<%=contextPath %>/update.que" method="post" id="update" enctype="multipart/form-data" >
         
         <input type="hidden" name="qno" value="<%=que.getQuestionNo()%>">
         
@@ -60,7 +58,7 @@
                         <script>
                              $(function(){
                                  $("#update option").each(function(){
-                                    if($(this).text()=="<%=que.getCategoryNo()%>"){
+                                    if($(this).text()=="<%=que.getCategoryNo() %>"){
                                          $(this).attr("selected",true); 
                                      }
                                  })

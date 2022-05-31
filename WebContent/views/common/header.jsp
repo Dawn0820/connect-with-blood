@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="member.model.vo.Member"%>
     
 <%
 	String contextPath = request.getContextPath();
-	String alertMsg = (String)session.getAttribute("alertMsg");
+
+	Member loginUser = (Member)session.getAttribute("loginMember");
+	
+	boolean isAdmin = loginUser!=null && loginUser.getUserId().equals("admin");
+
+
 %>    
     
 <!DOCTYPE html>

@@ -38,7 +38,6 @@ public class LoginController extends HttpServlet {
 		String userId = request.getParameter("userId"); 
 		String userPw = request.getParameter("userPw");
 		
-		System.out.println(userId);
 		Member m = new MemberService().loginMember(userId,userPw);
 		
 		

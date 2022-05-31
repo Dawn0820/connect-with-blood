@@ -60,7 +60,7 @@
 						,?
 						,?
 						,?
-						,1)
+						,?)
 	</entry>
 	
 	<entry key="insertAttachment">
@@ -122,7 +122,7 @@
 	
 	<entry key="insertReply">
 	INSERT INTO REPLY(REPLY_NO,REPLY_CONTENT,REPLY_COMMNO,REPLY_WRITER)
-	VALUES (SEQ_RNO.NEXTVAL,?,?,?)
+	VALUES (SEQ_REPLYNO.NEXTVAL,?,?,?)
 	</entry>
 	
 	<entry key="selectReplyList">

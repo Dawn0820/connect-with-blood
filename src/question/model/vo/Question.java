@@ -8,7 +8,7 @@ public class Question {
 	private String questionTitle;       //	QUESTION_TITLE	VARCHAR2(100 BYTE)
 	private String questionContent;	    //	QUESTION_CONTENT	VARCHAR2(4000 BYTE)
 	private Date questionDate;			//	QUESTION_DATE	DATE
-	private String questionTag;			//	QUESTION_TAG	VARCHAR2(4000 BYTE)
+	private String questionTag;			//	QUESTION_TAG	
 	private String questionAnswer;		//	QUESTION_ANS	VARCHAR2(4000 BYTE)
 	private Date questionAnswerDate;	//	QUESTION_ANSDATE	DATE
 	private String questionWriter;		//	QUESTION_WRITER	NUMBER

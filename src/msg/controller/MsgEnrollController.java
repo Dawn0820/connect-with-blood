@@ -1,4 +1,4 @@
-package msg;
+package msg.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -26,16 +26,14 @@ public class MsgEnrollController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("UTF-8");
 		
 		String send = request.getParameter("send");
 		String receive = request.getParameter("receive");
 		String content = request.getParameter("content");
-		
-		System.out.println(send);
-		System.out.println(receive);
-		System.out.println(content);
+	
+	
 	}
 
 	/**

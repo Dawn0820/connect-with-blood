@@ -38,7 +38,7 @@
 	 <%@ include file="../common/header.jsp" %>
 	
 	
-	
+		<br><br>
      
         <form action="<%=contextPath %>/update.co" method="post" id="update" enctype="multipart/form-data" >
 
