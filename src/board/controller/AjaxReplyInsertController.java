@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.CommunityService;
 import board.model.vo.Reply;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class AjaxReplyInsertController
@@ -33,13 +34,13 @@ public class AjaxReplyInsertController extends HttpServlet {
 
 		String replyContent = request.getParameter("content");
 		int commNo = Integer.parseInt(request.getParameter("cno"));
-//		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUser();
+		int userNo = ((Member)request.getSession().getAttribute("loginMember")).getUserNo();
 		
 		Reply r = new Reply();
 		
 		r.setReplyCommNo(commNo);
 		r.setReplyContent(replyContent);
-//		r.setReplyWriter(String.valueOf(userNo));
+		r.setReplyWriter(String.valueOf(userNo));
 		
 		int result = new CommunityService().insertReply(r);
 		

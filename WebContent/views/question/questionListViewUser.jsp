@@ -56,7 +56,7 @@
 	  	<%for(Question q : list) {%>
 	    <tr align="center">
 	      <td scope="row"><%=q.getQuestionNo() %></td>
-	      <td><%=q.getCategoryNo() %></td>
+	      <td><%=q.getCategoryNo()%></td>
 	      <td align="left"><%=q.getQuestionTitle() %></td>
 	      <td><%=q.getQuestionWriter() %></td>
 	      <td><%=q.getQuestionDate() %></td>
@@ -78,10 +78,14 @@
 	
 	<br>
 	
+	<%if(loginUser!=null) {%>
 	<div align="center"> 
         <a href="<%=contextPath%>/enrollForm.que" class="btn btn-outline-secondary">글작성</a>
       </div>  
+    <%} %>
+      
 	<br>
+	
 	<!--페이징-->
        <div class="paging-area" align="center">
         	<%if(currentPage!=1) {%>

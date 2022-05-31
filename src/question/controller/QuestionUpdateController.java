@@ -56,7 +56,7 @@ public class QuestionUpdateController extends HttpServlet {
 			Question que = new Question();
 			
 			que.setQuestionNo(queNo);
-			que.setCategoryNo(queCategory);
+			que.setQuestionTag(queCategory);
 			que.setQuestionTitle(queTitle);
 			que.setQuestionContent(queContent);
 			

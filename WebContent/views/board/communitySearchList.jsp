@@ -65,7 +65,7 @@
         
         	<%if(list.isEmpty()){ %>
         	<tr>
-        		<td colspan="6">작성된 게시글이 없습니다</td>
+        		<td colspan="6">검색된 게시글이 없습니다</td>
         	</tr>
         
        		<%}else{ %>
@@ -97,9 +97,12 @@
 
       <br><br>
 
+	<%if(loginUser!=null) {%>
+
       <div align="center"> 
         <a href="<%=contextPath%>/enrollForm.co" class="btn btn-outline-secondary">글작성</a>
       </div>
+	<%} %>
 	  <br><br>
 	  <!--검색-->
 	  <form action="searchList.co?cspage=1" method="post" id="listSelect">

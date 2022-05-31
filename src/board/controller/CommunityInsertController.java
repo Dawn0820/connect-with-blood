@@ -54,14 +54,14 @@ public class CommunityInsertController extends HttpServlet {
 			String category = multiRequest.getParameter("category");
 			String commTitle = multiRequest.getParameter("title");
 			String commContent = multiRequest.getParameter("content");
-//			String commWriter = multiRequest.getParameter("userNo");
+			String commWriter = multiRequest.getParameter("userNo");
 			
 			Community comm = new Community();
 			
 			comm.setCategoryNo(category);
 			comm.setCommTitle(commTitle);
 			comm.setCommContent(commContent);
-//			comm.setCommWriter(commWriter);
+			comm.setCommWriter(commWriter);
 			
 			
 			Attachment at = null;

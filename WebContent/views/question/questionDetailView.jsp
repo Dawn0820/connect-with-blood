@@ -74,11 +74,10 @@
 	<div align="center">
 		<a href="<%=contextPath%>/list.queu?qpage=1" class="btn btn-outline-secondary">목록가기</a>
 
-
-		<!--수정/삭제 : 로그인&작성자만 가능-->
+           <%if(loginUser!=null && loginUser.getUserId().equals(que.getQuestionWriter())||isAdmin) {%>
 		<a href="<%=contextPath%>/delete.que?qno=<%=que.getQuestionNo()%>" class="btn btn-outline-secondary">삭제하기</a>
 		<a href="<%=contextPath%>/updateForm.que?qno=<%=que.getQuestionNo()%>" class="btn btn-outline-secondary">수정하기</a>
-		
+		<%} %>		
 	</div>
 	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>
