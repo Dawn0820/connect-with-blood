@@ -20,9 +20,7 @@
 
     
 
-    <!-- Bootstrap core CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	
+   
 	<!-- Ajax -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -86,30 +84,43 @@
               Dashboard 
             </a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="<%=contextPath%>/memManagement.ad">
               <i class="bi bi-people"></i>
-              회원관리
+              회원상태
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="<%=contextPath%>/memManagement.ad">회원상태</a></li>
-              <li><a class="dropdown-item" href="<%=contextPath%>/queManagement.ad">문의내역</a></li>
-              <li><a class="dropdown-item" href="<%=contextPath%>/membershipStatus.ad">회원현황</a></li>
-            </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-file-text"></i>
-              게시판관리
+          <li class="nav-item">
+            <a class="nav-link" href="<%=contextPath%>/queManagement.ad">
+              <i class="bi bi-question-circle"></i>
+              문의내역
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="<%=contextPath%>/list.no?npage=1">공지사항</a></li>
-              <li><a class="dropdown-item" href="<%=contextPath%>/list.que?qpage=1">QnA</a></li>
-              <li><a class="dropdown-item" href="<%=contextPath%>/list.faq">FAQ</a></li>
-            </ul>
           </li>
-          
-          
+          <li class="nav-item">
+            <a class="nav-link" href="<%=contextPath%>/membershipStatus.ad">
+              <i class="bi bi-person-plus"></i>
+              회원현황
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%=contextPath%>/list.no?npage=1">
+              <i class="bi bi-star"></i>
+              공지사항
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%=contextPath%>/list.que?qpage=1">
+              <i class="bi bi-question-circle"></i>
+              QnA
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%=contextPath%>/list.faq">
+              <i class="bi bi-list"></i>
+              FAQ
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="<%=contextPath%>/list.ev?epage=1">
               <i class="bi bi-gift"></i>
@@ -117,49 +128,38 @@
             </a>
           </li>
           
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              <i class="bi bi-bar-chart"></i>
-              요약
-            </a>
-          </li>
-          <!--  
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li>
-          -->
+          
+          
+<!--           <li class="nav-item dropdown"> -->
+<!--             <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!--               <i class="bi bi-people"></i> -->
+<!--               회원관리 -->
+<!--             </a> -->
+<!--             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink"> -->
+<%--               <li><a class="dropdown-item" href="<%=contextPath%>/memManagement.ad">회원상태</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<%=contextPath%>/queManagement.ad">문의내역</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<%=contextPath%>/membershipStatus.ad">회원현황</a></li> --%>
+<!--             </ul> -->
+<!--           </li> -->
+<!--           <li class="nav-item dropdown"> -->
+<!--             <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!--               <i class="bi bi-file-text"></i> -->
+<!--               게시판관리 -->
+<!--             </a> -->
+<!--             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink"> -->
+<%--               <li><a class="dropdown-item" href="<%=contextPath%>/list.no?npage=1">공지사항</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<%=contextPath%>/list.que?qpage=1">QnA</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<%=contextPath%>/list.faq">FAQ</a></li> --%>
+<!--             </ul> -->
+<!--           </li> -->
+          
+          
+          
+          
+       
+  
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="bi bi-chat-heart"></i>
-              신규 헌혈 예약 
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="bi bi-person-plus"></i>
-              신규 회원 
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="bi bi-question-circle"></i>
-              1:1 문의
-            </a>
-          </li>
-        </ul>
       </div>
     </nav>
     

@@ -35,6 +35,8 @@ public class CommunityDeleteController extends HttpServlet {
 		int result = new CommunityService().deleteCommunity(commNo);
 
 		if(result>0) {
+			request.getSession().setAttribute("alertMsg", "게시글이 삭제되었습니다");
+
 			response.sendRedirect(request.getContextPath()+"/list.co?cpage=1");
 		}else {
 			request.setAttribute("errorMsg", "게시글 삭제 실패");

@@ -78,6 +78,8 @@ public class EventInsertController extends HttpServlet {
 			int result = new EventService().insertAttachmentEvent(e,list);
 			
 			if(result>0) {
+				request.getSession().setAttribute("alertMsg", "이벤트가 작성되었습니다");
+
 				response.sendRedirect(request.getContextPath()+"/list.ev?epage=1");
 			}else{
 				response.sendRedirect("views/common/communityErrorPage.jsp");

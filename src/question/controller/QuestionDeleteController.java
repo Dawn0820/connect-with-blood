@@ -35,6 +35,8 @@ public class QuestionDeleteController extends HttpServlet {
 		int result = new QuestionService().deletQuestion(queNo);
 		
 		if(result>0) {
+			request.getSession().setAttribute("alertMsg", "질문이 삭제되었습니다");
+
 			response.sendRedirect(request.getContextPath()+"/list.queu?qpage=1");
 		}else {
 			request.setAttribute("errorMsg", "질문 삭제 실패");

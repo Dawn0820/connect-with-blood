@@ -7,6 +7,9 @@
 	
 	boolean isAdmin = loginMember!=null && loginMember.getUserId().equals("admin");
 	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+
+	
 %>
 
 <!DOCTYPE html>
@@ -17,10 +20,6 @@
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -47,10 +46,10 @@
 	.search-btn:focus {
 		outline: none;
 	}
-	.search-btn:hover {
-		background-color: rgba(31, 168, 209);
-		color: black;
-	}
+ 	.search-btn:hover { 
+ 		background-color: rgba(31, 168, 209); 
+ 		color: black; 
+ 	} 
 	
 	.buttons {
 		display: flex;
@@ -125,6 +124,15 @@
 </style>
 </head>
 <body class="pt-5">
+<script>
+	var msg = "<%=alertMsg%>"; // "회원가입에 성공했습니다." /"null"
+	
+	if(msg!="null"){
+		alert(msg);
+		<%session.removeAttribute("alertMsg");%>
+	}
+</script>
+	
 	<!-- HEADER -->
 	<header>
 	  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">

@@ -89,6 +89,7 @@ public class CommunityUpdateController extends HttpServlet {
 			int result = new CommunityService().updateCommunity(comm,newAttachment);
 			
 			if(result>0) {
+				request.getSession().setAttribute("alertMsg", "게시글이 수정되었습니다");
 				response.sendRedirect(request.getContextPath()+"/detail.co?cno="+commNo);
 			}else {
 				response.sendRedirect("views/common/communityErrorPage.jsp");

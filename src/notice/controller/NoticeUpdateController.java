@@ -46,6 +46,8 @@ public class NoticeUpdateController extends HttpServlet {
 		int result = new NoticeService().updateNotice(n);
 		
 		if(result >0) {
+			request.getSession().setAttribute("alertMsg", "공지사항이 수정되었습니다");
+
 			response.sendRedirect(request.getContextPath()+"/detail.no?nno="+noticeNo);
 		}else {
 			response.sendRedirect("views/common/communityErrorPage.jsp");
