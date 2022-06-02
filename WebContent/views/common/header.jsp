@@ -156,7 +156,7 @@
 	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/list.co?cpage=1">커뮤니티(나영)</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/dashboard.ad">관리자(새벽)</a>
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/views/admin/dashboard.jsp">관리자(새벽)</a>
 	          </li>
 	          <li class="nav-item">
 	            <a class="nav-link active"  href="<%=contextPath %>/views/member/login.jsp">멤버페이지(현진)</a>

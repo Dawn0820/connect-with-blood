@@ -32,6 +32,11 @@
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
 
+	<br><br>
+	<h2 align="center">Q&A</h2>
+	<br><br>
+
+
 	<!-- 현재 QnA 목록 출력 -->
 	<table class="table table-hover" style="width:1200px ;" align="center">
 	  <thead>
