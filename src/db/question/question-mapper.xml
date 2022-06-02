@@ -123,4 +123,15 @@
 	WHERE QUESTION_NO = ?
 	
 	</entry>
+	
+	<entry key="insertReply">
+	INSERT INTO ANSWER (ANS_NO,ANS_CONTENT,ORIGIN_NO)
+	VALUES(SEQ_ANO.NEXTVAL,?,?)
+	
+	</entry>
+	<entry key="selectReplyList">
+	SELECT ANS_NO,ANS_CONTENT,TO_CHAR(ANS_DATE,'YY/MM/DD HH:MI:SS') ANS_DATE
+	FROM ANSWER
+	WHERE ORIGIN_NO = ?
+	</entry>
 </properties>

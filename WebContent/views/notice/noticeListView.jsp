@@ -84,7 +84,7 @@
 	<br>
 	
 	
-        <%if(loginUser!=null && loginUser.getUserId().equals("admin")) {%>
+        <%if(loginMember!=null && loginMember.getUserId().equals("admin")) {%>
       <div align="center"> 
         <a href="<%=contextPath%>/enrollForm.no" class="btn btn-outline-secondary">글작성</a>
       </div>
