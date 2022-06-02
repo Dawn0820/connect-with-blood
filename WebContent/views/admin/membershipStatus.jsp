@@ -3,7 +3,7 @@
 
 <%
 
-// int여도 String으로 받아서 다시 int로 형변환 해야하나바ㅠㅠ 해볼게용
+// int여도 String으로 받아서 다시 int로 형변환 해야하나?
 	/*String temp_todayNewMemberCnt = (String)request.getAttribute("todayNewMemberCnt");
 	int todayNewMemberCnt = 0;
 	
@@ -41,6 +41,12 @@
 
  <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	
+<!-- Chart -->
+ 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	
+	
+	
 	<title>회원관리-회원현황</title>
 </head>
 <body>
@@ -48,14 +54,19 @@
     <%@ include file="../common/header.jsp" %>
 		<br><br><br><br>
   		
-        <h1 class="h2" align="center">회원현황</h2>
+
 
         <br><br>
+        
+        
 		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+		
+
+
 		
  		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
       <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <table class="table table-dark table-hover">
           <thead>
             <tr align="center">
               <th scope="col"></th>
@@ -85,6 +96,13 @@
           </tbody>
         </table>
       </div>
+      
+
+<!-- Custom js for this template -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

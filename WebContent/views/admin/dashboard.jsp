@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, admin.model.vo.Dashboard"%>
 
-<%
-	ArrayList<Dashboard> list = (ArrayList<Dashboard>)request.getAttribute("list");
-%>   
+<%@ page import = "common.MemberPageInfo" %>
+
+
     
 <!DOCTYPE html>
 <html>
@@ -92,8 +92,7 @@
               회원관리
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="<%=contextPath%>/memManagement.ad">회원상태</a></li>
-              <li><a class="dropdown-item" href="<%=contextPath%>/queManagement.ad">문의내역</a></li>
+              <li><a class="dropdown-item" href="<%=contextPath%>/memManagement.ad?mpage=1">회원상태</a></li>            
               <li><a class="dropdown-item" href="<%=contextPath%>/membershipStatus.ad">회원현황</a></li>
             </ul>
           </li>
@@ -199,13 +198,13 @@
           label: '헌혈증 등록현황',
           backgroundColor: 'transparent',
           borderColor: 'red',
-          data: [<%=list.get(0).getBloodCount()%>
+         <%--  data: [<%=list.get(0).getBloodCount()%>
           		,<%=list.get(1).getBloodCount()%>
           		,<%=list.get(2).getBloodCount()%>
           		,<%=list.get(3).getBloodCount()%>
           		,<%=list.get(4).getBloodCount()%>
           		,<%=list.get(5).getBloodCount()%>
-          		,<%=list.get(6).getBloodCount()%>]
+          		,<%=list.get(6).getBloodCount()%>] --%>
         }]
       },
       // 옵션

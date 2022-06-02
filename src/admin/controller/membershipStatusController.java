@@ -1,7 +1,6 @@
 package admin.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.service.MemberService;
-import member.model.vo.Member;
+import admin.model.service.MemberService;
 //규민 회원현황 파트 //규민 회원현황 파트 //규민 회원현황 파트 //규민 회원현황 파트 //규민 회원현황 파트 //규민 회원현황 파트
 /**
  * Servlet implementation class MemSituationController
@@ -32,7 +30,6 @@ public class membershipStatusController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
 		/*int userEnrolldate = Integer.parseInt(request.getParameter("userEnrolldate"));
 		int userWithdate = Integer.parseInt(request.getParameter("userWithdate"));
 		int userSusdate = Integer.parseInt(request.getParameter("userSusdate"));
