@@ -38,8 +38,12 @@ public class LoginController extends HttpServlet {
 		String userId = request.getParameter("userId"); 
 		String userPw = request.getParameter("userPw");
 		
+<<<<<<< HEAD
 		
 		Member m= new MemberService().loginMember(userId,userPw);
+=======
+		Member m = new MemberService().loginMember(userId,userPw);
+>>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
 		
 		
 		if(m==null){ 

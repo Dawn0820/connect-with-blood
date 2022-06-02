@@ -49,9 +49,6 @@
 		<button class="btn btn-primary" type="submit">전송</button>
 		<a class="btn btn-danger" href="/ConnectWithBlood/index.jsp" role="button">취소</a>
 		
-		
-		
-		
 	</form>
 </div>
 

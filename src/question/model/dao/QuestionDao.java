@@ -85,7 +85,7 @@ public class QuestionDao {
 			while(rset.next()) {
 				list.add(new Question(rset.getInt("QUESTION_NO")
 						             ,rset.getString("QUESTION_TITLE")
-						             ,rset.getString("QUESTION_CONTENT")
+						             ,rset.getString("QUESTION_TAG")
 						             ,rset.getDate("QUESTION_DATE")
 						             ,rset.getString("USER_NAME")
 									,rset.getString("CATEGORY_NAME")));
@@ -104,29 +104,7 @@ public class QuestionDao {
 		
 	}
 
-//	public int increaseCount(Connection conn, int queNo) {
-//
-//		int result = 0;
-//		
-//		PreparedStatement pstmt = null;
-//		
-//		String sql = prop.getProperty("increaseCount");
-//		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setInt(1, queNo);
-//			
-//			result = pstmt.executeUpdate();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}finally {
-//			close(pstmt);
-//		}
-//		
-//		return result;
-//	}
+
 
 	public Question selectQue(Connection conn, int queNo) {
 
@@ -207,8 +185,8 @@ public class QuestionDao {
 			
 			pstmt.setString(1, que.getQuestionTitle());
 			pstmt.setString(2, que.getQuestionContent());
-			pstmt.setInt(3, Integer.parseInt(que.getCategoryNo()));
-//			pstmt.setString(4, que.getQuestionWriter());
+			pstmt.setInt(3, Integer.parseInt(que.getQuestionTag()));
+			pstmt.setString(4, que.getQuestionWriter());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -293,7 +271,7 @@ public class QuestionDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, Integer.parseInt(que.getCategoryNo()));
+			pstmt.setInt(1, Integer.parseInt(que.getQuestionTag()));
 			pstmt.setString(2, que.getQuestionTitle());
 			pstmt.setString(3, que.getQuestionContent());
 			pstmt.setInt(4, que.getQuestionNo());

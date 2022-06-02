@@ -41,7 +41,7 @@ public class QuestionUpdateFormController extends HttpServlet {
 	
 		//질문 내용
 		Question que = new QuestionService().selectQue(queNo);
-		
+
 		//질문 사진
 		Attachment at = new QuestionService().selectAttachment(queNo);
 		

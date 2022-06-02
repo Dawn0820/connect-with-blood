@@ -37,21 +37,7 @@ public class QuestionService {
 		return list;
 	}
 
-//	public int increaseCount(int queNo) {
-//
-//		Connection conn = getConnection();
-//		
-//		int result = new QuestionDao().increaseCount(conn,queNo);
-//		
-//		if(result>0) {
-//			commit(conn);
-//		}else {
-//			rollback(conn);
-//		}
-//		close(conn);
-//		
-//		return result;
-//	}
+
 
 	public Question selectQue(int queNo) {
 

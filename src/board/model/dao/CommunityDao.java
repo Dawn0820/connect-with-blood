@@ -210,7 +210,7 @@ public class CommunityDao {
 			pstmt.setString(1, comm.getCommTitle());
 			pstmt.setInt(2, Integer.parseInt(comm.getCategoryNo()));
 			pstmt.setString(3, comm.getCommContent());
-//			pstmt.setString(4, comm.getCommWriter());
+			pstmt.setString(4, comm.getCommWriter());
 		
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

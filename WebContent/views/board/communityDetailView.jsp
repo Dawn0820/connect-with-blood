@@ -44,7 +44,7 @@
 			<th colspan="4"><%=comm.getCommTitle() %></th>
 		</tr>
 		<tr>
-			<td width="30%">작성자</td>
+			<th width="30%">작성자</th>
 			<td colspan="3" width="70%"><%=comm.getCommWriter() %></td>
 
 		</tr>
@@ -79,9 +79,11 @@
 	<div align="center">
 		<a href="<%=contextPath%>/list.co?cpage=1" class="btn btn-outline-secondary">목록가기</a>
 
-		<!--수정/삭제 : 로그인&작성자만 가능-->
+        <%if(loginUser!=null && loginUser.getUserId().equals(comm.getCommWriter())||isAdmin) {%>
+
 		<a href="<%=contextPath%>/delete.co?cno=<%=comm.getCommNo()%>" class="btn btn-outline-secondary">삭제하기</a>
 		<a href="<%=contextPath%>/updateForm.co?cno=<%=comm.getCommNo()%>" class="btn btn-outline-secondary">수정하기</a>
+		<%} %>
 		<br>
 		
 	</div>
@@ -91,24 +93,23 @@
         <div id="reply-area">
             <table align="center" >
                 <thead>
-                <!-- 로그인 되어 있는 경우에만 댓글작성 가능하도록 조건 -->
-<%--                 	<%if(loginUser!=null){ %> <!-- 로그인 한 경우 --> --%>
+                	<%if(loginUser!=null){ %>
                     <tr>
-                        <th>댓글작성</th>
-                        <td>
-                            <textarea id="replyContent" cols="60" rows="3" style="resize:none"></textarea>
+                        <th style="width:10%">댓글작성</th>
+                        <td style="width:80%" align="center">
+                            <textarea id="replyContent" cols="65" rows="3" style="resize:none"></textarea>
                         </td>
-                        <td><button onclick="insertReply();" class="btn btn-outline-secondary">등록</button></td>
+                        <td style="width:10%"><button onclick="insertReply();" class="btn btn-outline-secondary">등록</button></td>
                     </tr>
-<%-- 					<%}else{ %> <!-- 로그인 안한 경우 --> --%>
+					<%}else{ %> 
 					<tr>
-                        <th>댓글작성</th>
-                        <td>
-                            <textarea cols="60" rows="3" style="resize:none" readonly>로그인 후 이용가능한 서비스 입니다.</textarea>
+                        <th style="width:10%">댓글작성</th>
+                        <td style="width:80%" align="center">
+                            <textarea cols="65" rows="3" style="resize:none" readonly>로그인 후 이용가능한 서비스 입니다.</textarea>
                         </td>
-                        <td><button disalbed class="btn btn-outline-secondary">등록</button></td>
+                        <td style="width:10%"><button disalbed class="btn btn-outline-secondary">등록</button></td>
                     </tr>
-<%-- 					<%} %> --%>
+					<%} %>
                 </thead>
                 <tbody>
 
@@ -117,32 +118,23 @@
             
             <script>
                $(function(){
-                    //이 함수 안에 작성하면 페이지가 읽혀지는 순간 이 함수가 실행된다 
                     selectReply();
 
                 })
             //댓글 작성 함수
                 function insertReply(){
-                    //여기부터 ajax이용해서 작성한다 
                     $.ajax({
                         url : "replyInsert.co",
                         data : {
                             content : $("#replyContent").val(),
-                            //$("#replyContent").val() = textarea의 입력값 가져온다 
                             cno : <%=comm.getCommNo()%>
-                            //오류나는 빨간줄 상관 없음
 
-                            //댓글 작성자 정보 session에서 꺼내오기
-                            //=> AjaxReplyInsertController에서 진행
                         },
                         type : "post",
-                        //보통 insert는 post로 작업 많이 한다 
                         success : function(result){ //result는 매개변수명일 뿐 다른 이름이어도 상관없다
-							//console.log(result);  //성공이면 1이 콘솔에 나온다 
 							
 							if(result>0){ //성공이면
 								selectReply(); //함수 실행
-								//작성한 댓글 창 빈문자열로 바꿔주기 (초기화)
 								$("#replyContent").val("");
 							}
                         },
@@ -160,12 +152,9 @@
                             cno : <%=comm.getCommNo()%>
                         },
                         success : function(list){ //[{},{},{}]
-                            //console.log(list); //중간점검
                             
-                            //table의 tbody부분에 작성된 댓글이 보이도록 넣을 것이다
                             var row = "";
                             for(var i in list){
-                                //스크립트에서의 향상된 for문은 : 가 아니라 in이다 
                                 row += "<tr>"
                                     +   "<td>"+list[i].replyWriter+"</td>"
                                     +   "<td>"+list[i].replyContent+"</td>"
@@ -174,7 +163,6 @@
 
                             }
 
-                            //row를 테이블의 tbody에 넣어주기
                             $("#reply-area tbody").html(row);
 
                         },
@@ -188,7 +176,7 @@
             
 	</div>
 
-
+	<br><br><br>
 
 	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>

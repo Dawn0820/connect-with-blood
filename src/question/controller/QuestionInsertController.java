@@ -52,14 +52,14 @@ public class QuestionInsertController extends HttpServlet {
 			String category = multiRequest.getParameter("category");
 			String queTitle = multiRequest.getParameter("title");
 			String queContent = multiRequest.getParameter("content");
-//			String queWriter = multiRequest.getParameter("userNo");
+			String queWriter = multiRequest.getParameter("userNo");
 
 			Question que = new Question();
 			
-			que.setCategoryNo(category);
+			que.setQuestionTag(category);
 			que.setQuestionTitle(queTitle);
 			que.setQuestionContent(queContent);
-//			que.setQuestionWriter(queWriter);
+			que.setQuestionWriter(queWriter);
 			
 			Attachment at = null;
 
