@@ -45,7 +45,7 @@
         <h2 align="center">QnA 작성</h2>
         <br>
 
-			<input type="hidden" name="userNo" value="<%=loginUser.getUserNo()%>">
+			<input type="hidden" name="userNo" value="<%=loginMember.getUserNo()%>">
 
 
             <div class="position-absolute top-50 start-50 translate-middle">

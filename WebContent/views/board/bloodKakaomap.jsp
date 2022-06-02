@@ -140,7 +140,7 @@
 		        latlng: new kakao.maps.LatLng(35.234773, 128.686453)
 		    },
 		    {
-		        content: '<div style="height:50px ;"><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=5110014">제주특별자치도혈액원<br></a></div>',
+		        content: '<div style="height:50px ;"><a href="https://www.bloodinfo.net/blood_house.do?action=detail&sitecode=51100014">제주특별자치도혈액원<br></a></div>',
 		        latlng: new kakao.maps.LatLng(33.491844, 126.520514)
 		    },
 		    {

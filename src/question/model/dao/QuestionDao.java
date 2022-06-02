@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import question.model.vo.Answer;
 import question.model.vo.Attachment;
 import common.PageInfo;
 import question.model.vo.Category;
@@ -366,6 +367,68 @@ public class QuestionDao {
 		}
 		
 		return result;
+	}
+	
+	
+	//답변 댓글 작성
+	public int insertReply(Connection conn, Answer a) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, a.getAnsContent());
+			pstmt.setInt(2, a.getOriginNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	//답변 댓글 목록 조회
+	public ArrayList<Answer> selectReplyList(Connection conn, int queNo) {
+
+		ArrayList<Answer> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, queNo);
+
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Answer(rset.getInt("ANS_NO")
+									,rset.getString("ANS_CONTENT")
+									,rset.getString("ANS_DATE")));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 
 

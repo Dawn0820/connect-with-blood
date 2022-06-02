@@ -96,7 +96,7 @@
 		<a href="<%=contextPath%>/list.ev?epage=1" class="btn btn-outline-secondary">목록가기</a>
 
 
-        <%if(loginUser!=null && loginUser.getUserId().equals("admin")) {%>
+        <%if(loginMember!=null && loginMember.getUserId().equals("admin")) {%>
 		<a href="<%=contextPath%>/delete.ev?eno=<%=e.getEventNo()%>"  class="btn btn-outline-secondary">삭제하기</a>
 		<a href="<%=contextPath%>/updateForm.ev?eno=<%=e.getEventNo()%>"  class="btn btn-outline-secondary">수정하기</a>
 		<%} %>

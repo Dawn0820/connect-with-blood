@@ -22,6 +22,15 @@
 	table p{
 		border: 1px solid grey;
 	}
+		table{
+/* 		border: 1px solid red; */
+		width: 700px;
+		
+	}
+    #reply-area tr{
+            border: 0px solid black;
+            border-width: 0px 0px 1px 0px;
+    }
 </style>
 </head>
 <body>
@@ -68,17 +77,106 @@
 	</table>
 
 	<br><br>
-	
-
-
 	<div align="center">
 		<a href="<%=contextPath%>/list.queu?qpage=1" class="btn btn-outline-secondary">목록가기</a>
 
-           <%if(loginUser!=null && loginUser.getUserId().equals(que.getQuestionWriter())||isAdmin) {%>
+           <%if(loginMember!=null && loginMember.getUserId().equals(que.getQuestionWriter())||isAdmin) {%>
 		<a href="<%=contextPath%>/delete.que?qno=<%=que.getQuestionNo()%>" class="btn btn-outline-secondary">삭제하기</a>
 		<a href="<%=contextPath%>/updateForm.que?qno=<%=que.getQuestionNo()%>" class="btn btn-outline-secondary">수정하기</a>
 		<%} %>		
 	</div>
+	
+	 <!--댓글 기능-->
+        <div id="reply-area">
+            <table align="center" >
+                <thead>
+                	<%if(loginMember.getUserId().equals("admin")){ %>
+                    <tr>
+                        <th style="width:10%">댓글작성</th>
+                        <td style="width:80%" align="center">
+                            <textarea id="replyContent" cols="65" rows="3" style="resize:none"></textarea>
+                        </td>
+                        <td style="width:10%"><button onclick="insertReply();" class="btn btn-outline-secondary">등록</button></td>
+                    </tr>
+					<%}else{ %> 
+					<tr>
+                        <th style="width:10%">댓글작성</th>
+                        <td style="width:80%" align="center">
+                            <textarea cols="65" rows="3" style="resize:none" readonly>관리자만 작성할 수 있습니다.</textarea>
+                        </td>
+                        <td style="width:10%"><button disalbed class="btn btn-outline-secondary">등록</button></td>
+                    </tr>
+					<%} %>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            
+            <script>
+               $(function(){
+                    selectReply();
+
+                })
+            //댓글 작성 함수
+                function insertReply(){
+                    $.ajax({
+                        url : "replyInsert.que",
+                        data : {
+                            content : $("#replyContent").val(),
+                            qno : <%=que.getQuestionNo()%>
+
+                        },
+                        type : "post",
+                        success : function(result){ 
+							
+							if(result>0){ 
+								selectReply(); 
+								$("#replyContent").val("");
+							}
+                        },
+                        error : function(){
+                            console.log("ajax 통신 실패");
+                        }
+                    })
+                }
+
+                //댓글 조회 함수
+                function selectReply(){
+                    $.ajax({
+                        url : "replyList.que",
+                        data : {
+                            qno : <%=que.getQuestionNo()%>
+                        },
+                        success : function(list){ //[{},{},{}]
+                            
+                            var row = "";
+                            for(var i in list){
+                                row += "<tr>"
+                                    +   "<td>"+"관리자"+"</td>"
+                                    +   "<td>"+list[i].ansContent+"</td>"
+                                    +   "<td>"+list[i].ansDate+"</td>"
+                                    +"</tr>";
+
+                            }
+
+                            $("#reply-area tbody").html(row);
+
+                        },
+                        error : function(){
+                            console.log("ajax 통신 실패");
+                        }
+                    })
+                }
+            
+            </script>
+            
+	</div>
+
+	<br><br><br>
+
+
+	
 	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>
 	

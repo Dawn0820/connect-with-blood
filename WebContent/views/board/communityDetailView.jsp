@@ -79,7 +79,7 @@
 	<div align="center">
 		<a href="<%=contextPath%>/list.co?cpage=1" class="btn btn-outline-secondary">목록가기</a>
 
-        <%if(loginUser!=null && loginUser.getUserId().equals(comm.getCommWriter())||isAdmin) {%>
+        <%if(loginMember!=null && loginMember.getUserId().equals(comm.getCommWriter())||isAdmin) {%>
 
 		<a href="<%=contextPath%>/delete.co?cno=<%=comm.getCommNo()%>" class="btn btn-outline-secondary">삭제하기</a>
 		<a href="<%=contextPath%>/updateForm.co?cno=<%=comm.getCommNo()%>" class="btn btn-outline-secondary">수정하기</a>
@@ -93,7 +93,7 @@
         <div id="reply-area">
             <table align="center" >
                 <thead>
-                	<%if(loginUser!=null){ %>
+                	<%if(loginMember!=null){ %>
                     <tr>
                         <th style="width:10%">댓글작성</th>
                         <td style="width:80%" align="center">

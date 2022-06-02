@@ -154,8 +154,9 @@
 	            <a class="nav-link active"  href="<%=contextPath %>/views/member/login.jsp">멤버페이지(현진)</a>
 	          </li>
 	          <li class="nav-item">
-
-	            <a class="btn btn-primary" href="<%=contextPath%>/memberList.msg"role="button">메시지버튼</a>
+	            <a class="nav-link active" href="<%=contextPath%>/views/board/bloodKakaomap.jsp">헌혈증기증 혈액원</a>
+	          </li>
+	          <li class="nav-item">
 
 	            <a class="btn btn-primary" href="<%=contextPath%>/list.reserv" role="button">예약조회</a>
 

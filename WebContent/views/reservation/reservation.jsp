@@ -8,7 +8,7 @@
 <style>
     #text1{
         width : 800px;
-        height : 750px;
+        height : auto;
         border: 1px solid red;
         margin: auto;
         padding-inline: 30px;
@@ -16,7 +16,7 @@
 
     #text2{
         width : 800px;
-        height : 350px;
+        height : auto;
         border: 1px solid red;
         margin: auto;
         padding-inline: 30px;
@@ -64,7 +64,7 @@
 - 전혈 헌혈 : 운영 종료시간 30분전<br>
 - 혈장 성분헌혈 : 운영 종료시간 1시간 전<br>
 - 혈소판성분헌혈, 혈소판혈장성분헌혈 : 운영 종료시간 1시간 30분전<br>
-※ 단 당일 대기중인 헌혈자가 많은 경우 안내된 시간보다 조기에 헌혈접수가 마감 될수 있습니다.<br>
+※ 단 당일 대기중인 헌혈자가 많은 경우 안내된 시간보다 조기에 헌혈접수가 마감 될수 있습니다.<br><br>
 </div>
 <br><br>
 
@@ -87,7 +87,7 @@
   - 헌혈예약 후 5년<br>
 
 <h4 strong style="color:red">[동의거부 권리 및 불이익]</h4>
-  - 정보주체는 개인정보 수집에 동의하지 않을 권리가 있으며, 필수항목을 입력하지 않으시는 경우 헌혈예약이 불가.<br>
+  - 정보주체는 개인정보 수집에 동의하지 않을 권리가 있으며, 필수항목을 입력하지 않으시는 경우 헌혈예약이 불가.<br><br>
 </div>
 <br><br>
 

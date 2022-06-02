@@ -78,7 +78,7 @@
 	
 	<br>
 	
-	<%if(loginUser!=null) {%>
+	<%if(loginMember!=null) {%>
 	<div align="center"> 
         <a href="<%=contextPath%>/enrollForm.que" class="btn btn-outline-secondary">글작성</a>
       </div>  
