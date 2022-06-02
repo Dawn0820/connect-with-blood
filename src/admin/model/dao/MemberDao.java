@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import admin.model.vo.Member;
+import admin.model.vo.AdminMember;
 import common.JDBCTemplate;
 import common.MemberPageInfo;
 
@@ -34,9 +34,9 @@ private Properties prop = new Properties();
 	}	
 	
 	//회원정보 ㅡ 규민파트
-	public ArrayList<Member> selectList(Connection conn) {
+	public ArrayList<AdminMember> selectList(Connection conn) {
 		
-		ArrayList<Member> list = new ArrayList<>();
+		ArrayList<AdminMember> list = new ArrayList<>();
 		
 		PreparedStatement pstmt = null;
 		
@@ -50,7 +50,7 @@ private Properties prop = new Properties();
 			
 
 			while(rset.next()) {
-				list.add(new Member(rset.getInt("USER_NO")
+				list.add(new AdminMember(rset.getInt("USER_NO")
 						  ,rset.getString("USER_ID")
 						  ,rset.getString("USER_PW")
 						  ,rset.getString("USER_NAME")
@@ -80,9 +80,9 @@ private Properties prop = new Properties();
 	}
 	
 	//회원정보 검색구현 - 규민
-	public ArrayList<Member> searchMemberList(Connection conn,String keyField, String keyWord,MemberPageInfo pi ) {
+	public ArrayList<AdminMember> searchMemberList(Connection conn,String keyField, String keyWord,MemberPageInfo pi ) {
 		
-		ArrayList<Member> list1 = new ArrayList<>();
+		ArrayList<AdminMember> list1 = new ArrayList<>();
 		
 		PreparedStatement pstmt = null;
 		
@@ -125,7 +125,7 @@ private Properties prop = new Properties();
 			
 			//전체 조회든, 검색을 통한 조회든 뿌려주는 데이터는 같으니까 아래로 바꾼다
 			while(rset.next()) {
-			list1.add(new Member(
+			list1.add(new AdminMember(
 					   rset.getInt("USER_NO")
 					  ,rset.getString("USER_ID")
 					  ,rset.getString("USER_PW")
@@ -376,9 +376,9 @@ private Properties prop = new Properties();
 		return listCount;
 	}
 
-	public ArrayList<Member> selectList(Connection conn, MemberPageInfo pi) {
+	public ArrayList<AdminMember> selectList(Connection conn, MemberPageInfo pi) {
 		
-		ArrayList<Member> list = new ArrayList<>();
+		ArrayList<AdminMember> list = new ArrayList<>();
 		
 		PreparedStatement pstmt = null;
 		
@@ -398,7 +398,7 @@ private Properties prop = new Properties();
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Member(rset.getString("USER_ID")
+				list.add(new AdminMember(rset.getString("USER_ID")
 								   ,rset.getString("USER_NAME")
 								   ,rset.getDate("USER_ENROLLDATE")
 								   ,rset.getString("USER_GRADE")

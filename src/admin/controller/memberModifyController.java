@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import admin.model.service.MemberService;
-import admin.model.vo.Member;
+import admin.model.vo.AdminMember;
 
 /**
  * Servlet implementation class memberModifyController

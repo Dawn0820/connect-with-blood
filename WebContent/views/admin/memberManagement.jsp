@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList,admin.model.vo.*,common.*"%>
 <%	
-	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-			
+	ArrayList<AdminMember> list = (ArrayList<AdminMember>)request.getAttribute("list");
+			 
 			
 	String keyField = request.getParameter("keyField");
 	String keyWord = request.getParameter("keyWord");
@@ -73,7 +73,7 @@
 	  </thead align="center">
 	  <tbody align="center">
 	  
-	  <%for(Member ms : list) {%>
+	  <%for(AdminMember ms : list) {%>
 	  	<tr>
 	  	<td><%=ms.getUserId() %></td>
 	  	<td><%=ms.getUserName() %></td>

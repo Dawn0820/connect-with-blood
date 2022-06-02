@@ -2,7 +2,7 @@ package admin.model.vo;
 
 import java.sql.Date;
 
-public class Member {
+public class AdminMember {
 
 
 		private int userNo;//	USER_NO	NUMBER
@@ -24,14 +24,15 @@ public class Member {
 		//Withdate - 회원 탈퇴날짜
 		//Susdate - 회원 정지/블랙리스트 날짜
 		//Status - 회원상태(NORMAL/WITHDRAWAL/SUSPENSION/BLACKLIST)
-		public Member() {
+		
+		public AdminMember() {
 			super();
 		}
 		
 		
 		//유저 페이징처리
 		
-		public Member(String userId, String userName, Date userEnrolldate, String userGrade, Date userLogindate,
+		public AdminMember(String userId, String userName, Date userEnrolldate, String userGrade, Date userLogindate,
 			String userStatus) {
 			super();
 			this.userId = userId;
@@ -43,7 +44,7 @@ public class Member {
 		}
 
 		//회원정보 검색 유저 아이디,이름,등급
-		public Member(String userId, String userName, String userGrade) {
+		public AdminMember(String userId, String userName, String userGrade) {
 			super();
 			this.userId = userId;
 			this.userName = userName;
@@ -52,7 +53,7 @@ public class Member {
 
 		
 
-		public Member(int userNo, String userId, String userPw, String userName, String userBirth, String userEmail,
+		public AdminMember(int userNo, String userId, String userPw, String userName, String userBirth, String userEmail,
 				String userPhone, String userAddress, Date userEnrolldate, String userGrade, String userBloodtype,
 				Date userLogindate, Date userWithdate, Date userSusdate, String userStatus) {
 			super();

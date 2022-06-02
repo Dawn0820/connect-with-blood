@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import admin.model.dao.MemberDao;
-import admin.model.vo.Member;
+import admin.model.vo.AdminMember;
 import common.JDBCTemplate;
 import common.MemberPageInfo;
 
@@ -15,10 +15,10 @@ import common.MemberPageInfo;
 	//회원정보 ㅡ 규민파트
 	public class MemberService { 
 
-	public ArrayList<Member> selectMemberList() {
+	public ArrayList<AdminMember> selectMemberList() {
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new MemberDao().selectList(conn);
+		ArrayList<AdminMember> list = new MemberDao().selectList(conn);
 	
 		close(conn);
 		
@@ -26,10 +26,10 @@ import common.MemberPageInfo;
 	}
 	
 	//회원검색 ㅡ 규민파트
-	public ArrayList<Member> searchMemberList(String keyField, String keyWord, MemberPageInfo pi  ) {
+	public ArrayList<AdminMember> searchMemberList(String keyField, String keyWord, MemberPageInfo pi  ) {
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list1 = new MemberDao().searchMemberList(conn,keyField,keyWord,pi);
+		ArrayList<AdminMember> list1 = new MemberDao().searchMemberList(conn,keyField,keyWord,pi);
 
 		close(conn);
 
@@ -139,11 +139,11 @@ import common.MemberPageInfo;
 	
 	
 	//회원명단 페이징2
-	public ArrayList<Member> selectList(MemberPageInfo pi) {
+	public ArrayList<AdminMember> selectList(MemberPageInfo pi) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new MemberDao().selectList(conn,pi);
+		ArrayList<AdminMember> list = new MemberDao().selectList(conn,pi);
 		
 		close(conn);
 		

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.MemberService;
-import admin.model.vo.Member;
+import admin.model.vo.AdminMember;
 import common.MemberPageInfo;
 
 //규민파트ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -79,7 +79,7 @@ public class MemManagementSelect extends HttpServlet {
 		
 		MemberPageInfo pi = new MemberPageInfo(listCount, currentPage, pageLimit, memberLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Member> list1 = ms.searchMemberList(keyField, keyWord,pi);
+		ArrayList<AdminMember> list1 = ms.searchMemberList(keyField, keyWord,pi);
 
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list1);
