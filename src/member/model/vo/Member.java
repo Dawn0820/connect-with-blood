@@ -82,6 +82,17 @@ public class Member {
 		}
 
 
+		public Member(int userNo, String userId) {
+			super();
+			this.userNo = userNo;
+			this.userId = userId;
+		}
+
+		
+		public Member(String userId) {
+			super();
+			this.userId = userId;
+		}
 
 
 		public int getUserNo() {

@@ -1,4 +1,4 @@
-package notice.controller;
+package event.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import event.model.service.EventService;
 
 /**
- * Servlet implementation class NoticeInsertController
+ * Servlet implementation class EventDeleteController
  */
-@WebServlet("/insert.no")
-public class NoticeInsertController extends HttpServlet {
+@WebServlet("/delete.ev")
+public class EventDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertController() {
+    public EventDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,34 +29,17 @@ public class NoticeInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
 
+		int eventNo = Integer.parseInt(request.getParameter("eno"));
+	
+		int result = new EventService().deleteEvent(eventNo);
 		
-			String noticeTitle = request.getParameter("title");
-			String noticeContent = request.getParameter("content");
-			String noticeWriter =  request.getParameter("userNo");
+		if(result>0) {
+			response.sendRedirect(request.getContextPath()+"/list.ev?epage=1");
+		}else {
+			response.sendRedirect("views/common/communityErrorPage.jsp");
 
-			
-			Notice n = new Notice();
-			
-			n.setNoticeTitle(noticeTitle);
-			n.setNoticeContent(noticeContent);
-			n.setNoticeWriter(noticeWriter);
-			
-			
-			int result = new NoticeService().insertNotice(n);
-			
-			if(result>0) {
-				response.sendRedirect(request.getContextPath()+"/list.no?npage=1");
-			}else {
-				response.sendRedirect("views/common/communityErrorPage.jsp");
-			}
-			
-		
-		
-		
-		
+		}
 	
 	}
 

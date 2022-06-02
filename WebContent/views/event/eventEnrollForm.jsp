@@ -33,11 +33,11 @@
 	 <%@ include file="../common/header.jsp" %>
 	
      
-        <form action="<%=contextPath %>/insert.no" method="post" id="form22" >
+        <form action="<%=contextPath %>/insert.ev" method="post" id="form22" enctype="multipart/form-data">
         
         <div class="outer position-relative" >
         <br>
-        <h2 align="center">공지사항 글 작성</h2>
+        <h2 align="center">이벤트 글 작성</h2>
         <br>
         
         	<input type="hidden" name="userNo" value="<%=loginUser.getUserNo()%>">
@@ -56,6 +56,10 @@
                     <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="10" style="resize:none" placeholder="내용"></textarea>
                 </div>
 
+                <!--첨부파일-->
+                <input type="file" id="upfile" name="upfile">
+                
+                <br><br>
                 
                 <div align="center">
                     <button type="submit"  class="btn btn-outline-secondary">등록하기</button>
@@ -69,10 +73,6 @@
 
         
 	
-	
-   
-   
-   
    
    	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>

@@ -1,11 +1,14 @@
 package notice.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import notice.model.service.NoticeService;
 
 /**
  * Servlet implementation class NoticeDeleteController
@@ -27,10 +30,18 @@ public class NoticeDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/notice/noticeListView.jsp").forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+
+		int noticeNo =  Integer.parseInt(request.getParameter("nno"));
+		
+		int result = new NoticeService().deleteNotice(noticeNo);
 	
-	
-	
+		if(result>0) {
+			response.sendRedirect(request.getContextPath()+"/list.no?npage=1");
+		}else {
+			
+		}
+		
 	
 	}
 

@@ -5,8 +5,10 @@ import static common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import board.model.dao.CommunityDao;
 import common.PageInfo;
 import event.model.dao.EventDao;
+import event.model.vo.Attachment;
 import event.model.vo.Event;
 
 public class EventService {
@@ -60,6 +62,86 @@ public class EventService {
 		
 		return event;
 	}
+
+	public int insertAttachmentEvent(Event e, ArrayList<Attachment> list) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new EventDao().insertEvent(e,conn);
+		
+		int result2 = new EventDao().insertAttachment(list,conn);
+		
+		if(result1>0&&result2>0){
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result1*result2;
+	}
+
+	public Attachment selectAttachment(int eventNo) {
+
+		Connection conn = getConnection();
+		
+		Attachment at = new EventDao().selectAttachment(conn,eventNo);
+		
+		close(conn);
+		
+		return at;
+	}
+
+	public ArrayList<Attachment> selectAttachmentList(int eventNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Attachment> list = new EventDao().selectAttachmentList(conn,eventNo);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public int updateEvent(Event e, Attachment newAttachment) {
+
+		Connection conn = getConnection();
+
+		int result1 = new EventDao().updateEvent(conn,e,newAttachment);
+		
+		int result2 = 1;
+
+		if(newAttachment != null) {
+			
+			if(newAttachment.getFileNo()!=0) {
+				result2 = new EventDao().updateAttachment(conn, newAttachment);
+			}else {
+				result2 = new EventDao().insertNewAttachment(conn, newAttachment);
+
+			}
+		}
+		
+		return result1*result2;
+
+	}
+
+	public int deleteEvent(int eventNo) {
+
+		Connection conn = getConnection();
+
+		int result = new EventDao().deleteEvent(conn,eventNo);
+
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+
 
 
 }

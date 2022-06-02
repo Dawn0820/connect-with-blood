@@ -111,7 +111,7 @@
 			
 			<select name="category" id="">
 				<option value="title" name="title">제목</option>
-				<option value="writerId" name="writerId">작성자</option>
+				<option value="writerId" name="writerId">이름</option>
 			</select>
 			
 			<input type="text" name="search">

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"  import="java.util.ArrayList, notice.model.vo.*"%>
+
+<%
+	Notice n  = (Notice)request.getAttribute("notice");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,30 +37,29 @@
 	 <%@ include file="../common/header.jsp" %>
 	
      
-        <form action="<%=contextPath %>/update.no" method="post" id="form22" enctype="multipart/form-data" >
+        <form action="<%=contextPath %>/update.no" method="post" id="form22" >
         
         <div class="outer position-relative" >
         <br>
         <h2 align="center">공지사항 글 작성</h2>
         <br>
 
+        <input type="hidden" name="nno" value="<%=n.getNoticeNo()%>">
+
+
             <div class="position-absolute top-50 start-50 translate-middle">
 
                 <!--제목-->
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="title" aria-label="Text input with dropdown button" placeholder="제목">
+                    <input type="text" class="form-control" name="title" id="title" value="<%=n.getNoticeTitle() %>" aria-label="Text input with dropdown button" placeholder="제목">
                 </div>
 
                 <!--내용-->
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label" id="content" >내용</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" style="resize:none" placeholder="내용"></textarea>
+                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="10" style="resize:none" placeholder="내용"><%=n.getNoticeContent() %></textarea>
                 </div>
 
-                <!--첨부파일-->
-                <input type="file" id="file1" name="file1">
-                <br><br>
-                
                 
                 <div align="center">
                     <button type="submit"  class="btn btn-outline-secondary">등록하기</button>

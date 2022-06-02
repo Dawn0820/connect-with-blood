@@ -1,11 +1,14 @@
 package msg.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import msg.model.vo.Message;
 
 /**
  * Servlet implementation class MsgEnrollController
@@ -29,9 +32,14 @@ public class MsgEnrollController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
+		int sendNo = Integer.parseInt(request.getParameter("sendUserNo"));
 		String send = request.getParameter("send");
 		String receive = request.getParameter("receive");
 		String content = request.getParameter("content");
+		
+		Message msg = new Message();
+		
+		System.out.println(msg);
 	
 	
 	}

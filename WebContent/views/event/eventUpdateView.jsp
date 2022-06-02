@@ -97,8 +97,8 @@
 
 
         <%if(loginUser!=null && loginUser.getUserId().equals("admin")) {%>
-		<a href="<%=contextPath%>/delete.ev?eno=<%=e.getEventNo()%>"  class="btn btn-outline-secondary">삭제하기</a>
-		<a href="<%=contextPath%>/updateForm.ev?eno=<%=e.getEventNo()%>"  class="btn btn-outline-secondary">수정하기</a>
+		<a href="<%=contextPath%>/delete.ev?eno=<%=e.getEventNo()%>">삭제하기</a>
+		<a href="<%=contextPath%>/updateForm.ev?eno=<%=e.getEventNo()%>">수정하기</a>
 		<%} %>
 		<br>
 	</div>

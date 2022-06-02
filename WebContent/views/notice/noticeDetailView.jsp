@@ -59,9 +59,11 @@
 		<a href="<%=contextPath%>/list.no?npage=1" class="btn btn-outline-secondary">목록가기</a>
 
 
-		<!--수정/삭제 : 로그인&작성자만 가능-->
-		<a href="<%=contextPath%>/delete.no" class="btn btn-outline-secondary">삭제하기</a>
-		<a href="<%=contextPath%>/updateForm.no" class="btn btn-outline-secondary">수정하기</a>
+	<%if(loginUser!=null && loginUser.getUserId().equals("admin")) {%>
+		<a href="<%=contextPath%>/delete.no?nno=<%=n.getNoticeNo()%>" class="btn btn-outline-secondary">삭제하기</a>
+		<a href="<%=contextPath%>/updateForm.no?nno=<%=n.getNoticeNo() %>" class="btn btn-outline-secondary">수정하기</a>
+	<%} %>
+	<br><br>
 		
 	</div>
 	<!-- footer.jsp include -->
