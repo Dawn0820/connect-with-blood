@@ -1,11 +1,15 @@
 package notice.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import notice.model.service.NoticeService;
+import notice.model.vo.Notice;
 
 /**
  * Servlet implementation class NoticeInsertController
@@ -26,10 +30,34 @@ public class NoticeInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
 
-		request.getRequestDispatcher("views/notice/noticeListView.jsp").forward(request, response);
-	
-	
+		
+			String noticeTitle = request.getParameter("title");
+			String noticeContent = request.getParameter("content");
+			String noticeWriter =  request.getParameter("userNo");
+
+			
+			Notice n = new Notice();
+			
+			n.setNoticeTitle(noticeTitle);
+			n.setNoticeContent(noticeContent);
+			n.setNoticeWriter(noticeWriter);
+			
+			
+			int result = new NoticeService().insertNotice(n);
+			
+			if(result>0) {
+				response.sendRedirect(request.getContextPath()+"/list.no?npage=1");
+			}else {
+				response.sendRedirect("views/common/communityErrorPage.jsp");
+			}
+			
+		
+		
+		
+		
 	
 	}
 

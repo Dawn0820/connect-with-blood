@@ -91,8 +91,7 @@ public class CommunityUpdateController extends HttpServlet {
 			if(result>0) {
 				response.sendRedirect(request.getContextPath()+"/detail.co?cno="+commNo);
 			}else {
-				request.setAttribute("errorMsg", "게시글 수정 실패");
-				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				response.sendRedirect("views/common/communityErrorPage.jsp");
 			}
 			
 		}

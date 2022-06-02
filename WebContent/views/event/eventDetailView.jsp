@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import = "event.model.vo.*,java.util.ArrayList"%>
 <%
 	Event e = (Event)request.getAttribute("event");
+	Attachment at = (Attachment)request.getAttribute("at");
 %>
 
 <!DOCTYPE html>
@@ -55,13 +56,34 @@
 				<p style="height:200px;"><%=e.getEventContent() %></p>
 			</td>
 		</tr>
+					<%if(at==null) {%>
 		<tr>
 			<td colspan="4">
 				<div>
-                    <img src="" width="700" height="300">
+                		첨부파일이 없습니다.
                 </div>
 			</td>
 		</tr>
+                	<%}else{ %>
+        
+		<tr>
+			<td>
+			첨부파일
+			</td>
+			<td colspan="3">		
+                <img src="<%=contextPath %>/<%=at.getFilePath()+at.getChangeName() %>" width="700" height="550">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+			</td>
+			<td colspan="3">
+				<a download="<%=at.getOriginName() %>" href="<%=contextPath%>/<%=at.getFilePath()+at.getChangeName()%>"><%=at.getOriginName() %></a>
+			</td>
+		</tr>
+		
+              <%} %>                
 
 
 	</table>
@@ -74,10 +96,11 @@
 		<a href="<%=contextPath%>/list.ev?epage=1" class="btn btn-outline-secondary">목록가기</a>
 
 
-		<!--수정/삭제 : 로그인&작성자만 가능-->
-<%-- 		<a href="<%=contextPath%>/delete.ev">삭제하기</a> --%>
-<%-- 		<a href="<%=contextPath%>/updateForm.ev">수정하기</a> --%>
-		
+        <%if(loginMember!=null && loginMember.getUserId().equals("admin")) {%>
+		<a href="<%=contextPath%>/delete.ev?eno=<%=e.getEventNo()%>"  class="btn btn-outline-secondary">삭제하기</a>
+		<a href="<%=contextPath%>/updateForm.ev?eno=<%=e.getEventNo()%>"  class="btn btn-outline-secondary">수정하기</a>
+		<%} %>
+		<br>
 	</div>
 
 

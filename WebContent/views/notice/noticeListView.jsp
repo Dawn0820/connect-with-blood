@@ -83,6 +83,14 @@
 	
 	<br>
 	
+	
+        <%if(loginMember!=null && loginMember.getUserId().equals("admin")) {%>
+      <div align="center"> 
+        <a href="<%=contextPath%>/enrollForm.no" class="btn btn-outline-secondary">글작성</a>
+      </div>
+      <%} %>
+      <br><br>
+	
 	 <!--페이징-->
        <div class="paging-area" align="center">
         	<%if(currentPage!=1) {%>

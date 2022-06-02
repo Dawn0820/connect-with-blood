@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.vo.Attachment;
 import event.model.service.EventService;
+import event.model.vo.Attachment;
 import event.model.vo.Event;
 
 /**
@@ -38,12 +38,17 @@ public class EventDetailViewController extends HttpServlet {
 		//조회수 증가
 		int result = new EventService().increaseCount(eventNo);
 		
+		
 		if(result>0) {
+			//이벤트 내용
 			Event event = new EventService().selectEvent(eventNo);
 			
-			request.setAttribute("event", event);
 			
-//			ArrayList<Attachment> list = new EventService().selectAttachment(eventNo);
+			//이벤트 상세 사진
+			Attachment at = new EventService().selectAttachment(eventNo);
+			
+			request.setAttribute("event", event);
+			request.setAttribute("at", at);
 			
 			request.getRequestDispatcher("views/event/eventDetailView.jsp").forward(request, response);
 			

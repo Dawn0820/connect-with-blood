@@ -29,11 +29,11 @@
 
   }
   
-  .list-area{
-        width: 800px;
-        margin: auto;
-
-    }
+  .outer{
+	width:1200px;	
+	margin-left:auto;
+	margin-right:auto;
+  }
 </style>
 </head>
 <body>
@@ -41,49 +41,91 @@
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
     
-    <div class="outer">
+    <div class="outer" align="center">
+    	<br><br>
+    	<h2 align="center">EVENT</h2>
    		<br><br>
-		<h2 align="center">EVENT</h2>
-		<br><br>
-    
+    <div class="inner" align="center">
+      <table align="center" class="table table-hover">
+        <thead>
+            <tr align="center">
+              <th style="width:10% ;">No</th>
+              <th style="width:10% ;">진행여부</th>
+              <th>제목</th>
+              <th style="width:15% ;">작성일</th>
+              <th style="width:10% ;">조회수</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+        
+        	<%if(list.isEmpty()){ %>
+        	<tr>
+        		<td colspan="6">작성된 게시글이 없습니다</td>
+        	</tr>
+        
+       		<%}else{ %>
+            		<%for(Event e : list) {%>
+		            <tr align="center">
+		              <td><%=e.getEventNo() %></td>
+		              <td><%=e.getEventProgress() %></td>
+		              <td align="left"><%=e.getEventTitle() %></td>
+		              <td><%=e.getEventDate() %></td>
+		              <td><%=e.getEventCount() %></td>
+		            </tr>
+		            <%} %>
+            	<%} %>
+        </tbody>
+      </table>
+    </div>
 
-		<div class="list-area">
-        <%if(!list.isEmpty()) {%>
-	        <%for(Event e : list) {%>
-	            <div class="thumbnail" align="center">
-                    <input type="hidden" value="<%=e.getEventNo()%>">
-	                <img src="<%=contextPath %>/<%=e.getTitleImg() %>" alt="" width="200px" height="150px">
-	                <p>
-	                    No. <%=e.getEventNo() %> <%=e.getEventTitle() %><br>
-	                    조회수 : <%=e.getEventCount() %><br>
-	                    <%=e.getEventProgress() %>
-	                    
-	                </p>
-	            </div>
-			<%} %>
- 		<%}else{ %>
- 			 등록된 이벤트가 없습니다
- 		<%} %>
-        </div>
 
 
 	<script>
       $(function(){
-            $(".thumbnail").click(function(){
-                location.href = "<%=contextPath%>/detail.ev?eno="+$(this).children().eq(0).val();
+            $(".table>tbody>tr").click(function(){
+                location.href = "<%=contextPath%>/detail.ev?eno="+$(this).children().eq(0).text();
+
+<%-- location.href = "<%=contextPath%>/detail.ev?eno=3"; --%>
+
             })
         })
     </script>
 	
+	 <%if(loginMember!=null && loginMember.getUserId().equals("admin")) {%>
+      <div align="center"> 
+        <a href="<%=contextPath%>/enrollForm.ev" class="btn btn-outline-secondary">글작성</a>
+      </div>
+      <%} %>
+      <br><br>
+	
 
       <br><br>
 
-      <div align="center"> 
-<%--         <a href="<%=contextPath%>/enrollForm.ev" class="btn btn-outline-secondary">글작성</a> --%>
-      </div>  
+
       </div>
 
       <!--페이징-->
+       <div class="paging-area" align="center">
+        	<%if(currentPage!=1) {%>
+            <button onclick="location.href='<%=contextPath %>/list.ev?epage=<%=currentPage-1 %>'" class="btn btn-light">&lt;</button>
+			<%} %>
+			
+			<%for(int i=startPage;i<endPage+1;i++) {%>
+			<%if(i!=currentPage){ %>
+			<button onclick="location.href='<%=contextPath %>/list.ev?epage=<%=i %>'" class="btn btn-light"><%=i %></button>
+			<%}else{ %> 
+			<button disabled class="btn btn-light"><%=i %></button> 
+			<%} %>
+			<%} %>
+			
+			<%if(currentPage!=maxPage){ %>          
+        	<button onclick="location.href='<%=contextPath %>/list.ev?epage=<%=currentPage+1 %>'" class="btn btn-light">&gt;</button>
+        	<%} %>
+        
+        
+        </div>
+	
 	
 	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>

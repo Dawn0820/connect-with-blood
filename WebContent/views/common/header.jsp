@@ -18,6 +18,10 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -150,7 +154,12 @@
 	            <a class="nav-link active"  href="<%=contextPath %>/views/member/login.jsp">멤버페이지(현진)</a>
 	          </li>
 	          <li class="nav-item">
+	            <a class="nav-link active" href="<%=contextPath%>/views/board/bloodKakaomap.jsp">헌혈증기증 혈액원</a>
+	          </li>
+	          <li class="nav-item">
+
 	            <a class="btn btn-primary" href="<%=contextPath%>/list.reserv" role="button">예약조회</a>
+
 	          </li>
 	        </ul>
 	       

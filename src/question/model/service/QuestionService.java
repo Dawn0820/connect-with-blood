@@ -7,6 +7,7 @@ import static common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import question.model.vo.Answer;
 import question.model.vo.Attachment;
 import common.PageInfo;
 import question.model.dao.QuestionDao;
@@ -130,7 +131,38 @@ public class QuestionService {
 		
 		return result;
 	}
-	
+
+	//답변 댓글 작성
+	public int insertReply(Answer a) {
+
+		Connection conn = getConnection();
+		
+		int result = new QuestionDao().insertReply(conn,a);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+		
+	}
+
+	//답변 댓글 목록 조회
+	public ArrayList<Answer> selectReplyList(int queNo) {
+
+		Connection conn = getConnection();
+		
+		ArrayList<Answer> list = new QuestionDao().selectReplyList(conn,queNo);
+		
+		close(conn);
+		
+		return list;
+	}
+
+
 	
 	
 

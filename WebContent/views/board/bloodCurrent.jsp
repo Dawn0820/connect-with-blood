@@ -32,14 +32,19 @@
 
         margin-left:68.5% ;
     }
-    body{
-		    margin-top: 100px;
+/*     body{ */
+/* 		    margin-top: 100px; */
+/* 	} */
+	#outer{
+			margin-top: 100px;
+	
 	}
 </style>
 
 </head>
 <body>
 	
+	<div id="outer">
 	<br><br>
 
 	<h3 align="center" style="font-weight:600 ;">오늘의 혈액보유량</h3>
@@ -161,6 +166,7 @@
     <a href="https://www.bloodinfo.net/bloodstats_stocks.do" class="btn btn-outline-secondary" >자세히보기</a>
     
     <br><br><br><br><br><br><br>
+    </div>
     	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>
 	
