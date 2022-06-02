@@ -17,9 +17,6 @@
 <!-- jQuery library -->
 <script src=“https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js”></script>
 
-
-
-
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
@@ -104,8 +101,6 @@
     <%@ include file="../common/header.jsp" %>
     
     <%
-String alertMsg = (String)session.getAttribute("alertMsg");
-
 String userId = loginMember.getUserId();
 
 String userPw = (loginMember.getUserPw()==null)? "":loginMember.getUserPw();
@@ -115,8 +110,6 @@ String userAddress = (loginMember.getUserAddress()==null)? "":loginMember.getUse
 String userEmail = (loginMember.getUserEmail()==null)? "":loginMember.getUserEmail();
 String userPhone = (loginMember.getUserPhone()==null)? "":loginMember.getUserPhone();
 String userBloodtype = (loginMember.getUserBloodtype()==null)? "":loginMember.getUserBloodtype();
-
-int userBloodCnt = loginMember.getUserBloddCnt();
 
  %>
     

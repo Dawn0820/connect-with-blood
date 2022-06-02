@@ -17,7 +17,10 @@
 	</entry>
 	
 	<entry key="selectReservationList">
-		
+         SELECT *
+	     FROM RESERVATION LEFT JOIN MEMBER ON (RESERVATION_WRITER=USER_NO)
+		 WHERE USER_NO = ?
+	     AND USER_STATUS = 'NORMAL'
 	</entry>
 	
 	

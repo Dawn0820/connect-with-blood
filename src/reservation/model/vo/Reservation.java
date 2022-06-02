@@ -36,9 +36,21 @@ public class Reservation {
 		this.reservationDate = reservationDate;
 	}
 
+	
+	//예약 조회
+	public Reservation(int int1, String string, String string2, String string3, int int2, String string4) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+	
+
 	public int getReservationNo() {
 		return reservationNo;
 	}
+
 
 	public void setReservationNo(int reservationNo) {
 		this.reservationNo = reservationNo;

@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import member.model.vo.BloodInfo;
 import member.model.vo.Member;
+import reservation.model.vo.Reservation;
 
 public class MemberDao {
 
@@ -65,7 +66,6 @@ private Properties prop = new Properties();
 							  ,rset.getDate("USER_WITHDATE")
 							  ,rset.getDate("USER_SUSDATE")
 							  ,rset.getString("USER_STATUS")
-							  ,rset.getInt("USER_BLOODCOUNT")
 							  );
 				
 			}
@@ -85,7 +85,7 @@ private Properties prop = new Properties();
 
       
       
-	//회원가입
+		//회원가입
 		public int enrollMember(Connection conn, Member m) {
 			
 			int result=0;
@@ -282,6 +282,9 @@ private Properties prop = new Properties();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
 		}
 		
 		//db에서 검색된 count를 리턴해준다!
@@ -312,6 +315,9 @@ private Properties prop = new Properties();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
 			}
 			
 			//db에서 검색된 count를 리턴해준다!
@@ -343,6 +349,9 @@ private Properties prop = new Properties();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
 		}
 		
 		//db에서 검색된 count를 리턴해준다!
@@ -372,6 +381,9 @@ private Properties prop = new Properties();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
 		}
 		
 		//db에서 검색된 count를 리턴해준다!
@@ -402,6 +414,9 @@ private Properties prop = new Properties();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
 		}
 		
 		//db에서 검색된 count를 리턴해준다!
@@ -432,6 +447,9 @@ private Properties prop = new Properties();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
 		}
 		
 		//db에서 검색된 count를 리턴해준다!
@@ -453,9 +471,8 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, b.getBloodNo());
-			pstmt.setInt(2, b.getBloodCnt());
-			pstmt.setString(3, b.getBloodWh());
-			pstmt.setInt(4, b.getBloodOwner());
+			pstmt.setString(2, b.getBloodWh());
+			pstmt.setInt(3, b.getBloodOwner());
 
 			result = pstmt.executeUpdate();
 			
@@ -527,9 +544,8 @@ private Properties prop = new Properties();
 						   	,rset.getString("USER_BLOODTYPE")
 						   	,rset.getDate("USER_LOGINDATE")
 						   	,rset.getDate("USER_WITHDATE")
-						   	,rset.getDate("USER_SYSDATE")
-						   	,rset.getString("USER_STATUS")
-						   	,rset.getInt("USER_BLOODCOUNT"));
+						   	,rset.getDate("USER_SUSDATE")
+						   	,rset.getString("USER_STATUS"));
 			}	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -538,8 +554,85 @@ private Properties prop = new Properties();
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println(m);
 		return m;
+	}
+
+
+
+
+	public int changeUserNo(Connection conn, String userId) {
+
+		
+		int bloodOwner = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectUserNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			if(rset.next()) {
+				bloodOwner = rset.getInt("USER_NO");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return bloodOwner;
+}
+
+
+
+	public String selectBloodWh(Connection conn, String userId) {
+
+		String userBloodInfo = null;
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		
+		String sql=prop.getProperty("selectBloodInfo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				userBloodInfo = rset.getString("BLOOD_WH");
+			}
+			}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return userBloodInfo;
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 
 	
@@ -547,4 +640,4 @@ private Properties prop = new Properties();
 	
 	
 	
-}
+

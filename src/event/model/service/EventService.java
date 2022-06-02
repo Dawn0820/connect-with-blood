@@ -63,13 +63,13 @@ public class EventService {
 		return event;
 	}
 
-	public int insertAttachmentEvent(Event e, ArrayList<Attachment> list) {
+	public int insertAttachmentEvent(Event e, Attachment at) {
 		
 		Connection conn = getConnection();
 		
 		int result1 = new EventDao().insertEvent(e,conn);
 		
-		int result2 = new EventDao().insertAttachment(list,conn);
+		int result2 = new EventDao().insertAttachment(at,conn);
 		
 		if(result1>0&&result2>0){
 			commit(conn);
@@ -140,6 +140,8 @@ public class EventService {
 		
 		return result;
 	}
+
+
 
 
 

@@ -10,11 +10,40 @@
         font-weight: bold;
 	    color:tomato;
     }
+    .wrap {
+        position: relative;
+        min-height: 100%;
+    }
+    .fieldset {
+        color: rgb(99, 99, 99);
+        width: 50%;
+        margin: 0 auto;
+        font-size: 12px;
+        padding: 30px;
+        border: 1px solid gray;
+    }
+    footer {
+        width: 100%;
+        height: 30px;
+        position: fixed;
+        bottom: 0;
+        /* clear: left;
+        float: left; */
+        left: 20%;
+    }
+    h1 {
+        text-align: center;
+    }
 </style>
 </head>
 <body>
+<!-- header.jsp include -->
+<%@ include file="../common/header.jsp" %>
+<br><br>
+<h1>이용약관</h1>
 
-<h1>이용약관</h1><br>
+<div class="wrap"> 
+<fieldset class="fieldset" style="border: 2 solid gray;">
 제 1장 총칙 <br>
 제 1 조 (목적) <br>
 이 이용약관은 "ConnectWithBlood (이하 "당 사이트")"에서 제공하는 인터넷 서비스(이하 '서비스')의 가입조건, 당 사이트와 이용자의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.<br><br>
@@ -57,6 +86,11 @@
 1. 당 사이트는 이용고객에 대하여 약관에 정하는 바에 따라 자신이 선정한 회원 아이디를 부여합니다.<br>
 2. 회원 아이디는 원칙적으로 변경이 불가하며 부득이한 사유로 인하여 변경 하고자 하는 경우에는 해당 아이디를 해지하고 재가입해야 합니다.<br>
 3. 회원은 회원가입 시 기재한 개인정보가 변경되었을 경우 온라인으로 직접 수정할 수 있습니다. 이때 변경하지 않은 정보로 인해 발생되는 문제에 대한 책임은 회원에게 있습니다.
-
+</fieldset>
+<footer>
+    <!-- footer.jsp include -->
+    <%@include file="footer.jsp"%>
+</footer>
+</div>
 </body>
 </html>

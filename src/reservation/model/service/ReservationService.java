@@ -26,11 +26,15 @@ public class ReservationService {
 		
 	}
 
-	public void selectReservationList() {
+	public Reservation selectReservationList(String userNo) {
 		
 		Connection conn = getConnection();
 		
-		new ReservationDao().selectReservationList(conn);
+		Reservation r = new ReservationDao().selectReservationList(conn,userNo);
+		
+		close(conn);
+		
+		return r;
 		
 	}
 

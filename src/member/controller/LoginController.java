@@ -38,16 +38,14 @@ public class LoginController extends HttpServlet {
 		String userId = request.getParameter("userId"); 
 		String userPw = request.getParameter("userPw");
 		
-
 		
-		Member m = new MemberService().loginMember(userId,userPw);
-
 		
-
+		
+		Member m= new MemberService().loginMember(userId,userPw);
 		
 		
 		if(m==null){ 
-			request.setAttribute("errorMsg", "로그인에 실패하였습니다.");
+			request.setAttribute("alertMsg", "로그인에 실패하였습니다.");
 			
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		

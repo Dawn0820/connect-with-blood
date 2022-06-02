@@ -33,9 +33,9 @@
         <form action="<%=contextPath %>/insert.ev" method="post" id="form22" enctype="multipart/form-data">
         
         <div class="outer position-relative" >
-        <br>
+        <br><br>
         <h2 align="center">이벤트 글 작성</h2>
-        <br>
+        <br><br>
         
         	<input type="hidden" name="userNo" value="<%=loginMember.getUserNo()%>">
         

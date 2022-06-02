@@ -53,29 +53,20 @@ public class EventInsertController extends HttpServlet {
 			e.setEventTitle(multiRequest.getParameter("title"));
 			e.setEventContent(multiRequest.getParameter("content"));
 			
-			ArrayList<Attachment> list = new ArrayList<>();
+			Attachment at = null;
 
-			for(int i=1;i<=2;i++) {			
-				String key = "upfile"+i;
+			if(multiRequest.getOriginalFileName("upfile")!=null) {
 				
-				if(multiRequest.getOriginalFileName(key)!=null) { 
-					
-					Attachment at = new Attachment();
-					at.setOriginName(multiRequest.getOriginalFileName(key));
-					at.setChangeName(multiRequest.getFilesystemName(key));
-					at.setFilePath("resources/event_upfiles/");
-					
-					if(i==1) {
-						at.setFileLevel(1);
-					}else {
-						at.setFileLevel(2);
-					}
-					list.add(at);
-				}
-				
+				at = new Attachment();
+				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+				at.setChangeName(multiRequest.getFilesystemName("upfile"));
+			
+				at.setFilePath("resources/event_upfiles/");
+
+			
 			}
 			
-			int result = new EventService().insertAttachmentEvent(e,list);
+			int result = new EventService().insertAttachmentEvent(e,at);
 			
 			if(result>0) {
 				request.getSession().setAttribute("alertMsg", "이벤트가 작성되었습니다");

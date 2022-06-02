@@ -15,19 +15,7 @@ import member.model.vo.Member;
 
 public class MemberService { 
 
-//로그인
-public Member loginMember(String userId, String userPw) {
-	
-	
-	Connection conn =  getConnection();
-	
-	Member m = new MemberDao().loginMember(conn,userId,userPw);
-	
-	close(conn);
-	
-	return m;
 
-}
 
 
 
@@ -215,9 +203,11 @@ public Member loginMember(String userId, String userPw) {
 		return result;
 	}
 
+	
+	
 
 	//회원정보 수정
-	public int modifyMem(Member m) {
+	public Member modifyMem(Member m) {
 
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -233,8 +223,67 @@ public Member loginMember(String userId, String userPw) {
 		}
 		close(conn);
 		
-		return result;
+		return updateMem;
 	}
+
+
+
+
+
+
+	//userId->userNo
+	public int changeUserNo(String userId) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int bloodOwner = new MemberDao().changeUserNo(conn,userId);
+		
+		close(conn);
+		
+		return bloodOwner;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	//헌혈증 wh추출
+	public String selectBloodWh(String userId) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		String bloodWh = new MemberDao().selectBloodWh(conn,userId);
+		
+		JDBCTemplate.close(conn);
+		
+		return bloodWh;
+	}
+
+
+
+	//로그인
+	public Member loginMember(String userId, String userPw) {
+		
+		
+		Connection conn =  getConnection();
+		
+		Member m = new MemberDao().loginMember(conn,userId,userPw);
+		
+		close(conn);
+		
+		return m;
+
+	}
+
+
+
 
 
 

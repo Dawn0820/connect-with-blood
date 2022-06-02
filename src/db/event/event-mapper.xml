@@ -61,7 +61,6 @@
 							,ORIGIN_NAME
 							,CHANGE_NAME
 							,FILE_PATH
-							,FILE_LEVEL
 							)
 	VALUES(
 			SEQ_FILENO.NEXTVAL
@@ -69,7 +68,7 @@
 			,?
 			,?
 			,?
-			,?)
+			)
 			
 	
 	</entry>
@@ -78,7 +77,7 @@
 	SELECT FILE_NO,ORIGIN_NAME,CHANGE_NAME,FILE_PATH
 	FROM ATTACHMENT
 	WHERE REF_ENO = ?
-	AND FILE_LEVEL = 2
+
 	</entry>
 	
 	<entry key="selectAttachmentlist">

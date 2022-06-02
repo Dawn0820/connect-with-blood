@@ -51,7 +51,7 @@
 
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
-
+	<br>
 
 
 	<!-- 멤버 정보 띄우기<!-- 멤버 정보 띄우기 --><!-- 멤버 정보 띄우기 --><!-- 멤버 정보 띄우기 -->
@@ -204,6 +204,8 @@
 				<input type = "submit" value ="검색" class="btn btn-dark" onclick="searchCheck(form)" required>
 		</form>
 	</div>
+	
+	<br>
 	
 	<script>
 

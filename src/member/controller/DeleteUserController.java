@@ -41,18 +41,12 @@ public class DeleteUserController extends HttpServlet {
 		
 		int result = new MemberService().deleteMember(userId, userPw);
 		
-		System.out.println(userId);
-		System.out.println(userPw);
-		
 		
 		if(result>0) { 
 			
 			session.setAttribute("alertMsg", "회원탈퇴가 완료되었습니다. 안녕히 가세요.");
-			session.removeAttribute("loginMember");
 			
-			System.out.println(userPw);
-			System.out.println(userId);
-			System.out.println(result);
+			session.removeAttribute("loginMember");
 			
 			response.sendRedirect(request.getContextPath());
 

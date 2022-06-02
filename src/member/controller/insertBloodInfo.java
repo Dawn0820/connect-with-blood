@@ -41,25 +41,15 @@ public class insertBloodInfo extends HttpServlet {
 	String bloodNo = request.getParameter("bloodNo");
 	
 	String bloodWh = request.getParameter("bloodWh");
-
-	//+= //mapper에서 처리해보기 매퍼에서 서브밋 할때마다 +1이 되게끔!
-	int bloodCnt = Integer.parseInt(request.getParameter("bloodWh"));
 	
-	String bloodOwner = request.getParameter("bloodOwner");
+	String userId = request.getParameter("userId");
 	
-	System.out.println(bloodNo);
-	System.out.println(bloodWh);
-	System.out.println(bloodCnt);
-	System.out.println(bloodOwner);
-	System.out.println("메옹");
+	int bloodOwner = new MemberService().changeUserNo(userId);
 	
 	
-
-	BloodInfo b = new BloodInfo(bloodNo,bloodCnt,bloodWh,bloodOwner);
+	BloodInfo b = new BloodInfo(bloodNo,bloodWh,bloodOwner);
 	int result = new MemberService().insertBloodInfo(b);
 
-	
-	
 	
 	if(result>0) {
 		
