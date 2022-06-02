@@ -3,9 +3,22 @@
 
 <properties>
 
-	<entry key="selectBloodHomeList">
-		SELECT BLHOME_ADDRESS, BLHOME_ADDRESS2
-		FROM BLOODHOME
+	<entry key="enrollReservation">
+		INSERT INTO RESERVATION(RESERVATION_NO
+							   ,RESERVATION_WRITER
+							   ,RESERVATION_ADDRESS
+							   ,RESERVATION_ADDRESS2
+							   ,RESERVATION_DATE)
+			   VALUES(SEQ_RESERVNO.NEXTVAL
+			   		 ,?
+			   		 ,?
+			   		 ,?
+			   		 ,?)
 	</entry>
+	
+	<entry key="selectReservationList">
+		
+	</entry>
+	
 	
 </properties>

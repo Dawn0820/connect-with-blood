@@ -115,9 +115,7 @@ fieldset, img {
     text-align: center;
     border-color: lightgray;
 }
-#domains:hover{background-color: rgb(255, 215, 221);}
-#inp_text{text-align: left; width: 50%;}
- #findId_eamil{width: 100%;}
+
 
 </style>
 
@@ -138,15 +136,16 @@ fieldset, img {
         
         <form method="post" id="authForm" action="<%=contextPath %>/findId.mem">
             <input type="hidden" name="redirectUrl">
-            <fieldset>
+            <fieldset style="border: 0.5px dashed lightgray; padding: 20px;">
                 <legend align="center"><b>아이디 찾기</b> <br></legend>
+                	<br><br>
                 
                 <div class="box">
                     <div class="inp_text">
                         <input type="text" id="findId_name" name="userName" placeholder="이름을 입력해주세요" >
                     </div>
                 </div>
-            <div >
+            <div>
                 <div class="box findId_eamil">
                     <div class="inp_text">
                         <input type="email" id="findId_eamil" name="userEmail" placeholder="이메일을 입력해주세요" >
@@ -154,17 +153,17 @@ fieldset, img {
                 </div>
                     <!-- <div id="domainsBox" >
                         <select id="domains" >
-                            <option value="@naver.com">@naver.com
-                            <option value="@daum.net">@daum.net
-                            <option value="@gmail.com">@gmail.com
-                            <option value="@yahoo.co.kr">@yahoo.co.kr
+                            <option value="naver.com">naver.com
+                            <option value="daum.net">daum.net
+                            <option value="gmail.com">gmail.com
+                            <option value="yahoo.co.kr">yahoo.co.kr
                         </select>
                     </div> -->
             </div>                        
                 
 
         <br>
-        <button type="submit" class="btn btn_find">아이디 찾기</button>
+        <button type="submit" class="btn_find">아이디 찾기</button>
 
 	
 

@@ -5,7 +5,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>아이디 찾기</title>
+    <title>헌혈증 등록</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
 
@@ -134,20 +134,24 @@ fieldset, img {
 
 
 	    <%@ include file="../common/header.jsp" %>
+    <%String userId = loginMember.getUserId(); %>
     
     
 
 <div class="inner_findId">
     <div class="findId">
         
-<form method="post" id="authForm" action="<%=contextPath %>/insertB.mem">
             <input type="hidden" name="redirectUrl">
-<fieldset>
-                <legend align="center"><b>헐혈증 등록</b> <br></legend>
+<fieldset style="border: 0.5px dashed lightgray; padding: 20px;">
+                <legend align="center"><b>헌혈증 등록</b> <br></legend>
                 
+                <Br><br>
+                
+<form method="post" id="authForm" action="<%=contextPath %>/insertB.mem">
                 <div class="box">
                     <div class="inp_text">
-                        <input type="text" id="findId_name" name="bloodOwner" placeholder="아이디를 입력해주세요" >
+                        <!-- <input type="text" id="findId_name" name="bloodOwner" placeholder="아이디를 입력해주세요" > -->
+                        <input type="text" name="userId" value="<%=userId%>" readonly>
                     </div>
                 </div>
                 <div class="box">
@@ -155,7 +159,7 @@ fieldset, img {
                         <input type="text" id="findId_name" name="bloodNo" maxlength="12" placeholder="헌혈증 일련번호를 입력해주세요 (-포함)" >
                     </div>
                 </div>
-            <div >
+            <div>
                 <div id="domainsBox" >
                     <select id="domains">
                         <option id="fontc">헌혈 종류를 선택해주세요</option>
@@ -165,24 +169,16 @@ fieldset, img {
                         <option value="성분헌혈- 혈소판" name="bloodWh">성분헌혈- 혈소판</option>
                     </select>
                 </div>
-
             </div>                        
                 
 
         <br>
     <div class="btn1">
-            <!-- <input type="reset" value="초기화" class="btn btn-secondary"> -->
-            <input type="submit" value="등록" class="btn btn-danger btn-block" id="joinBtn" onclick="insertAlert();">
+            <input type="submit" value="등록" class="btn btn-danger btn-block" id="joinBtn" >
         </div>
-
-        <script>
-            function insertAlert(){
-                alert("헌혈증 등록이 완료되었습니다.");
-            }
-        </script>
+</form>
     </div>
  </fieldset>
-</form>
         
         
 

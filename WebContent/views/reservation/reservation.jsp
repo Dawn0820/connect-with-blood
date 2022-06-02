@@ -91,7 +91,7 @@
 </div>
 <br><br>
 
-	<a class="btn btn-danger" id="agree" href="<%=contextPath%>/list.bh">개인정보 수집 및 이용 동의</a>
+	<a class="btn btn-danger" id="agree" href="<%=contextPath%>/views/reservation/reservationEnroll.jsp">개인정보 수집 및 이용 동의</a>
 
 <br><br>
 <!-- footer.jsp include -->

@@ -31,22 +31,6 @@ public Member loginMember(String userId, String userPw) {
 
 
 
-////회원정보
-//
-//	public ArrayList<Member> selectMemberList() {
-//		Connection conn = getConnection();
-//		
-//		ArrayList<Member> list = new MemberDao().selectList(conn);
-//
-//		
-//		close(conn);
-//		
-//		return list;
-//	}
-//	
-//규민님이 selectList지우라고 하셨음
-
-
 
 
 
@@ -136,14 +120,14 @@ public Member loginMember(String userId, String userPw) {
 			}else {
 				rollback(conn);
 			}
-			
+			close(conn);
 			return result;
 		}
 
 
 
 
-
+	//아이디 찾기
 	public String findId(String userName,String userEmail) {
 
 		Connection conn = JDBCTemplate.getConnection();
@@ -160,7 +144,7 @@ public Member loginMember(String userId, String userPw) {
 
 
 
-
+	//비밀번호 찾기
 	public String findPw(String userId, String userName, String userEmail) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -176,7 +160,7 @@ public Member loginMember(String userId, String userPw) {
 
 
 
-
+	//아이디 중복체크
 	public int idCheck(String idCheck) {
 
 		Connection conn = JDBCTemplate.getConnection();
@@ -192,7 +176,7 @@ public Member loginMember(String userId, String userPw) {
 
 
 
-
+	//회원 삭제
 	public int deleteMember(String userId, String userPw) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -227,6 +211,27 @@ public Member loginMember(String userId, String userPw) {
 		}else {
 			rollback(conn);
 		}
+		close(conn);
+		return result;
+	}
+
+
+	//회원정보 수정
+	public int modifyMem(Member m) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Member updateMem = null;
+		int result = new MemberDao().modifyMem(m,conn);
+		
+		if(result>0) {
+			commit(conn);
+			updateMem =new MemberDao().selectMember(conn,m.getUserId());
+			
+		}else {
+			rollback(conn);
+		}
+		close(conn);
 		
 		return result;
 	}

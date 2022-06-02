@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import reservation.model.service.ReservationService;
+import reservation.model.vo.Reservation;
+
 /**
  * Servlet implementation class ReservationController
  */
@@ -29,11 +32,22 @@ public class ReservationController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String location = request.getParameter("location");
-		String locationDetail = request.getParameter("locationDetail");
+		String reservationWriter = request.getParameter("userNo");
+		String reservationAddress = request.getParameter("location");
+		String reservationAddress2 = request.getParameter("locationDetail");
+		String reservationDate = request.getParameter("time");
 		
-//		System.out.println(location);
-//		System.out.println(locationDetail);
+		Reservation reserv = new Reservation(reservationWriter, reservationAddress, reservationAddress2, reservationDate);
+		
+		int result = new ReservationService().enrollReservation(reserv);
+		
+		// 실행결과 따라서 alertMsg 설정해주기
+		
+		response.sendRedirect(request.getContextPath());
+		
+		
+		
+		
 	
 	}
 

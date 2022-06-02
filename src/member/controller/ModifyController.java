@@ -33,29 +33,29 @@ public class ModifyController extends HttpServlet {
 
 				request.setCharacterEncoding("UTF-8");
 				
-					String userId = request.getParameter("MuserId");
-					String userPw = request.getParameter("MuserPw");
-					String userName = request.getParameter("MuserName");
-					String userBirth = request.getParameter("MuserBirth");
-					String userEmail = request.getParameter("MuserEmail");
-					String userPhone = request.getParameter("MuserPhone");
-					String userAddress = request.getParameter("MuserAddress");
-					String userBloodtype = request.getParameter("MuserBloodtype");
+					String userId = request.getParameter("userId");
+					String userPw = request.getParameter("userPw");
+					String userName = request.getParameter("userName");
+					String userEmail = request.getParameter("userEmail");
+					String userPhone = request.getParameter("userPhone");
+					String userAddress = request.getParameter("userAddress");
 				 
 				
-				 Member m = new Member(userId,userPw,userName,userBirth,userEmail,userPhone,userAddress,userBloodtype);
+				 Member m = new Member(userId,userPw,userName,userEmail,userPhone,userAddress);
 				
-				Member modifyM = new MemberService().modifyMem(m);
+				int result = new MemberService().modifyMem(m);
 				
-				if(modifyM == null) { 
-					request.setAttribute("errorMsg", "회원정보 수정을 실패하였습니다.");
-					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-				}else {
+				System.out.println(m);
+				
+				if(result> 0) { 
 					HttpSession session = request.getSession();
-					session.setAttribute("loginMember", modifyM); 
+					session.setAttribute("loginMember", result); 
 					session.setAttribute("alertMsg", "회원정보 수정 완료!");
 					
 					response.sendRedirect(request.getContextPath()+"/mypage.mem");
+				}else {
+					request.setAttribute("errorMsg", "회원정보 수정을 실패하였습니다.");
+					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				}
 	
 	}

@@ -2,9 +2,6 @@
     pageEncoding="UTF-8" import="member.model.vo.Member"%>
     
     
-   <%
-	Member loginMember = (Member)session.getAttribute("loginMember");
-	%>
 
 
 
@@ -29,7 +26,7 @@
             -webkit-writing-mode: horizontal-tb !important;
             text-rendering: auto;
             color: initial;
-            
+            display:none;
             
             
             
@@ -174,6 +171,12 @@ fieldset, img {
     color: brown;
 }
 
+.link_find{ 
+	font-display: none;
+	color:black;
+	font-size:13px;
+	text-decoration:none;
+}
 
 </style>
 </head>
@@ -223,7 +226,7 @@ fieldset, img {
 
                 <br>
                 <div class="join">
-                    <a href="<%=contextPath %>/views/member/beJoin.jsp" >회원가입</a>
+                    <a href="<%=contextPath %>/views/member/beJoin.jsp" class="link_find">회원가입</a>
                 </div>
 
             </div>
@@ -231,15 +234,7 @@ fieldset, img {
         </form>
         
     </div>
-            <% }else{ %>
-        <!-- 로그인 성공 후 보여질 영역 (아직 구현 안됨)-->
-        	<div id="user-info">
-        		<b><%=loginMember.getUserName() %></b>님 환영합니다! <br><br>
-        		<a href="<%=contextPath%>/mypage.mem">마이페이지</a>
-        		<a href="<%=contextPath %>/logout.mem">로그아웃</a>
-        	
-        	</div>
-        
+
         <%} %>
 
 

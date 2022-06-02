@@ -128,9 +128,9 @@ fieldset, img {
         
         <form method="post" id="authForm" action="<%=contextPath %>/findPw.mem">
             <input type="hidden" name="redirectUrl">
-            <fieldset>
+            <fieldset style="border: 0.5px dashed lightgray; padding: 20px;">
                 <legend align="center"><b>비밀번호 찾기</b> <br></legend>
-
+	<br><br>
                 <div class="box">
                     <div class="inp_text">
                         <input type="text" id="findPw_input" name="userId" placeholder="아이디를 입력해주세요" >
