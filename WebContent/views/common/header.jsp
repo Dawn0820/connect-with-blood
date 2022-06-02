@@ -1,25 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-    pageEncoding="UTF-8" import="member.model.vo.*"%>
-=======
-    pageEncoding="UTF-8" import="member.model.vo.Member"%>
-    
->>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="member.model.vo.*"%>
+
 <%
 	String contextPath = request.getContextPath();
-<<<<<<< HEAD
+
 	Member loginMember = (Member)session.getAttribute("loginMember");
-%>
-=======
-
-	Member loginUser = (Member)session.getAttribute("loginMember");
 	
-	boolean isAdmin = loginUser!=null && loginUser.getUserId().equals("admin");
+	boolean isAdmin = loginMember!=null && loginMember.getUserId().equals("admin");
+	
+%>
 
-
-%>    
-    
->>>>>>> branch 'master' of https://github.com/Dawn0820/connect-with-blood.git
 <!DOCTYPE html>
 <html>
 <head>
