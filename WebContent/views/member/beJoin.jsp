@@ -7,34 +7,24 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>회원가입 약관</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script src='main.js'></script>
+
     
-
-
-
-    <!--모달창 bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-
-
 
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
 <!-- jQuery library -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
 <!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    
+
+
     <style>
     .inner{
         position: absolute;
@@ -79,8 +69,10 @@
             float: left;
             
         }
+        #iinner{
+        	padding:auto;
+        }
         
-
 
         
     </style>
@@ -101,7 +93,7 @@
 
 
     <br><br>
-
+	<div id="iinner">
     <form class="position-absolute top-50 start-50 translate-middle" action="test.do" id="outform">
         <fieldset id="agreeBox">
             <legend align="center"><b>회원가입을 위한 개인정보 수집 및 이용 안내(필수)</b></legend>
@@ -175,7 +167,7 @@
                 </button>
               
             <a type="button" class="btn btn-outline-secondary" id="b" style="width: 40%;" href="<%=contextPath%>">메인으로 돌아가기</a>
-
+			</div>
         </fieldset>
 
 
@@ -188,7 +180,7 @@
         
     </form>
 </div> <!--.position-relative-->
-
+</div>
 
 	
 

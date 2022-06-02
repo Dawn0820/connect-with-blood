@@ -35,7 +35,7 @@ private Properties prop = new Properties();
 
 	public Member loginMember(Connection conn, String userId, String userPw) {
 
-		Member m = null;
+    Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -78,9 +78,6 @@ private Properties prop = new Properties();
 			close(rset);
 			close(pstmt);
 		}
-		
-//		System.out.println(m);
-		
 		return m;
     
 	}	
@@ -468,11 +465,82 @@ private Properties prop = new Properties();
 		}finally {
 			close(pstmt);
 		}
-		System.out.println(b);
 		
 		return result;
 	}
 
+
+
+
+	public int modifyMem(Member m, Connection conn) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMem");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, m.getUserPw());
+			pstmt.setString(2, m.getUserName());
+			pstmt.setString(3, m.getUserEmail());
+			pstmt.setString(4, m.getUserPhone());
+			pstmt.setString(5, m.getUserAddress());
+			pstmt.setString(6, m.getUserId());
+			
+			result =pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
+
+	public Member selectMember(Connection conn, String userId) {
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMem");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(rset.getInt("USER_NO")
+						   	,rset.getString("USER_ID")
+						   	,rset.getString("USER_PW")
+						   	,rset.getString("USER_NAME")
+						   	,rset.getString("USER_BIRTH")
+						   	,rset.getString("USER_EMAIL")
+						   	,rset.getString("USER_PHONE")
+						   	,rset.getString("USER_ADDRESS")
+						   	,rset.getDate("USER_ENROLLDATE")
+						   	,rset.getString("USER_GRADE")
+						   	,rset.getString("USER_BLOODTYPE")
+						   	,rset.getDate("USER_LOGINDATE")
+						   	,rset.getDate("USER_WITHDATE")
+						   	,rset.getDate("USER_SYSDATE")
+						   	,rset.getString("USER_STATUS")
+						   	,rset.getInt("USER_BLOODCOUNT"));
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println(m);
+		return m;
+	}
 
 	
 	

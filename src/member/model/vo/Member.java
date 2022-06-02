@@ -26,7 +26,7 @@ public class Member {
 			// TODO Auto-generated constructor stub
 		}
 
-
+		//회원가입
 		public Member(int userNo, String userId, String userPw, String userName, String userBirth, String userEmail,
 				String userPhone, String userAddress, Date userEnrolldate, String userGrade, String userBloodtype,
 				Date userLogindate, Date userWithdate, Date userSusdate, String userStatus, int userBloddCnt) {
@@ -55,7 +55,7 @@ public class Member {
 		
 
 		
-
+		//정보변경
 		public Member(String userId, String userPw, String userName, String userBirth, String userEmail,
 				String userPhone, String userAddress, String userBloodtype) {
 			super();
@@ -73,7 +73,7 @@ public class Member {
 		
 		
 
-
+		//로그인
 		public Member(int int1, String string, String string2, String string3, String string4, String string5,
 				String string6, String string7, Date date, String string8, String string9, Date date2, Date date3,
 				Date date4, String string10, int int2, String string11, int int3, String string12, String string13,
@@ -84,6 +84,34 @@ public class Member {
 
 
 
+
+		
+		
+		
+		
+		
+		
+
+
+	
+
+		
+		public Member(String userId, String userPw, String userName, String userEmail, String userPhone,
+				String userAddress) {
+			super();
+			this.userId = userId;
+			this.userPw = userPw;
+			this.userName = userName;
+			this.userEmail = userEmail;
+			this.userPhone = userPhone;
+			this.userAddress = userAddress;
+		}
+
+
+		
+		
+		
+		
 		public int getUserNo() {
 			return userNo;
 		}

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, reservation.model.vo.BloodHome"%>
+    pageEncoding="UTF-8" import="member.model.vo.Member, java.util.ArrayList"%>
     
 <%
-	ArrayList<BloodHome> list = (ArrayList<BloodHome>)request.getAttribute("list");
+	
 %>     
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,28 +36,28 @@
 <%@ include file="../common/header.jsp" %>
 <br><br>
 
-
-
 <h1 align="center"><strong style="color:red ;">헌혈예약</strong></h1>
 <br><br>
 
 <div id="form">
 <br><br>
-	<form method="post" action="enroll.reserv">
-		<!-- hidden으로 회원이름? 회원번호? 넘겨야함 -->
+	<form method="post" action="<%=contextPath %>/enroll.reserv">
 		<h3>회원이름</h3>
-		이곳에 회원이름 출력
+		<%=loginMember.getUserName() %>
+		
+		<!-- 서블릿에서 사용하기 위해 hidden으로 가져간다  -->
+        <input type="hidden" name="userNo" value="<%=loginMember.getUserNo()%>">
 		
 		<br><br>
 		<h3>헌혈의집 주소</h3> 
 		<select id="location" name="location">
 			<option value="">주소</option>
-			<option value="seoul">서울</option>
-			<option value="busan">부산</option>
-			<option value="gyeonggi">경기</option>
-			<option value="incheon">인천</option>
-			<option value="gwangju">광주</option>
-			<option value="daegu">대구</option>
+			<option value="서울">서울</option>
+			<option value="부산">부산</option>
+			<option value="경기">경기</option>
+			<option value="인천">인천</option>
+			<option value="광주">광주</option>
+			<option value="대구">대구</option>
 		</select>
 		<br><br>
 		<select id="locationDetail" name="locationDetail">
@@ -66,10 +67,10 @@
 		<h3>예약시간</h3>
 		<select id="time" name="time">
 			<option value="">시간</option>
-			<option value="time1">09:00~11:00</option>
-			<option value="time2">11:00~13:00</option>
-			<option value="time3">14:00~16:00</option>
-			<option value="time4">16:00~18:00</option>
+			<option value="09:00~11:00">09:00~11:00</option>
+			<option value="11:00~13:00">11:00~13:00</option>
+			<option value="14:00~16:00">14:00~16:00</option>
+			<option value="16:00~18:00">16:00~18:00</option>
 		</select>
 		<br><br>
 		<button type="submit" class="btn btn-danger">예약하기</button> <button type="reset" class="btn btn-primary">취소</button>
@@ -124,17 +125,17 @@
 			
 			var changelocation;
 			
-			if(this.value == "seoul") {
+			if(this.value == "서울") {
 				changelocation = seoul;
-			} else if(this.value == "busan") {
+			} else if(this.value == "부산") {
 				changelocation = busan;
-			} else if(this.value == "gyeonggi") {
+			} else if(this.value == "경기") {
 				changelocation = gyeonggi;
-			} else if(this.value == "incheon") {
+			} else if(this.value == "인천") {
 				changelocation = incheon;
-			} else if(this.value == "gwangju") {
+			} else if(this.value == "광주") {
 				changelocation = gwangju;
-			} else if(this.value == "daegu") {
+			} else if(this.value == "대구") {
 				changelocation = daegu;
 			}
 			

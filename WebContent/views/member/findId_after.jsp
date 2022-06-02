@@ -107,18 +107,27 @@ padding: 8px;
 padding-left: 60px;
 padding-right: 60px;
 }
-.btn_find:hover{background-color: rgb(222, 102, 102);}
+.btn_find:hover{background-color: rgb(222, 102, 102); color:white;}
 
 
-fieldset{border: 0.5px dashed lightgray; padding: 20px; }
-
-#returnBtn{border: none;}
+fieldset{border: 0.5px dashed lightgray; padding: 20px;}
 
 #idBox{
     border: none;
     font-weight: bolder;
+	text-align: center;
 }
-#idBox{text-align: center;}
+
+#returnBtn{
+	text-decoration:none;
+	text-align:center;
+	border: none;
+	width:250px;
+	height:auto;
+}
+
+
+
 
 
 </style>
@@ -141,17 +150,19 @@ fieldset{border: 0.5px dashed lightgray; padding: 20px; }
     
     <form method="post" id="authForm">
         <input type="hidden" name="redirectUrl">
-        <fieldset>
+        <fieldset  style="border: 0.5px dashed lightgray; padding: 20px;">
             <legend align="center"><b>아이디 찾기</b> <br></legend>
+            <br><br>
             <p style="text-align: center;"> 
-            회원가입시 사용한 아이디는 
+            회원가입시 사용한 아이디는  <br>
             <input type="text" id="idBox" value="<%=userId%>"> 입니다.
             </p>
             
-
             <br>
-            <a type="button" id="returnBtn" class="btn_find" href="<%=contextPath%>"></style=>메인으로 돌아가기</a>
-            
+
+            <div style="text-align:center" id="gomainBox">
+            <a type="button" id="returnBtn" class="btn_find" href="<%=contextPath%>">메인으로 돌아가기</a>
+            </div>
 
             
         </fieldset>

@@ -108,10 +108,10 @@
 	<entry key="loginMember">
         SELECT *
         FROM MEMBER
-        JOIN BLOODINFO ON(USER_NO=BLOOD_OWNER)
+		JOIN BLOODINFO ON(USER_NO=BLOOD_OWNER)
 		WHERE USER_ID=?
 		AND USER_PW=?
-		AND   USER_STATUS='NORMAL'
+		AND USER_STATUS='NORMAL'
 	</entry>
 	
 	<entry key="updateBloodInfo">
@@ -145,12 +145,11 @@
 	
 	<entry key="updateMem">
 		UPDATE MEMBER
-		SET 	USER_NAME = ?
-                ,PHONE = ?
-                ,EMAIL = ?
-                ,ADDRESS = ?
-                ,INTEREST = ?
-                ,MODIFY_DATE = SYSDATE
+		SET 	USER_PW = ?
+				,USER_NAME=?
+                ,USER_EMAIL = ?
+                ,USER_PHONE=?
+                ,USER_ADDRESS = ?
 		WHERE 	USER_ID = ?
 		AND   USER_STATUS='NORMAL'
 	</entry>
@@ -159,10 +158,9 @@
 		SELECT * 
 		FROM MEMBER
 		WHERE USER_ID =?
+		AND   USER_STATUS='NORMAL'
 	</entry>
-	
-	
-	
+
 	<entry key="deleteMember">
 		UPDATE MEMBER SET USER_STATUS='WITHDRAWAL'
 						, USER_WITHDATE=SYSDATE 

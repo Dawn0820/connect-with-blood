@@ -114,7 +114,13 @@ padding-right: 60px;
 
 fieldset{border: 0.5px dashed lightgray; padding: 20px; }
 
-#returnBtn{border: none;}
+#returnBtn{
+	text-decoration:none;
+	text-align:center;
+	border: none;
+	width:250px;
+	height:auto;
+}
 
 #idBox{
     border: none;
@@ -142,8 +148,9 @@ fieldset{border: 0.5px dashed lightgray; padding: 20px; }
     
     <form method="post" id="authForm">
         <input type="hidden" name="redirectUrl">
-        <fieldset>
+        <fieldset style="border: 0.5px dashed lightgray; padding: 20px;">
             <legend align="center"><b>비밀번호 찾기</b> <br></legend>
+            <br><br>
             <p style="text-align: center;"> 
             회원가입시 사용한 비밀번호는 
             <input type="text" id="idBox" value="<%=userPw%>"> 입니다.
@@ -151,7 +158,8 @@ fieldset{border: 0.5px dashed lightgray; padding: 20px; }
             
 
             <br>
-            <a type="button" id="returnBtn" class="btn_find" href="<%=contextPath%>"></style=>메인으로 돌아가기</a>
+            
+            <a type="button" id="returnBtn" class="btn_find" href="<%=contextPath%>">메인으로 돌아가기</a>
             
 
             
