@@ -224,8 +224,7 @@
 	
 	
 	<br><br><br><br>
-
-	
+   
 	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>
 
