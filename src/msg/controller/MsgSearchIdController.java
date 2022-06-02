@@ -1,6 +1,7 @@
-package notice.controller;
+package msg.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import com.google.gson.Gson;
+
+import member.model.vo.Member;
+import msg.model.service.MessageService;
 
 /**
- * Servlet implementation class NoticeInsertController
+ * Servlet implementation class MsgSearchIdController
  */
-@WebServlet("/insert.no")
-public class NoticeInsertController extends HttpServlet {
+@WebServlet("/searchId.msg")
+public class MsgSearchIdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertController() {
+    public MsgSearchIdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,35 +33,20 @@ public class NoticeInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
 
-		
-			String noticeTitle = request.getParameter("title");
-			String noticeContent = request.getParameter("content");
-			String noticeWriter =  request.getParameter("userNo");
-
-			
-			Notice n = new Notice();
-			
-			n.setNoticeTitle(noticeTitle);
-			n.setNoticeContent(noticeContent);
-			n.setNoticeWriter(noticeWriter);
-			
-			
-			int result = new NoticeService().insertNotice(n);
-			
-			if(result>0) {
-				response.sendRedirect(request.getContextPath()+"/list.no?npage=1");
-			}else {
-				response.sendRedirect("views/common/communityErrorPage.jsp");
-			}
-			
-		
-		
-		
+		String searchId = request.getParameter("searchId");
+	
+	
+		ArrayList <Member> list = new MessageService().searchId(searchId);
 		
 	
+		if(list!=null) {
+			System.out.println(1000);
+		}else {
+			System.out.println(2);
+		}
+	
+		
 	}
 
 	/**

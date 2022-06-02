@@ -1,4 +1,4 @@
-package board.controller;
+package event.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,22 +13,22 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 
-import board.model.service.CommunityService;
-import board.model.vo.Attachment;
-import board.model.vo.Community;
 import common.MyFileRenamePolicy;
+import event.model.service.EventService;
+import event.model.vo.Attachment;
+import event.model.vo.Event;
 
 /**
- * Servlet implementation class CommunityUpdateController
+ * Servlet implementation class EventUpdateController
  */
-@WebServlet("/update.co")
-public class CommunityUpdateController extends HttpServlet {
+@WebServlet("/update.ev")
+public class EventUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityUpdateController() {
+    public EventUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,36 +39,33 @@ public class CommunityUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-
+		
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			int maxSize = 10*1024*1024;
-		
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/comm_upfiles/");
-
+			
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/event_upfiles/");
+			
 			MultipartRequest multiRequest = new MultipartRequest(request,savePath,maxSize,"UTF-8",new MyFileRenamePolicy());
 
-			int commNo = Integer.parseInt(multiRequest.getParameter("cno"));
-			String commCategory = multiRequest.getParameter("category");
-			String commTitle = multiRequest.getParameter("title");
-			String commContent = multiRequest.getParameter("content");
-		
-			Community comm = new Community();
+			int eventNo = Integer.parseInt(multiRequest.getParameter("eno"));
+			String eventTitle = multiRequest.getParameter("title");
+			String eventContent = multiRequest.getParameter("content");
 			
-			comm.setCommNo(commNo);
-			comm.setCategoryNo(commCategory);
-			comm.setCommTitle(commTitle);
-			comm.setCommContent(commContent);
+			Event e = new Event();
 			
+			e.setEventNo(eventNo);
+			e.setEventTitle(eventTitle);
+			e.setEventContent(eventContent);
 			
 			Attachment newAttachment = null;
-			
+
 			if(multiRequest.getOriginalFileName("reupfile")!=null) { 
 
 				newAttachment = new Attachment();
 				newAttachment.setOriginName(multiRequest.getOriginalFileName("reupfile"));
 				newAttachment.setChangeName(multiRequest.getFilesystemName("reupfile"));
-				newAttachment.setFilePath("resources/comm_upfiles/");
+				newAttachment.setFilePath("resources/event_upfiles/");
 				
 				if(multiRequest.getParameter("originFileNo")!=null) {
 					
@@ -80,22 +77,23 @@ public class CommunityUpdateController extends HttpServlet {
 
 					
 				}else {
-					newAttachment.setRefCno(commNo);
+					newAttachment.setRefEno(eventNo);
 
 				}
 				
 			}
 			
-			int result = new CommunityService().updateCommunity(comm,newAttachment);
-			
+			int result = new EventService().updateEvent(e,newAttachment);
+
 			if(result>0) {
-				response.sendRedirect(request.getContextPath()+"/detail.co?cno="+commNo);
+				response.sendRedirect(request.getContextPath()+"/detail.ev?eno="+eventNo);
 			}else {
 				response.sendRedirect("views/common/communityErrorPage.jsp");
 			}
-			
 		}
-
+		
+		
+		
 	}
 
 	/**

@@ -131,10 +131,10 @@
 
                         },
                         type : "post",
-                        success : function(result){ //result는 매개변수명일 뿐 다른 이름이어도 상관없다
+                        success : function(result){ 
 							
-							if(result>0){ //성공이면
-								selectReply(); //함수 실행
+							if(result>0){ 
+								selectReply(); 
 								$("#replyContent").val("");
 							}
                         },

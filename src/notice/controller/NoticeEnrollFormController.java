@@ -29,8 +29,6 @@ public class NoticeEnrollFormController extends HttpServlet {
 
 		request.getRequestDispatcher("views/notice/noticeEnrollForm.jsp").forward(request, response);
 		
-		
-		
 	}
 
 	/**

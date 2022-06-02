@@ -40,15 +40,13 @@ public class Event {
 			this.titleImg = titleImg;
 		}
 
-		
-		
-		public Event(int eventNo, String eventTitle, int eventCount, String eventProgress, String titleImg) {
+		public Event(int eventNo, String eventTitle, Date eventDate, int eventCount, String eventProgress) {
 			super();
 			this.eventNo = eventNo;
 			this.eventTitle = eventTitle;
+			this.eventDate = eventDate;
 			this.eventCount = eventCount;
 			this.eventProgress = eventProgress;
-			this.titleImg = titleImg;
 		}
 
 		public Event(int eventNo, String eventTitle, String eventContent, Date eventDate, String eventProgress) {
