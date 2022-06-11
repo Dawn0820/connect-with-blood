@@ -28,11 +28,3 @@ Description
  + Design Pattern
 
    - MVC
-
-
-About Project
--------------
-
-
-Results
--------
