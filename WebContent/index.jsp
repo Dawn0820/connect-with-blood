@@ -60,33 +60,27 @@
 	    </div>
 	    <div class="carousel-inner">
 	      <div class="carousel-item active">
-	        <img src="resources/images/dog1.png" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+	        <img src="resources/images/notice.jpg" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
 	
 	        <div class="container">
 	          <div class="carousel-caption text-start">
-	            <h1>공지사항</h1>
-	            <p>새로운 공지사항을 확인해보세요</p>
 	            <p><a class="btn btn-lg btn-primary" href="<%=contextPath%>/list.no?npage=1">더보기</a></p>
 	          </div>
 	        </div>
 	      </div>
 	      <div class="carousel-item">
-	        <img src="resources/images/dog2.png" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+	        <img src="resources/images/event.jpg" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
 	
 	        <div class="container">
 	          <div class="carousel-caption">
-	            <h1>이벤트</h1>
-	            <p>현재 진행중인 이벤트를 확인해보세요</p>
 	            <p><a class="btn btn-lg btn-primary" href="<%=contextPath%>/list.ev?epage=1">더보기</a></p>
 	          </div>
 	        </div>
 	      </div>
 	      <div class="carousel-item">
-	        <img src="resources/images/dog3.png" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+	        <img src="resources/images/faq.jpg" alt="" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
 	        <div class="container">
 	          <div class="carousel-caption text-end">
-	            <h1>FAQ</h1>
-	            <p>자주하는 질문을 확인해보세요</p>
 	            <p><a class="btn btn-lg btn-primary" href="<%=contextPath%>/list.faq">더보기</a></p>
 	          </div>
 	        </div>
@@ -118,42 +112,56 @@
 	        <p><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">등록하기 &raquo;</button></p>
 	      </div><!-- /.col-lg-4 -->
 	      
+	      
+	      
 	      <!-- 헌혈증 등록 모달 시작  -->
 	      
-	      	<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div style="text-align: center" class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 strong style="color:red" class="modal-title" id="staticBackdropLabel">헌혈증 등록</h3>
+        <h3 strong style="color:brown" class="modal-title" id="staticBackdropLabel">헌혈증 등록</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-			<form action="<%=contextPath%>/" method="post">
-				<!-- 시간되면 텍스트 가운데정렬 -->
-				<!-- 세션에서 로그인 정보 받아서 넘기기? / 로그인 안하면 로그인 창 띄워주기 -->
+			<form action="<%=contextPath%>/insertB.mem" method="post">
+				<br><h4>회원이름</h4> <br>
+              <div class="box">
+                    <div class="inp_text">
+                        <input type="text" id="inp_text" name="userId" placeholder="아이디를 입력해주세요" >
+                    </div>
+                </div>
+                <br>
+                <div class="box">
+                    <div class="inp_text">
+                        <input type="text" id="inp_text" name="bloodNo" maxlength="12" placeholder="헌혈증 일련번호를 입력해주세요 (-포함)" >
+                    </div>
+                </div>
+                    
+                    <br><br>
 				
-				<h4>회원이름</h4> 여기에 이름 출력<br><br>
-				
-				<h4>헌혈종류</h4> <select id="blood" name="blood">
-		                    	<option value="wh">전혈</option>
-		                    	<option value="in">성분</option>
-                    		</select> <br><br>
-                    		
-                <h4>헌혈일자</h4> 시간선택,,,    		
-				
-			</form>
-      </div>
+				<h4>헌혈종류</h4> 
+                <div id="domainsBox" >
+                    <select id="domains"  name="bloodWh">
+                        <option id="fontc">헌혈 종류를 선택해주세요</option>
+                        <option value="전혈헌혈_320ml" name="bloodWh">전혈헌혈- 320ml</option>
+                        <option value="전혈헌혈_400ml" name="bloodWh">전혈헌혈- 400ml</option>
+                        <option value="성분헌혈_혈장" name="bloodWh">성분헌혈- 혈장</option>
+                        <option value="성분헌혈_혈소판" name="bloodWh">성분헌혈- 혈소판</option>
+                    </select>
+                </div>
+             <br><br>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
         <button type="submit" class="btn btn-primary">등록</button>
+      </div>
+ 		</form>
       </div>
     </div>
   </div>
 </div>
 	      
 	      <!-- 헌혈증 등록 모달 끝 -->
-	      
 	      
 	      <div class="col-lg-4">
 	        <img src="resources/images/blood.png" alt="" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
@@ -177,11 +185,12 @@
 	
 	    <div class="row featurette">
 	      <div class="col-md-7">
-	        <h2 class="featurette-heading">오꼬노미야끼 <span class="text-muted">맛있음</span></h2>
-	        <p class="lead">행당역에 있음</p>
+	        <h2 class="featurette-heading">World Blood Donor <span class="text-muted">Day</span></h2><br>
+	        <p class="lead">세계 헌혈자의 날(World Blood Donor Day)은 자발적 무상 헌혈에 참여하는 헌혈자에게 감사와 존경을 전하기 위해 마련된 기념일이다.</p>
+	        <a href="https://www.who.int/campaigns/world-blood-donor-day" style="text-decoration: none;">더보기</a>
 	      </div>
 	      <div class="col-md-5">
-	        <img src="resources/images/cat1.png" alt="" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
+	        <img src="resources/images/bloodDay.png" alt="" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
 	
 	      </div>
 	    </div>
@@ -190,12 +199,12 @@
 	
 	    <div class="row featurette">
 	      <div class="col-md-7 order-md-2">
-	        <h2 class="featurette-heading">천새벽<span class="text-muted">임규민</span></h2>
-	        <p class="lead">기세영 심현진 이나영</p>
+	        <h2 class="featurette-heading">Youtube <span class="text-muted">Video</span></h2>
+	        <p class="lead">대한적십자사 혈액관리본부 공식 유튜브</p>
+	        <a href="https://www.youtube.com/c/ABO%ED%8A%9C%EB%B8%8C" style="text-decoration: none;">더보기</a>
 	      </div>
 	      <div class="col-md-5 order-md-1">
-	        <img src="resources/images/cat2.png" alt="" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-	
+			<iframe width="500" height="500" src="https://www.youtube.com/embed/FqL8EtRRUs0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	
 	      </div>
 	    </div>
 	
@@ -203,11 +212,12 @@
 	
 	    <div class="row featurette">
 	      <div class="col-md-7">
-	        <h2 class="featurette-heading">라프로익 <span class="text-muted">제임슨</span></h2>
-	        <p class="lead">미도리샤워</p>
+	        <h2 class="featurette-heading">Blood <span class="text-muted">Information</span></h2>
+	        <p class="lead" style="font-size: 23px;">혈액형의 종류에는 흔히 알고 계시는 ABO혈액형 뿐만 아니라 Rh- 및 여러가지 희귀 혈액형이 있습니다</p>
+	        <a href="https://www.bloodinfo.net/bloodknowledge_bloodtype.do" style="text-decoration: none;">더보기</a>
 	      </div>
 	      <div class="col-md-5">
-	        <img src="resources/images/cat3.png" alt="" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
+	        <img src="resources/images/abo.jpg" alt="" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
 	
 	      </div>
 	    </div>

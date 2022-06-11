@@ -11,7 +11,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ConnectWithBlood</title>
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <style>
@@ -79,7 +79,7 @@
 	<div align="center">
 		<a href="<%=contextPath%>/list.co?cpage=1" class="btn btn-outline-secondary">목록가기</a>
 
-        <%if(loginMember!=null && loginMember.getUserId().equals(comm.getCommWriter())||isAdmin) {%>
+        <%if(loginMember!=null && loginMember.getUserName().equals(comm.getCommWriter())||isAdmin) {%>
 
 		<a href="<%=contextPath%>/delete.co?cno=<%=comm.getCommNo()%>" class="btn btn-outline-secondary">삭제하기</a>
 		<a href="<%=contextPath%>/updateForm.co?cno=<%=comm.getCommNo()%>" class="btn btn-outline-secondary">수정하기</a>

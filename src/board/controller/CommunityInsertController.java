@@ -80,7 +80,9 @@ public class CommunityInsertController extends HttpServlet {
 			int result = new CommunityService().insertComm(comm,at);
 
 			if(result>0) {
+				request.getSession().setAttribute("alertMsg", "게시글이 작성되었습니다");
 				response.sendRedirect(request.getContextPath()+"/list.co?cpage=1");
+
 			}else {
 				if(at!=null) {
 					new File(savePath+at.getChangeName()).delete();

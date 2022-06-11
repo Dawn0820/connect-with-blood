@@ -49,21 +49,45 @@ public class ReservationDao {
 			close(pstmt);
 		}
 		
+		System.out.println();
+		
 		return result;
 		
 		
 		
 	}
 
-	public void selectReservationList(Connection conn) {
+	public Reservation selectReservationList(Connection conn, String userNo) {
 		
-		ArrayList<Reservation> list = new ArrayList<>();
-		
+		Reservation r = null;
 		PreparedStatement pstmt = null;
-		
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("selectReservationList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				r = new Reservation(rset.getInt("RESERVATION_NO")
+						   	,rset.getString("RESERVATION_ADDRESS")
+						   	,rset.getString("RESERVATION_ADDRESS2")
+						   	,rset.getString("RESERVATION_DATE")
+						   	,rset.getInt("RESERVATION_WRITER")
+						   	,rset.getString("RESERVATION_STATUS"));
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return r;
+		
 		
 	}
 }

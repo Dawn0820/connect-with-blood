@@ -88,6 +88,8 @@ public class QuestionUpdateController extends HttpServlet {
 			
 			
 			if(result>0) {
+				request.getSession().setAttribute("alertMsg", "질문이 수정되었습니다");
+
 				response.sendRedirect(request.getContextPath()+"/detail.que?qno="+queNo);
 			}else {
 				request.setAttribute("errorMsg", "질문 수정 실패");

@@ -74,7 +74,7 @@
     <br><br>
 
   <h3 align="center">적혈구 체제</h3>
-    <table border="1" style="color: black; width: 1000px;"  class="table  table-hover" align="center">
+    <table border="1" style="color: black; width: 1000px;"  class="table table-hover" align="center">
     
         
         <caption class="cap"><%=today %> 기준 / 단위 : unit</caption>

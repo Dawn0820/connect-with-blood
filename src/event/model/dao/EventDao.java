@@ -187,7 +187,7 @@ public class EventDao {
 		return result;
 	}
 
-	public int insertAttachment(ArrayList<Attachment> list, Connection conn) {
+	public int insertAttachment(Attachment at, Connection conn) {
 
 		int result = 1;
 		
@@ -196,18 +196,15 @@ public class EventDao {
 		String sql = prop.getProperty("insertAttachment");
 		
 		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
 			
-			for(Attachment at : list) {
+			result = pstmt.executeUpdate();
 			
-				pstmt = conn.prepareStatement(sql);
 			
-				pstmt.setString(1, at.getOriginName());
-				pstmt.setString(2, at.getChangeName());
-				pstmt.setString(3, at.getFilePath());
-				pstmt.setInt(4, at.getFileLevel());
-				
-				result *= pstmt.executeUpdate();
-			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

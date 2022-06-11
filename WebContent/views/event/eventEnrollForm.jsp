@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ConnectWithBlood</title>
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <style>
@@ -21,9 +21,6 @@
     .mb-3{
         width: 800px;
     }
-    #form22{
-        border: 1px solid red;
-    }
 
 </style>
 </head>
@@ -36,9 +33,9 @@
         <form action="<%=contextPath %>/insert.ev" method="post" id="form22" enctype="multipart/form-data">
         
         <div class="outer position-relative" >
-        <br>
+        <br><br>
         <h2 align="center">이벤트 글 작성</h2>
-        <br>
+        <br><br>
         
         	<input type="hidden" name="userNo" value="<%=loginMember.getUserNo()%>">
         

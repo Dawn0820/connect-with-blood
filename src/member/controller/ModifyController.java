@@ -43,19 +43,18 @@ public class ModifyController extends HttpServlet {
 				
 				 Member m = new Member(userId,userPw,userName,userEmail,userPhone,userAddress);
 				
-				int result = new MemberService().modifyMem(m);
+				 Member updateMem = new MemberService().modifyMem(m);
 				
-				System.out.println(m);
 				
-				if(result> 0) { 
+				if(updateMem == null) { 
+					request.setAttribute("errorMsg", "회원정보 수정을 실패하였습니다.");
+					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				}else {
 					HttpSession session = request.getSession();
-					session.setAttribute("loginMember", result); 
+					session.setAttribute("loginMember", updateMem);
 					session.setAttribute("alertMsg", "회원정보 수정 완료!");
 					
 					response.sendRedirect(request.getContextPath()+"/mypage.mem");
-				}else {
-					request.setAttribute("errorMsg", "회원정보 수정을 실패하였습니다.");
-					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				}
 	
 	}

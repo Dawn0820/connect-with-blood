@@ -86,6 +86,8 @@ public class EventUpdateController extends HttpServlet {
 			int result = new EventService().updateEvent(e,newAttachment);
 
 			if(result>0) {
+				request.getSession().setAttribute("alertMsg", "이벤트가 수정되었습니다");
+
 				response.sendRedirect(request.getContextPath()+"/detail.ev?eno="+eventNo);
 			}else {
 				response.sendRedirect("views/common/communityErrorPage.jsp");

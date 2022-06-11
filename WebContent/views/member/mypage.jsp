@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="member.model.vo.*"%>
+    pageEncoding="UTF-8" import="member.model.vo.*,reservation.model.vo.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,6 +91,13 @@
 
 table td{text-align:center;}
 table td input{color:brown;}
+
+#wh{color:brown; text-align:center;}
+
+#searchBtn{
+	text-align:center;
+	width:300px
+}
 </style>
 </head>
 <body>
@@ -100,23 +107,24 @@ table td input{color:brown;}
     <%@ include file="../common/header.jsp" %>
     
     <%
-String alertMsg = (String)session.getAttribute("alertMsg");
+		String userId = loginMember.getUserId();
+    	int userNo = loginMember.getUserNo();
+		String userPw = (loginMember.getUserPw()==null)? "":loginMember.getUserPw();
+		String userName = (loginMember.getUserName()==null)? "":loginMember.getUserName();
+		String userBirth = (loginMember.getUserBirth()==null)? "":loginMember.getUserBirth();
+		String userAddress = (loginMember.getUserAddress()==null)? "":loginMember.getUserAddress();
+		String userEmail = (loginMember.getUserEmail()==null)? "":loginMember.getUserEmail();
+		String userPhone = (loginMember.getUserPhone()==null)? "":loginMember.getUserPhone();
+		String userBloodtype = (loginMember.getUserBloodtype()==null)? "":loginMember.getUserBloodtype();
+		
+		String bloodWh = (String)session.getAttribute("userBloodInfo");
+		
+		Reservation reserv = (Reservation)session.getAttribute("reserv");
+		String reservationAddress2 = reserv.getReservationAddress2(); //detail
+		String reservationDate = reserv.getReservationDate();
 
-String userId = loginMember.getUserId();
-
-String userPw = (loginMember.getUserPw()==null)? "":loginMember.getUserPw();
-String userName = (loginMember.getUserName()==null)? "":loginMember.getUserName();
-String userBirth = (loginMember.getUserBirth()==null)? "":loginMember.getUserBirth();
-String userAddress = (loginMember.getUserAddress()==null)? "":loginMember.getUserAddress();
-String userEmail = (loginMember.getUserEmail()==null)? "":loginMember.getUserEmail();
-String userPhone = (loginMember.getUserPhone()==null)? "":loginMember.getUserPhone();
-String userBloodtype = (loginMember.getUserBloodtype()==null)? "":loginMember.getUserBloodtype();
-
-int userBloodCnt = loginMember.getUserBloddCnt();
-
- %>
+ 	%>
     
- 
 
 		
 			<br><br><br>
@@ -171,9 +179,8 @@ int userBloodCnt = loginMember.getUserBloddCnt();
 			</div>
 			
 	</fieldset>
-
+</form>
 <br><br>
-
 
 
 
@@ -182,84 +189,92 @@ int userBloodCnt = loginMember.getUserBloddCnt();
 
  <div >
 		<fieldset class="inner">
-
+		<form action="<%=contextPath%>/mybloodInfo.mem">
+			<input type="hidden" name="userId" value="<%=userId%>">
 			
 			<h4>헌혈증 관리</h4>
 			<p>홈페이지에서 등록한 헌혈증 조회</p>
 			<a href="<%=contextPath%>/views/member/insertBloodInfo.jsp" class="btn btn-outline-danger" id="bloodBtn">헌혈증 등록</a>
-			<br><br>
-				<br>
-				<div class="table-responsive">
-				<table class="table table-bordered">
+			 <button class="btn btn-warning" type="submit">조회하기</button>
+			<br><br><br>
+			
+			
+			
+	<div class="table-responsive">
+		<table class="table table-bordered">
 			<tr>
-				<td>헌혈증 개수</td>
-				<td><input type="text" value="<%=userBloodCnt%>"></td>
+				<td>등록된 헌혈증 현황  ['조회하기' 버튼을 눌러주세요]</td>
+			</tr>
+			<tr>
+				<td id="wh"><%=bloodWh%></td>	
 			</tr>
 		</table>
 	</div>
+	</form>
+</div>
+
+
+
+
+
+
+
+
+ <div >
+	<form action="<%=contextPath%>/list.reserv">
+			<input type="hidden" name="userNo" value="<%=userNo%>">
+						<br>
+			<h4>&nbsp&nbsp&nbsp예약조회</h4>
+			<p>&nbsp&nbsp&nbsp&nbsp예약내역 조회</p>
+			<br><br><br>
+
+	<div class="table-responsive">
+		<table class="table table-bordered">
+ 
+			<tr>
+				<td>헌혈의 집 주소</td>
+				<td id="wh"><%=reservationAddress2%></td>
+			</tr>
+			<tr>
+				<td>예약 일자</td>
+				<td id="wh"><%=reservationDate%></td>	
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>	
+	
+	
+	
+
+
+
+
+
+
+
 
 
 		<br>
 		<div id="goMain1">
 		<a type="button" href="<%=contextPath%>" class="goMain btn btn-secondary" id="goMain">메인으로 돌아가기</a>
 		</div>
-		
 	<br>
 		<div id="deleteBtn1">
-		<a href="<%=contextPath%>/logout.mem" type="button" class="btn btn-light" id="outBtn">로그아웃</a><br><br>
-	  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#deleteForm" id="deleteBtn2">회원 탈퇴</button>
+	  <a type="button" class="btn btn-dark"  id="deleteBtn2" href="<%=contextPath%>/views/member/deleteUser.jsp">회원 탈퇴</a>
 		</div>
-	</div>
+
+
+	
 	</fieldset>
 
 
 
-	      
-  <!-- The Modal -->
-  <div class="modal fade" id="deleteForm">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">회원 탈퇴</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-         <form action="<%=contextPath %>/delete.mem" method=“post”>
-		<table>
-			<tr>
-				<td>비밀번호 입력>></td>
-				<td><input type="password" name="userPw" required></td>
-			</tr>
-		</table>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-dark">탈퇴하기</button>
-    		<a href="<%=contextPath%>/views/member/mypage.jsp" type="button" class="btn btn-light" id="outBtn">취소</a><br><br>
-        </div>
-        
-	</form>
-        
-      </div>
-    </div>
-  </div>
 
 
 
-	
-	   
-	   
-	   
-	   
-	   
 
-    
-    
-    
+
     
     <br><br><br><br><br>
     	<!-- footer.jsp include -->

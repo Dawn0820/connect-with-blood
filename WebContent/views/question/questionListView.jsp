@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ConnectWithBlood</title>
 
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -31,6 +31,11 @@
 
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
+
+	<br><br>
+	<h2 align="center">Q&A</h2>
+	<br><br>
+
 
 	<!-- 현재 QnA 목록 출력 -->
 	<table class="table table-hover" style="width:1200px ;" align="center">

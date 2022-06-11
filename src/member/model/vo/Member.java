@@ -19,17 +19,33 @@ public class Member {
 		private Date userWithdate;					//	USER_WITHDATE	DATE
 		private Date userSusdate;					//	USER_SUSDATE	DATE
 		private String userStatus;					//	USER_STATUS	VARCHAR2(20 BYTE)
-		private int userBloddCnt;
 		
 
 		public Member() {
 			// TODO Auto-generated constructor stub
 		}
 
-		//회원가입
+		
+		
+		
+		//회원가입 //정보변경
+		public Member(String userId, String userPw, String userName, String userBirth, String userEmail,
+				String userPhone, String userAddress, String userBloodtype) {
+			super();
+			this.userId = userId;
+			this.userPw = userPw;
+			this.userName = userName;
+			this.userBirth = userBirth;
+			this.userEmail = userEmail;
+			this.userPhone = userPhone;
+			this.userAddress = userAddress;
+			this.userBloodtype = userBloodtype;
+		}
+		
+		//로그인
 		public Member(int userNo, String userId, String userPw, String userName, String userBirth, String userEmail,
 				String userPhone, String userAddress, Date userEnrolldate, String userGrade, String userBloodtype,
-				Date userLogindate, Date userWithdate, Date userSusdate, String userStatus, int userBloddCnt) {
+				Date userLogindate, Date userWithdate, Date userSusdate, String userStatus) {
 			super();
 			this.userNo = userNo;
 			this.userId = userId;
@@ -46,7 +62,6 @@ public class Member {
 			this.userWithdate = userWithdate;
 			this.userSusdate = userSusdate;
 			this.userStatus = userStatus;
-			this.userBloddCnt = userBloddCnt;
 		}
 
 
@@ -55,19 +70,9 @@ public class Member {
 		
 
 		
-		//정보변경
-		public Member(String userId, String userPw, String userName, String userBirth, String userEmail,
-				String userPhone, String userAddress, String userBloodtype) {
-			super();
-			this.userId = userId;
-			this.userPw = userPw;
-			this.userName = userName;
-			this.userBirth = userBirth;
-			this.userEmail = userEmail;
-			this.userPhone = userPhone;
-			this.userAddress = userAddress;
-			this.userBloodtype = userBloodtype;
-		}
+
+
+
 
 
 		
@@ -82,19 +87,6 @@ public class Member {
 		}
 
 
-		public Member(int userNo, String userId) {
-			super();
-			this.userNo = userNo;
-			this.userId = userId;
-		}
-
-		
-		public Member(String userId) {
-			super();
-			this.userId = userId;
-		}
-
-
 
 		
 		
@@ -102,11 +94,8 @@ public class Member {
 		
 		
 		
-
-
-	
-
 		
+
 		public Member(String userId, String userPw, String userName, String userEmail, String userPhone,
 				String userAddress) {
 			super();
@@ -121,8 +110,8 @@ public class Member {
 
 		
 		
-		
-		
+
+
 		public int getUserNo() {
 			return userNo;
 		}
@@ -273,14 +262,6 @@ public class Member {
 		}
 
 
-		public int getUserBloddCnt() {
-			return userBloddCnt;
-		}
-
-
-		public void setUserBloddCnt(int userBloddCnt) {
-			this.userBloddCnt = userBloddCnt;
-		}
 
 
 		@Override
@@ -289,8 +270,7 @@ public class Member {
 					+ ", userBirth=" + userBirth + ", userEmail=" + userEmail + ", userPhone=" + userPhone
 					+ ", userAddress=" + userAddress + ", userEnrolldate=" + userEnrolldate + ", userGrade=" + userGrade
 					+ ", userBloodtype=" + userBloodtype + ", userLogindate=" + userLogindate + ", userWithdate="
-					+ userWithdate + ", userSusdate=" + userSusdate + ", userStatus=" + userStatus + ", userBloddCnt="
-					+ userBloddCnt + "]";
+					+ userWithdate + ", userSusdate=" + userSusdate + ", userStatus=" + userStatus +  "]";
 		}
 		
 		

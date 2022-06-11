@@ -57,7 +57,7 @@ public class JoinController extends HttpServlet {
 	if(result>0) {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("alertMsg", "회원가입에 성공했습니다."); 
+		session.setAttribute("alertMsg", "회원가입에 성공했습니다.");
 		
 		
 		response.sendRedirect(request.getContextPath());

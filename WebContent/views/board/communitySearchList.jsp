@@ -21,7 +21,7 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ConnectWithBlood</title>
 <style>
 	body{
 		margin-top: 20px;
@@ -107,12 +107,12 @@
 	  <!--검색-->
 	  <form action="searchList.co?cspage=1" method="post" id="listSelect">
 		<fieldset>
-			<label for="">검색기준</label>
+			<label for=""></label>
 			<select name="category" id="">
 				<option value="title" name="title">제목</option>
 				<option value="writerId" name="writerId">작성자</option>
 			</select>
-			<label for="">검색어</label>
+			<label for=""></label>
 			<input type="text" name="search">
 			<input type="submit" value="검색">
 		</fieldset>

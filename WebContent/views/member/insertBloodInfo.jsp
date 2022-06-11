@@ -133,7 +133,7 @@ fieldset, img {
 
 
 
-	    <%@ include file="../common/header.jsp" %>
+	<%@ include file="../common/header.jsp" %>
     <%String userId = loginMember.getUserId(); %>
     
     
@@ -150,7 +150,6 @@ fieldset, img {
 <form method="post" id="authForm" action="<%=contextPath %>/insertB.mem">
                 <div class="box">
                     <div class="inp_text">
-                        <!-- <input type="text" id="findId_name" name="bloodOwner" placeholder="아이디를 입력해주세요" > -->
                         <input type="text" name="userId" value="<%=userId%>" readonly>
                     </div>
                 </div>
@@ -161,12 +160,12 @@ fieldset, img {
                 </div>
             <div>
                 <div id="domainsBox" >
-                    <select id="domains">
+                    <select id="domains"  name="bloodWh">
                         <option id="fontc">헌혈 종류를 선택해주세요</option>
-                        <option value="전혈헌혈- 320ml" name="bloodWh">전혈헌혈- 320ml</option>
-                        <option value="전혈헌혈- 400ml" name="bloodWh">전혈헌혈- 400ml</option>
-                        <option value="성분헌혈- 혈장" name="bloodWh">성분헌혈- 혈장</option>
-                        <option value="성분헌혈- 혈소판" name="bloodWh">성분헌혈- 혈소판</option>
+                        <option value="전혈헌혈_320ml" name="bloodWh">전혈헌혈- 320ml</option>
+                        <option value="전혈헌혈_400ml" name="bloodWh">전혈헌혈- 400ml</option>
+                        <option value="성분헌혈_혈장" name="bloodWh">성분헌혈- 혈장</option>
+                        <option value="성분헌혈_혈소판" name="bloodWh">성분헌혈- 혈소판</option>
                     </select>
                 </div>
             </div>                        

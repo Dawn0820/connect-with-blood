@@ -49,6 +49,8 @@ public class NoticeInsertController extends HttpServlet {
 			int result = new NoticeService().insertNotice(n);
 			
 			if(result>0) {
+				request.getSession().setAttribute("alertMsg", "공지사항이 작성되었습니다");
+
 				response.sendRedirect(request.getContextPath()+"/list.no?npage=1");
 			}else {
 				response.sendRedirect("views/common/communityErrorPage.jsp");

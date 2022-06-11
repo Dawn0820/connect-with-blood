@@ -7,6 +7,9 @@
 	
 	boolean isAdmin = loginMember!=null && loginMember.getUserId().equals("admin");
 	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+
+	
 %>
 
 <!DOCTYPE html>
@@ -18,39 +21,13 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
 <style>
-	/*검색 버튼*/
-	.search-btn {
-		font-size: 15px;
-		font-style: bold;
-		padding: 5px 10px;
-		background-color: black;
-		color: rgba(31, 168, 209);
-		border: 2px solid rgba(31, 168, 209);
-		border-radius: 5px;
-		letter-spacing: 2px;
-		font-family: sans-serif;
-		transition: all 0.4s;
-		margin-right: 20px;
-		align-items: center;
-		width: 100px;
-		height: 40px;
-	}
-	.search-btn:focus {
-		outline: none;
-	}
-	.search-btn:hover {
-		background-color: rgba(31, 168, 209);
-		color: black;
-	}
+
+
 	
 	.buttons {
 		display: flex;
@@ -125,6 +102,15 @@
 </style>
 </head>
 <body class="pt-5">
+<script>
+	var msg = "<%=alertMsg%>"; // "회원가입에 성공했습니다." /"null"
+	
+	if(msg!="null"){
+		alert(msg);
+		<%session.removeAttribute("alertMsg");%>
+	}
+</script>
+	
 	<!-- HEADER -->
 	<header>
 	  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -136,7 +122,7 @@
 	      <div class="collapse navbar-collapse" id="navbarCollapse">
 	        <ul class="navbar-nav me-auto mb-2 mb-md-0">
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="">소개</a>
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath%>/views/intro/introBlood.jsp">소개</a>
 	          </li>
 	          <li class="nav-item">
 	            <a class="nav-link active" aria-current="page" href="<%=contextPath%>/views/board/bloodHome.jsp">헌혈의집</a>
@@ -145,33 +131,19 @@
 	            <a class="nav-link active" aria-current="page" href="<%=contextPath%>/views/board/bloodCurrent.jsp">혈액보유량</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/list.co?cpage=1">커뮤니티(나영)</a>
+	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/list.co?cpage=1">커뮤니티</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="<%=contextPath %>/views/admin/dashboard.jsp">관리자(새벽)</a>
+	            <a class="nav-link active" href="<%=contextPath%>/views/board/bloodKakaomap.jsp">헌혈증기증</a>
 	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link active"  href="<%=contextPath %>/views/member/login.jsp">멤버페이지(현진)</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link active" href="<%=contextPath%>/views/board/bloodKakaomap.jsp">헌혈증기증 혈액원</a>
-	          </li>
-	          <li class="nav-item">
 
-	            <a class="btn btn-primary" href="<%=contextPath%>/list.reserv" role="button">예약조회</a>
-
-	          </li>
 	        </ul>
 	       
 	       
 	       
 	       
 		</div>
-		<form class="d-flex">
-		  <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
-		  <button class="btn btn-outline-secondary" type="submit">Search</button>
-		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</form>
+		
 	   
 	   
 		<div class="buttons">
@@ -185,7 +157,16 @@
 			<b ><%=loginMember.getUserName() %></b>님 환영합니다!
 			</div>
 			&nbsp;&nbsp;
-			<a href="<%=contextPath%>/mypage.mem" type="button" class="btn btn-outline-danger">마이페이지</a>
+			<%if(isAdmin){ %>
+				<a href="<%=contextPath %>/views/admin/dashboard.jsp" type="button" class="btn btn-outline-danger">관리자페이지</a>
+				&nbsp;&nbsp;
+				<a href="<%=contextPath%>/logout.mem" type="button"  class="btn btn-outline-danger" id="outBtn">로그아웃</a><br><br>
+				
+			<%}else{ %>
+				<a href="<%=contextPath%>/mypage.mem" type="button" class="btn btn-outline-danger">마이페이지</a>
+				&nbsp;&nbsp;
+				<a href="<%=contextPath%>/logout.mem" type="button"  class="btn btn-outline-danger" id="outBtn">로그아웃</a><br><br>
+			<%} %>
 		<%} %>
 		</div>
 	    </div>

@@ -86,9 +86,7 @@ public class BloodJsoup {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
-						
-			//
-			//#contents_box > div.content > div > div.area_content > div > div > div > div:nth-child(3) > table > tbody > tr:nth-child(3) > td:nth-child(2)
+			
 			Elements elem1 = doc.select("#contents_box > div.content > div > div.area_content > div > div > div > div:nth-child(3) > table > tbody > tr:nth-child(3) > td:nth-child(2)");
 			Elements elem2 = doc.select("#contents_box > div.content > div > div.area_content > div > div > div > div:nth-child(3) > table > tbody > tr:nth-child(3) > td:nth-child(3)");
 			Elements elem3 = doc.select("#contents_box > div.content > div > div.area_content > div > div > div > div:nth-child(3) > table > tbody > tr:nth-child(3) > td:nth-child(4)");

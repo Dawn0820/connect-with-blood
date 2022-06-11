@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import reservation.model.service.ReservationService;
 import reservation.model.vo.Reservation;
@@ -41,12 +42,23 @@ public class ReservationController extends HttpServlet {
 		
 		int result = new ReservationService().enrollReservation(reserv);
 		
-		// 실행결과 따라서 alertMsg 설정해주기
 		
-		response.sendRedirect(request.getContextPath());
+		if(result>0) {
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("reserv", reserv);
+			session.setAttribute("alertMsg", "헌혈 예약이 완료되었습니다.");
+			
+			request.getRequestDispatcher("views/member/mypage.jsp").forward(request, response);
+		
+		}else {
+			request.setAttribute("errorMsg", "헌혈 예약에 실패하였습니다.");
+			response.sendRedirect(request.getContextPath());
+		}
 		
 		
-		
+
+			
 		
 	
 	}

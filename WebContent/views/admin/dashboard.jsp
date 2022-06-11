@@ -82,7 +82,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<%=contextPath%>/list.que?qpage=1">
+            <a class="nav-link" href="<%=contextPath%>/list.queu?qpage=1">
               <i class="bi bi-question-circle"></i>
               QnA
             </a>

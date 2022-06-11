@@ -76,6 +76,8 @@ public class QuestionInsertController extends HttpServlet {
 			int result = new QuestionService().insertQue(que,at);
 
 			if(result>0) {
+				request.getSession().setAttribute("alertMsg", "질문이 등록되었습니다");
+
 				response.sendRedirect(request.getContextPath()+"/list.queu?qpage=1");
 			}else {
 				if(at!=null) {

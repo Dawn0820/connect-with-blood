@@ -2,8 +2,120 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 
 <properties>
+
+		<entry key="enrollMember">
+        		INSERT INTO MEMBER(USER_NO,
+						USER_ID,
+						USER_PW,
+						USER_NAME,
+						USER_BIRTH,
+						USER_EMAIL,
+						USER_PHONE,
+						USER_ADDRESS,
+						USER_BLOODTYPE) 
+						VALUES 
+						(SEQ_UNO.NEXTVAL,
+                   		?,
+                    	?,
+                    	?,
+                    	?,
+                    	?,
+                      	?,
+                    	?,
+                    	?)
+	</entry> 
+	<!-- 디폴트 들어가있는건 빼~ -->
 	
-<!-- 규민 회원정보 띄우기 -->
+
+		
+	
+
+	<entry key="loginMember">
+        SELECT *
+        FROM MEMBER
+		JOIN BLOODINFO ON(USER_NO=BLOOD_OWNER)
+		WHERE USER_ID=?
+		AND USER_PW=?
+		AND USER_STATUS='NORMAL'
+	</entry>
+	
+	<entry key="updateBloodInfo">
+		INSERT INTO "SEMI"."BLOODINFO"
+		(BLOOD_NO, BLOOD_WH, BLOOD_OWNER) 
+		VALUES (?
+				, ?
+				, (SELECT BLOOD_OWNER 
+					FROM BLOODINFO 
+					LEFT JOIN MEMBER ON (BLOOD_OWNER=USER_NO)
+					WHERE USER_NO in ?
+                    AND USER_STATUS in 'NORMAL'))
+	</entry>
+	
+	<entry key="selectBloodInfo">
+		 SELECT BLOOD_WH
+	     FROM BLOODINFO LEFT JOIN MEMBER ON (BLOOD_OWNER=USER_NO)
+		 WHERE USER_ID = ?
+	     AND USER_STATUS = 'NORMAL'
+	</entry>
+	
+	<entry key="selectUserNo">
+		SELECT USER_NO
+        FROM MEMBER
+        WHERE USER_ID=?
+	</entry>
+	
+	<entry key="findId">
+		SELECT USER_ID
+		FROM MEMBER
+		WHERE USER_NAME=?
+		AND USER_EMAIL=?
+		AND   USER_STATUS='NORMAL'
+	</entry>
+	
+	<entry key="findPw">
+		SELECT USER_PW
+		FROM MEMBER
+		WHERE USER_ID=? 
+		AND USER_NAME=?
+		AND USER_EMAIL=? 
+		AND   USER_STATUS='NORMAL'
+	</entry>
+	
+	<entry key="updateMem">
+		UPDATE MEMBER
+		SET 	USER_PW = ?
+				,USER_NAME=?
+                ,USER_EMAIL = ?
+                ,USER_PHONE=?
+                ,USER_ADDRESS = ?
+		WHERE 	USER_ID = ?
+		AND   USER_STATUS='NORMAL'
+	</entry>
+	
+	<entry key="selectMem">
+		SELECT * 
+		FROM MEMBER
+		WHERE USER_ID =?
+		AND   USER_STATUS='NORMAL'
+	</entry>
+
+	<entry key="deleteMember">
+		UPDATE MEMBER SET USER_STATUS='WITHDRAWAL'
+						, USER_WITHDATE=SYSDATE 
+		WHERE USER_ID=? 
+		AND USER_PW=?
+	</entry>
+	
+	
+	
+		<!-- AJAX -->
+	<entry key="idCheck">
+		SELECT COUNT(*) COUNT 
+		FROM MEMBER 
+		WHERE USER_ID = ?
+	</entry>
+	
+	<!-- 규민 회원정보 띄우기 -->
 	<entry key="selectMemberList">
 	SELECT * 
    	 FROM(
@@ -225,104 +337,5 @@
 	    AND USER_STATUS = 'SUSPENSION' <!-- 회원상태가 정상인지 여부 CHECK -->
 	</entry>
 	<!-- 규민 회원현황 / 금일,이번달의 신규,정지,탈퇴 회원 끝! -->		
-	
-	
-		<entry key="enrollMember">
-		INSERT INTO MEMBER(USER_NO,
-						USER_ID,
-						USER_PW,
-						USER_NAME,
-						USER_BIRTH,
-						USER_EMAIL,
-						USER_PHONE,
-						USER_ADDRESS,
-						USER_BLOODTYPE) 
-						VALUES 
-						(SEQ_UNO.NEXTVAL,
-                   		?,
-                    	?,
-                    	?,
-                    	?,
-                    	?,
-                    	?,
-                    	?,
-                    	?)
-	</entry> 
-	<!-- 디폴트 들어가있는건 빼~ -->
-
-	<entry key="loginMember">
-        SELECT *
-        FROM MEMBER
-        JOIN BLOODINFO ON(USER_NO=BLOOD_OWNER)
-		WHERE USER_ID=?
-		AND USER_PW=?
-		AND   USER_STATUS='NORMAL'
-	</entry>
-	
-	<entry key="updateBloodInfo">
-		INSERT INTO "SEMI"."BLOODINFO" 
-		(BLOOD_NO, BLOOD_COUNT, BLOOD_WH, BLOOD_OWNER) 
-		VALUES (?
-				, ?
-				, ?
-				, (SELECT BLOOD_OWNER 
-					FROM BLOODINFO 
-					LEFT JOIN MEMBER ON (BLOOD_OWNER=USER_NO)
-					WHERE USER_ID='?'))
-	</entry>
-	
-	<entry key="findId">
-		SELECT USER_ID
-		FROM MEMBER
-		WHERE USER_NAME=?
-		AND USER_EMAIL=?
-		AND   USER_STATUS='NORMAL'
-	</entry>
-	
-	<entry key="findPw">
-		SELECT USER_PW
-		FROM MEMBER
-		WHERE USER_ID=? 
-		AND USER_NAME=?
-		AND USER_EMAIL=? 
-		AND   USER_STATUS='NORMAL'
-	</entry>
-	
-	<entry key="updateMem">
-		UPDATE MEMBER
-		SET 	USER_NAME = ?
-                ,PHONE = ?
-                ,EMAIL = ?
-                ,ADDRESS = ?
-                ,INTEREST = ?
-                ,MODIFY_DATE = SYSDATE
-		WHERE 	USER_ID = ?
-		AND   USER_STATUS='NORMAL'
-	</entry>
-	
-	<entry key="selectMem">
-		SELECT * 
-		FROM MEMBER
-		WHERE USER_ID =?
-	</entry>
-	
-	
-	
-	<entry key="deleteMember">
-		UPDATE MEMBER SET USER_STATUS='WITHDRAWAL'
-						, USER_WITHDATE=SYSDATE 
-		WHERE USER_ID=? 
-		AND USER_PW=?
-	</entry>
-	
-	
-	
-		<!-- AJAX -->
-	<entry key="idCheck">
-		SELECT COUNT(*) COUNT 
-		FROM MEMBER 
-		WHERE USER_ID = ?
-	</entry>
-	
 	
 </properties>

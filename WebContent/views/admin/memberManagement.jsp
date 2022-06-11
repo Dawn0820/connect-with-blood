@@ -51,7 +51,7 @@
 
 	<!-- header.jsp include -->
     <%@ include file="../common/header.jsp" %>
-
+	<br>
 
 
 	<!-- 멤버 정보 띄우기<!-- 멤버 정보 띄우기 --><!-- 멤버 정보 띄우기 --><!-- 멤버 정보 띄우기 -->
@@ -205,6 +205,8 @@
 		</form>
 	</div>
 	
+	<br>
+	
 	<script>
 
     function searchCheck(frm){
@@ -222,8 +224,7 @@
 	
 	
 	<br><br><br><br>
-
-	
+   
 	<!-- footer.jsp include -->
 	<%@ include file="../common/footer.jsp" %>
 
