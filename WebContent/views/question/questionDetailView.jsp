@@ -80,7 +80,7 @@
 	<div align="center">
 		<a href="<%=contextPath%>/list.queu?qpage=1" class="btn btn-outline-secondary">목록가기</a>
 
-           <%if(loginMember!=null && loginMember.getUserId().equals(que.getQuestionWriter())||isAdmin) {%>
+           <%if(loginMember!=null && loginMember.getUserName().equals(que.getQuestionWriter())||isAdmin) {%>
 		<a href="<%=contextPath%>/delete.que?qno=<%=que.getQuestionNo()%>" class="btn btn-outline-secondary">삭제하기</a>
 		<a href="<%=contextPath%>/updateForm.que?qno=<%=que.getQuestionNo()%>" class="btn btn-outline-secondary">수정하기</a>
 		<%} %>		

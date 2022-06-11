@@ -230,9 +230,7 @@ table td input{color:brown;}
 
 	<div class="table-responsive">
 		<table class="table table-bordered">
-			<tr>
-				<td colspan="2">예약조회 현황  ['조회하기' 버튼을 눌러주세요]</td>
-			</tr>
+
 			<tr>
 				<td>헌혈의 집 주소</td>
 				<td id="wh"><%=reservationAddress2%></td>
