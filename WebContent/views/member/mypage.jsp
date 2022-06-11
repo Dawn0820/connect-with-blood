@@ -230,7 +230,7 @@ table td input{color:brown;}
 
 	<div class="table-responsive">
 		<table class="table table-bordered">
-
+ 
 			<tr>
 				<td>헌혈의 집 주소</td>
 				<td id="wh"><%=reservationAddress2%></td>
