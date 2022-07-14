@@ -31,7 +31,6 @@ Description
    
 Images
 -----------
-![0001](https://user-images.githubusercontent.com/55389292/178907205-44668688-35cd-4986-9d40-cd3c6e9db8d3.jpg)
 ![0002](https://user-images.githubusercontent.com/55389292/178907242-b7e58114-46ec-474d-ace7-c2d2fbe5c967.jpg)
 ![0003](https://user-images.githubusercontent.com/55389292/178907251-ecf7eccc-b002-4403-bc8b-88cbdcdc8ffc.jpg)
 ![0004](https://user-images.githubusercontent.com/55389292/178907256-c42cbe22-1172-40ee-878c-fd9ede50e141.jpg)
