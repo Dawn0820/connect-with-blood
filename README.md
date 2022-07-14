@@ -80,5 +80,4 @@ Images
 ![0048](https://user-images.githubusercontent.com/55389292/178907428-364315e4-4c50-4afe-b033-4feb1a76eefb.jpg)
 ![0049](https://user-images.githubusercontent.com/55389292/178907434-14397382-1ecc-4f66-a100-586eaae2c3db.jpg)
 ![0050](https://user-images.githubusercontent.com/55389292/178907440-bfba8aae-77a9-44df-b82b-65078e530606.jpg)
-![0051](https://user-images.githubusercontent.com/55389292/178907442-d60c4c31-9d63-46d0-a993-e85534b05378.jpg)
 
